@@ -1,0 +1,206 @@
+.container {
+	width: 1200px;
+	margin-bottom: 80px;
+}
+
+.contents_wrap {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+#categoryBar {
+	display: flex;
+	align-items: center;
+	margin-top: 70px;
+}
+
+.categoryWrap {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: #a3a3a3;
+	font-weight: bold;
+	margin-left: 50px;
+}
+
+.categoryWrap label {
+	margin-right: 30px;
+	cursor: pointer;
+	transition: background-color 0.3s;
+}
+
+.categoryWrap input[type="radio"] {
+	display: none;
+}
+
+.categoryWrap input[type="radio"]:checked+label {
+	background-color: white;
+	color: #4849e8;
+}
+
+.channelButton {
+	gap: 20px;
+	color: #a3a3a3;
+	font-weight: bold;
+	align-items: center;
+}
+
+.channelButton label {
+	cursor: pointer;
+	padding: 6px;
+	border: 2px solid #a3a3a3;
+	border-radius: 10px;
+	transition: background-color 0.3s;
+}
+
+.channelButton input[type="checkbox"] {
+	display: none; /* 기본 체크박스 숨기기 */
+}
+
+.channelButton input[type="checkbox"]:checked+span {
+	background-color: white; /* 체크된 상태의 배경색 */
+	color: #4849e8; /* 체크된 상태의 글자색 */
+}
+
+.channelBar {
+	display: flex;
+	align-items: center;
+	margin-top: 20px;
+}
+
+.search {
+	display: flex;
+	align-items: center;
+}
+
+.search input {
+	background-color: #EEEEEE;
+	border: none;
+	height: 32px;
+	width: 280px;
+	border-radius: 10px;
+	padding-left: 16px;
+}
+
+#searchButton {
+	border: 1px solid #4849e8;
+	cursor: pointer;
+	padding: 6px 8px;
+	border-radius: 10px;
+	background-color: white;
+	margin-left: 10px;
+	color: #4849e8;
+}
+
+#registerButton {
+	width: 150px;
+	height: 40px;
+	border-radius: 10px;
+	background-color: #4849e8;
+	color: white;
+	margin-left: 20px;
+}
+
+.channelBar h2 {
+	width: 100px;
+}
+
+.channelButton {
+	display: flex;
+	height: 38px;
+}
+
+.allBar {
+	display: flex;
+	width: 100%;
+	justify-content: space-between;
+	align-items: center;
+	margin-top: 50px;
+}
+.search_btn_wrap {
+	display: flex;
+}
+
+.allBar>button {
+	cursor: pointer;
+}
+
+.influencerWrap {
+	display: flex;
+	flex-wrap: wrap;
+	width: 100%;
+	gap: 20px 20px;
+	justify-content: space-between;
+	margin-top: 28px;
+}
+
+.influencer_pick {
+	display: flex;
+	flex-direction: column;
+	width: 23%;
+	padding: 5px;
+	margin: 2px;
+	margin-bottom: 15px;
+	margin-top: 15px;
+	cursor: pointer;
+}
+.influencer_img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	margin-bottom: 8px;
+}
+	
+#channelName {
+	font-weight: bold;
+	margin-top: 12px;
+	margin-bottom: 5px;
+}
+
+#title {
+	font-weight: bold;
+	margin-bottom: 12px;
+	margin-top: 5px;
+}
+.page {
+    margin:10px auto;
+    text-align:center;
+    width:50%;
+}
+.pagination {
+    list-style:none;
+    display:inline-block;
+    padding:0;
+    margin:10px auto;
+
+}
+.pagination li {
+   	float:left;
+   	
+    text-align:center;
+    padding:0 12px;
+}
+.pagination a {
+    float: left;
+    text-align:center;
+    display:inline- block;
+    font-size:16px;
+    text-decoration:none;
+    
+}
+.pagination a.active {
+    cursor:default; 
+    font-weight:bold;
+    color:#4849e8;
+    text-decoration:underline;
+}
+.pagination a:active {
+    outline:none;
+}
+.num {
+	height:100%
+}
+.num:hover,.arrow:hover {
+    background-color:lightgray;
+}

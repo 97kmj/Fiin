@@ -1,0 +1,85 @@
+#container {
+    display: flex;
+    margin-top:80px;
+	padding:0;
+    width:1200px;
+    justify-content: space-between;
+    margin-bottom: 80px;
+}
+
+#main {
+    width:880px;
+    text-align:center;
+    border-radius: 16px;
+    padding: 60px 40px;
+    box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 64px 0px;
+}
+
+table {
+    margin:0 auto;
+    width: 90%;
+    border-collapse:collapse;
+    border-top:2px solid #e5e5e5;
+    border-spacing: 0 10px;
+}
+
+tr {
+    font-weight:bold;
+    border-top:2px solid #e5e5e5;
+    line-height:35px;
+}
+.td1{
+    width: 20%;
+}
+.td2{
+    width: 60%;
+    text-align:left
+}
+.td3{
+    width: 20%;
+}
+.td3 div:nth-child(1){
+    color:#4849e8;
+    font-weight:bold;
+} 
+.page {
+    margin:10px auto;
+    text-align:center;
+    width:50%;
+}
+.pagination {
+    list-style:none;
+    display:inline-block;
+    padding:0;
+    margin:10px auto;
+
+}
+.pagination li {
+   	float:left;
+   	
+    text-align:center;
+    padding:0 12px;
+}
+.pagination a {
+    float: left;
+    text-align:center;
+    display:inline- block;
+    font-size:16px;
+    text-decoration:none;
+    
+}
+.pagination a.active {
+    cursor:default; 
+    font-weight:bold;
+    color:#4849e8;
+    text-decoration:underline;
+}
+.pagination a:active {
+    outline:none;
+}
+.num {
+	height:100%
+}
+.num:hover,.arrow:hover {
+    background-color:lightgray;
+}

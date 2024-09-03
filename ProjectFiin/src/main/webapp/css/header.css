@@ -1,0 +1,31 @@
+header {
+  width: 1200px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 60px;
+  border-radius: 20px;
+  box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 64px 0px;
+  margin-top: 40px;
+  position: sticky;
+}
+.menu_wrap {
+  display: flex;
+  align-items: center;
+}
+.menu_wrap li {
+  margin-right: 20px;
+}
+.menu_wrap li:last-child {
+  margin-right: 0;
+}
+.menu_wrap li a {
+  color: black;
+}
+.menu_button {
+  padding: 12px 18px;
+  background-color: black;
+  color: white;
+  border-radius: 8px;
+  font-size: 12px;
+}
