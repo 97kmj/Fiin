@@ -53,7 +53,7 @@
             <img src="${pageContext.request.contextPath}/image//closeIcon.svg" alt="닫기아이콘" />
           </a>
         </div>
-        <form action="" class="signup_form">
+        <form action="joinInfluencer" class="signup_form">
           <label for="email" class="input_label">
             이메일<span>*</span> <span class="br_style"></span><br />
             <div class="input_btn_wrap">
