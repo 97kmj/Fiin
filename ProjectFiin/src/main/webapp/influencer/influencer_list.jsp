@@ -62,7 +62,7 @@
 					<img src="${pageContext.request.contextPath}/image/influencer_img02.png" class="influencer_img">
 					<div>뷰티 | 패션</div>
 					<div id="channelName">채널명</div>
-					<div id="title">직장인 데일리룩</div>
+					<div id="title">직장인 데일리룩 올리는 블로거</div>
 					<div>구독자 수 9,000명</div>
 				</div>
 				<div class="influencer_pick" id="pickNum3"
