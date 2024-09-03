@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -46,70 +47,24 @@
 		<div class="campaignWrap">
 			<div class="campaign_pick" id="pickNum1"
 				onclick="location.href='campaign_detail.jsp'">
-				<img src="${pageContext.request.contextPath}/image/campaign_img01.png" class="campaign_img">
-				<div>인스타그램 | 패션</div>
-				<div id="channelName">히든클리프</div>
-				<div id="title">[24-8]제주 히든클리프 호텔</div>
-				<div>2024-07-29 ~ 2024-08-05</div>
+	 			<c:forEach items="${campaignList }" var="campaign">
+					<img src="../image/campaign_img01.png" class="campaign_img">
+					<div>${campaign.channel } | ${board.category }</div>
+					<div id="channelName">${campaign.compunyname }</div>
+					<div id="title">${capaign.product_name }</div>
+					<div>${campaign.ad_start_date} ~ ${campaign.ad_end_date}</div>
+				 </c:forEach> 
 			</div>
-			<div class="campaign_pick" id="pickNum2"
+<%-- 			<div class="campaign_pick" id="pickNum2"
 				onclick="location.href='campaign_detail.jsp'">
 				<img src="${pageContext.request.contextPath}/image/campaign_img01.png" class="campaign_img">
 				<div>인스타그램 | 패션</div>
 				<div id="channelName">히든클리프</div>
 				<div id="title">[24-8]제주 히든클리프 호텔</div>
 				<div>2024-07-29 ~ 2024-08-05</div>
-			</div>
-			<div class="campaign_pick" id="pickNum3"
-				onclick="location.href='campaign_detail.jsp'">
-				<img src="${pageContext.request.contextPath}/image/campaign_img01.png" class="campaign_img">
-				<div>인스타그램 | 패션</div>
-				<div id="channelName">히든클리프</div>
-				<div id="title">[24-8]제주 히든클리프 호텔</div>
-				<div>2024-07-29 ~ 2024-08-05</div>
-			</div>
-			<div class="campaign_pick" id="pickNum4"
-				onclick="location.href='campaign_detail.jsp'">
-				<img src="${pageContext.request.contextPath}/image/campaign_img01.png" class="campaign_img">
-				<div>인스타그램 | 패션</div>
-				<div id="channelName">히든클리프</div>
-				<div id="title">[24-8]제주 히든클리프 호텔</div>
-				<div>2024-07-29 ~ 2024-08-05</div>
-			</div>
-			<div class="campaign_pick" id="pickNum5"
-				onclick="location.href='campaign_detail.jsp'">
-				<img src="${pageContext.request.contextPath}/image/campaign_img01.png" class="campaign_img">
-				<div>인스타그램 | 패션</div>
-				<div id="channelName">히든클리프</div>
-				<div id="title">[24-8]제주 히든클리프 호텔</div>
-				<div>2024-07-29 ~ 2024-08-05</div>
-			</div>
-			<div class="campaign_pick" id="pickNum6"
-				onclick="location.href='campaign_detail.jsp'">
-				<img src="${pageContext.request.contextPath}/image/campaign_img01.png" class="campaign_img">
-				<div>인스타그램 | 패션</div>
-				<div id="channelName">히든클리프</div>
-				<div id="title">[24-8]제주 히든클리프 호텔</div>
-				<div>2024-07-29 ~ 2024-08-05</div>
-			</div>
-			<div class="campaign_pick" id="pickNum7"
-				onclick="location.href='campaign_detail.jsp'">
-				<img src="${pageContext.request.contextPath}/image/campaign_img01.png" class="campaign_img">
-				<div>인스타그램 | 패션</div>
-				<div id="channelName">히든클리프</div>
-				<div id="title">[24-8]제주 히든클리프 호텔</div>
-				<div>2024-07-29 ~ 2024-08-05</div>
-			</div>
-			<div class="campaign_pick" id="pickNum8"
-				onclick="location.href='campaign_detail.jsp'">
-				<img src="${pageContext.request.contextPath}/image/campaign_img01.png" class="campaign_img">
-				<div>인스타그램 | 패션</div>
-				<div id="channelName">히든클리프</div>
-				<div id="title">[24-8]제주 히든클리프 호텔</div>
-				<div>2024-07-29 ~ 2024-08-05</div>
-			</div>
+			</div> --%>
 		</div>
-			<div class="page">
+			<div class="page" >
 		        <ul class="pagination">
 		            <li> <a href="#" class="arrow left"><img src="https://img.icons8.com/?size=100&id=x3s0mSWBMJTc&format=png&color=939393" style="weight:20px;height:20px"></a></li>
 		            <li> <a href="#" class="active num">1</a></li>
@@ -120,7 +75,6 @@
 	        	</ul>
 	    	</div>
     	</div>
-	</div>
 	<%@include file="../include/footer.jsp" %>
 </body>
 </html>

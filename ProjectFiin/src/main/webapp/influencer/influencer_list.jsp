@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -39,7 +40,7 @@
 		</div>
 		<div class="contents_wrap">
 			<div class="allBar">
-				<h2>전체</h2>
+				<h2></h2>
 				<div class="search_btn_wrap">
 					<div class="search">
 						<input type="text" placeholder="검색">
@@ -60,54 +61,6 @@
 				<div class="influencer_pick" id="pickNum2"
 					onclick="location.href='influencer_detail.jsp'">
 					<img src="${pageContext.request.contextPath}/image/influencer_img02.png" class="influencer_img">
-					<div>뷰티 | 패션</div>
-					<div id="channelName">채널명</div>
-					<div id="title">직장인 데일리룩 올리는 블로거</div>
-					<div>구독자 수 9,000명</div>
-				</div>
-				<div class="influencer_pick" id="pickNum3"
-					onclick="location.href='influencer_detail.jsp'">
-					<img src="${pageContext.request.contextPath}/image/influencer_img03.png" class="influencer_img">
-					<div>뷰티 | 패션</div>
-					<div id="channelName">채널명</div>
-					<div id="title">직장인 데일리룩 올리는 블로거</div>
-					<div>구독자 수 9,000명</div>
-				</div>
-				<div class="influencer_pick" id="pickNum4"
-					onclick="location.href='influencer_detail.jsp'">
-					<img src="${pageContext.request.contextPath}/image/influencer_img04.png" class="influencer_img">
-					<div>뷰티 | 패션</div>
-					<div id="channelName">채널명</div>
-					<div id="title">직장인 데일리룩 올리는 블로거</div>
-					<div>구독자 수 9,000명</div>
-				</div>
-				<div class="influencer_pick" id="pickNum5"
-					onclick="location.href='influencer_detail.jsp'">
-					<img src="${pageContext.request.contextPath}image/influencer_img05.png" class="influencer_img">
-					<div>뷰티 | 패션</div>
-					<div id="channelName">채널명</div>
-					<div id="title">직장인 데일리룩 올리는 블로거</div>
-					<div>구독자 수 9,000명</div>
-				</div>
-				<div class="influencer_pick" id="pickNum6"
-					onclick="location.href='influencer_detail.jsp'">
-					<img src="${pageContext.request.contextPath}/image/influencer_img06.png" class="influencer_img">
-					<div>뷰티 | 패션</div>
-					<div id="channelName">채널명</div>
-					<div id="title">직장인 데일리룩 올리는 블로거</div>
-					<div>구독자 수 9,000명</div>
-				</div>
-				<div class="influencer_pick" id="pickNum7"
-					onclick="location.href='influencer_detail.jsp'">
-					<img src="${pageContext.request.contextPath}/image/influencer_img01.png" class="influencer_img">
-					<div>뷰티 | 패션</div>
-					<div id="channelName">채널명</div>
-					<div id="title">직장인 데일리룩 올리는 블로거</div>
-					<div>구독자 수 9,000명</div>
-				</div>
-				<div class="influencer_pick" id="pickNum8"
-					onclick="location.href='influencer_detail.jsp'">
-					<img src="${pageContext.request.contextPath}/image/influencer_img01.png" class="influencer_img">
 					<div>뷰티 | 패션</div>
 					<div id="channelName">채널명</div>
 					<div id="title">직장인 데일리룩 올리는 블로거</div>
