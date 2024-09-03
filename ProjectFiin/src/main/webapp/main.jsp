@@ -17,7 +17,7 @@
       let swiper = new Swiper(".swiper-" + index, {
         autoplay: {
           delay: 1,
-          disableOnInteraction: false,
+          desableOnInteraction: false,
         },
         speed: 8e3,
         loop: true,
