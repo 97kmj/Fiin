@@ -5,8 +5,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Main Page</title>
-    <link rel="stylesheet" href="../css/influencer_register.css?ver=1">
-  	 <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/influencer_register.css?ver=1">
+  	 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/reset.css">
 
 </head>
 <body>
@@ -34,7 +34,7 @@
                 </div>
 
                 <div class="first_line_image">
-                    <img id="uploadImage" src="../image/upload.png" alt="Upload Image" style="cursor: pointer">
+                    <img id="uploadImage" src="${pageContext.request.contextPath}/image/upload.png" alt="Upload Image" style="cursor: pointer">
                     <input type="file" id="fileInput" style="display: none;"/>
                 </div>
             </div>
@@ -45,7 +45,7 @@
                 <div class="select_channel">
                     <input type="checkbox" id="active_youtube">
                     <label for="active_youtube">활동 채널</label>
-                    <img src="../image/youtube.png" alt="youtube" class="radio-image">
+                    <img src="${pageContext.request.contextPath}/image/youtube.png" alt="youtube" class="radio-image">
                 </div>
 
                 <div class="channel_name">
@@ -68,7 +68,7 @@
                 <div class="select_channel">
                     <input type="checkbox" id="active_instagram">
                     <label for="active_instagram">활동 채널</label>
-                    <img src="../image/instagram.png" alt="instagram" class="radio-image">
+                    <img src="${pageContext.request.contextPath}/image/instagram.png" alt="instagram" class="radio-image">
                 </div>
 
                 <div class="channel_name">
@@ -92,7 +92,7 @@
                 <div class="select_channel">
                     <input type="checkbox" id="active_blog">
                     <label for="active_blog">활동 채널</label>
-                    <img src="../image/blog.png" alt="youtube" class="radio-image">
+                    <img src="${pageContext.request.contextPath}/image/blog.png" alt="youtube" class="radio-image">
                 </div>
 
                 <div class="channel_name">
@@ -123,21 +123,21 @@
                 <div class="first3">
                     <div class="category">
                         <label for="beauty">
-                            <img src="../image/beauty.png" alt="뷰티" class="radio-image">
+                            <img src="${pageContext.request.contextPath}/image/beauty.png" alt="뷰티" class="radio-image">
                         </label>
                         <input type="radio" id="beauty" name="category" value="beauty">
                     </div>
 
                     <div class="category">
                         <label for="fashion">
-                            <img src="../image/fashion.png" alt="패션" class="radio-image">
+                            <img src="${pageContext.request.contextPath}/image/fashion.png" alt="패션" class="radio-image">
                         </label>
                         <input type="radio" id="fashion" name="category" value="fashion">
                     </div>
 
                     <div class="category">
                         <label for="sport">
-                            <img src="../image/sport.png" alt="스포츠" class="radio-image">
+                            <img src="${pageContext.request.contextPath}/image/sport.png" alt="스포츠" class="radio-image">
                         </label>
                         <input type="radio" id="sport" name="category" value="sport">
                     </div>
@@ -146,21 +146,21 @@
                 <div class="second3">
                     <div class="category">
                         <label for="travel">
-                            <img src="../image/travel.png" alt="여행" class="radio-image">
+                            <img src="${pageContext.request.contextPath}/image/travel.png" alt="여행" class="radio-image">
                         </label>
                         <input type="radio" id="travel" name="category" value="travel">
                     </div>
 
                     <div class="category">
                         <label for="food">
-                            <img src="../image/food.png" alt="식품" class="radio-image">
+                            <img src="${pageContext.request.contextPath}/image/food.png" alt="식품" class="radio-image">
                         </label>
                         <input type="radio" id="food" name="category" value="food">
                     </div>
 
                     <div class="category">
                         <label for="life">
-                            <img src="../image/life.png" alt="생활용품" class="radio-image">
+                            <img src="${pageContext.request.contextPath}/image/life.png" alt="생활용품" class="radio-image">
                         </label>
                         <input type="radio" id="life" name="category" value="life">
                     </div>

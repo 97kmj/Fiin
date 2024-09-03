@@ -5,8 +5,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="../css/reset.css">
-<link rel="stylesheet" href="../css/influencer_detail.css?ver=1">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/reset.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/influencer_detail.css?ver=1">
 </head>
 <body>
 <%@ include file="../include/header.jsp" %>
@@ -25,10 +25,10 @@
 				<div class="chanimg">
 					<div>
 						<span class="channel_outline">
-							&nbsp;<img src="img/유튜브로고.png" class="channel" ><a class="channel_font">유튜브</a> &nbsp;
+							&nbsp;<img src="${pageContext.request.contextPath}/img/유튜브로고.png" class="channel" ><a class="channel_font">유튜브</a> &nbsp;
 						</span>
 						<span class="channel_outline"  >
-							&nbsp;<img src="img/인스타그램로고.png" class="channel" ><a class="channel_font">인스타그램</a>&nbsp;
+							&nbsp;<img src="${pageContext.request.contextPath}/img/인스타그램로고.png" class="channel" ><a class="channel_font">인스타그램</a>&nbsp;
 						</span>
 					</div>
 				</div>
@@ -48,7 +48,7 @@
 						<a href="signIn.jsp" type="button" class="basic_login" >로그인후 신청해주세요</a>
 					</div> -->
 					<div  class= "container">
-							<img src="img/북마크.png" class="bookmark">
+							<img src="${pageContext.request.contextPath}/img/북마크.png" class="bookmark">
 							<input type="button"  class="basic_btn" value = "신청하기">
 					</div> 
 				</div>
@@ -58,12 +58,12 @@
 		<br><br>
 		
 		<div>
-			<div class="middletext"><img src="img/watch.png" style="width:25px;height:25px; border-radius:1px;"><b>일정정보</b></div>
+			<div class="middletext"><img src="${pageContext.request.contextPath}/img/watch.png" style="width:25px;height:25px; border-radius:1px;"><b>일정정보</b></div>
 			<div class="inp_date">캠페인 제안 가능 기간 2024-07-10~2024-08-14<br>
 								 광고기간 2024-08-27 ~ 2024-10-10</div>
 		</div>
 		<br><br>
-	<div class="middletext"><img src="img/information.png" style="width:25px;height:25px; border-radius:1px;"><b>기본정보</b></div>
+	<div class="middletext"><img src="${pageContext.request.contextPath}/img/information.png" style="width:25px;height:25px; border-radius:1px;"><b>기본정보</b></div>
 	
 		<div class="basic_info2">
 		<br>

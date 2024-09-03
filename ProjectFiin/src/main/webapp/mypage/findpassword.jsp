@@ -5,15 +5,15 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="../css/reset.css">
-<link rel="stylesheet" href="../css/findPassword.css?ver=1">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/reset.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/findPassword.css?ver=1">
 </head>
 <body>
     <div class="findpassword_container">
         <div class="title_wrap">
           <h2>비밀번호 찾기</h2>
           <a href="login.jsp">
-            <img src="../image/closeIcon.svg" alt="닫기아이콘" />
+            <img src="${pageContext.request.contextPath}/image/closeIcon.svg" alt="닫기아이콘" />
           </a>
         </div>
         <form action="findpassword_result.jsp" class="findpassword_form">  

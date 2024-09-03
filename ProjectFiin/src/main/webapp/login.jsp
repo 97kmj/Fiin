@@ -5,8 +5,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="./css/reset.css">
-<link rel="stylesheet" href="./css/login.css?ver=1">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/reset.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/login.css?ver=1">
 <style>
  #type_influencer>label {
     width: 49%;
@@ -56,7 +56,7 @@
         <div class="title_wrap">
           <h2>인플루언서 로그인</h2>
           <a href="main.jsp">
-            <img src="./image/closeIcon.svg" alt="닫기아이콘" />
+            <img src="${pageContext.request.contextPath}/image/closeIcon.svg" alt="닫기아이콘" />
           </a>
         </div>
 

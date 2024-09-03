@@ -5,8 +5,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="./css/reset.css?ver=1">
-<link rel="stylesheet" href="./css/main.css?ver=1">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/reset.css?ver=1">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/main.css?ver=1">
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script>
   window.onload = function () {
@@ -40,7 +40,7 @@
             <div class="swiper">
               <ul class="influencer_container swiper-wrapper">
                 <li class="influencer_item swiper-slide">
-                    <img src="./image/influencer_img01.png" alt="인플루언서이미지01" />
+                    <img src="${pageContext.request.contextPath}/image/influencer_img01.png" alt="인플루언서이미지01" />
                     <div class="sns_wrap">
                       <p>블로그</p>
                       <p>인스타그램</p>
@@ -50,7 +50,7 @@
                     <p class="subcount">구독자 수 <span>8,000명</span></p>
                 </li>
                 <li class="influencer_item swiper-slide">
-                    <img src="./image/influencer_img02.png" alt="인플루언서이미지02" />
+                    <img src="${pageContext.request.contextPath}/image/influencer_img02.png" alt="인플루언서이미지02" />
                     <div class="sns_wrap">
                       <p>유튜브</p>
                       <p>인스타그램</p>
@@ -60,7 +60,7 @@
                     <p class="subcount">구독자 수 <span>120,000명</span></p>
                 </li>
                 <li class="influencer_item swiper-slide">
-                    <img src="./image/influencer_img03.png" alt="인플루언서이미지03" />
+                    <img src="${pageContext.request.contextPath}/image/influencer_img03.png" alt="인플루언서이미지03" />
                     <div class="sns_wrap">
                       <p>인스타그램</p>
                     </div>
@@ -69,7 +69,7 @@
                     <p class="subcount">구독자 수 <span>1,000명</span></p>
                 </li>
                 <li class="influencer_item swiper-slide">
-                    <img src="./image/influencer_img04.png" alt="인플루언서이미지04" />
+                    <img src="${pageContext.request.contextPath}/image/influencer_img04.png" alt="인플루언서이미지04" />
                     <div class="sns_wrap">
                       <p>블로그</p>
                       <p>인스타그램</p>
@@ -79,7 +79,7 @@
                     <p class="subcount">구독자 수 <span>1,234,240명</span></p>
                 </li>
                 <li class="influencer_item swiper-slide">
-                    <img src="./image/influencer_img05.png" alt="인플루언서이미지05" />
+                    <img src="${pageContext.request.contextPath}/image/influencer_img05.png" alt="인플루언서이미지05" />
                     <div class="sns_wrap">
                       <p>블로그</p>
                       <p>인스타그램</p>
@@ -89,7 +89,7 @@
                     <p class="subcount">구독자 수 <span>8,000명</span></p>
                 </li>
                 <li class="influencer_item swiper-slide">
-                    <img src="./image/influencer_img06.png" alt="인플루언서이미지06" />
+                    <img src="${pageContext.request.contextPath}/image/influencer_img06.png" alt="인플루언서이미지06" />
                     <div class="sns_wrap">
                       <p>블로그</p>
                     </div>
@@ -98,7 +98,7 @@
                     <p class="subcount">구독자 수 <span>120,000명</span></p>
                 </li>
                 <li class="influencer_item swiper-slide">
-                    <img src="./image/influencer_img06.png" alt="인플루언서이미지06" />
+                    <img src="${pageContext.request.contextPath}/image/influencer_img06.png" alt="인플루언서이미지06" />
                     <div class="sns_wrap">
                       <p>블로그</p>
                     </div>
@@ -107,7 +107,7 @@
                     <p class="subcount">구독자 수 <span>120,000명</span></p>
                 </li>
                 <li class="influencer_item swiper-slide">
-                    <img src="./image/influencer_img06.png" alt="인플루언서이미지06" />
+                    <img src="${pageContext.request.contextPath}/image/influencer_img06.png" alt="인플루언서이미지06" />
                     <div class="sns_wrap">
                       <p>블로그</p>
                     </div>
@@ -116,7 +116,7 @@
                     <p class="subcount">구독자 수 <span>120,000명</span></p>
                 </li>
                 <li class="influencer_item swiper-slide">
-                    <img src="./image/influencer_img06.png" alt="인플루언서이미지06" />
+                    <img src="${pageContext.request.contextPath}/image/influencer_img06.png" alt="인플루언서이미지06" />
                     <div class="sns_wrap">
                       <p>블로그</p>
                     </div>
@@ -125,7 +125,7 @@
                     <p class="subcount">구독자 수 <span>120,000명</span></p>
                 </li>
                 <li class="influencer_item swiper-slide">
-                    <img src="./image/influencer_img06.png" alt="인플루언서이미지06" />
+                    <img src="${pageContext.request.contextPath}/image/influencer_img06.png" alt="인플루언서이미지06" />
                     <div class="sns_wrap">
                       <p>블로그</p>
                     </div>
@@ -146,7 +146,7 @@
         <ul class="campaign_container">
           <li class="campaign_item">    
               <div class="campaign_img_wrap">
-                <img src="./image/campaign_img01.png" alt="캠페인이미지01" />
+                <img src="${pageContext.request.contextPath}/image/campaign_img01.png" alt="캠페인이미지01" />
               </div>
               <div class="campaign_text">
                 <p class="campaign_sns">블로그</p>
@@ -157,7 +157,7 @@
           </li>
           <li class="campaign_item">
               <div class="campaign_img_wrap">
-                <img src="./image/campaign_img01.png" alt="캠페인이미지01" />
+                <img src="${pageContext.request.contextPath}/image/campaign_img01.png" alt="캠페인이미지01" />
               </div>
               <div class="campaign_text">
                 <p class="campaign_sns">블로그</p>
@@ -168,7 +168,7 @@
           </li>
           <li class="campaign_item">
               <div class="campaign_img_wrap">
-                <img src="./image/campaign_img02.png" alt="캠페인이미지02" />
+                <img src="${pageContext.request.contextPath}/image/campaign_img02.png" alt="캠페인이미지02" />
               </div>
               <div class="campaign_text">
                 <p class="campaign_sns">인스타그램</p>
@@ -179,7 +179,7 @@
           </li>
           <li class="campaign_item">
               <div class="campaign_img_wrap">
-                <img src="./image/campaign_img03.png" alt="캠페인이미지03" />
+                <img src="${pageContext.request.contextPath}/image/campaign_img03.png" alt="캠페인이미지03" />
               </div>
               <div class="campaign_text">
                 <p class="campaign_sns">인스타그램</p>
@@ -190,7 +190,7 @@
           </li>
           <li class="campaign_item">
               <div class="campaign_img_wrap">
-                <img src="./image/campaign_img01.png" alt="캠페인이미지01" />
+                <img src="${pageContext.request.contextPath}/image/campaign_img01.png" alt="캠페인이미지01" />
               </div>
               <div class="campaign_text">
                 <p class="campaign_sns">블로그</p>
@@ -201,7 +201,7 @@
           </li>
           <li class="campaign_item">
               <div class="campaign_img_wrap">
-                <img src="./image/campaign_img01.png" alt="캠페인이미지01" />
+                <img src="${pageContext.request.contextPath}/image/campaign_img01.png" alt="캠페인이미지01" />
               </div>
               <div class="campaign_text">
                 <p class="campaign_sns">블로그</p>
@@ -212,7 +212,7 @@
           </li>
           <li class="campaign_item">
               <div class="campaign_img_wrap">
-                <img src="./image/campaign_img02.png" alt="캠페인이미지02" />
+                <img src="${pageContext.request.contextPath}/image/campaign_img02.png" alt="캠페인이미지02" />
               </div>
               <div class="campaign_text">
                 <p class="campaign_sns">인스타그램</p>
@@ -223,7 +223,7 @@
           </li>
           <li class="campaign_item">
               <div class="campaign_img_wrap">
-                <img src="./image/campaign_img03.png" alt="캠페인이미지03" />
+                <img src="${pageContext.request.contextPath}/image/campaign_img03.png" alt="캠페인이미지03" />
               </div>
               <div class="campaign_text">
                 <p class="campaign_sns">인스타그램</p>

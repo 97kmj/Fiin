@@ -5,8 +5,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="../css/reset.css">
-<link rel="stylesheet" href="../css/campaign_detail.css?ver=1">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/reset.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/campaign_detail.css?ver=1">
 </head>
 <body>
 <%@ include file="../include/header.jsp" %>
@@ -18,7 +18,7 @@
 	</div>
 	<br>
 	<div class="campaign_first_header"  >
-		<div class="img"><img src="img/campaign.png" style="width:380px;height:280px; border-radius:10px;"></div>
+		<div class="img"><img src="${pageContext.request.contextPath}/img/campaign.png" style="width:380px;height:280px; border-radius:10px;"></div>
 		<div class="imgtext">
 			<div style="font-size:30px; color : white;  padding :10px;" >
 				<span style="background-color : #000000; border-radius:10px; margin-left: 95px;">&nbsp;<b>모집완료</b>&nbsp;</span>
@@ -42,7 +42,7 @@
 					<a href="signIn.jsp" type="button" class="basic_login" >로그인후 신청해주세요</a>
 				</div> -->
 				<div  class= "container">
-					<img src="img/북마크.png" class="bookmark">
+					<img src="${pageContext.request.contextPath}/img/북마크.png" class="bookmark">
 					<input type="button"  class="basic_btn" value = "제안하기">
 				</div>
 			</div>

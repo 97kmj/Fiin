@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Main Page</title>
-    <link rel="stylesheet" href="../css/campaign_register.css?ver=1">
-    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/campaign_register.css?ver=1">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/reset.css">
 </head>
 <body>
 
@@ -20,15 +20,15 @@
             <h3>희망 광고 채널</h3>
             <div id="channel">
                 <label class="label" for="youtube">
-                    <div><img src="../image/youtube.png" alt=""></div>
+                    <div><img src="${pageContext.request.contextPath}/image/youtube.png" alt=""></div>
                     <input type="checkbox" name="ad" id="youtube" value="youtube">
                 </label>
                 <label class="label" for="insta">
-                    <div><img src="../image/instagram.png" alt=""></div>
+                    <div><img src="${pageContext.request.contextPath}/image/instagram.png" alt=""></div>
                     <input type="checkbox" name="ad" id="insta" value="insta">
                 </label>
                 <label class="label" for="blog">
-                    <div><img src="../image/blog.png" alt=""></div>
+                    <div><img src="${pageContext.request.contextPath}/image/blog.png" alt=""></div>
                     <input type="checkbox" name="ad" id="blog" value="blog">
                 </label>
             </div>
@@ -53,7 +53,7 @@
                     <input type="text" id="productName" name="productName">
                 </div>
             </div>
-            <img id="uploadImage" src="../image/upload.png" alt="">
+            <img id="uploadImage" src="${pageContext.request.contextPath}/image/upload.png" alt="">
             <!-- 파일 입력 필드 -->
             <input type="file" id="fileInput" name="fileInput"/>
         </div>
@@ -88,7 +88,7 @@
                     <input type="radio" id="beauty" name="category" value="beauty"
                            class="radio-input">
                     <label for="beauty" class="radio-label">
-                        <img src="../image/beauty.png" alt="뷰티" class="radio-image">
+                        <img src="${pageContext.request.contextPath}/image/beauty.png" alt="뷰티" class="radio-image">
                     </label>
 
                 </div>
@@ -96,14 +96,14 @@
                     <input type="radio" id="fashion" name="category" value="fashion"
                            class="radio-input">
                     <label for="fashion" class="radio-label">
-                        <img src="../image/fashion.png" alt="패션" class="radio-image">
+                        <img src="${pageContext.request.contextPath}/image/fashion.png" alt="패션" class="radio-image">
                     </label>
                 </div>
                 <div class="category">
                     <input type="radio" id="sport" name="category" value="sport"
                            class="radio-input">
                     <label for="sport" class="radio-label">
-                        <img src="../image/sport.png" alt="스포츠" class="radio-image">
+                        <img src="${pageContext.request.contextPath}/image/sport.png" alt="스포츠" class="radio-image">
                     </label>
                 </div>
             </div>
@@ -112,19 +112,19 @@
                     <input type="radio" id="travel" name="category" value="travel"
                            class="radio-input">
                     <label for="travel" class="radio-label">
-                        <img src="../image/travel.png" alt="여행" class="radio-image">
+                        <img src="${pageContext.request.contextPath}/image/travel.png" alt="여행" class="radio-image">
                     </label>
                 </div>
                 <div class="category">
                     <input type="radio" id="food" name="category" value="food" class="radio-input">
                     <label for="food" class="radio-label">
-                        <img src="../image/food.png" alt="식품" class="radio-image">
+                        <img src="${pageContext.request.contextPath}/image/food.png" alt="식품" class="radio-image">
                     </label>
                 </div>
                 <div class="category">
                     <input type="radio" id="life" name="category" value="life" class="radio-input">
                     <label for="life" class="radio-label">
-                        <img src="../image/life.png" alt="생활용품" class="radio-image">
+                        <img src="${pageContext.request.contextPath}/image/life.png" alt="생활용품" class="radio-image">
                     </label>
                 </div>
             </div>
