@@ -52,7 +52,7 @@ span {
         <div class="title_wrap">
           <h2>아이디 찾기</h2>
           <a href="login.jsp">
-            <img src="../image/closeIcon.svg" alt="닫기아이콘" />
+            <img src="${pageContext.request.contextPath}/image/closeIcon.svg" alt="닫기아이콘" />
           </a>
         </div>
         <p>입력하신 정보와 일치하는 이메일(아이디)입니다.</p>

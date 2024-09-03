@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="../css/header.css?ver=1">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/header.css?ver=1">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <style>
@@ -33,7 +33,7 @@
 <body>
     <header>
     	<a href="main.jsp">
-    		<img src="../image/logo.svg" alt="logo이미지" />
+    		<img src="${pageContext.request.contextPath}/image/logo.svg" alt="logo이미지" />
     	</a>
         <ul class="menu_wrap">
           <li>

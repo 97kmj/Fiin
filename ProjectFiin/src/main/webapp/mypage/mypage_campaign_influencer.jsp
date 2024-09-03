@@ -6,8 +6,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-<link rel="stylesheet" href="../css/reset.css">
-<link rel="stylesheet" href="../css/mypage_campaign_influencer.css?ver=1">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/reset.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/mypage_campaign_influencer.css?ver=1">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
@@ -29,7 +29,7 @@
 	        <div id="campaignwrap">
 	            <div class="campaign" id="campaignNum1">
 	                <div class="img">
-	                <a href="inpluenser_detail.jsp"><img src="image/campaign.png" style="width:200px;height:200px"></a></div>
+	                <a href="inpluenser_detail.jsp"><img src="${pageContext.request.contextPath}/image/campaign.png" style="width:200px;height:200px"></a></div>
 	                <div class="channel">블로그</div>
 	                <div class="compuny_name"><b>히든클리프</b></div>
 	                <div class="name"><b>[24-8]제주히든 클리프호텔</b></div>
@@ -41,7 +41,7 @@
 	            </div>
 	            <div class="campaign" id="campaignNum1">
 	                <div class="img">
-	                <a href="inpluenser_detail.jsp"><img src="image/campaign.png" style="width:200px;height:200px"></a></div>
+	                <a href="inpluenser_detail.jsp"><img src="${pageContext.request.contextPath}/image/campaign.png" style="width:200px;height:200px"></a></div>
 	                <div class="channel">블로그</div>
 	                <div class="compuny_name"><b>히든클리프</b></div>
 	                <div class="name"><b>[24-8]제주히든 클리프호텔</b></div>
@@ -53,7 +53,7 @@
 	            </div>
 	            <div class="campaign" id="campaignNum1">
 	                <div class="img">
-	                <a href="inpluenser_detail.jsp"><img src="image/campaign.png" style="width:200px;height:200px"></a></div>
+	                <a href="inpluenser_detail.jsp"><img src="${pageContext.request.contextPath}/image/campaign.png" style="width:200px;height:200px"></a></div>
 	                <div class="channel">블로그</div>
 	                <div class="compuny_name"><b>히든클리프</b></div>
 	                <div class="name"><b>[24-8]제주히든 클리프호텔</b></div>
@@ -66,7 +66,7 @@
 	      
 	            <div class="campaign" id="campaignNum1">
 	                <div class="img">
-	                <a href="inpluenser_detail.jsp"><img src="image/campaign.png" style="width:200px;height:200px"></a></div>
+	                <a href="inpluenser_detail.jsp"><img src="${pageContext.request.contextPath}/image/campaign.png" style="width:200px;height:200px"></a></div>
 	                <div class="channel">블로그</div>
 	                <div class="compuny_name"><b>히든클리프</b></div>
 	                <div class="name"><b>[24-8]제주히든 클리프호텔</b></div>

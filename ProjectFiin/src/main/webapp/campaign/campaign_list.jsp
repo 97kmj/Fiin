@@ -5,8 +5,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="../css/reset.css">
-<link rel="stylesheet" href="../css/campaign_list.css?ver=1">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/reset.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/campaign_list.css?ver=1">
 </head>
 <body>
 	<%@ include file="../include/header.jsp"%>
@@ -46,7 +46,7 @@
 		<div class="campaignWrap">
 			<div class="campaign_pick" id="pickNum1"
 				onclick="location.href='campaign_detail.jsp'">
-				<img src="../image/campaign_img01.png" class="campaign_img">
+				<img src="${pageContext.request.contextPath}/image/campaign_img01.png" class="campaign_img">
 				<div>인스타그램 | 패션</div>
 				<div id="channelName">히든클리프</div>
 				<div id="title">[24-8]제주 히든클리프 호텔</div>
@@ -54,7 +54,7 @@
 			</div>
 			<div class="campaign_pick" id="pickNum2"
 				onclick="location.href='campaign_detail.jsp'">
-				<img src="../image/campaign_img01.png" class="campaign_img">
+				<img src="${pageContext.request.contextPath}/image/campaign_img01.png" class="campaign_img">
 				<div>인스타그램 | 패션</div>
 				<div id="channelName">히든클리프</div>
 				<div id="title">[24-8]제주 히든클리프 호텔</div>
@@ -62,7 +62,7 @@
 			</div>
 			<div class="campaign_pick" id="pickNum3"
 				onclick="location.href='campaign_detail.jsp'">
-				<img src="../image/campaign_img01.png" class="campaign_img">
+				<img src="${pageContext.request.contextPath}/image/campaign_img01.png" class="campaign_img">
 				<div>인스타그램 | 패션</div>
 				<div id="channelName">히든클리프</div>
 				<div id="title">[24-8]제주 히든클리프 호텔</div>
@@ -70,7 +70,7 @@
 			</div>
 			<div class="campaign_pick" id="pickNum4"
 				onclick="location.href='campaign_detail.jsp'">
-				<img src="../image/campaign_img01.png" class="campaign_img">
+				<img src="${pageContext.request.contextPath}/image/campaign_img01.png" class="campaign_img">
 				<div>인스타그램 | 패션</div>
 				<div id="channelName">히든클리프</div>
 				<div id="title">[24-8]제주 히든클리프 호텔</div>
@@ -78,7 +78,7 @@
 			</div>
 			<div class="campaign_pick" id="pickNum5"
 				onclick="location.href='campaign_detail.jsp'">
-				<img src="../image/campaign_img01.png" class="campaign_img">
+				<img src="${pageContext.request.contextPath}/image/campaign_img01.png" class="campaign_img">
 				<div>인스타그램 | 패션</div>
 				<div id="channelName">히든클리프</div>
 				<div id="title">[24-8]제주 히든클리프 호텔</div>
@@ -86,7 +86,7 @@
 			</div>
 			<div class="campaign_pick" id="pickNum6"
 				onclick="location.href='campaign_detail.jsp'">
-				<img src="../image/campaign_img01.png" class="campaign_img">
+				<img src="${pageContext.request.contextPath}/image/campaign_img01.png" class="campaign_img">
 				<div>인스타그램 | 패션</div>
 				<div id="channelName">히든클리프</div>
 				<div id="title">[24-8]제주 히든클리프 호텔</div>
@@ -94,7 +94,7 @@
 			</div>
 			<div class="campaign_pick" id="pickNum7"
 				onclick="location.href='campaign_detail.jsp'">
-				<img src="../image/campaign_img01.png" class="campaign_img">
+				<img src="${pageContext.request.contextPath}/image/campaign_img01.png" class="campaign_img">
 				<div>인스타그램 | 패션</div>
 				<div id="channelName">히든클리프</div>
 				<div id="title">[24-8]제주 히든클리프 호텔</div>
@@ -102,7 +102,7 @@
 			</div>
 			<div class="campaign_pick" id="pickNum8"
 				onclick="location.href='campaign_detail.jsp'">
-				<img src="../image/campaign_img01.png" class="campaign_img">
+				<img src="${pageContext.request.contextPath}/image/campaign_img01.png" class="campaign_img">
 				<div>인스타그램 | 패션</div>
 				<div id="channelName">히든클리프</div>
 				<div id="title">[24-8]제주 히든클리프 호텔</div>

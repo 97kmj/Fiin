@@ -5,14 +5,14 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="../css/reset.css">
-<link rel="stylesheet" href="/fiin/css/footer.css?ver=1">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/reset.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/footer.css?ver=1">
 </head>
 <body>
     <div class="footer">
         <div class="footer_container">
           <div class="footer_left">
-            <img src="/fiin/image/logo_footer.svg" alt="footer로고이미지" />
+            <img src="${pageContext.request.contextPath}/image/logo_footer.svg" alt="footer로고이미지" />
             <div class="notice">
               <p>이용약관</p>
               <p>개인정보처리방침</p>

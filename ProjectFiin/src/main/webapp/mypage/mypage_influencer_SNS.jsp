@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <title>MyPage Influencer SNS</title>
 
-    <link rel="stylesheet" href="../css/reset.css">
-    <link rel="stylesheet" href="../css/mypage_influencer_SNS.css?ver=1">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/reset.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/mypage_influencer_SNS.css?ver=1">
 
 </head>
 <body>
@@ -24,7 +24,7 @@
 
             <div class="blog">
                 <div class="blog-first">
-                    <img src="../logo/blog_icon.png" alt="">
+                    <img src="${pageContext.request.contextPath}/logo/blog_icon.png" alt="">
                     <div class="blogText">블로그</div>
                 </div>
 
@@ -42,7 +42,7 @@
 
             <div class="instagram">
                 <div class="instagram-first">
-                    <img src="../logo/instagram_icon.png" alt="">
+                    <img src="${pageContext.request.contextPath}/logo/instagram_icon.png" alt="">
                     <div class="instaText">인스타그램</div>
                 </div>
 
@@ -60,7 +60,7 @@
 
             <div class="youtube">
                 <div class="youtube-first">
-                    <img src="../logo/youtube_icon.png" alt="">
+                    <img src="${pageContext.request.contextPath}/logo/youtube_icon.png" alt="">
                     <div class="youtubeText">유튜브</div>
                 </div>
 

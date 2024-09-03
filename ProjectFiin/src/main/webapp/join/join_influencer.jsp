@@ -5,8 +5,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="../css/reset.css?ver=1">
-<link rel="stylesheet" href="../css/join.css?ver=1">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/reset.css?ver=1">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/join.css?ver=1">
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.6.0.min.js"></script>
 <script>
@@ -50,7 +50,7 @@
         <div class="title_wrap">
           <h2>인플루언서 회원가입</h2>
           <a href="login.jsp">
-            <img src="../image//closeIcon.svg" alt="닫기아이콘" />
+            <img src="${pageContext.request.contextPath}/image//closeIcon.svg" alt="닫기아이콘" />
           </a>
         </div>
         <form action="" class="signup_form">

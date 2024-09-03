@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <title>Main Page</title>
 
-    <link rel="stylesheet" href="../css/mypage_advertiser_requestedInfluencer.css?ver=1">
-    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/mypage_advertiser_requestedInfluencer.css?ver=1">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/reset.css">
 
 
 </head>
@@ -30,7 +30,7 @@
                         <text style="margin-top: 10px;">오휘 콜라겐 패치 리뷰</text>
                     </div>
 
-                    <div class="img"><img src="../logo/influencer_image.png"
+                    <div class="img"><img src="${pageContext.request.contextPath}/logo/influencer_image.png"
                                           style="width:200px;height:200px"></div>
                     <div class="category">뷰티  |  패션</div>
                     <div class="channel">채널명</div>
@@ -62,7 +62,7 @@
                         <text style="color: #F95757; font-weight: bold;">캠페인명</text>
                         <text style="margin-top: 10px;">하이센스 TV 제품 리뷰</text>
                     </div>
-                    <div class="img"><img src="../logo/influencer_image.png"
+                    <div class="img"><img src="${pageContext.request.contextPath}/logo/influencer_image.png"
                                           style="width:200px;height:200px"></div>
                     <div class="category">뷰티  |  패션</div>
                     <div class="channel">채널명</div>
@@ -101,7 +101,7 @@
                         <text style="color: #F95757; font-weight: bold;">캠페인명</text>
                         <text style="margin-top: 10px;">하이센스 TV 제품 리뷰</text>
                     </div>
-                    <div class="img"><img src="../logo/influencer_image.png"
+                    <div class="img"><img src="${pageContext.request.contextPath}/logo/influencer_image.png"
                                           style="width:200px;height:200px"></div>
                     <div class="category">뷰티  |  패션</div>
                     <div class="channel">채널명</div>
@@ -188,7 +188,7 @@
                         <text style="margin-top: 10px;">오휘 콜라겐 패치 리뷰</text>
                     </div>
 
-                    <div class="img"><img src="../logo/influencer_image.png"
+                    <div class="img"><img src="${pageContext.request.contextPath}/logo/influencer_image.png"
                                           style="width:200px;height:200px"></div>
                     <div class="category">뷰티  |  패션</div>
                     <div class="channel">채널명</div>
@@ -220,7 +220,7 @@
                         <text style="color: #F95757; font-weight: bold;">캠페인명</text>
                         <text style="margin-top: 10px;">하이센스 TV 제품 리뷰</text>
                     </div>
-                    <div class="img"><img src="../logo/influencer_image.png"
+                    <div class="img"><img src="${pageContext.request.contextPath}/logo/influencer_image.png"
                                           style="width:200px;height:200px"></div>
                     <div class="category">뷰티  |  패션</div>
                     <div class="channel">채널명</div>
@@ -259,7 +259,7 @@
                         <text style="color: #F95757; font-weight: bold;">캠페인명</text>
                         <text style="margin-top: 10px;">하이센스 TV 제품 리뷰</text>
                     </div>
-                    <div class="img"><img src="../logo/influencer_image.png"
+                    <div class="img"><img src="${pageContext.request.contextPath}/logo/influencer_image.png"
                                           style="width:200px;height:200px"></div>
                     <div class="category">뷰티  |  패션</div>
                     <div class="channel">채널명</div>

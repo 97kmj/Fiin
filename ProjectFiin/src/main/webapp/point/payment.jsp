@@ -5,8 +5,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="../css/reset.css">
-<link rel="stylesheet" href="../css/payment.css?ver=1">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/reset.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/payment.css">
 </head>
 <body>
 <%@ include file="../include/header.jsp" %>

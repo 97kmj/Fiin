@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 
-	<link rel="stylesheet" href="../css/mypage_point_record.css?ver=1">
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/mypage_point_record.css?ver=1">
 </head>
 <body>
 <%@ include file="../include/header.jsp" %>

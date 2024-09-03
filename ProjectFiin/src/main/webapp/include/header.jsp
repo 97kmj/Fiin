@@ -5,13 +5,13 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="../css/reset.css">
-<link rel="stylesheet" href="/fiin/css/header.css?ver=1">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/reset.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/header.css?ver=1">
 </head>
 <body>
     <header>
     	<a href="/fiin/main.jsp">
-    		<img src="/fiin/image/logo.svg" alt="logo이미지" />
+    		<img src="${pageContext.request.contextPath}/image/logo.svg" alt="logo이미지" />
     	</a>
         <ul class="menu_wrap">
           <li>
@@ -24,7 +24,7 @@
             <a href="register_campaign.jsp">등록하기</a>
           </li>
           <li>
-            <a href="payment.jsp">결제하기</a>
+            <a href="payment">결제하기</a>
           </li>
         </ul>
         <a href="login.jsp" class="menu_button">

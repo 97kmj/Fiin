@@ -13,7 +13,7 @@
         <div class="title_wrap">
           <h2>아이디 찾기</h2>
           <a href="login.jsp">
-            <img src="../image/closeIcon.svg" alt="닫기아이콘" />
+            <img src="${pageContext.request.contextPath}/image/closeIcon.svg" alt="닫기아이콘" />
           </a>
         </div>
         <form action="findid_result.jsp" class="findId_form">  

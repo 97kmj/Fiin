@@ -6,8 +6,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="../css/reset.css">
-	<link rel="stylesheet" href="../css/mypage_campaign_advertiser.css?ver=1">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/reset.css">
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/mypage_campaign_advertiser.css?ver=1">
 <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
 </head>
 <body>

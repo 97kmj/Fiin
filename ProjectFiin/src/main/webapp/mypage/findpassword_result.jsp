@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="../css/reset.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/reset.css">
 <style>
 body {
 	height: 100vh;
@@ -61,7 +61,7 @@ span {
         <div class="title_wrap">
           <h2>비밀번호 찾기</h2>
           <a href="login.jsp">
-            <img src="../image/closeIcon.svg" alt="닫기아이콘" />
+            <img src="${pageContext.request.contextPath}/image/closeIcon.svg" alt="닫기아이콘" />
           </a>
         </div>
         <p>입력하신 정보와 일치하는 비밀번호입니다.</p>
