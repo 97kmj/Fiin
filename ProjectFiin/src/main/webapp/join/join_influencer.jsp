@@ -42,6 +42,28 @@
 		        }
 	    	}).open();
 		})
+		
+		$("#emailCheck").click(function(e) {
+			e.preventDefault();
+			$.ajax({
+				url: 'emailCheck',
+				type: 'post',
+				async: true,
+				dataType: 'text',
+				data: {userEmail: $("#emailCheck").val()},
+				success: function(result) {
+					console.log(result)
+					if (result == 'true') {
+						alert("사용중인 아이디입니다.");
+					} else {
+						alert("사용가능한 아이디입니다.");
+					}
+				},
+				error: function(err) {
+					console.log(err);
+				}
+			})
+		})
 	})
 </script>
 </head>
@@ -58,13 +80,13 @@
             이메일<span>*</span> <span class="br_style"></span><br />
             <div class="input_btn_wrap">
               <input
-                type="email"
-                id="email"
+                type="text"
+                id="userEmail"
                 placeholder="이메일을 입력해주세요."
                 class="input_btn_style"
-                name="email"
+                name="userEmail"
               />
-              <button type="button">확인</button>
+              <button type="button" id="emailCheck">확인</button>
             </div>
           </label>
           <label for="password" class="input_label">
@@ -97,25 +119,25 @@
               name="name"
             />
           </label>
-          <label for="name" class="input_label">
+          <label for="nickname" class="input_label">
             닉네임<span>*</span> <span class="br_style"><br /></span>
             <input
               type="text"
-              id="name"
+              id="nickname"
               placeholder="닉네임을 입력해주세요."
               class="input_style"
-              name="name"
+              name="nickname"
             />
           </label>
-          <label for="number" class="input_label">
+          <label for="mobileNumber" class="input_label">
             휴대폰번호<span>*</span> <span class="br_style"><br /></span>
             <div class="input_btn_wrap">
               <input
                 type="text"
-                id="number"
+                id="mobileNumber"
                 placeholder="휴대폰번호를 입력해주세요."
                 class="input_btn_style"
-                name="number"
+                name="mobileNumber"
               />
               <button type="button">인증</button>
             </div>
@@ -136,8 +158,8 @@
             <input
             type="text"
             class="input_btn_style"
-            name="addressdetail"
-            id="addressdetail"
+            name="addressDetail"
+            id="addressDetail"
             disabled
           />
           </label>
