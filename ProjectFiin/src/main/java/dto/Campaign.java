@@ -1,6 +1,7 @@
 package dto;
 
-import java.util.Date;
+import java.sql.Timestamp;
+
 
 
 public class Campaign {
@@ -12,18 +13,18 @@ public class Campaign {
 	private String companyUrl;
 	private String campaignTitle;
 	private String productName;
-	private Date updateStartDate;
-	private Date updateEndDate;
-	private Date adStartDate;
-	private Date adEndDate;
+	private Timestamp updateStartDate;
+	private Timestamp updateEndDate;
+	private Timestamp adStartDate;
+	private Timestamp adEndDate;
 	private String channel;
 	private String image;
 	private Integer isRecruit;
 	private String address;
 
 	public Campaign(Integer campaignNum, Integer advertiserNum, Integer categoryId, String companyName,
-			String companyUrl, String campaignTitle, String productName, Date updateStartDate, Date updateEndDate,
-			Date adStartDate, Date adEndDate, String channel, String image, Integer isRecruit, String address) {
+			String companyUrl, String campaignTitle, String productName, Timestamp updateStartDate, Timestamp updateEndDate,
+			Timestamp adStartDate, Timestamp adEndDate, String channel, String image, Integer isRecruit, String address) {
 		super();
 		this.campaignNum = campaignNum;
 		this.advertiserNum = advertiserNum;
@@ -98,35 +99,35 @@ public class Campaign {
 		this.productName = productName;
 	}
 
-	public Date getUpdateStartDate() {
+	public Timestamp getUpdateStartDate() {
 		return updateStartDate;
 	}
 
-	public void setUpdateStartDate(Date updateStartDate) {
+	public void setUpdateStartDate(Timestamp updateStartDate) {
 		this.updateStartDate = updateStartDate;
 	}
 
-	public Date getUpdateEndDate() {
+	public Timestamp getUpdateEndDate() {
 		return updateEndDate;
 	}
 
-	public void setUpdateEndDate(Date updateEndDate) {
+	public void setUpdateEndDate(Timestamp updateEndDate) {
 		this.updateEndDate = updateEndDate;
 	}
 
-	public Date getAdStartDate() {
+	public Timestamp getAdStartDate() {
 		return adStartDate;
 	}
 
-	public void setAdStartDate(Date adStartDate) {
+	public void setAdStartDate(Timestamp adStartDate) {
 		this.adStartDate = adStartDate;
 	}
 
-	public Date getAdEndDate() {
+	public Timestamp getAdEndDate() {
 		return adEndDate;
 	}
 
-	public void setAdEndDate(Date adEndDate) {
+	public void setAdEndDate(Timestamp adEndDate) {
 		this.adEndDate = adEndDate;
 	}
 
@@ -173,7 +174,7 @@ public class Campaign {
 	}
 
 	public Campaign(Integer campaignNum, Integer categoryId, String companyName, String campaignTitle,
-			String productName, Date updateStartDate, Date updateEndDate, Date adStartDate, Date adEndDate,
+			String productName, Timestamp updateStartDate, Timestamp updateEndDate, Timestamp adStartDate, Timestamp adEndDate,
 			String channel, String image, Integer isRecruit, String address) {
 		super();
 		this.campaignNum = campaignNum;

@@ -1,16 +1,16 @@
 package dto;
 
-import java.util.Date;
+import java.sql.Timestamp;
+
 
 public class Advertiser {
-
 	private Integer advertiserNum;
 	private String userEmail;
 	private String password;
 	private String name;
 	private String companyName;
 	private String mobileNumber;
-	private Date createAt;
+	private Timestamp createAt;
 	private Integer pointBalance;
 	private String address;
 
@@ -62,11 +62,11 @@ public class Advertiser {
 		this.mobileNumber = mobileNumber;
 	}
 
-	public Date getCreateAt() {
+	public Timestamp getCreateAt() {
 		return createAt;
 	}
 
-	public void setCreateAt(Date createAt) {
+	public void setCreateAt(Timestamp createAt) {
 		this.createAt = createAt;
 	}
 
@@ -94,7 +94,7 @@ public class Advertiser {
 	}
 
 	public Advertiser(Integer advertiserNum, String userEmail, String password, String name, String companyName,
-			String mobileNumber, Date createAt, Integer pointBalance, String address) {
+			String mobileNumber, Timestamp createAt, Integer pointBalance, String address) {
 		super();
 		this.advertiserNum = advertiserNum;
 		this.userEmail = userEmail;

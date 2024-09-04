@@ -68,24 +68,25 @@
                         merchant_uid: 'merchant_'+new Date().getTime(), // 주문 고유 번호
                         name: "파인 "+pointAmount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")+"Point",
                         amount: pointPrice,
-                        buyer_email: member.email,
-                        buyer_name: member.name,
-                        buyer_tel: "010-9954-0377", //번호 필수 
-                        
+                        buyer_email: "kmj0376@gmail.com",
+                        buyer_name: "김민준",
+                        buyer_tel: "010-9954-0377", //번호 필수
                     },
                     function (response) {
                         if (response.success) {
-                            $.ajax({
-                            	url:"payment",
-                            	type:"post",
-                            	async:true,
-                            	data:{data:JSON.stringify({type:influencer, changepoint:pointAmount,num:1})
-                            	success:function(){
-                            		alert('결제가 완료되었습니다.');
+                        	$.ajax({
+   	                        	url:"payment",
+       	                    	type:"POST",
+           	                	async:true,
+               	            	data:{data:JSON.stringify({type:influencer, changePoint:pointAmount,num:1})
+	                           	success: function(result){
+                            		alert(result);
 		                            location.replace("http://localhost:8080/fiin/mypage_point_record");
-                            	}
-                            	
-                            })
+	                           	}
+								error: function (err) {
+	                                console.log(err);
+                                }
+		                    })
                         } else {
                             alert('결제 실패');
                             console.log(response);

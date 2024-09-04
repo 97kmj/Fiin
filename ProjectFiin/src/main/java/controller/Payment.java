@@ -35,7 +35,6 @@ public class Payment extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
 		try {
 			PointService service = new PointServiceImpl();
 			List<Point> pointList = service.pointList();
@@ -59,7 +58,11 @@ public class Payment extends HttpServlet {
 			JSONParser parser = new JSONParser();
 			JSONObject jsonObj = (JSONObject)parser.parse(data);
 			String type = (String)jsonObj.get("type");
-			
+			Integer changePoint = (Integer)jsonObj.get("changePoint");
+			Integer num = (Integer)jsonObj.get("num");
+			service.insertPointRecord(num, changePoint);
+			response.setCharacterEncoding("utf-8");
+			response.getWriter().write("결제 성공");
 		} catch (Exception e) {
 			e.printStackTrace();
 			

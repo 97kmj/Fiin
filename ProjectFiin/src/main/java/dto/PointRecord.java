@@ -1,12 +1,12 @@
 package dto;
 
-import java.sql.Date;
+import java.sql.Timestamp;
 
 public class PointRecord {
     private Integer payNum;
     private Integer influencerNum;
     private Integer advertiserNum;
-    private Date updateAt;
+    private Timestamp updateAt;
     private Integer changePoint;
 
     public PointRecord() {
@@ -14,7 +14,7 @@ public class PointRecord {
       // TODO Auto-generated constructor stub
     }
 
-    public PointRecord(Integer payNum, Integer influencerNum, Integer advertiserNum, Date updateAt, Integer changePoint) {
+    public PointRecord(Integer payNum, Integer influencerNum, Integer advertiserNum, Timestamp updateAt, Integer changePoint) {
     	super();
     	this.payNum = payNum;
     	this.influencerNum = influencerNum;
@@ -52,11 +52,11 @@ public class PointRecord {
     	this.advertiserNum = advertiserNum;
     }
 
-    public Date getUpdateAt() {
+    public Timestamp getUpdateAt() {
     	return updateAt;
     }
 
-    public void setUpdateAt(Date updateAt) {
+    public void setUpdateAt(Timestamp updateAt) {
     	this.updateAt = updateAt;
     }
 
