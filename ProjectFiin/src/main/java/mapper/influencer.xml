@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<!--// dto와 sql문 이어주는 Mapper-->
+<!--	# // influencer ( ) 부분은 db와 매핑 되는 값-->
+<!--	# // value (#{}...) 부분은 dto와 매핑되는 값-->
+
+<mapper namespace="mapper.influencer">
+	<insert id="registerInfluencer" parameterType="influencer">
+		<![CDATA[
+
+    INSERT INTO influencer (intro_line, profile_image, category_id, introduction, youtube_name,
+                            youtube_follower, youtube_url, instagram_name,
+                            instagram_follower, instagram_url, blog_name, blog_follower, blog_url)
+		VALUES (#{introLine}, #{profileImage}, #{categoryId}, #{introduction}, #{youtubeName},
+						#{youtubeFollower}, #{youtubeUrl}, #{instagramName},
+						#{instagramFollower}, #{instagramUrl}, #{blogName}, #{blogFollower}, #{blogUrl})
+    ]]>
+	</insert>
+	</mapper>
