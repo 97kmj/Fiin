@@ -2,18 +2,25 @@
 <!DOCTYPE configuration
 	PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 	"http://mybatis.org/dtd/mybatis-3-config.dtd">
-	
+
 <configuration>
 	<settings>
 		<setting name="mapUnderscoreToCamelCase" value="true"/>
 	</settings>
 	<typeAliases>
+		<typeAlias type="dto.Advertiser" alias="advertiser"/>
+		<typeAlias type="dto.BookmarkInfluencer" alias="bookmarkInfluencer"/>
+		<typeAlias type="dto.BookmarkCampaign" alias="bookmarkCampaign"/>
+		<typeAlias type="dto.Campaign" alias="campaign"/>
+		<typeAlias type="dto.Category" alias="category"/>
+		<typeAlias type="dto.Influencer" alias="influencer"/>
 		<typeAlias type="dto.Point" alias="point"/>
 		<typeAlias type="dto.PointRecord" alias="pointRecord"/>
 		<typeAlias type="dto.ReceiveCampaign" alias="receiveCampaign"/>
+		<typeAlias type="dto.RequestCampaign" alias="requestCampaign"/>
 	</typeAliases>
 
-	<environments default="development">	
+	<environments default="development">
 		<environment id="development">
 			<transactionManager type="JDBC"/>
 			<dataSource type="POOLED">
@@ -30,11 +37,14 @@
 		<mapper resource="mapper/advertiser.xml"/>
 		<mapper resource="mapper/campaign.xml"/>
 		<mapper resource="mapper/point.xml"/>
-		<mapper resource="mapper/receive_campaign.xml"/>
-		<mapper resource="mapper/request_campaign.xml"/>
-		<mapper resource="mapper/point_record.xml"/>
-		<mapper resource="mapper/bookmark_advertiser.xml"/>
-		<mapper resource="mapper/bookmark_influencer.xml"/>
+		<mapper resource="mapper/advertiser.xml"/>
+		<mapper resource="mapper/bookmarkCampaign.xml"/>
+		<mapper resource="mapper/bookmarkInfluencer.xml"/>
 		<mapper resource="mapper/category.xml"/>
+		<mapper resource="mapper/influencer.xml"/>
+		<mapper resource="mapper/pointRecord.xml"/>
+		<mapper resource="mapper/receiveCampaign.xml"/>
+		<mapper resource="mapper/requestCampaign.xml"/>
+		<mapper resource="mapper/campaign.xml"/>
 	</mappers>
 </configuration>

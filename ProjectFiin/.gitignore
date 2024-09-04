@@ -1,4 +1,34 @@
+# 빌드 출력물
+/build/
 /target/
 .settings/
 .classpath
 .project
+
+# specific files and directories
+.idea/
+*.iml
+*.iws
+
+# Build output directory
+/out/
+
+# Logs and temporary files
+/logs/
+*.log
+*.tmp
+
+# OS별 파일
+#.DS_Store (macOS에서 생성)
+#	Thumbs.db (Windows에서 생성)
+.DS_Store
+Thumbs.db
+
+# 환경설정 및 개인 설정 파일
+*.env
+.env.local
+
+# 임시 파일이나 백업 파일
+*~
+*.swp
+*.swo
