@@ -52,7 +52,9 @@
     	document.getElementById("submitbtn").onclick = function(e){
     		requestPay();
     	}
-    
+/*     	var type = sessionStorage.getItem('type');
+    	var member = JSON.parse(sessionStorage.getItem('member'));
+		var num= member.num; */
         function requestPay() {
             IMP.init("imp18223576"); // 예: 'imp00000000'
             const checkPoint =$('input:radio[name="point"]:checked');
@@ -63,25 +65,28 @@
                     {
                         pg: "html5_inicis.INIpayTest",
                         pay_method: "card",
-                        merchant_uid: `order_no_0001`+new Date().getTime(), // 주문 고유 번호
+                        merchant_uid: 'merchant_'+new Date().getTime(), // 주문 고유 번호
                         name: "파인 "+pointAmount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")+"Point",
                         amount: pointPrice,
-                        buyer_email: "kmj0376@naver.com",
+                        buyer_email: "kmj0376@gmail.com",
                         buyer_name: "김민준",
-                        buyer_tel: "010-9954-0377",
-                        buyer_addr: "서울특별시 강남구 신사동",
-                        buyer_postcode: "01181",
+                        buyer_tel: "010-9954-0377", //번호 필수
                     },
                     function (response) {
                         if (response.success) {
-                            alert('결제가 완료되었습니다.');
-                            $.ajax({
-                            	url:"payment",
-                            	type:"post",
-                            	async:true,
-                            	
-                            })
-                            location.replace("http://localhost:8080/semi/mypage_point_record.jsp")
+                        	$.ajax({
+   	                        	url:"payment",
+       	                    	type:"POST",
+           	                	async:true,
+               	            	data:{data:JSON.stringify({type:influencer, changePoint:pointAmount,num:1})
+	                           	success: function(result){
+                            		alert(result);
+		                            location.replace("http://localhost:8080/fiin/mypage_point_record");
+	                           	}
+								error: function (err) {
+	                                console.log(err);
+                                }
+		                    })
                         } else {
                             alert('결제 실패');
                             console.log(response);
