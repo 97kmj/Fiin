@@ -52,9 +52,9 @@
     	document.getElementById("submitbtn").onclick = function(e){
     		requestPay();
     	}
-    	var type = sessionStorage.getItem('type');
+/*     	var type = sessionStorage.getItem('type');
     	var member = JSON.parse(sessionStorage.getItem('member'));
-    
+		var num= member.num; */
         function requestPay() {
             IMP.init("imp18223576"); // 예: 'imp00000000'
             const checkPoint =$('input:radio[name="point"]:checked');
@@ -79,11 +79,12 @@
                             	url:"payment",
                             	type:"post",
                             	async:true,
-                            	data:{data:{"type":${},"changepoint":${pointAmount},"num":${}}}
+                            	data:{data:JSON.stringify({type:influencer, changepoint:pointAmount,num:1})
                             	success:function(){
                             		alert('결제가 완료되었습니다.');
 		                            location.replace("http://localhost:8080/fiin/mypage_point_record");
                             	}
+                            	
                             })
                         } else {
                             alert('결제 실패');

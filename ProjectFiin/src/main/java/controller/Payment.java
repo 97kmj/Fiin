@@ -57,6 +57,8 @@ public class Payment extends HttpServlet {
 		try {
 			PointService service = new PointServiceImpl();
 			JSONParser parser = new JSONParser();
+			JSONObject jsonObj = (JSONObject)parser.parse(data);
+			String type = (String)jsonObj.get("type");
 			
 		} catch (Exception e) {
 			e.printStackTrace();
