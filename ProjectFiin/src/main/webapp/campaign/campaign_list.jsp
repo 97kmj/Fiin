@@ -13,7 +13,6 @@
 	<%@ include file="../include/header.jsp"%>
 	<div class="container">
 		<div id="categoryBar">
-			<!-- javascript -->
 			<h2>인플루언서</h2>
 			<div class="categoryWrap">
 				<input type="radio" id="all" name="category" value="all"><label for="all">전체</label>
@@ -49,32 +48,43 @@
 				onclick="location.href='campaign_detail.jsp'">
 	 			<c:forEach items="${campaignList }" var="campaign">
 					<img src="../image/campaign_img01.png" class="campaign_img">
-					<div>${campaign.channel } | ${board.category }</div>
-					<div id="channelName">${campaign.compunyname }</div>
-					<div id="title">${capaign.product_name }</div>
-					<div>${campaign.ad_start_date} ~ ${campaign.ad_end_date}</div>
+					<div>${campaign.channel } | ${campaign.categoryId }</div>
+					<div id="channelName">${campaign.companyName }</div>
+					<div id="title">${campaign.productName }</div>
+					<div>${campaign.adStartDate} ~ ${campaign.adEndDate}</div>
 				 </c:forEach> 
 			</div>
-<%-- 			<div class="campaign_pick" id="pickNum2"
-				onclick="location.href='campaign_detail.jsp'">
-				<img src="${pageContext.request.contextPath}/image/campaign_img01.png" class="campaign_img">
-				<div>인스타그램 | 패션</div>
-				<div id="channelName">히든클리프</div>
-				<div id="title">[24-8]제주 히든클리프 호텔</div>
-				<div>2024-07-29 ~ 2024-08-05</div>
-			</div> --%>
-		</div>
-			<div class="page" >
-		        <ul class="pagination">
-		            <li> <a href="#" class="arrow left"><img src="https://img.icons8.com/?size=100&id=x3s0mSWBMJTc&format=png&color=939393" style="weight:20px;height:20px"></a></li>
-		            <li> <a href="#" class="active num">1</a></li>
-		            <li> <a href="#" class="num">2</a></li>
-		            <li> <a href="#" class="num">3</a></li>
-		            <li> <a href="#" class="num">4</a></li>
-		            <li> <a href="#" class="arrow right"><img src="https://img.icons8.com/?size=100&id=IGZk6vp3nxFm&format=png&color=939393" style="weight:20px;height:20px"></a></li>
-	        	</ul>
-	    	</div>
+			
+			<c:choose>
+				<c:when test="${pageInfo.curPage>1 }">
+				 	<a href="campaign_List?page=${pageInfo.curPage-1 }">&lt;</a>
+				 </c:when>
+				 <c:otherwise>
+				 	<a>&lt;</a>
+				 </c:otherwise>
+			</c:choose>
+	
+			<c:forEach begin="${pageInfo.startPage }" end="${pageInfo.endPage }" var="i">
+			<c:choose>
+				<c:when test="${i eq pageInfo.curPage }">
+					<a href="campaign_List?page=${i}" class="select">${i }</a>
+				</c:when>
+				<c:otherwise>
+					<a href="campaign_List?page=${i}" class="btn">${i }</a>
+				</c:otherwise>
+			</c:choose>
+		</c:forEach>
+		<c:choose>
+			<c:when test="${pageInfo.curPage<pageInfo.allPage }">
+				<a href="campaign_List?page=${pageInfo.curPage+1 }">&gt;</a>
+			</c:when>
+			<c:otherwise>
+				<a>&gt;</a>
+			</c:otherwise>
+		
+		</c:choose>
     	</div>
+    </div>
 	<%@include file="../include/footer.jsp" %>
 </body>
 </html>

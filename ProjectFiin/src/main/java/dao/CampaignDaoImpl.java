@@ -15,20 +15,17 @@ public class CampaignDaoImpl implements CampaignDao {
 	
 	@Override
 	public Campaign selectCampaign(Integer campaignNum) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		return sqlSession.selectOne("mapper.campaign.selectCampaign",campaignNum);
 	}
 
 	@Override
 	public Integer selectCampaignCount() throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		return sqlSession.selectOne("mapper.campaign.selectCampaignCount");
 	}
 
 	@Override
 	public List<Campaign> selectCampaignList(Integer row) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		return sqlSession.selectList("mapper.campaign.selectAllCampaign",row);
 	}
 
 }
