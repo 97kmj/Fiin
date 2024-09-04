@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mapper.influencer">
+	<insert id="insertInfluencer" useGeneratedKeys="true" keyColumn="influencer_num" keyProperty="influencerNum" parameterType="influencer">
+	<![CDATA[
+		insert into influencer (user_email, password, name, nickname, mobile_number, address) 
+			values (#{user_email}, #{password}, #{name}, #{nickname}, #{mobile_number}, #{address})
+	]]>
+	</insert>
+	
+	<select id="selectInfluencer" parameterType="Integer" resultType="influencer">
+		<![CDATA[ 
+			select * from influencer where influencer_num = #{influencer_num} 
+		]]>
+	</select>
+	
+	<select id="selectInfluencerByEmail" parameterType="String" resultType="influencer">
+		<![CDATA[ 
+			select * from influencer where user_email = #{user_email} 
+		]]>
+	</select>
+	
+	<update id="updateInfluencer" parameterType="influencer">
+		update influencer
+		<set>
+			<if test="password != null">password = #{password},</if>
+			<if test="name != null">name = #{name},</if>
+			<if test="nickname != null">nickname = #{nickname},</if>
+			<if test="mobile_number != null">mobile_number = #{mobile_number},</if>
+			<if test="address != null">address = #{address}</if>
+		</set>
+		where user_email = #{user_email}
+	</update>
+</mapper>

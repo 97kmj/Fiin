@@ -18,7 +18,7 @@
 
     <div id="main">
 
-        <form action="" method="post"
+        <form action="influencer_register" method="post"
               enctype="multipart/form-data">
 
             <div class="main_first_line">
@@ -182,14 +182,7 @@
                 <button>뒤로가기</button>
             </div>
 
-            <%--    //body background--%>
         </form>
-
-        <%--    </div>--%>
-
-        <%--        <!-- 외부 JavaScript 파일 링크 -->--%>
-
-
     </div>
 </div>
 

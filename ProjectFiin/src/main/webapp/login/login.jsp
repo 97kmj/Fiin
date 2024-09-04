@@ -62,9 +62,9 @@
 
         <form action="" class="signin_form">
 		  <div class="tab_wrap">
-		  	<input type="radio" class="radio_btn" name="type" id="type_influencer" style="appearence: none;-webkit-appearance: none;-moz-appearance: none;"/>
+		  	<input type="radio" class="radio_btn" name="type" value="influencer" id="type_influencer" style="appearence: none;-webkit-appearance: none;-moz-appearance: none;"/>
 		  	<label for="type_influencer" class="influencer_tab" style="width: 49%; background-color: #ddf344;color: white;border-radius: 4px;font-weight: bold;padding: 10px 0;cursor: pointer;">인플루언서</label>
-	        <input type="radio" class="radio_btn" name="type" id="type_advertiser" style="appearence: none;-webkit-appearance: none;-moz-appearance: none;"/>
+	        <input type="radio" class="radio_btn" name="type" value="advertiser" id="type_advertiser" style="appearence: none;-webkit-appearance: none;-moz-appearance: none;"/>
 	        <label for="type_advertiser" class="advertiser_tab" style="width: 49%;background-color: #f6f7f8;border-radius: 4px;padding: 10px 0;color: #969696;cursor: pointer;">광고주</label>
           </div>
           <input type="text" class="signin_input" placeholder="이메일" name="email" />
@@ -77,7 +77,7 @@
           <button type="submit">로그인 하기</button>
         </form>
         <div class="signup_btn">
-          <a href="./join/join_influencer.jsp">인플루언서로 가입하기</a>
+          <a href="join_influencer">인플루언서로 가입하기</a>
           <a href="./join/join_advertiser.jsp">광고주로 가입하기</a>
         </div>
       </div>
