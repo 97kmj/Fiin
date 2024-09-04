@@ -19,4 +19,16 @@
 						#{instagramFollower}, #{instagramUrl}, #{blogName}, #{blogFollower}, #{blogUrl})
     ]]>
 	</insert>
+	
+	<select id="selectInfluencer" parameterType="Integer" resultType="influencer">
+		<![CDATA[
+			select * from influencer where num=#{num}
+		]]>
+	</select>
+	
+	<select id="selectInfluencerList" parameterType="Integer" resultType="influencer">
+		<![CDATA[
+			select * from influencer order by registDate desc limit #{row}, 8
+		]]>
+	</select>
 	</mapper>

@@ -1,9 +1,12 @@
 package service;
 
 
+import java.util.List;
+
 import dao.InfluencerDao;
 import dao.InfluencerDaoImpl;
 import dto.Influencer;
+import util.PageInfo;
 
 public class InfluencerServiceImpl implements InfluencerService {
 
@@ -27,4 +30,10 @@ public class InfluencerServiceImpl implements InfluencerService {
     return inf;
 
   }
+
+@Override
+public List<Influencer> influencerList(PageInfo pageInfo) {
+	// TODO Auto-generated method stub
+	return null;
+}
 }
