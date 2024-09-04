@@ -18,8 +18,6 @@
 		<typeAlias type="dto.PointRecord" alias="pointRecord"/>
 		<typeAlias type="dto.ReceiveCampaign" alias="receiveCampaign"/>
 		<typeAlias type="dto.RequestCampaign" alias="requestCampaign"/>
-
-
 	</typeAliases>
 
 	<environments default="development">
@@ -35,6 +33,9 @@
 	</environments>
 
 	<mappers>
+		<mapper resource="mapper/influencer.xml"/>
+		<mapper resource="mapper/advertiser.xml"/>
+		<mapper resource="mapper/campaign.xml"/>
 		<mapper resource="mapper/point.xml"/>
 		<mapper resource="mapper/advertiser.xml"/>
 		<mapper resource="mapper/bookmarkCampaign.xml"/>

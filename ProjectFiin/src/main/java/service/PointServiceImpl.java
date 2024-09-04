@@ -17,4 +17,8 @@ public class PointServiceImpl implements PointService {
 	public List<Point> pointList() throws Exception {	
 		return pointDao.selectPointList();
 	}
+	@Override
+	public void insertPointRecord(Integer num, Integer pointAmount) throws Exception {
+		pointDao.insertPointRecord(num, pointAmount);
+	}
 }
