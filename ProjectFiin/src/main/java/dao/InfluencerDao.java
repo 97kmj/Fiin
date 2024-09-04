@@ -9,4 +9,7 @@ public interface InfluencerDao {
       influencer) throws Exception;
 
 //	Member selectMember(String id) throws Exception;
+	void insertInfluencer(Influencer influencer) throws Exception;
+	Influencer selectInfluencer(Integer influencerNum) throws Exception;
+	void updateInfluencer(Influencer influencer) throws Exception;
 }
