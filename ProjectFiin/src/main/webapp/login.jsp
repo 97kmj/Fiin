@@ -77,7 +77,7 @@
           <button type="submit">로그인 하기</button>
         </form>
         <div class="signup_btn">
-          <a href="./join/join_influencer.jsp">인플루언서로 가입하기</a>
+          <a href="join_influencer">인플루언서로 가입하기</a>
           <a href="./join/join_advertiser.jsp">광고주로 가입하기</a>
         </div>
       </div>
