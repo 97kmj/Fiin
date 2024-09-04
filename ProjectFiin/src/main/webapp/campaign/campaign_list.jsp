@@ -40,51 +40,56 @@
 			</div>
 		</div>
 		<div class="allBar">
-			<h2>전체</h2>
+			<h2></h2>
 			<button id="registerButton" onclick="location.href='register.jsp'">캠페인 등록하기</button>
 		</div>
 		<div class="campaignWrap">
-			<div class="campaign_pick" id="pickNum1"
-				onclick="location.href='campaign_detail.jsp'">
-	 			<c:forEach items="${campaignList }" var="campaign">
-					<img src="../image/campaign_img01.png" class="campaign_img">
+	 		<c:forEach items="${campaignList }" var="campaign">
+	 			<div class="campaign_pick" id="pickNum1"
+				onclick="location.href='campaign/campaign_detail.jsp'">
+					<img src="${pageContext.request.contextPath}/image/campaign_img01.png" class="campaign_img">
 					<div>${campaign.channel } | ${campaign.categoryId }</div>
 					<div id="channelName">${campaign.companyName }</div>
 					<div id="title">${campaign.productName }</div>
 					<div>${campaign.adStartDate} ~ ${campaign.adEndDate}</div>
-				 </c:forEach> 
-			</div>
-			
-			<c:choose>
+				</div>
+			</c:forEach> 
+		</div>
+		<!-- 페이지 처리  -->
+		<div style="text-align:center">
+			<!-- 페이지 이전버튼 생성  -->
+ 			<c:choose>
 				<c:when test="${pageInfo.curPage>1 }">
-				 	<a href="campaign_List?page=${pageInfo.curPage-1 }">&lt;</a>
+				 	<a href="campaignList?page=${pageInfo.curPage-1 }">&lt;</a>
 				 </c:when>
 				 <c:otherwise>
 				 	<a>&lt;</a>
 				 </c:otherwise>
 			</c:choose>
-	
+			<!-- 페이지 가운데 숫자 버튼  생성  -->
 			<c:forEach begin="${pageInfo.startPage }" end="${pageInfo.endPage }" var="i">
+				<c:choose>
+					<c:when test="${i eq pageInfo.curPage }">
+						<a href="campaignList?page=${i}" class="select">${i }</a>
+					</c:when>
+					<c:otherwise>
+						<a href="campaignList?page=${i}" class="btn">${i }</a>
+					</c:otherwise>
+				</c:choose>
+			</c:forEach>
+			
+			<!-- 페이지 다음버튼 생성  -->
 			<c:choose>
-				<c:when test="${i eq pageInfo.curPage }">
-					<a href="campaign_List?page=${i}" class="select">${i }</a>
+				<c:when test="${pageInfo.curPage<pageInfo.allPage }">
+					<a href="campaignList?page=${pageInfo.curPage+1 }">&gt;</a>
 				</c:when>
 				<c:otherwise>
-					<a href="campaign_List?page=${i}" class="btn">${i }</a>
+					<a>&gt;</a>
 				</c:otherwise>
 			</c:choose>
-		</c:forEach>
-		<c:choose>
-			<c:when test="${pageInfo.curPage<pageInfo.allPage }">
-				<a href="campaign_List?page=${pageInfo.curPage+1 }">&gt;</a>
-			</c:when>
-			<c:otherwise>
-				<a>&gt;</a>
-			</c:otherwise>
-		
-		</c:choose>
     	</div>
     </div>
+
 	<%@include file="../include/footer.jsp" %>
 </body>
 </html>

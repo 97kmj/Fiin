@@ -13,6 +13,13 @@ public class Campaign {
 	private String productName;
 	private Date updateStartDate;
 	private Date updateEndDate;
+	private Date adStartDate;
+	private Date adEndDate;
+	private String channel;
+	private String image;
+	private Integer isRecruit;
+	private String address;
+	
 	public Campaign(Integer campaignNum, Integer advertiserNum, Integer categoryId, String companyName,
 			String companyUrl, String campaignTitle, String productName, Date updateStartDate, Date updateEndDate,
 			Date adStartDate, Date adEndDate, String channel, String image, Integer isRecruit, String address) {
@@ -45,12 +52,7 @@ public class Campaign {
 	public void setCompanyUrl(String companyUrl) {
 		this.companyUrl = companyUrl;
 	}
-	private Date adStartDate;
-	private Date adEndDate;
-	private String channel;
-	private String image;
-	private Integer isRecruit;
-	private String address;
+
 	public Integer getCampaignNum() {
 		return campaignNum;
 	}

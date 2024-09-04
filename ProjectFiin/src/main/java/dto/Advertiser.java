@@ -3,62 +3,62 @@ package dto;
 import java.util.Date;
 
 public class Advertiser {
-	private Integer advertiser_num;
-	private String user_email;
-	private String PASSWORD;
-	private String NAME;
-	private String company_name;
-	private String mobile_number;
-	private Integer point_balance;
-	private Date create_at;
+	private Integer advertiserNum;
+	private String userEmail;
+	private String password;
+	private String name;
+	private String companyName;
+	private String mobileNumber;
+	private Date createAt;
+	private Integer pointBalance;
 	private String address;
-	public Integer getAdvertiser_num() {
-		return advertiser_num;
+	public Integer getAdvertiserNum() {
+		return advertiserNum;
 	}
-	public void setAdvertiser_num(Integer advertiser_num) {
-		this.advertiser_num = advertiser_num;
+	public void setAdvertiserNum(Integer advertiserNum) {
+		this.advertiserNum = advertiserNum;
 	}
-	public String getUser_email() {
-		return user_email;
+	public String getUserEmail() {
+		return userEmail;
 	}
-	public void setUser_email(String user_email) {
-		this.user_email = user_email;
+	public void setUserEmail(String userEmail) {
+		this.userEmail = userEmail;
 	}
-	public String getPASSWORD() {
-		return PASSWORD;
+	public String getPassword() {
+		return password;
 	}
-	public void setPASSWORD(String pASSWORD) {
-		PASSWORD = pASSWORD;
+	public void setPassword(String password) {
+		this.password = password;
 	}
-	public String getNAME() {
-		return NAME;
+	public String getName() {
+		return name;
 	}
-	public void setNAME(String nAME) {
-		NAME = nAME;
+	public void setName(String name) {
+		this.name = name;
 	}
-	public String getCompany_name() {
-		return company_name;
+	public String getCompanyName() {
+		return companyName;
 	}
-	public void setCompany_name(String company_name) {
-		this.company_name = company_name;
+	public void setCompanyName(String companyName) {
+		this.companyName = companyName;
 	}
-	public String getMobile_number() {
-		return mobile_number;
+	public String getMobileNumber() {
+		return mobileNumber;
 	}
-	public void setMobile_number(String mobile_number) {
-		this.mobile_number = mobile_number;
+	public void setMobileNumber(String mobileNumber) {
+		this.mobileNumber = mobileNumber;
 	}
-	public Integer getPoint_balance() {
-		return point_balance;
+	public Date getCreateAt() {
+		return createAt;
 	}
-	public void setPoint_balance(Integer point_balance) {
-		this.point_balance = point_balance;
+	public void setCreateAt(Date createAt) {
+		this.createAt = createAt;
 	}
-	public Date getCreate_at() {
-		return create_at;
+	public Integer getPointBalance() {
+		return pointBalance;
 	}
-	public void setCreate_at(Date create_at) {
-		this.create_at = create_at;
+	public void setPointBalance(Integer pointBalance) {
+		this.pointBalance = pointBalance;
 	}
 	public String getAddress() {
 		return address;
@@ -68,26 +68,27 @@ public class Advertiser {
 	}
 	@Override
 	public String toString() {
-		return "Advertiser [advertiser_num=" + advertiser_num + ", user_email=" + user_email + ", PASSWORD=" + PASSWORD
-				+ ", NAME=" + NAME + ", company_name=" + company_name + ", mobile_number=" + mobile_number
-				+ ", point_balance=" + point_balance + ", create_at=" + create_at + ", address=" + address + "]";
+		return "Advertiser [advertiserNum=" + advertiserNum + ", userEmail=" + userEmail + ", password=" + password
+				+ ", name=" + name + ", companyName=" + companyName + ", mobileNumber=" + mobileNumber + ", createAt="
+				+ createAt + ", pointBalance=" + pointBalance + ", address=" + address + "]";
 	}
-	public Advertiser(Integer advertiser_num, String user_email, String pASSWORD, String nAME, String company_name,
-			String mobile_number, Integer point_balance, Date create_at, String address) {
+	public Advertiser(Integer advertiserNum, String userEmail, String password, String name, String companyName,
+			String mobileNumber, Date createAt, Integer pointBalance, String address) {
 		super();
-		this.advertiser_num = advertiser_num;
-		this.user_email = user_email;
-		PASSWORD = pASSWORD;
-		NAME = nAME;
-		this.company_name = company_name;
-		this.mobile_number = mobile_number;
-		this.point_balance = point_balance;
-		this.create_at = create_at;
+		this.advertiserNum = advertiserNum;
+		this.userEmail = userEmail;
+		this.password = password;
+		this.name = name;
+		this.companyName = companyName;
+		this.mobileNumber = mobileNumber;
+		this.createAt = createAt;
+		this.pointBalance = pointBalance;
 		this.address = address;
 	}
 	public Advertiser() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	
 	
 }
