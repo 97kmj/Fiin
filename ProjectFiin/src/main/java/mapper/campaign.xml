@@ -16,4 +16,42 @@
             #{channel}, #{image}, #{categoryId})
     ]]>
 	</insert>
-</mapper>
+	<select id="selectCampaign" parameterType="Integer" resultType="campaign">											
+		<![CDATA[
+		 	select * from campaign where campaign_num = ?
+		]]>
+	</select>
+	<select id="selectAllCampaign" parameterType="Integer" resultType="campaign">
+		<![CDATA[	
+			select * from campaign 
+			where categoryId = ? and channel like '%?%'
+			order by update_start_date desc limit #{row}, 8
+		]]>
+	</select>
+	<select id="selectCampaignCount" resultType="integer">
+		<![CDATA[
+			select Count(*) from Campaign
+		]]>
+	</select>
+	<select id="selectCampaignAndReceive" parameterType="integer" resultType="campaign">											
+		<![CDATA[
+		 	select * from campaign c join receive_campaign r 
+		 	using(campaign_num)
+		 	where influencer_num = ? order by c.update_start_date desc limit #{row}, 8
+		]]>
+	</select>
+	<select id="selectCampaignAndrequest" parameterType="integer" resultType="campaign">											
+		<![CDATA[
+		 	select * from campaign c left join request.campaign r 
+		 	using(campaign_num)
+		 	where influencer_num = ? order by c.update_start_date desc limit #{row}, 8
+		]]>
+	</select>
+		<select id="selectInfluencerAndrequest" parameterType="integer" resultType="campaign">											
+		<![CDATA[
+			SELECT *FROM influencer inf LEFT JOIN influencer_detail inf_det
+			ON inf.influencer_id = inf_det.influencer_id
+			WHERE influencer_id = (SELECT * FROM request WHERE campain_no =?)
+		]]>
+	</select>
+</mapper>	
