@@ -50,9 +50,8 @@
 				type: 'post',
 				async: true,
 				dataType: 'text',
-				data: {userEmail: $("#emailCheck").val()},
+				data: {userEmail: $("#userEmail").val()},
 				success: function(result) {
-					console.log(result)
 					if (result == 'true') {
 						alert("사용중인 아이디입니다.");
 					} else {
