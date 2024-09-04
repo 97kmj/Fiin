@@ -31,6 +31,11 @@ public class InfluencerDaoImpl implements InfluencerDao {
 	}
 
 	@Override
+	public Influencer selectInfluencerByEmail(String userEmail) throws Exception {
+		return sqlSession.selectOne("mapper.influencer.selectInfluencerByEmail", userEmail);
+	}
+	
+	@Override
 	public void updateInfluencer(Influencer influencer) throws Exception {
 		sqlSession.update("mapper.influencer.updateInfluencer", influencer);
 		sqlSession.commit();
