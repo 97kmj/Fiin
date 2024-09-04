@@ -10,7 +10,9 @@ public class Influencer {
   private String mobileNumber;
   private String name;
   private String nickname;
+  private String address;
   private Integer pointBalance;
+  private java.sql.Timestamp createAt;
 
   private String introLine;         // 데이터베이스 컬럼: intro_line
   private String profileImage;      // 데이터베이스 컬럼: profile_image
@@ -35,7 +37,7 @@ public class Influencer {
 
   // influencer_register (인플루언서 등록 시 사용할 생성자)
   public Influencer(Integer influencerNum, String userEmail, String password, String mobileNumber,
-      String name, String nickname, Integer pointBalance, String introLine, String profileImage,
+      String name, String nickname, String address, Integer pointBalance, String introLine, String profileImage,
       Integer categoryId, String introduction,
       String youtubeName, Integer youtubeFollower, String youtubeUrl,
       String instagramName, Integer instagramFollower, String instagramUrl,
@@ -45,6 +47,7 @@ public class Influencer {
     this.password = password;
     this.mobileNumber = mobileNumber;
     this.nickname = nickname;
+    this.address = address;
     this.pointBalance = pointBalance;
     this.introLine = introLine;
     this.profileImage = profileImage;
@@ -226,5 +229,32 @@ public class Influencer {
 
   public void setBlogUrl(String blogUrl) {
     this.blogUrl = blogUrl;
+  }
+
+  public String getAddress() {
+	return address;
+  }
+	
+  public void setAddress(String address) {
+	this.address = address;
+  }
+	
+  public java.sql.Timestamp getCreateAt() {
+	return createAt;
+  }
+	
+  public void setCreateAt(java.sql.Timestamp createAt) {
+	this.createAt = createAt;
+  }
+
+  @Override
+  public String toString() {
+	return "Influencer [influencerNum=" + influencerNum + ", userEmail=" + userEmail + ", password=" + password
+			+ ", mobileNumber=" + mobileNumber + ", name=" + name + ", nickname=" + nickname + ", address=" + address
+			+ ", pointBalance=" + pointBalance + ", createAt=" + createAt + ", introLine=" + introLine
+			+ ", profileImage=" + profileImage + ", categoryId=" + categoryId + ", introduction=" + introduction
+			+ ", youtubeName=" + youtubeName + ", youtubeFollower=" + youtubeFollower + ", youtubeUrl=" + youtubeUrl
+			+ ", instagramName=" + instagramName + ", instagramFollower=" + instagramFollower + ", instagramUrl="
+			+ instagramUrl + ", blogName=" + blogName + ", blogFollower=" + blogFollower + ", blogUrl=" + blogUrl + "]";
   }
 }
