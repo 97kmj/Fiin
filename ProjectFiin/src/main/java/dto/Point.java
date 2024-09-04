@@ -4,6 +4,7 @@ public class Point {
 	private Integer pointId;
 	private Integer pointAmount;
 	private Integer pointPrice;
+	
 	public Integer getPointId() {
 		return pointId;
 	}

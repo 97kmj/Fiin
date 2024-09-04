@@ -9,6 +9,8 @@
 	</settings>
 	<typeAliases>
 		<typeAlias type="dto.Point" alias="point"/>
+		<typeAlias type="dto.PointRecord" alias="pointRecord"/>
+		<typeAlias type="dto.ReceiveCampaign" alias="receiveCampaign"/>
 	</typeAliases>
 
 	<environments default="development">	
@@ -24,6 +26,15 @@
 	</environments>
 
 	<mappers>
+		<mapper resource="mapper/influencer.xml"/>
+		<mapper resource="mapper/advertiser.xml"/>
+		<mapper resource="mapper/campaign.xml"/>
 		<mapper resource="mapper/point.xml"/>
+		<mapper resource="mapper/receive_campaign.xml"/>
+		<mapper resource="mapper/request_campaign.xml"/>
+		<mapper resource="mapper/point_record.xml"/>
+		<mapper resource="mapper/bookmark_advertiser.xml"/>
+		<mapper resource="mapper/bookmark_influencer.xml"/>
+		<mapper resource="mapper/category.xml"/>
 	</mappers>
 </configuration>

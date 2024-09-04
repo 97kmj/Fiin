@@ -9,6 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+
 import dto.Point;
 import service.PointService;
 import service.PointServiceImpl;
@@ -41,7 +44,7 @@ public class Payment extends HttpServlet {
 			request.getRequestDispatcher("/point/payment.jsp").forward(request, response);
 		} catch (Exception e) {
 			e.printStackTrace();
-			
+			request.getRequestDispatcher("main").forward(request, response);
 		}
 	}
 
@@ -49,8 +52,16 @@ public class Payment extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		request.setCharacterEncoding("UTF-8");
+		String data = request.getParameter("data");
+		try {
+			PointService service = new PointServiceImpl();
+			JSONParser parser = new JSONParser();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			
+		}
 	}
 
 }
