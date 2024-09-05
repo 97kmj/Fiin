@@ -72,8 +72,9 @@ public class InfluencerServiceImpl implements InfluencerService {
 
 	@Override
 	public Influencer influencerDetail(Integer influencerNum) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		Influencer influencer = influencerDao.selectInfluencer(influencerNum);
+		if(influencer == null) throw new Exception("인플루언서를 찾지 못했습니다.");
+		return influencer;
 	}
 
 	@Override
