@@ -42,6 +42,53 @@
 		        }
 	    	}).open();
 		})
+		
+		$("#emailCheck").click(function(e) {
+			e.preventDefault();
+			$.ajax({
+				url: 'emailCheck',
+				type: 'post',
+				async: true,
+				dataType: 'text',
+				data: {userEmail: $("#userEmail").val()},
+				success: function(result) {
+					if (result == 'true') {
+						alert("사용중인 아이디입니다.");
+					} else {
+						alert("사용가능한 아이디입니다.");
+					}
+				},
+				error: function(err) {
+					console.log(err);
+				}
+			})
+		})
+		
+		$(".signup_btn").click(function(e) {
+			if ($("#userEmail").val() === "") {				
+				alert("이메일을 입력해주세요.");
+				return false;
+			} else if ($("#password").val() === "") {
+				alert("비밀번호를 입력해주세요.");
+				return false;
+			} else if ($("#passwordCheck").val() === "" || $("#passwordCheck").val() != $("#password").val()) {
+				alert("비밀번호를 확인해주세요.");
+				return false;
+			} else if ($("#name").val() === "") {
+				alert("이름을 입력해주세요.");
+				return false;
+			} else if ($("#nickname").val() === "") {
+				alert("닉네임을 입력해주세요.");
+				return false;
+			} else if ($("#mobileNumber").val() === "") {
+				alert("휴대폰번호를 입력해주세요.");
+				return false;
+			} else if ($("#address").val() === "") {
+				alert("주소를 검색해주세요.");
+				return false;
+			}
+			$(".signup_form").submit();
+		})
 	})
 </script>
 </head>
@@ -54,17 +101,17 @@
           </a>
         </div>
         <form action="joinInfluencer" class="signup_form">
-          <label for="email" class="input_label">
+          <label for="userEmail" class="input_label">
             이메일<span>*</span> <span class="br_style"></span><br />
             <div class="input_btn_wrap">
               <input
-                type="email"
-                id="email"
+                type="text"
+                id="userEmail"
                 placeholder="이메일을 입력해주세요."
                 class="input_btn_style"
-                name="email"
+                name="userEmail"
               />
-              <button type="button">확인</button>
+              <button type="button" id="emailCheck">확인</button>
             </div>
           </label>
           <label for="password" class="input_label">
@@ -77,14 +124,14 @@
               name="password"
             />
           </label>
-          <label for="password_check" class="input_label">
+          <label for="passwordCheck" class="input_label">
             비밀번호 확인<span>*</span> <span class="br_style"><br /></span>
             <input
               type="password"
-              id="password_check"
+              id="passwordCheck"
               placeholder="비밀번호를 다시 입력해주세요."
               class="input_style"
-              name="passwordcheck"
+              name="passwordCheck"
             />
           </label>
           <label for="name" class="input_label">
@@ -97,25 +144,25 @@
               name="name"
             />
           </label>
-          <label for="name" class="input_label">
+          <label for="nickname" class="input_label">
             닉네임<span>*</span> <span class="br_style"><br /></span>
             <input
               type="text"
-              id="name"
+              id="nickname"
               placeholder="닉네임을 입력해주세요."
               class="input_style"
-              name="name"
+              name="nickname"
             />
           </label>
-          <label for="number" class="input_label">
+          <label for="mobileNumber" class="input_label">
             휴대폰번호<span>*</span> <span class="br_style"><br /></span>
             <div class="input_btn_wrap">
               <input
                 type="text"
-                id="number"
+                id="mobileNumber"
                 placeholder="휴대폰번호를 입력해주세요."
                 class="input_btn_style"
-                name="number"
+                name="mobileNumber"
               />
               <button type="button">인증</button>
             </div>
@@ -136,8 +183,8 @@
             <input
             type="text"
             class="input_btn_style"
-            name="addressdetail"
-            id="addressdetail"
+            name="addressDetail"
+            id="addressDetail"
             disabled
           />
           </label>
@@ -153,7 +200,7 @@
 	          	<p>[선택] 마케팅 정보 수신에 동의합니다.</p>
 			  </div>
           </div>
-          <input type="submit" class="signup_btn" value="가입하기"> 
+          <input type="submit" class="signup_btn" value="가입하기" style="cursor: pointer;"> 
         </form>
       </div>	      
 </body>
