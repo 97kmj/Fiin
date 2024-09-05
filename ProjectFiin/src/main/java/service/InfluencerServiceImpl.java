@@ -1,9 +1,12 @@
 package service;
 
 
+import java.util.List;
+
 import dao.InfluencerDao;
 import dao.InfluencerDaoImpl;
 import dto.Influencer;
+import util.PageInfo;
 
 public class InfluencerServiceImpl implements InfluencerService {
 
@@ -28,6 +31,8 @@ public class InfluencerServiceImpl implements InfluencerService {
 
   }
 
+
+
 	@Override
 	public void join(Influencer influencer) throws Exception {
 		Influencer sinfluencer = influencerDao.selectInfluencer(influencer.getInfluencerNum());
@@ -49,4 +54,10 @@ public class InfluencerServiceImpl implements InfluencerService {
 		if (influencer == null) return false;
 		return true;
 	}
+  @Override
+  public List<Influencer> influencerList(PageInfo pageInfo) {
+	// TODO Auto-generated method stub
+	return null;
+}
+
 }

@@ -10,7 +10,15 @@
 	]]>
 	</insert>
 	
-	<select id="selectInfluencer" parameterType="Integer" resultType="influencer">
+
+
+	
+	<select id="selectInfluencerList" parameterType="Integer" resultType="influencer">
+		<![CDATA[
+			select * from influencer order by registDate desc limit #{row}, 8
+		]]>
+	</select>
+<select id="selectInfluencer" parameterType="Integer" resultType="influencer">
 		<![CDATA[ 
 			select * from influencer where influencer_num = #{influencer_num} 
 		]]>
@@ -33,4 +41,11 @@
 		</set>
 		where user_email = #{user_email}
 	</update>
+
+	<select id="selectInfluencerList" parameterType="Integer" resultType="influencer">
+		<![CDATA[
+			select * from influencer order by registDate desc limit #{row}, 8
+		]]>
+	</select>
 </mapper>
+
