@@ -1,6 +1,7 @@
 package dao;
 
 import java.util.List;
+import java.util.Locale.Category;
 
 import org.apache.ibatis.session.SqlSession;
 
@@ -44,5 +45,10 @@ public class InfluencerDaoImpl implements InfluencerDao {
 	public void registerInfluencer(Influencer inf) throws Exception {
 		sqlSession.insert("mapper.influencer.registerInfluencer", inf);
 		sqlSession.commit();
+	}
+
+	@Override
+	public Category selectCategory(Integer categoryId) throws Exception {
+		return sqlSession.selectOne("mapper.category.selectCategory", categoryId); 
 	}
 }

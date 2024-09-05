@@ -1,6 +1,7 @@
 package dao;
 
 import java.util.List;
+import java.util.Locale.Category;
 
 import dto.Influencer;
 
@@ -17,4 +18,6 @@ public interface InfluencerDao {
 	void updateInfluencer(Influencer influencer) throws Exception;
 
 	List<Influencer> selectInfluencerList(Integer row) throws Exception;
+
+	Category selectCategory(Integer categoryId) throws Exception;
 }
