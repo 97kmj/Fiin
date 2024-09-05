@@ -51,4 +51,9 @@ public class InfluencerDaoImpl implements InfluencerDao {
 	public Category selectCategory(Integer categoryId) throws Exception {
 		return sqlSession.selectOne("mapper.category.selectCategory", categoryId); 
 	}
+
+	@Override
+	public Integer selectInfluencerCount() throws Exception {
+		return sqlSession.selectOne("mapper.influencer.selectInfluencerCount");
+	}
 }

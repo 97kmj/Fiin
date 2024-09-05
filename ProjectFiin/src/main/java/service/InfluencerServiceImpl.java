@@ -2,6 +2,7 @@ package service;
 
 import java.util.List;
 
+import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 
 import dao.BookmarkCampaignDao;
@@ -63,14 +64,25 @@ public class InfluencerServiceImpl implements InfluencerService {
 	}
 
 	@Override
-	public List<Influencer> influencerList(PageInfo pageInfo) {
-		return null;
+	public List<Influencer> influencerList(PageInfo pageInfo) throws Exception {
+		Integer influencerCnt = influencerDao.selectInfluencerCount();
+		
+		Integer allPage = (int)Math.ceil((double)influencerCnt/8);
+		Integer startPage = (pageInfo.getCurPage()-1/10*10+1);
+		Integer endPage = startPage+10-1;
+		if(endPage>allPage) endPage = allPage;
+		
+		pageInfo.setAllPage(allPage);
+		pageInfo.setStartPage(startPage);
+		pageInfo.setEndPage(endPage);
+		
+		Integer row = (pageInfo.getCurPage()-1)*10+1;
+		return influencerDao.selectInfluencerList(row);
 	}
 
 	@Override
-	public void registerInfluencer(HttpServletRequest request) throws Exception {
-		// TODO Auto-generated method stub
-		
+	public void registerInfluencer(HttpServletRequest request, ServletResponse response) throws Exception {
+		request.getRequestDispatcher("influencerRegister.jsp").forward(request, response);
 	}
 
 	@Override

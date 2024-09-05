@@ -20,4 +20,6 @@ public interface InfluencerDao {
 	List<Influencer> selectInfluencerList(Integer row) throws Exception;
 
 	Category selectCategory(Integer categoryId) throws Exception;
+
+	Integer selectInfluencerCount() throws Exception;
 }

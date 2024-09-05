@@ -40,6 +40,12 @@
 		</set>
 		where user_email = #{user_email}
 	</update>
+	
+	<select id="selectInfluencerCount" resultType="Integer">
+		<![CDATA[
+			select count(*) from influencer
+		]]>
+	</select>
 
 </mapper>
 
