@@ -3,6 +3,7 @@
 /target/
 .settings/
 .classpath
+<<<<<<< HEAD
 .project
 
 # specific files and directories
@@ -32,3 +33,7 @@ Thumbs.db
 *~
 *.swp
 *.swo
+=======
+.project
+>>>>>>> refs/remotes/origin/develop-jy
+/bin/
