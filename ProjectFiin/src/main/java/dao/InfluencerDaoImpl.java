@@ -10,6 +10,7 @@ import util.MybatisSqlSessionFactory;
 
 public class InfluencerDaoImpl implements InfluencerDao {
 	private SqlSession sqlSession;
+	
 	public InfluencerDaoImpl() {
 		  sqlSession = MybatisSqlSessionFactory.getSqlSessionFactory().openSession();
 	}
@@ -42,8 +43,8 @@ public class InfluencerDaoImpl implements InfluencerDao {
     }
 
 	@Override
-	public void registerInfluencer(Influencer inf) throws Exception {
-		sqlSession.insert("mapper.influencer.registerInfluencer", inf);
+	public void registerInfluencer(Influencer influencer) throws Exception {
+		sqlSession.insert("mapper.influencer.registerInfluencer", influencer);
 		sqlSession.commit();
 	}
 

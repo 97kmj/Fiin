@@ -3,13 +3,13 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="mapper.influencer">
+	
 	<insert id="insertInfluencer" useGeneratedKeys="true" keyColumn="influencer_num" keyProperty="influencerNum" parameterType="influencer">
 	<![CDATA[
 		insert into influencer (user_email, password, name, nickname, mobile_number, address) 
 			values (#{user_email}, #{password}, #{name}, #{nickname}, #{mobile_number}, #{address})
 	]]>
 	</insert>
-	
 
 	<select id="selectInfluencerList" parameterType="Integer" resultType="influencer">
 		<![CDATA[
@@ -41,6 +41,21 @@
 		where user_email = #{user_email}
 	</update>
 	
+	<select id="selectInfluencerCount" resultType="Integer">
+		<![CDATA[
+			select count(*) from influencer
+		]]>
+	</select>
+	
+	<select id="selectCategory" parameterType="Integer" resultType="category">
+		select * from category
+		<where>
+			<if test="categoryId != null">
+				and categoryId = #{categoryId}
+			</if>
+		</where>
+	</select>
+
 	<select id="selectInfluencerCount" resultType="Integer">
 		<![CDATA[
 			select count(*) from influencer
