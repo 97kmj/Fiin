@@ -1,4 +1,4 @@
-package dao;
+    package dao;
 
 import java.util.List;
 
@@ -9,10 +9,12 @@ import util.MybatisSqlSessionFactory;
 
 public class CampaignDaoImpl implements CampaignDao {
 
+
 	private SqlSession sqlSession = MybatisSqlSessionFactory.getSqlSessionFactory().openSession();
 
 	@Override
 	public void registerCampaign(Campaign cam) throws Exception {
+
 		sqlSession.insert("mapper.campaign.registerCampaign", cam);
 		sqlSession.commit();
 	}
@@ -30,5 +32,7 @@ public class CampaignDaoImpl implements CampaignDao {
 	@Override
 	public List<Campaign> selectCampaignList(Integer row) throws Exception {
 		return sqlSession.selectList("mapper.campaign.selectAllCampaign", row);
+
 	}
+
 }
