@@ -23,8 +23,9 @@ public class PointDaoImpl implements PointDao {
 	public void insertPointRecord(Integer num, Integer pointAmount) throws Exception {
 		Map<String,Integer> param = new HashMap<>();
 		param.put("influencer_num",num);
-		param.put("changePoint", pointAmount);
-		sqlSession.insert("mapper.mapper.pointRecord.insertPointRecordInf", param);
+		param.put("point_amount", pointAmount);
+		sqlSession.insert("mapper.pointRecord.insertPointRecordInf", param);
+		sqlSession.commit();
 	}
 	
 }

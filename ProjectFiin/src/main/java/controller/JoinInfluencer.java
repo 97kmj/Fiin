@@ -7,6 +7,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import dto.Influencer;
+import service.InfluencerService;
+import service.InfluencerServiceImpl;
+
 /**
  * Servlet implementation class JoinInfluencer
  */
@@ -26,17 +30,32 @@ public class JoinInfluencer extends HttpServlet {
   /**
    * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
    */
-  protected void doGet(HttpServletRequest request, HttpServletResponse response)
-      throws ServletException, IOException {
+  protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     request.getRequestDispatcher("/join/join_influencer.jsp").forward(request, response);
   }
 
   /**
    * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
    */
-  protected void doPost(HttpServletRequest request, HttpServletResponse response)
-      throws ServletException, IOException {
-
+  protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	 request.setCharacterEncoding("utf-8");
+	 Influencer influencer = new Influencer();
+	 influencer.setUserEmail(request.getParameter("userEmail"));
+	 influencer.setPassword(request.getParameter("password"));
+	 influencer.setName(request.getParameter("name"));
+	 influencer.setNickname(request.getParameter("nickname"));
+	 influencer.setMobileNumber(request.getParameter("mobileNumber"));
+	 influencer.setAddress(request.getParameter("address") + request.getParameter("addressDetail"));
+	 
+	 System.out.println(influencer);
+	 try {
+		 InfluencerService service = new InfluencerServiceImpl();
+		 service.join(influencer);
+		 response.sendRedirect("login.jsp");
+	 } catch (Exception e) {
+		 e.printStackTrace();
+		 request.setAttribute("err", e.getMessage());
+		 request.getRequestDispatcher("err.jsp").forward(request, response);
+	 }
   }
-
 }

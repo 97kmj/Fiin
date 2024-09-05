@@ -31,9 +31,33 @@ public class InfluencerServiceImpl implements InfluencerService {
 
   }
 
-@Override
-public List<Influencer> influencerList(PageInfo pageInfo) {
+
+
+	@Override
+	public void join(Influencer influencer) throws Exception {
+		Influencer sinfluencer = influencerDao.selectInfluencer(influencer.getInfluencerNum());
+		if (sinfluencer != null) throw new Exception("아이디 중복 오류");
+		influencerDao.insertInfluencer(influencer);
+	}
+
+	@Override
+	public void login(Integer influencerNum, String password) throws Exception {
+		Influencer influencer = influencerDao.selectInfluencer(influencerNum);
+		if (influencer == null) throw new Exception("로그인 아이디 오류");
+		if (!password.equals(influencer.getPassword())) throw new Exception("비밀번호 오류");
+
+	}
+
+	@Override
+	public boolean checkDoubleEmail(String userEmail) throws Exception {
+		Influencer influencer = influencerDao.selectInfluencerByEmail(userEmail);
+		if (influencer == null) return false;
+		return true;
+	}
+  @Override
+  public List<Influencer> influencerList(PageInfo pageInfo) {
 	// TODO Auto-generated method stub
 	return null;
 }
+
 }

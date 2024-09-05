@@ -2,33 +2,50 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD mapper 3.0//EN"
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-
-<!--// dto와 sql문 이어주는 Mapper-->
-<!--	# // influencer ( ) 부분은 db와 매핑 되는 값-->
-<!--	# // value (#{}...) 부분은 dto와 매핑되는 값-->
-
 <mapper namespace="mapper.influencer">
-	<insert id="registerInfluencer" parameterType="influencer">
-		<![CDATA[
-
-    INSERT INTO influencer (intro_line, profile_image, category_id, introduction, youtube_name,
-                            youtube_follower, youtube_url, instagram_name,
-                            instagram_follower, instagram_url, blog_name, blog_follower, blog_url)
-		VALUES (#{introLine}, #{profileImage}, #{categoryId}, #{introduction}, #{youtubeName},
-						#{youtubeFollower}, #{youtubeUrl}, #{instagramName},
-						#{instagramFollower}, #{instagramUrl}, #{blogName}, #{blogFollower}, #{blogUrl})
-    ]]>
+	<insert id="insertInfluencer" useGeneratedKeys="true" keyColumn="influencer_num" keyProperty="influencerNum" parameterType="influencer">
+	<![CDATA[
+		insert into influencer (user_email, password, name, nickname, mobile_number, address) 
+			values (#{user_email}, #{password}, #{name}, #{nickname}, #{mobile_number}, #{address})
+	]]>
 	</insert>
 	
-	<select id="selectInfluencer" parameterType="Integer" resultType="influencer">
-		<![CDATA[
-			select * from influencer where num=#{num}
-		]]>
-	</select>
+
+
 	
 	<select id="selectInfluencerList" parameterType="Integer" resultType="influencer">
 		<![CDATA[
 			select * from influencer order by registDate desc limit #{row}, 8
 		]]>
 	</select>
-	</mapper>
+<select id="selectInfluencer" parameterType="Integer" resultType="influencer">
+		<![CDATA[ 
+			select * from influencer where influencer_num = #{influencer_num} 
+		]]>
+	</select>
+	
+	<select id="selectInfluencerByEmail" parameterType="String" resultType="influencer">
+		<![CDATA[ 
+			select * from influencer where user_email = #{user_email} 
+		]]>
+	</select>
+	
+	<update id="updateInfluencer" parameterType="influencer">
+		update influencer
+		<set>
+			<if test="password != null">password = #{password},</if>
+			<if test="name != null">name = #{name},</if>
+			<if test="nickname != null">nickname = #{nickname},</if>
+			<if test="mobile_number != null">mobile_number = #{mobile_number},</if>
+			<if test="address != null">address = #{address}</if>
+		</set>
+		where user_email = #{user_email}
+	</update>
+
+	<select id="selectInfluencerList" parameterType="Integer" resultType="influencer">
+		<![CDATA[
+			select * from influencer order by registDate desc limit #{row}, 8
+		]]>
+	</select>
+</mapper>
+
