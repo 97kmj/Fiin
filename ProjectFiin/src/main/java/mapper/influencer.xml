@@ -3,10 +3,10 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="mapper.influencer">
-	<insert id="insertInfluencer" useGeneratedKeys="true" keyColumn="influencer_num" keyProperty="influencerNum" parameterType="influencer">
+	<insert id="insertInfluencer" parameterType="influencer">
 	<![CDATA[
 		insert into influencer (user_email, password, name, nickname, mobile_number, address) 
-			values (#{user_email}, #{password}, #{name}, #{nickname}, #{mobile_number}, #{address})
+			values (#{userEmail}, #{password}, #{name}, #{nickname}, #{mobileNumber}, #{address})
 	]]>
 	</insert>
 	
@@ -40,11 +40,5 @@
 		</set>
 		where user_email = #{user_email}
 	</update>
-
-	<select id="selectInfluencerList" parameterType="Integer" resultType="influencer">
-		<![CDATA[
-			select * from influencer order by registDate desc limit #{row}, 8
-		]]>
-	</select>
 </mapper>
 

@@ -45,13 +45,15 @@ public class JoinInfluencer extends HttpServlet {
 	 influencer.setName(request.getParameter("name"));
 	 influencer.setNickname(request.getParameter("nickname"));
 	 influencer.setMobileNumber(request.getParameter("mobileNumber"));
-	 influencer.setAddress(request.getParameter("address") + request.getParameter("addressDetail"));
+	 String address = request.getParameter("address") + " " + request.getParameter("addressDetail");
+	 System.out.println(address);
+	 influencer.setAddress(address);
 	 
 	 System.out.println(influencer);
 	 try {
 		 InfluencerService service = new InfluencerServiceImpl();
 		 service.join(influencer);
-		 response.sendRedirect("login.jsp");
+		 response.sendRedirect("login");
 	 } catch (Exception e) {
 		 e.printStackTrace();
 		 request.setAttribute("err", e.getMessage());
