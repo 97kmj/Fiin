@@ -36,19 +36,33 @@
         		</a>
 			</c:when>
 			<c:when test="${advertiser eq null}">
-				<div class="navbar_login" OnClick="location.href ='/fiin/mypage/mypage_campaign_influencer.jsp'">
-					<div class="login_img">
-	            		<img src="https://img.icons8.com/?size=100&id=43942&format=png&color=ffffff">
+				<div class="navbar_login">
+					<div class="login_info" OnClick="location.href ='/fiin/mypage/mypage_campaign_influencer.jsp'">
+						<div class="login_img">
+		            		<img src="https://img.icons8.com/?size=100&id=43942&format=png&color=ffffff">
+		            	</div>
+		            	<p>${influencer.name}</p>
 	            	</div>
-	            	<p style="font-weight:bold">${influencer.name}</p>
+	            	<div class="logout_img">
+	            		<a href="logout">
+	            			<img src="https://img.icons8.com/?size=100&id=3HSHWjvK9Yxq&format=png&color=000000"/>
+	            		</a>
+	            	</div>
 	            </div>
 			</c:when>
 			<c:otherwise>
-				<div class="navbar_login" OnClick="location.href ='/fiin/mypage/mypage_campaign_advertiser.jsp'">
-					<div class="login_img">
-	            		<img src="https://img.icons8.com/?size=100&id=43942&format=png&color=ffffff">
+				<div class="navbar_login">
+					<div class="login_info" OnClick="location.href ='/fiin/mypage/mypage_campaign_influencer.jsp'">
+						<div class="login_img">
+	            			<img src="https://img.icons8.com/?size=100&id=43942&format=png&color=ffffff">
+	            		</div>
+	            		<p>${advertiser.name}</p>
+					</div>
+	            	<div class="logout_img">
+	            		<a href="logout">
+	            			<img src="https://img.icons8.com/?size=100&id=3HSHWjvK9Yxq&format=png&color=000000"/>
+	            		</a>
 	            	</div>
-	            	<p style="font-weight:bold">${advertiser.name}</p>
 	            </div>				
 			</c:otherwise>
 		</c:choose>
