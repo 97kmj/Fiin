@@ -22,8 +22,8 @@ public interface InfluencerService {
 	void registerInfluencer(HttpServletRequest request) throws Exception;
 	
 	Influencer influencerDetail(Integer influencerNum) throws Exception;
-	
-	Integer checkBookmark(Integer advertiserNum, Integer influencerNum) throws Exception;
 
-	boolean toggleBookmark(Integer advertiserNum, Integer influencerNum) throws Exception;
+	Integer checkBookmarkCampaign(Integer InfluencerNum, Integer CampaignNum) throws Exception;
+
+	boolean toggleBookmarkCampaign(Integer InfluencerNum, Integer CampaignNum) throws Exception;
 }

@@ -4,6 +4,8 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import dao.BookmarkCampaignDao;
+import dao.BookmarkCampaignDaoImpl;
 import dao.InfluencerDao;
 import dao.InfluencerDaoImpl;
 import dto.Influencer;
@@ -12,11 +14,13 @@ import util.PageInfo;
 public class InfluencerServiceImpl implements InfluencerService {
 
 	private InfluencerDao influencerDao;
-
+	private BookmarkCampaignDao bookmarkCampaignDao;
+	
 	public InfluencerServiceImpl() {
 		influencerDao = new InfluencerDaoImpl();
+		this.bookmarkCampaignDao = new BookmarkCampaignDaoImpl();
 	}
-
+  
 	@Override
 	public Influencer register(Influencer inf) throws Exception {
 
@@ -60,7 +64,6 @@ public class InfluencerServiceImpl implements InfluencerService {
 
 	@Override
 	public List<Influencer> influencerList(PageInfo pageInfo) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
@@ -78,15 +81,20 @@ public class InfluencerServiceImpl implements InfluencerService {
 	}
 
 	@Override
-	public Integer checkBookmark(Integer advertiserNum, Integer influencerNum) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+	public Integer checkBookmarkCampaign(Integer InfluencerNum, Integer CampaignNum) throws Exception {
+		return bookmarkCampaignDao.selectBookmarkCampaign(InfluencerNum, CampaignNum);
 	}
 
 	@Override
-	public boolean toggleBookmark(Integer advertiserNum, Integer influencerNum) throws Exception {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean toggleBookmarkCampaign(Integer InfluencerNum, Integer CampaignNum) throws Exception {
+		Integer cbookmarkNum = bookmarkCampaignDao.selectBookmarkCampaign(InfluencerNum, CampaignNum);
+		if(cbookmarkNum==null) {
+			bookmarkCampaignDao.insertBookmarkCampaign(InfluencerNum, CampaignNum);
+			return true;
+		} else {
+			bookmarkCampaignDao.deleterBookmarkCampaign(InfluencerNum, CampaignNum);
+			return false;
+		}
 	}
 
 }
