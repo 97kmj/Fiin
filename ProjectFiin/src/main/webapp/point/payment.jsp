@@ -78,7 +78,7 @@
    	                        	url:"payment",
        	                    	type:"POST",
            	                	async:true,
-               	            	data:{data:JSON.stringify({type:'influencer', changePoint:pointAmount,num:1})},
+               	            	data:{data:JSON.stringify({type:'influencer',num:1, changePoint:pointAmount})},
 	                           	success: function(result){
                             		alert(result);
 		                            location.replace("http://localhost:8080/fiin/mypage_point_record");

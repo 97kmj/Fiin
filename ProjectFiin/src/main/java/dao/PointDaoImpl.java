@@ -20,12 +20,31 @@ public class PointDaoImpl implements PointDao {
 		return sqlSession.selectList("mapper.point.selectPointList");
 	}
 	@Override
-	public void insertPointRecord(Integer num, Integer pointAmount) throws Exception {
+	public void insertPointRecord(String type, Integer num, Integer pointAmount) throws Exception {
 		Map<String,Integer> param = new HashMap<>();
-		param.put("influencer_num",num);
+		param.put("user_num",num);
 		param.put("point_amount", pointAmount);
-		sqlSession.insert("mapper.pointRecord.insertPointRecordInf", param);
-		sqlSession.commit();
+		if (type.equals("influencer")) {
+			sqlSession.insert("mapper.pointRecord.insertPointRecordInf", param);
+			sqlSession.commit();
+		} else {
+			sqlSession.insert("mapper.pointRecord.insertPointRecordAd", param);
+			sqlSession.commit();
+		}
+	}
+	
+	@Override
+	public void updatePointBalance(String type, Integer num, Integer pointAmount) throws Exception {
+		Map<String,Integer> param = new HashMap<>();
+		param.put("user_num",num);
+		param.put("point_amount", pointAmount);
+		if (type.equals("influencer")) {
+			sqlSession.update("mapper.pointRecord.updatePointBalanceInf", param);
+			sqlSession.commit();
+		} else {
+			sqlSession.update("mapper.pointRecord.updatePointBalanceAd", param);
+			sqlSession.commit();
+		}
 	}
 	
 }

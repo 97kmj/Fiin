@@ -60,8 +60,9 @@ public class Payment extends HttpServlet {
 			String type = (String)jsonObj.get("type");
 			Integer changePoint = Integer.parseInt((String)jsonObj.get("changePoint"));
 			Long num = (Long)jsonObj.get("num");
-			Integer intNum = (int)(long)num;
-			service.insertPointRecord(intNum, changePoint);
+			Integer userNum = (int)(long)num;
+			service.insertPointRecord(type, userNum, changePoint);
+			service.updatePointBalance(type, userNum,changePoint);
 			response.setCharacterEncoding("utf-8");
 			response.getWriter().write("결제 성공");
 		} catch (Exception e) {

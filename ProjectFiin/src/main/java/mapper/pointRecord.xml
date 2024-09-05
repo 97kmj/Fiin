@@ -3,13 +3,25 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="mapper.pointRecord">
+	<!-- 광고주일 때 포인트내역 기록 -->
 	<insert id="insertPointRecordAd" parameterType="Map">
 		insert into point_record (advertiser_num, change_point)
-		values(#{advertiser_num},#{point_amount})
-	</insert>
-	<insert id="insertPointRecordInf" parameterType="Map">
-		insert into point_record (influencer_num, change_point)
-		values(#{influencer_num},#{point_amount})
+		values(#{user_num},#{point_amount})
 	</insert>
 
+	<!-- 인플루언서일 때 포인트내역 기록 -->
+	<insert id="insertPointRecordInf" parameterType="Map">
+		insert into point_record (influencer_num, change_point)
+		values(#{user_num},#{point_amount})
+	</insert>
+	
+	<!-- 인플루언서일 때 포인트잔액 업데이트 -->
+	<update id="updatePointBalanceInf" parameterType="Map">
+		update influencer set point_balance = IFNULL(point_balance,0) + #{point_amount} where influencer_num = #{user_num}  
+	</update>
+	
+	<!-- 광고주일 때 포인트잔액 업데이트 -->
+	<update id="updatePointBalanceAd" parameterType="Map">
+		update advertiser set point_balance = IFNULL(point_balance,0) + #{point_amount} where advertiser_num = #{user_num}
+	</update>
 </mapper>

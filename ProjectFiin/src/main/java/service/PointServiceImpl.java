@@ -18,7 +18,12 @@ public class PointServiceImpl implements PointService {
 		return pointDao.selectPointList();
 	}
 	@Override
-	public void insertPointRecord(Integer num, Integer pointAmount) throws Exception {
-		pointDao.insertPointRecord(num, pointAmount);
+	public void insertPointRecord(String type, Integer num, Integer pointAmount) throws Exception {
+		pointDao.insertPointRecord(type,num, pointAmount);
+	}
+	
+	@Override
+	public void updatePointBalance(String type, Integer num, Integer pointAmount) throws Exception {
+		pointDao.updatePointBalance(type,num,pointAmount);		
 	}
 }
