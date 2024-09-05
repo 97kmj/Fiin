@@ -13,7 +13,7 @@
 
 	<select id="selectInfluencerList" parameterType="Integer" resultType="influencer">
 		<![CDATA[
-			select * from influencer order by registDate desc limit #{row}, 8
+			select * from influencer order by regist_date desc limit #{row}, 8
 		]]>
 	</select>
 	
