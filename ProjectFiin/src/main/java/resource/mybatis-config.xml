@@ -2,8 +2,6 @@
 <!DOCTYPE configuration
 	PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 	"http://mybatis.org/dtd/mybatis-3-config.dtd">
-<<<<<<< HEAD
-
 <configuration>
 	<settings>
 		<setting name="mapUnderscoreToCamelCase" value="true"/>
@@ -48,31 +46,4 @@
 		<mapper resource="mapper/requestCampaign.xml"/>
 		<mapper resource="mapper/campaign.xml"/>
 	</mappers>
-=======
-	
-<configuration>
-	<settings>
-		<setting name="mapUnderscoreToCamelCase" value="true"/>
-	</settings>
-	<typeAliases>
-		<typeAlias type="dto.Campaign" alias="campaign"/>
-		<typeAlias type="dto.Advertiser" alias="advertiser"/>
-	</typeAliases>
-	<environments default="development">
-		<environment id="development">
-			<transactionManager type ="JDBC"/>
-			<dataSource type="POOLED">
-				<property name="driver" value="org.mariadb.jdbc.Driver"/>
-				<property name="url" value="jdbc:mariadb://localhost:3306/mini"/>
-				<property name="username" value="root"/>
-				<property name="password" value="7564"/>
-			</dataSource>
-		</environment>
-	</environments>
-	
-	<mappers>
-		<mapper resource="mapper/campaign.xml"/>
-	</mappers>
-	
->>>>>>> refs/remotes/origin/develop-jy
 </configuration>

@@ -13,7 +13,6 @@
 	<%@ include file="../include/header.jsp"%>
 	<div class="container">
 		<div id="categoryBar">
-			<!-- javascript -->
 			<h2>인플루언서</h2>
 			<div class="categoryWrap">
 				<input type="radio" id="all" name="category" value="all"><label for="all">전체</label>

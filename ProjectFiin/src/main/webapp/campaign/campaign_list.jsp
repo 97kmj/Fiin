@@ -41,11 +41,7 @@
 		</div>
 		<div class="allBar">
 			<h2></h2>
-<<<<<<< HEAD
 			<button id="registerButton" onclick="location.href='campaign/campaign_register.jsp'">캠페인 등록하기</button>
-=======
-			<button id="registerButton" onclick="location.href='register.jsp'">캠페인 등록하기</button>
->>>>>>> refs/remotes/origin/develop-jy
 		</div>
 		<div class="campaignWrap">
 	 		<c:forEach items="${campaignList }" var="campaign">
@@ -93,10 +89,6 @@
 			</c:choose>
     	</div>
     </div>
-<<<<<<< HEAD
-=======
-
->>>>>>> refs/remotes/origin/develop-jy
 	<%@include file="../include/footer.jsp" %>
 </body>
 </html>
