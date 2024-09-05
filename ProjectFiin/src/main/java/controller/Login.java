@@ -7,6 +7,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import dto.Advertiser;
+import dto.Influencer;
+import service.AdvertiserService;
+import service.AdvertiserServiceImpl;
+import service.InfluencerService;
+import service.InfluencerServiceImpl;
+
 /**
  * Servlet implementation class Login
  */
@@ -33,7 +40,51 @@ public class Login extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("utf-8");
+		String userEmail = request.getParameter("userEmail");
+		String password = request.getParameter("password");
+		String type = request.getParameter("type");
 		
+		try {
+			InfluencerService iService = new InfluencerServiceImpl();
+			AdvertiserService aService = new AdvertiserServiceImpl();
+			
+			if (type.equals("influencer")) {
+				Influencer influencer =  iService.login(userEmail, password);
+				influencer.setPassword("");
+				request.getSession().removeAttribute("advertiser");
+				request.getSession().setAttribute("influencer", influencer);
+				response.sendRedirect("main");
+				
+				//System.out.println(influencer);
+				/*
+				 * if (influencer == null) { response.getWriter().write(String.valueOf(false));
+				 * } else { //response.getWriter().write(String.valueOf(true));
+				 * influencer.setPassword(""); request.getSession().setAttribute("influencer",
+				 * influencer); //request.getRequestDispatcher("main").forward(request,
+				 * response); response.sendRedirect("main"); }
+				 */
+			} else {
+				Advertiser advertiser = aService.login(userEmail, password);
+				advertiser.setPassword("");
+				request.getSession().removeAttribute("influencer");
+				request.getSession().setAttribute("advertiser", advertiser);
+				response.sendRedirect("main");
+						
+				//System.out.println(advertiser);
+				/*
+				 * if (advertiser == null) { response.getWriter().write(String.valueOf(false));
+				 * } else { //response.getWriter().write(String.valueOf(true));
+				 * advertiser.setPassword(""); request.getSession().setAttribute("advertiser",
+				 * advertiser); //request.getRequestDispatcher("main").forward(request,
+				 * response); response.sendRedirect("main"); }
+				 */
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			request.setAttribute("err", e.getMessage());
+			request.getRequestDispatcher("err.jsp").forward(request, response);
+		}
 	}
 
 }

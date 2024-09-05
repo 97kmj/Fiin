@@ -29,3 +29,22 @@ header {
   border-radius: 8px;
   font-size: 12px;
 }
+
+.navbar_login {
+    display:flex;
+    align-items:center;
+    cursor: pointer;
+}
+
+.login_img {
+    width: 30px;
+    height: 30px;
+    background-color:#4849e8;
+    border-radius:50%; 
+    margin-right: 8px;
+}
+
+.login_img img {
+	width:30px;
+	height:30px;
+}

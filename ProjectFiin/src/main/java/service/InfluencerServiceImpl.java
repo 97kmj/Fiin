@@ -31,8 +31,6 @@ public class InfluencerServiceImpl implements InfluencerService {
 
   }
 
-
-
 	@Override
 	public void join(Influencer influencer) throws Exception {
 		Influencer sinfluencer = influencerDao.selectInfluencer(influencer.getInfluencerNum());
@@ -41,11 +39,11 @@ public class InfluencerServiceImpl implements InfluencerService {
 	}
 
 	@Override
-	public void login(Integer influencerNum, String password) throws Exception {
-		Influencer influencer = influencerDao.selectInfluencer(influencerNum);
+	public Influencer login(String userEmail, String password) throws Exception {
+		Influencer influencer = influencerDao.selectInfluencerByEmail(userEmail);
 		if (influencer == null) throw new Exception("로그인 아이디 오류");
 		if (!password.equals(influencer.getPassword())) throw new Exception("비밀번호 오류");
-
+		return influencer;
 	}
 
 	@Override
@@ -54,10 +52,10 @@ public class InfluencerServiceImpl implements InfluencerService {
 		if (influencer == null) return false;
 		return true;
 	}
-  @Override
-  public List<Influencer> influencerList(PageInfo pageInfo) {
-	// TODO Auto-generated method stub
-	return null;
-}
-
+	
+	@Override
+	public List<Influencer> influencerList(PageInfo pageInfo) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

@@ -18,10 +18,11 @@ public class AdvertiserServiceImpl implements AdvertiserService {
 	}
 
 	@Override
-	public void login(Integer advertiserNum, String password) throws Exception {
-		Advertiser advertiser = advertiserDao.selectAdvertiser(advertiserNum);
+	public Advertiser login(String userEmail, String password) throws Exception {
+		Advertiser advertiser = advertiserDao.selectAdvertiserByEmail(userEmail);
 		if (advertiser == null) throw new Exception("로그인 오류");
 		if (!password.equals(advertiser.getPassword())) throw new Exception("비밀번호 오류");
+		return advertiser;
 	}
 
 	@Override
