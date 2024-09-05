@@ -25,8 +25,8 @@ public class AdvertiserServiceImpl implements AdvertiserService {
 	}
 
 	@Override
-	public boolean checkDoubleEmail(Integer advertiserNum) throws Exception {
-		Advertiser advertiser = advertiserDao.selectAdvertiser(advertiserNum);
+	public boolean checkDoubleEmail(String userEmail) throws Exception {
+		Advertiser advertiser = advertiserDao.selectAdvertiserByEmail(userEmail);
 		if (advertiser == null) return false;
 		return true;
 	}
