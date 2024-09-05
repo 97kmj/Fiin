@@ -1,6 +1,6 @@
 package dto;
 
-public class category {
+public class Category {
 	private Integer categoryId;
 	private String categoryName;
 	public Integer getCategoryId() {
@@ -19,12 +19,12 @@ public class category {
 	public String toString() {
 		return "category [categoryId=" + categoryId + ", categoryName=" + categoryName + "]";
 	}
-	public category(Integer categoryId, String categoryName) {
+	public Category(Integer categoryId, String categoryName) {
 		super();
 		this.categoryId = categoryId;
 		this.categoryName = categoryName;
 	}
-	public category() {
+	public Category() {
 		super();
 		// TODO Auto-generated constructor stub
 	}

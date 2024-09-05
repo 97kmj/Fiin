@@ -3,9 +3,11 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
 <mapper namespace="mapper.advertiser">
-	<insert id="insertAdvertiser" useGeneratedKeys="true" keyColumn="advertiser_num" keyProperty="advertiserNum" parameterType="advertiser">
+	<insert id="insertAdvertiser" parameterType="advertiser">
 		<![CDATA[ 
-			insert into advertiser (user_email, password, name, company_name, mobile_number, address) values (#{user_email}, #{password}, #{name}, #{company_name}, #{mobile_number}, #{address}) ]]>
+			insert into advertiser (user_email, password, name, company_name, mobile_number, address) 
+			values (#{userEmail}, #{password}, #{name}, #{companyName}, #{mobileNumber}, #{address}) 
+		]]>
 	</insert>
 	
 	<select id="selectAdvertiser" parameterType="Integer" resultType="advertiser">
@@ -25,4 +27,10 @@
 		</set>
 		where advertiser_num = #{advertiser_num}
 	</update>
+	
+	<select id="selectAdvertiserByEmail" parameterType="String" resultType="advertiser">
+		<![CDATA[ 
+			select * from advertiser where user_email = #{user_email} 
+		]]>
+	</select>
 </mapper>

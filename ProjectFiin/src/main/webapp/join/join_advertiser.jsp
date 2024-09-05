@@ -37,10 +37,71 @@
 	                	$('#address').val = '';
 	                }
 		            $("#address").val(addr + " " + extraAddr);
-		            $("#addressdetail").attr("disabled", false);
-		            $("#addressdetail").focus();
+		            $("#addressDetail").attr("disabled", false);
+		            $("#addressDetail").focus();
 		        }
 	    	}).open();
+		})
+		
+		$("#emailCheck").click(function(e) {
+			e.preventDefault();
+			$.ajax({
+				url: 'emailCheck',
+				type: 'post',
+				async: true,
+				dataType: 'text',
+				data: {userEmail: $("#userEmail").val()},
+				success: function(result) {
+					if (result == 'true') {
+						alert("사용중인 아이디입니다.");
+					} else {
+						alert("사용가능한 아이디입니다.");
+					}
+				},
+				error: function(err) {
+					console.log(err);
+				}
+			})
+		})
+		
+		var reg = /^(?=.*[a-zA-Z])(?=.*[0-9]).{8,25}$/;
+		
+		$(".signup_btn").click(function(e) {
+			e.preventDefault();
+			if ($("#userEmail").val() === "") {				
+				alert("이메일을 입력해주세요.");
+				$("#userEmail").focus();
+				return false;
+			} else if ($("#password").val() === "") {
+				alert("비밀번호를 입력해주세요.");
+				$("#password").focus();
+				return false;
+			} else if (!reg.test($("#password").val())) {
+				alert("비밀번호는 영문, 숫자포함 최소 8자리 이상 입력해주세요.");
+				$("password").focus();
+				return false;
+			} else if ($("#passwordCheck").val() === "" || $("#passwordCheck").val() != $("#password").val()) {
+				alert("비밀번호가 일치하지 않습니다.");
+				$("#passwordCheck").focus();
+				return false;
+			} else if ($("#name").val() === "") {
+				alert("이름을 입력해주세요.");
+				$("#name").focus();
+				return false;
+			} else if ($("#companyName").val() === "") {
+				alert("업체명을 입력해주세요.");
+				$("#companyName").focus();
+				return false;
+			} else if ($("#mobileNumber").val() === "") {
+				alert("휴대폰번호를 입력해주세요.");
+				$("#mobileNumber").focus();
+				return false;
+			} else if ($("#address").val() === "") {
+				alert("주소를 검색해주세요.");
+				$("#address").focus();
+				return false;
+			}
+			$(".signup_form").submit();
 		})
 	})
 </script>
@@ -53,18 +114,18 @@
             <img src="${pageContext.request.contextPath}/image//closeIcon.svg" alt="닫기아이콘" />
           </a>
         </div>
-        <form action="" class="signup_form">
-          <label for="email" class="input_label">
+        <form action="joinAdvertiser" class="signup_form" method="post">
+          <label for="userEmail" class="input_label">
             이메일<span>*</span> <span class="br_style"><br /></span>
             <div class="input_btn_wrap">
               <input
-                type="email"
-                id="email"
+                type="text"
+                id="userEmail"
                 placeholder="이메일을 입력해주세요."
                 class="input_btn_style"
-       			name="email"
+       			name="userEmail"
               />
-              <button type="button">확인</button>
+              <button type="button" id="emailCheck">확인</button>
             </div>
           </label>
           <label for="password" class="input_label">
@@ -77,14 +138,14 @@
               name="password"
             />
           </label>
-          <label for="password_check" class="input_label">
+          <label for="passwordCheck" class="input_label">
             비밀번호 확인<span>*</span> <span class="br_style"><br /></span>
             <input
               type="password"
-              id="password_check"
+              id="passwordCheck"
               placeholder="비밀번호를 다시 입력해주세요."
               class="input_style"
-              name="passwordcheck"
+              name="passwordCheck"
             />
           </label>
           <label for="name" class="input_label">
@@ -97,25 +158,25 @@
               name="name"
             />
           </label>
-          <label for="name" class="input_label">
+          <label for="companyName" class="input_label">
             업체명<span>*</span> <span class="br_style"><br /></span>
             <input
               type="text"
-              id="companyname"
+              id="companyName"
               placeholder="업체명을 입력해주세요."
               class="input_style"
-              name="companyname"
+              name="companyName"
             />
           </label>
-          <label for="number" class="input_label">
+          <label for="mobileNumber" class="input_label">
             휴대폰번호<span>*</span> <span class="br_style"><br /></span>
             <div class="input_btn_wrap">
               <input
                 type="text"
-                id="number"
+                id="mobileNumber"
                 placeholder="휴대폰번호를 입력해주세요."
                 class="input_btn_style"
-                name="number"
+                name="mobileNumber"
               />
               <button type="button">인증</button>
             </div>
@@ -129,15 +190,15 @@
                 class="input_btn_style"
                 name="address"
                 id="address"
-                disabled
+                readonly="readonly"
               />
               <button type="button" class="address_btn">주소검색</button>
             </div>
             <input
             type="text"
             class="input_btn_style"
-            name="addressdetail"
-            id="addressdetail"
+            name="addressDetail"
+            id="addressDetail"
             disabled
           />
           </label>
@@ -153,7 +214,7 @@
 	          	<p>[선택] 마케팅 정보 수신에 동의합니다.</p>
 			  </div>
           </div>
-          <input type="submit" class="signup_btn" value="가입하기" /> 
+          <input type="submit" class="signup_btn" value="가입하기" style="cursor: pointer;" /> 
        	</form>
 	</div>
 </body>
