@@ -43,7 +43,8 @@ public class Payment extends HttpServlet {
 			request.getRequestDispatcher("/point/payment.jsp").forward(request, response);
 		} catch (Exception e) {
 			e.printStackTrace();
-			request.getRequestDispatcher("main").forward(request, response);
+			request.setAttribute("err", e.getMessage());
+			request.getRequestDispatcher("err.jsp").forward(request, response);
 		}
 	}
 
@@ -61,13 +62,14 @@ public class Payment extends HttpServlet {
 			Integer changePoint = Integer.parseInt((String)jsonObj.get("changePoint"));
 			Long num = (Long)jsonObj.get("num");
 			Integer userNum = (int)(long)num;
-			service.insertPointRecord(type, userNum, changePoint);
+			service.insertPointRecord(type, userNum, changePoint); 
 			service.updatePointBalance(type, userNum,changePoint);
 			response.setCharacterEncoding("utf-8");
 			response.getWriter().write("결제 성공");
 		} catch (Exception e) {
 			e.printStackTrace();
-			
+			request.setAttribute("err", e.getMessage());
+			request.getRequestDispatcher("err.jsp").forward(request, response); 
 		}
 	}
 

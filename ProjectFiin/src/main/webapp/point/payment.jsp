@@ -48,7 +48,7 @@
 <script src="http://code.jquery.com//jquery-latest.min.js"></script>
 <script src="https://cdn.iamport.kr/v1/iamport.js"></script>
     <script>
-    
+    //결제 api 
     	document.getElementById("submitbtn").onclick = function(e){
     		requestPay();
     	}
@@ -66,14 +66,15 @@
                         pg: "html5_inicis.INIpayTest",
                         pay_method: "card",
                         merchant_uid: 'merchant_'+new Date().getTime(), // 주문 고유 번호
-                        name: "파인 "+pointAmount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")+"Point",
-                        amount: pointPrice,
+                        name: "파인 "+pointAmount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")+"Point", // 숫자 3자리마다 , 찍어주는 것 
+                        amount: pointPrice,  
                         buyer_email: "kmj0376@gmail.com",
                         buyer_name: "김민준",
                         buyer_tel: "010-9954-0377", //번호 필수
                     },
                     function (response) {
                         if (response.success) {
+                        	//결제 성공시 DB에 데이터 반영
                         	$.ajax({
    	                        	url:"payment",
        	                    	type:"POST",
@@ -81,7 +82,7 @@
                	            	data:{data:JSON.stringify({type:'influencer',num:1, changePoint:pointAmount})},
 	                           	success: function(result){
                             		alert(result);
-		                            location.replace("http://localhost:8080/fiin/mypage_point_record");
+		                            location.replace("http://localhost:8080/fiin/mypage/pointrecord");
 	                           	},
 								error: function (err) {
 	                                console.log(err);

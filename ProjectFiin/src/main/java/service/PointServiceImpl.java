@@ -4,13 +4,19 @@ import java.util.List;
 
 import dao.PointDao;
 import dao.PointDaoImpl;
+import dao.PointRecordDao;
+import dao.PointRecordDaoImpl;
 import dto.Point;
+import dto.PointRecord;
+import util.PageInfo;
 
 public class PointServiceImpl implements PointService {
 	
 	private PointDao pointDao;
+	private PointRecordDao pointRecordDao;
 	public PointServiceImpl() {
 		pointDao = new PointDaoImpl();
+		pointRecordDao = new PointRecordDaoImpl();
 	}
 	
 	@Override
@@ -19,11 +25,29 @@ public class PointServiceImpl implements PointService {
 	}
 	@Override
 	public void insertPointRecord(String type, Integer num, Integer pointAmount) throws Exception {
-		pointDao.insertPointRecord(type,num, pointAmount);
+		pointRecordDao.insertPointRecord(type,num, pointAmount);
 	}
 	
 	@Override
 	public void updatePointBalance(String type, Integer num, Integer pointAmount) throws Exception {
-		pointDao.updatePointBalance(type,num,pointAmount);		
+		pointRecordDao.updatePointBalance(type,num,pointAmount);		
 	}
+	
+	@Override
+	public List<PointRecord> showPointRecord(String type, Integer num, PageInfo pageInfo) throws Exception {
+		Integer recordCnt= pointRecordDao.selectPointRecordCount(type, num);
+		
+		Integer allPage = (int)Math.ceil((double)recordCnt/5);
+		Integer startPage =	(pageInfo.getCurPage()-1)/5*5+1;  
+		Integer endPage = startPage+5-1;
+		if(endPage>allPage) endPage = allPage;
+		pageInfo.setAllPage(allPage);
+		pageInfo.setStartPage(startPage);
+		pageInfo.setEndPage(endPage); 
+		Integer row = (pageInfo.getCurPage()-1)*5+1;
+		 
+		return pointRecordDao.selectPointRecordList(type,num,row);
+	}
+	
+	
 }
