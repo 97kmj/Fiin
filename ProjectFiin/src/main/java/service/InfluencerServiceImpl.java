@@ -11,10 +11,10 @@ public class InfluencerServiceImpl implements InfluencerService {
 
 	private InfluencerDao influencerDao;
 
+
 	public InfluencerServiceImpl() {
 		influencerDao = new InfluencerDaoImpl();
 	}
-
 
 	@Override
 	public void join(Influencer influencer) throws Exception {
@@ -25,12 +25,12 @@ public class InfluencerServiceImpl implements InfluencerService {
 	}
 
 	@Override
-	public void login(Integer influencerNum, String password) throws Exception {
-		Influencer influencer = influencerDao.selectInfluencer(influencerNum);
-		if (influencer == null)
-			throw new Exception("로그인 아이디 오류");
-		if (!password.equals(influencer.getPassword()))
-			throw new Exception("비밀번호 오류");
+
+	public Influencer login(String userEmail, String password) throws Exception {
+		Influencer influencer = influencerDao.selectInfluencerByEmail(userEmail);
+		if (influencer == null) throw new Exception("로그인 아이디 오류");
+		if (!password.equals(influencer.getPassword())) throw new Exception("비밀번호 오류");
+		return influencer;
 
 	}
 
@@ -54,6 +54,7 @@ public class InfluencerServiceImpl implements InfluencerService {
 		influencerDao.registerInfluencer(influencer);
 		return influencer;
 	}
+
 }
 
 

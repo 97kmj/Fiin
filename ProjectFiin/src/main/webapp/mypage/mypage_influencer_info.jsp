@@ -46,7 +46,7 @@
 </script>
 </head>
 <body>
-	<%@ include file="../include/header_login.jsp" %>
+	<%@ include file="../include/header.jsp" %>
 	<div class="edit_container">
 		<%@ include file="../include/sidebar_influencer.jsp" %>
 		

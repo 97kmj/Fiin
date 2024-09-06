@@ -8,16 +8,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class Main
+ * Servlet implementation class Logout
  */
-@WebServlet("/main")
-public class Main extends HttpServlet {
+@WebServlet("/logout")
+public class Logout extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Main() {
+    public Logout() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -26,7 +26,11 @@ public class Main extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("utf-8");
-		request.getRequestDispatcher("main.jsp").forward(request, response);
+		if (request.getSession().getAttribute("influencer") == null) {
+			request.getSession().removeAttribute("advertiser");	
+		} else {
+			request.getSession().removeAttribute("influencer");	
+		}
+		response.sendRedirect("main");	
 	}
 }

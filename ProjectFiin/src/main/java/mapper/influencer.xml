@@ -5,10 +5,10 @@
 
 <!--// 상민 - influencerRegister (인플루언서 등록)-->
 <mapper namespace="mapper.influencer">
-	<insert id="insertInfluencer" useGeneratedKeys="true" keyColumn="influencer_num" keyProperty="influencerNum" parameterType="influencer">
+	<insert id="insertInfluencer" parameterType="influencer">
 	<![CDATA[
 		insert into influencer (user_email, password, name, nickname, mobile_number, address) 
-			values (#{user_email}, #{password}, #{name}, #{nickname}, #{mobile_number}, #{address})
+			values (#{userEmail}, #{password}, #{name}, #{nickname}, #{mobileNumber}, #{address})
 	]]>
 	</insert>
 	
