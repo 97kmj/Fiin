@@ -40,6 +40,7 @@ public class MypagePointRecord extends HttpServlet {
 			page = Integer.parseInt(paramPage);
 		}
 		
+		
 		try {
 			PointService service = new PointServiceImpl();
 			PageInfo pageInfo = new PageInfo();
@@ -47,6 +48,7 @@ public class MypagePointRecord extends HttpServlet {
 			List<PointRecord> pointRecordList = service.showPointRecord("influencer", 1, pageInfo);
 			request.setAttribute("pointRecordList", pointRecordList);
 			request.setAttribute("pageInfo", pageInfo);
+			
 			request.getRequestDispatcher("/mypage/mypage_point_record.jsp").forward(request, response);
 			
 		} catch (Exception e) {

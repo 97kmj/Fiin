@@ -8,8 +8,8 @@ import util.PageInfo;
 
 public interface PointService {
 	List<Point> pointList() throws Exception;
-	void insertPointRecord(String type, Integer num,Integer pointAmount) throws Exception;
+	void insertPointRecord(String type, Integer num,Integer pointAmount, String detail) throws Exception;
 	void updatePointBalance(String type, Integer num,Integer pointAmount) throws Exception;
 	List<PointRecord> showPointRecord(String type, Integer num, PageInfo pageInfo) throws Exception;
-	
+	Integer getPointBalance(String type, Integer num) throws Exception;
 }

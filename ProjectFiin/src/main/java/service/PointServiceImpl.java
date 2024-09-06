@@ -24,8 +24,8 @@ public class PointServiceImpl implements PointService {
 		return pointDao.selectPointList();
 	}
 	@Override
-	public void insertPointRecord(String type, Integer num, Integer pointAmount) throws Exception {
-		pointRecordDao.insertPointRecord(type,num, pointAmount);
+	public void insertPointRecord(String type, Integer num, Integer pointAmount, String detail) throws Exception {
+		pointRecordDao.insertPointRecord(type,num, pointAmount, detail);
 	}
 	
 	@Override
@@ -47,6 +47,10 @@ public class PointServiceImpl implements PointService {
 		Integer row = (pageInfo.getCurPage()-1)*5+1;
 		 
 		return pointRecordDao.selectPointRecordList(type,num,row);
+	}
+	@Override
+	public Integer getPointBalance(String type, Integer num) throws Exception {
+		return pointDao.getPointBalance(type,num);
 	}
 	
 	

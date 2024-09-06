@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"  %>    
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,7 +16,7 @@
         </div>
         <div class="sideitem" style="text-align:left;">
             <h3 style="margin-bottom:16px;">내 포인트 ></h3>
-            <h3 style="color:#4948e8;">45,000P</h3>
+            <h3 style="color:#4948e8;"><fmt:formatNumber value='${type eq "influencer" ? influencer.pointBalance : advertiser.pointBalance }'/>P</h3>
         </div>
         <div class="sideitem">
             <h3 style="color:#4948e8;">마이 파인</h3>

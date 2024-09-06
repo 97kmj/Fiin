@@ -8,7 +8,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/mypage_point_record.css">
 </head>
 <body>
@@ -17,12 +16,14 @@
     <%@ include file="../include/sidebar_advertiser.jsp" %>
     <div id="main">
         <h2 style="text-align:left">포인트 관리</h2>
-        <h3 style="margin: 20px 0;">사용가능포인트&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#4849E8; font-weight:bold">45,000</span></h3>
+        <h3 style="margin: 20px 0;">보유 포인트&nbsp;&nbsp;&nbsp;
+        <span style="color:#4849E8; font-weight:bold">
+        <fmt:formatNumber value='${type eq "influencer" ? influencer.pointBalance : advertiser.pointBalance }'/>P</span></h3>
         <table id="pointrecord">
         <c:forEach items="${pointRecordList }"	var="pointRecord">
     	    <tr>
                 <td class="td1">${pointRecord.changePoint > 0 ? '충전':'사용' }</td>
-                <td class="td2">포인트 충전</td>
+                <td class="td2">${pointRecord.detail }</td>
                 <td class="td3">
                 	<div>${pointRecord.changePoint > 0 ? '+':'-' }<fmt:formatNumber value="${pointRecord.changePoint}"/>P</div>
           			<div><fmt:formatDate value="${pointRecord.updateAt}" pattern="yyyy-MM-dd HH:mm"/></div>
