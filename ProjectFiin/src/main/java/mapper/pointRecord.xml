@@ -3,13 +3,67 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="mapper.pointRecord">
+	<!-- 광고주일 때 포인트내역 insert -->
 	<insert id="insertPointRecordAd" parameterType="Map">
-		insert into point_record (advertiser_num, change_point)
-		values(#{advertiser_num},#{point_amount})
-	</insert>
-	<insert id="insertPointRecordInf" parameterType="Map">
-		insert into point_record (influencer_num, change_point)
-		values(#{influencer_num},#{point_amount})
+		<![CDATA[
+			insert into point_record (advertiser_num, change_point)
+			values(#{user_num},#{point_amount})
+		]]>
 	</insert>
 
+	<!-- 인플루언서일 때 포인트내역 insert-->
+	<insert id="insertPointRecordInf" parameterType="Map">
+		<![CDATA[
+			insert into point_record (influencer_num, change_point)
+			values(#{user_num},#{point_amount})
+		]]>
+	</insert>
+	
+	<!-- 인플루언서일 때 포인트잔액 업데이트 -->
+	<update id="updatePointBalanceInf" parameterType="Map">
+		<![CDATA[
+			update influencer set point_balance = IFNULL(point_balance,0) + #{point_amount} where influencer_num = #{user_num}  
+		]]>
+	</update>
+	
+	<!-- 광고주일 때 포인트잔액 업데이트 -->
+	<update id="updatePointBalanceAd" parameterType="Map">
+		<![CDATA[
+			update advertiser set point_balance = IFNULL(point_balance,0) + #{point_amount} where advertiser_num = #{user_num}
+		]]>
+	</update>
+	
+	<!--로그인 시 포인트기록 조회  -->
+	<select id="selectPointRecordList" parameterType="Map" resultType="pointRecord">
+		select * from point_record 
+		<choose>
+			<when test= 'type.equals("influencer")'>
+				<![CDATA[
+					where influencer_num = #{user_num}
+				]]>
+			</when>
+			<otherwise>
+				<![CDATA[
+					where advertiser_num = #{user_num}
+				]]>
+			</otherwise>
+		</choose>
+		order by update_at desc limit #{row},5;
+	</select>
+	
+	<!-- 포인트기록cnt  -->
+	<select id="selectPointRecordCount" parameterType="Map" resultType="Integer">
+		select count(*) from point_record
+		<choose>
+			<when test= 'type.equals("influencer")'>
+				where influencer_num = #{user_num}
+			</when>
+			<otherwise>
+				where advertiser_num = #{user_num}
+			</otherwise>
+		</choose>
+	</select>
+	
+	
+	
 </mapper>

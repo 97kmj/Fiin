@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import service.AdvertiserService;
+import service.AdvertiserServiceImpl;
 import service.InfluencerService;
 import service.InfluencerServiceImpl;
 
@@ -33,9 +35,17 @@ public class EmailCheck extends HttpServlet {
 		String userEmail = request.getParameter("userEmail");
 		
 		try {
-			InfluencerService service = new InfluencerServiceImpl();
-			boolean doubleEmail = service.checkDoubleEmail(userEmail);
-			response.getWriter().write(String.valueOf(doubleEmail));
+			InfluencerService iService = new InfluencerServiceImpl();
+			AdvertiserService aService = new AdvertiserServiceImpl();
+			
+			boolean iDoubleEmail = iService.checkDoubleEmail(userEmail);
+			boolean aDoubleEmail = aService.checkDoubleEmail(userEmail);
+			
+			if (!iDoubleEmail && !aDoubleEmail) {
+				response.getWriter().write(String.valueOf(false));
+			} else {
+				response.getWriter().write(String.valueOf(true));
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
