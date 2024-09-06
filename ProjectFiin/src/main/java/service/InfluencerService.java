@@ -16,8 +16,6 @@ public interface InfluencerService {
   Influencer login(String userEmail, String password) throws Exception;
 	
   boolean checkDoubleEmail(String userEmail) throws Exception;
-
-  List<Influencer> influencerList(PageInfo pageInfo);
 	
   Influencer influencerRegister(Influencer influencer) throws Exception;
 

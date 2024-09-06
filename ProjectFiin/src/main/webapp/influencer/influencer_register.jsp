@@ -1,11 +1,12 @@
-<%--<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>--%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
     <title>Main Page</title>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/influencer_register.css?ver=1">
+    <link rel="stylesheet"
+          href="${pageContext.request.contextPath}/css/influencer_register.css?ver=1">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/reset.css">
 
 </head>
@@ -13,13 +14,12 @@
 
 <%@ include file="../include/header.jsp" %>
 
-
 <div class="bodyBackground">
-
     <div id="main">
-
-
         <form action="influencerRegister" method="post" enctype="multipart/form-data">
+
+
+            <%--        <form action="influencerRegister" method="post" enctype="multipart/form-data">--%>
 
             <div class="main_first_line">
                 <div class="first_line">
@@ -152,7 +152,7 @@
                                  class="radio-image">
 
                         </label>
-                        <input type="radio" id="beauty" name="category" value="beauty">
+                        <input type="radio" id="beauty" name="category" value="1">
                     </div>
 
                     <div class="category">
@@ -162,7 +162,7 @@
                                  class="radio-image">
 
                         </label>
-                        <input type="radio" id="fashion" name="category" value="fashion">
+                        <input type="radio" id="fashion" name="category" value="2">
                     </div>
 
                     <div class="category">
@@ -172,7 +172,7 @@
                                  class="radio-image">
 
                         </label>
-                        <input type="radio" id="sport" name="category" value="sport">
+                        <input type="radio" id="sport" name="category" value="3">
                     </div>
                 </div>
 
@@ -184,7 +184,7 @@
                                  class="radio-image">
 
                         </label>
-                        <input type="radio" id="travel" name="category" value="travel">
+                        <input type="radio" id="travel" name="category" value="4">
                     </div>
 
                     <div class="category">
@@ -194,7 +194,7 @@
                                  class="radio-image">
 
                         </label>
-                        <input type="radio" id="food" name="category" value="food">
+                        <input type="radio" id="food" name="category" value="5">
                     </div>
 
                     <div class="category">
@@ -204,7 +204,7 @@
                                  class="radio-image">
 
                         </label>
-                        <input type="radio" id="life" name="category" value="life">
+                        <input type="radio" id="life" name="category" value="6">
                     </div>
                 </div>
             </div>
@@ -225,7 +225,7 @@
             <div class="bottom-button">
 
                 <button type="submit" value="등록">등록하기</button>
-                <button type="button" value="뒤로가기">뒤로가기</button>
+                <button type="button" value="뒤로가기">뒤로 가기</button>
 
             </div>
 

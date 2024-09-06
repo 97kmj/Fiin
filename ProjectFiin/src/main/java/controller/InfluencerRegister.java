@@ -14,6 +14,7 @@ import service.InfluencerServiceImpl;
 
 @WebServlet("/influencerRegister")
 public class InfluencerRegister extends HttpServlet {
+
   private static final long serialVersionUID = 1L;
 
   public InfluencerRegister() {
@@ -23,8 +24,8 @@ public class InfluencerRegister extends HttpServlet {
   @Override
   protected void doGet(HttpServletRequest req, HttpServletResponse resp)
       throws ServletException, IOException {
-    req.getRequestDispatcher("/influencer/influencerRegister.jsp").forward(req, resp);
-//    System.out.println("InfluencerRegister doGet");
+
+    req.getRequestDispatcher("/influencer/influencer_register.jsp").forward(req, resp);
   }
 
   //인플루언서 등록
@@ -38,19 +39,65 @@ public class InfluencerRegister extends HttpServlet {
     String profileImage = request.getParameter("profileImage");
 
     String youtubeName = request.getParameter("youtubeName");
-    Integer youtubeFollower = Integer.parseInt(request.getParameter("youtubeFollower"));
+//    Integer youtubeFollower = Integer.parseInt(request.getParameter("youtubeFollower"));
+
+    String youtubeFollowerStr = request.getParameter("youtubeFollower");
+
+    int youtubeFollower = 0;
+    try {
+      if (!youtubeFollowerStr.isEmpty()) {
+        youtubeFollower = Integer.parseInt((youtubeFollowerStr));
+      }
+    } catch (Exception e) {
+      e.printStackTrace();
+      System.out.println("youtubeFollower는 빈값이 되면 안됩니다.");
+    }
+
     String youtubeUrl = request.getParameter("youtubeUrl");
 
     String instagramName = request.getParameter("instagramName");
-    Integer instagramFollower = Integer.parseInt(request.getParameter("instagramFollower"));
+    String instagramFollowerStr = request.getParameter("instagramFollower");
+    int instagramFollower = 0;
+    try {
+      if (!youtubeFollowerStr.isEmpty()) {
+        instagramFollower = Integer.parseInt((instagramFollowerStr));
+      }
+    } catch (Exception e) {
+      e.printStackTrace();
+      System.out.println("instagramFollower는 빈값이 되면 안됩니다.");
+    }
     String instagramUrl = request.getParameter("instagramUrl");
 
     String blogName = request.getParameter("blogName");
-    Integer blogFollower = Integer.parseInt(request.getParameter("blogFollower"));
+//    Integer blogFollower = Integer.parseInt(request.getParameter("blogFollower"));
+
+    String blogFollowerStr = request.getParameter("blogFollower");
+    int blogFollower = 0;
+    try {
+      if (!blogFollowerStr.isEmpty()) {
+        blogFollower = Integer.parseInt((blogFollowerStr));
+      }
+    } catch (Exception e) {
+      e.printStackTrace();
+      System.out.println("blogFollower는 빈값이 되면 안됩니다.");
+    }
+
+
     String blogUrl = request.getParameter("blogUrl");
 
     //파라미터로 가져오는 category는 array형식(복수형)
-    Integer categoryId = Integer.parseInt(request.getParameter("category"));
+//    Integer categoryId = Integer.parseInt(request.getParameter("category"));
+
+    String categoryIdStr = request.getParameter("category");
+    if(categoryIdStr != null && !categoryIdStr.isEmpty()) {
+      System.out.println("CategoryId = " + categoryIdStr);
+    } else {
+      System.out.println("No Category selected");
+    }
+
+    //여기 에러나옴 -> 주말에 이어서 해결하기
+    Integer categoryId = Integer.parseInt(categoryIdStr);
+
 
     String introduction = request.getParameter("introduction");
 
@@ -66,7 +113,8 @@ public class InfluencerRegister extends HttpServlet {
 
       //3. 처리한 데이터 View 지정하여 넘겨주기
       request.setAttribute("influencer", inff);
-      request.getRequestDispatcher("/influencer/influencerRegister.jsp").forward(request, response);
+      request.getRequestDispatcher("/influencer/influencer_register.jsp")
+          .forward(request, response);
       ////////////////////////
     } catch (Exception e) {
       e.printStackTrace();
@@ -74,4 +122,5 @@ public class InfluencerRegister extends HttpServlet {
       request.getRequestDispatcher("err.jsp").forward(request, response);
     }
   }
+
 }
