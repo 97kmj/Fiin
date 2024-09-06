@@ -12,15 +12,15 @@
 </head>
 <body>
     <header>
-    	<a href="/fiin/main.jsp">
+    	<a href="/fiin/main">
     		<img src="${pageContext.request.contextPath}/image/logo.svg" alt="logo이미지" />
     	</a>
         <ul class="menu_wrap">
           <li>
-            <a href="campaignList">캠페인</a>
+            <a href="/fiin/campaignList">캠페인</a>
           </li>
           <li>
-            <a href="influencerList">인플루언서</a>
+            <a href="/fiin/influencerList">인플루언서</a>
           </li>
           <li>
           	<c:choose>
@@ -28,10 +28,10 @@
           			<a href="main">등록하기</a>
           		</c:when>
           		<c:when test="${advertiser eq null}">
-          			<a href="influencerRegister">등록하기</a>
+          			<a href="/fiin/influencerRegister">등록하기</a>
           		</c:when>
           		<c:otherwise>
-		            <a href="campaignRegister">등록하기</a>  			
+		            <a href="/fiin/campaignRegister">등록하기</a>  			
           		</c:otherwise>
           	</c:choose>
           </li>
@@ -47,7 +47,7 @@
 			</c:when>
 			<c:when test="${advertiser eq null}">
 				<div class="navbar_login">
-					<div class="login_info" OnClick="location.href ='/fiin/mypage/mypage_campaign_advertiser.jsp'">
+					<div class="login_info" OnClick="location.href ='/fiin/mypage/mypage_campaign_influencer.jsp'">
 						<div class="login_img">
 		            		<img src="https://img.icons8.com/?size=100&id=43942&format=png&color=ffffff">
 		            	</div>
@@ -62,7 +62,7 @@
 			</c:when>
 			<c:otherwise>
 				<div class="navbar_login">
-					<div class="login_info" OnClick="location.href ='/fiin/mypage/mypage_campaign_influencer.jsp'">
+					<div class="login_info" OnClick="location.href ='/fiin/mypage/mypage_campaign_advertiser.jsp'">
 						<div class="login_img">
 	            			<img src="https://img.icons8.com/?size=100&id=43942&format=png&color=ffffff">
 	            		</div>

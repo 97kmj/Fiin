@@ -67,7 +67,7 @@
         </form>
         <div class="signup_btn">
           <a href="joinInfluencer">인플루언서로 가입하기</a>
-          <a href="joinAdvertiser.jsp">광고주로 가입하기</a>
+          <a href="joinAdvertiser">광고주로 가입하기</a>
         </div>
       </div>
 </body>
