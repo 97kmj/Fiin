@@ -58,13 +58,5 @@
 			</if>
 		</where>
 	</select>
-
-
-	<select id="selectInfluencerCount" resultType="Integer">
-		<![CDATA[
-			select count(*) from influencer
-		]]>
-	</select>
-
 </mapper>
 
