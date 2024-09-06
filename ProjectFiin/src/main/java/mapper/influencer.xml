@@ -5,17 +5,18 @@
 
 <!--// 상민 - influencerRegister (인플루언서 등록)-->
 <mapper namespace="mapper.influencer">
+
 	<insert id="insertInfluencer" parameterType="influencer">
+
 	<![CDATA[
 		insert into influencer (user_email, password, name, nickname, mobile_number, address) 
 			values (#{userEmail}, #{password}, #{name}, #{nickname}, #{mobileNumber}, #{address})
 	]]>
 	</insert>
-	
 
 	<select id="selectInfluencerList" parameterType="Integer" resultType="influencer">
 		<![CDATA[
-			select * from influencer order by registDate desc limit #{row}, 8
+			select * from influencer order by regist_date desc limit #{row}, 8
 		]]>
 	</select>
 	
@@ -42,6 +43,28 @@
 		</set>
 		where user_email = #{user_email}
 	</update>
+	
+	<select id="selectInfluencerCount" resultType="Integer">
+		<![CDATA[
+			select count(*) from influencer
+		]]>
+	</select>
+	
+	<select id="selectCategory" parameterType="Integer" resultType="category">
+		select * from category
+		<where>
+			<if test="categoryId != null">
+				and categoryId = #{categoryId}
+			</if>
+		</where>
+	</select>
+
+
+	<select id="selectInfluencerCount" resultType="Integer">
+		<![CDATA[
+			select count(*) from influencer
+		]]>
+	</select>
 
 </mapper>
 

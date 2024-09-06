@@ -1,4 +1,4 @@
-package dao;
+    package dao;
 
 
 import java.util.HashMap;
@@ -13,10 +13,12 @@ import util.MybatisSqlSessionFactory;
 
 public class CampaignDaoImpl implements CampaignDao {
 
+
 	private SqlSession sqlSession = MybatisSqlSessionFactory.getSqlSessionFactory().openSession();
 
 	@Override
 	public void registerCampaign(Campaign cam) throws Exception {
+
 		sqlSession.insert("mapper.campaign.registerCampaign", cam);
 		sqlSession.commit();
 	}
@@ -38,5 +40,7 @@ public class CampaignDaoImpl implements CampaignDao {
 		map.put("channel", channel);
 		map.put("row", row-1);
 		return sqlSession.selectList("mapper.campaign.selectAllCampaign", map);
+
 	}
+
 }

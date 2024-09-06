@@ -20,23 +20,25 @@ import util.PageInfo;
 @WebServlet("/influencerList")
 public class InfluencerList extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public InfluencerList() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public InfluencerList() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
 		String paramPage = request.getParameter("page");
 		Integer page = 1;
-		if(paramPage!=null) {
+		if (paramPage != null) {
 			page = Integer.parseInt(paramPage);
 		}
 		try {
@@ -47,7 +49,7 @@ public class InfluencerList extends HttpServlet {
 			request.setAttribute("influencerList", influencerList);
 			request.setAttribute("pageInfo", pageInfo);
 			request.getRequestDispatcher("/influencer/influencerList.jsp").forward(request, response);
-		} catch(Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}

@@ -50,7 +50,7 @@
 			</div>
 			<div class="influencerWrap">
 				<div class="influencer_pick" id="pickNum1"
-					onclick="location.href='influencer_detail.jsp'">
+					onclick="location.href='influencerDetail.jsp'">
 					<img src="${pageContext.request.contextPath}/image/influencer_img01.png" class="influencer_img">
 					<div>뷰티 | 패션</div>
 					<div id="channelName">채널명</div>
@@ -58,7 +58,7 @@
 					<div>구독자 수 9,000명</div>
 				</div>
 				<div class="influencer_pick" id="pickNum2"
-					onclick="location.href='influencer_detail.jsp'">
+					onclick="location.href='influencerDetail.jsp'">
 					<img src="${pageContext.request.contextPath}/image/influencer_img02.png" class="influencer_img">
 					<div>뷰티 | 패션</div>
 					<div id="channelName">채널명</div>
@@ -66,7 +66,7 @@
 					<div>구독자 수 9,000명</div>
 				</div>
 				<div class="influencer_pick" id="pickNum3"
-					onclick="location.href='influencer_detail.jsp'">
+					onclick="location.href='influencerDetail.jsp'">
 					<img src="${pageContext.request.contextPath}/image/influencer_img03.png" class="influencer_img">
 					<div>뷰티 | 패션</div>
 					<div id="channelName">채널명</div>
@@ -74,7 +74,7 @@
 					<div>구독자 수 9,000명</div>
 				</div>
 				<div class="influencer_pick" id="pickNum4"
-					onclick="location.href='influencer_detail.jsp'">
+					onclick="location.href='influencerDetail.jsp'">
 					<img src="${pageContext.request.contextPath}/image/influencer_img04.png" class="influencer_img">
 					<div>뷰티 | 패션</div>
 					<div id="channelName">채널명</div>
@@ -82,7 +82,7 @@
 					<div>구독자 수 9,000명</div>
 				</div>
 				<div class="influencer_pick" id="pickNum5"
-					onclick="location.href='influencer_detail.jsp'">
+					onclick="location.href='influencerDetail.jsp'">
 					<img src="${pageContext.request.contextPath}image/influencer_img05.png" class="influencer_img">
 					<div>뷰티 | 패션</div>
 					<div id="channelName">채널명</div>
@@ -90,7 +90,7 @@
 					<div>구독자 수 9,000명</div>
 				</div>
 				<div class="influencer_pick" id="pickNum6"
-					onclick="location.href='influencer_detail.jsp'">
+					onclick="location.href='influencerDetail.jsp'">
 					<img src="${pageContext.request.contextPath}/image/influencer_img06.png" class="influencer_img">
 					<div>뷰티 | 패션</div>
 					<div id="channelName">채널명</div>
@@ -98,7 +98,7 @@
 					<div>구독자 수 9,000명</div>
 				</div>
 				<div class="influencer_pick" id="pickNum7"
-					onclick="location.href='influencer_detail.jsp'">
+					onclick="location.href='influencerDetail.jsp'">
 					<img src="${pageContext.request.contextPath}/image/influencer_img01.png" class="influencer_img">
 					<div>뷰티 | 패션</div>
 					<div id="channelName">채널명</div>
@@ -106,7 +106,7 @@
 					<div>구독자 수 9,000명</div>
 				</div>
 				<div class="influencer_pick" id="pickNum8"
-					onclick="location.href='influencer_detail.jsp'">
+					onclick="location.href='influencerDetail.jsp'">
 					<img src="${pageContext.request.contextPath}/image/influencer_img01.png" class="influencer_img">
 					<div>뷰티 | 패션</div>
 					<div id="channelName">채널명</div>

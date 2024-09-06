@@ -1,6 +1,14 @@
 package service;
 
 
+
+import javax.servlet.ServletResponse;
+import javax.servlet.http.HttpServletRequest;
+
+import dao.BookmarkCampaignDao;
+import dao.BookmarkCampaignDaoImpl;
+
+
 import dao.InfluencerDao;
 import dao.InfluencerDaoImpl;
 import dto.Influencer;
@@ -10,13 +18,13 @@ import util.PageInfo;
 public class InfluencerServiceImpl implements InfluencerService {
 
 	private InfluencerDao influencerDao;
-
-
+	private BookmarkCampaignDao bookmarkCampaignDao;
+	
 	public InfluencerServiceImpl() {
 		influencerDao = new InfluencerDaoImpl();
+		this.bookmarkCampaignDao = new BookmarkCampaignDaoImpl();
 	}
-
-	@Override
+  @Override
 	public void join(Influencer influencer) throws Exception {
 		Influencer sinfluencer = influencerDao.selectInfluencer(influencer.getInfluencerNum());
 		if (sinfluencer != null)
@@ -31,7 +39,6 @@ public class InfluencerServiceImpl implements InfluencerService {
 		if (influencer == null) throw new Exception("로그인 아이디 오류");
 		if (!password.equals(influencer.getPassword())) throw new Exception("비밀번호 오류");
 		return influencer;
-
 	}
 
 	@Override
@@ -43,18 +50,53 @@ public class InfluencerServiceImpl implements InfluencerService {
 	}
 
 	@Override
-	public List<Influencer> influencerList(PageInfo pageInfo) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Influencer> influencerList(PageInfo pageInfo) throws Exception {
+		Integer influencerCnt = influencerDao.selectInfluencerCount();
+		
+		Integer allPage = (int)Math.ceil((double)influencerCnt/8);
+		Integer startPage = (pageInfo.getCurPage()-1/10*10+1);
+		Integer endPage = startPage+10-1;
+		if(endPage>allPage) endPage = allPage;
+		
+		pageInfo.setAllPage(allPage);
+		pageInfo.setStartPage(startPage);
+		pageInfo.setEndPage(endPage);
+		
+		Integer row = (pageInfo.getCurPage()-1)*10+1;
+		return influencerDao.selectInfluencerList(row);
 	}
 
+	@Override
+	public Influencer influencerDetail(Integer influencerNum) throws Exception {
+		Influencer influencer = influencerDao.selectInfluencer(influencerNum);
+		if(influencer == null) throw new Exception("인플루언서를 찾지 못했습니다.");
+		return influencer;
+	}
+
+	@Override
+	public Integer checkBookmarkCampaign(Integer InfluencerNum, Integer CampaignNum) throws Exception {
+		return bookmarkCampaignDao.selectBookmarkCampaign(InfluencerNum, CampaignNum);
+	}
+
+	@Override
+	public boolean toggleBookmarkCampaign(Integer InfluencerNum, Integer CampaignNum) throws Exception {
+		Integer cbookmarkNum = bookmarkCampaignDao.selectBookmarkCampaign(InfluencerNum, CampaignNum);
+		if(cbookmarkNum==null) {
+			bookmarkCampaignDao.insertBookmarkCampaign(InfluencerNum, CampaignNum);
+			return true;
+		} else {
+			bookmarkCampaignDao.deleterBookmarkCampaign(InfluencerNum, CampaignNum);
+			return false;
+		}
+	}
+
+  
 	@Override
 	public Influencer influencerRegister(Influencer influencer) throws Exception {
 		// Dto에서 받은 정보들을 dao에 전달
 		influencerDao.registerInfluencer(influencer);
 		return influencer;
 	}
-
 }
 
 
