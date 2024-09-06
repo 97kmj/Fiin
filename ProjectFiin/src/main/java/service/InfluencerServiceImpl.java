@@ -1,10 +1,5 @@
 package service;
 
-
-
-import javax.servlet.ServletResponse;
-import javax.servlet.http.HttpServletRequest;
-
 import dao.BookmarkCampaignDao;
 import dao.BookmarkCampaignDaoImpl;
 
