@@ -13,7 +13,14 @@
 <body>
 <%@ include file="../include/header.jsp" %>
 <div id="container">
-    <%@ include file="../include/sidebar_advertiser.jsp" %>
+	<c:choose>
+		<c:when test="${influencer eq null }">
+		    <%@ include file="../include/sidebar_advertiser.jsp" %>
+		</c:when>
+		<c:otherwise>
+		    <%@ include file="../include/sidebar_influencer.jsp" %>
+		</c:otherwise>
+	</c:choose>
     <div id="main">
         <h2 style="text-align:left">포인트 관리</h2>
         <h3 style="margin: 20px 0;">보유 포인트&nbsp;&nbsp;&nbsp;
@@ -32,24 +39,13 @@
         </c:forEach>
            
         </table>
-		    <!-- <div class="page">
-		        <ul class="pagination">
-		            <li> <a href="#" class="arrow left"><img src="https://img.icons8.com/?size=100&id=x3s0mSWBMJTc&format=png&color=939393" style="weight:20px;height:20px"></a></li>
-		            <li> <a href="#" class="active num">1</a></li>
-		            <li> <a href="#" class="num">2</a></li>
-		            <li> <a href="#" class="num">3</a></li>
-		            <li> <a href="#" class="num">4</a></li>
-		            <li> <a href="#" class="arrow right"><img src="https://img.icons8.com/?size=100&id=IGZk6vp3nxFm&format=png&color=939393" style="weight:20px;height:20px"></a></li>
-	        	</ul>
-	    	</div> -->
-	    	<div class="page">
+			<div class="page">
 	    		<ul class='pagination'>
 					<c:choose>
 						<c:when test="${pageInfo.curPage>1 }">
 							<li><a href="pointrecord?page=${pageInfo.curPage-1 }" class="arrow left"><img src="https://img.icons8.com/?size=100&id=x3s0mSWBMJTc&format=png&color=939393" style="weight:20px;height:20px"></a></li>
 						</c:when>
 						<c:otherwise>
-							<!-- <li><a><img src="https://img.icons8.com/?size=100&id=x3s0mSWBMJTc&format=png&color=939393" style="weight:20px;height:20px"></a></li> -->
 						</c:otherwise>
 					</c:choose>
 					<c:forEach begin="${pageInfo.startPage }" end="${pageInfo.endPage }" var="i">
@@ -66,8 +62,7 @@
 						<c:when test="${pageInfo.curPage<pageInfo.allPage }">
 							<li><a href="pointrecord?page=${pageInfo.curPage+1 }" class="arrow right"><img src="https://img.icons8.com/?size=100&id=IGZk6vp3nxFm&format=png&color=939393" style="weight:20px;height:20px"></a></li>
 						</c:when>
-						<c:otherwise>
-							<!-- <li><a><img src="https://img.icons8.com/?size=100&id=IGZk6vp3nxFm&format=png&color=939393" style="weight:20px;height:20px"></a></li> -->
+						<c:otherwise>							
 						</c:otherwise>
 					</c:choose>
 				</ul>
