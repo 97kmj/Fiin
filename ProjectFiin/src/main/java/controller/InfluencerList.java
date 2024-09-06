@@ -48,7 +48,7 @@ public class InfluencerList extends HttpServlet {
 			List<Influencer> influencerList = service.influencerList(pageInfo);
 			request.setAttribute("influencerList", influencerList);
 			request.setAttribute("pageInfo", pageInfo);
-			request.getRequestDispatcher("/influencer/influencerList.jsp").forward(request, response);
+			request.getRequestDispatcher("/influencer/influencer_list.jsp").forward(request, response);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
