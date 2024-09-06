@@ -28,4 +28,9 @@ public class AdvertiserDaoImpl implements AdvertiserDao {
 		sqlsession.commit();
 	}
 
+	@Override
+	public Advertiser selectAdvertiserByEmail(String userEmail) throws Exception {
+		return sqlsession.selectOne("mapper.advertiser.selectAdvertiserByEmail", userEmail);
+	}
+
 }

@@ -10,13 +10,17 @@ import util.PageInfo;
 
 public interface InfluencerService {
 
-	Influencer register(Influencer influencer) throws Exception;
 
 	void join(Influencer influencer) throws Exception;
+	
+  Influencer login(String userEmail, String password) throws Exception;
+	
+  boolean checkDoubleEmail(String userEmail) throws Exception;
 
-	void login(Integer influencerNum, String password) throws Exception;
+  List<Influencer> influencerList(PageInfo pageInfo);
+	
+  Influencer influencerRegister(Influencer influencer) throws Exception;
 
-	boolean checkDoubleEmail(String userEmail) throws Exception;
 
 	List<Influencer> influencerList(PageInfo pageInfo) throws Exception;
 		
@@ -26,5 +30,4 @@ public interface InfluencerService {
 
 	boolean toggleBookmarkCampaign(Integer InfluencerNum, Integer CampaignNum) throws Exception;
 
-	void registerInfluencer(HttpServletRequest request, ServletResponse response) throws Exception;
 }
