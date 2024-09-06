@@ -135,7 +135,7 @@
                 </li>
               </ul>
             </div>
-            <a href="/fiin/influencer/influencer_list.jsp" class="moreview_btn">인플루언서 더보기</a>
+            <a href="/fiin/influencer/influencerList.jsp" class="moreview_btn">인플루언서 더보기</a>
     </div>
     <!-- campaign -->
     <div class="campaign">

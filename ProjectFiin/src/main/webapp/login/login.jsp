@@ -37,31 +37,6 @@
 			});
 			$(".title_wrap h2").text("광고주 로그인");
 		});
-		
-		/* $("#login_btn").click(function(e) {
-			e.preventDefault();
-			$.ajax({
-				url: 'login',
-				type: 'post',
-				async: true,
-				dataType: 'text',
-				data: { userEmail: $("#userEmail").val(), 
-						password: $("#password").val(),
-						type: $("input[name='type']:checked").val()
-					  },
-				success: function(result) {
-					console.log(result)
-					if (result == 'true') {
-						alert("로그인에 성공하였습니다.");
-					} else {
-						alert("로그인에 실패하였습니다. 아이디나 비밀번호를 확인해주세요.");
-					}
-				},
-				error: function(err) {
-					console.log(err);
-				}
-			})
-		}) */
 	});
 </script>
 </head>
