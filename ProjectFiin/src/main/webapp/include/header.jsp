@@ -9,27 +9,31 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/reset.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/header.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<script>
-	window.onload = function() {
-		let name = document.getElementById("userName").innerText;
-		alert(name+"님 환영합니다!");
-	}
-</script>
 </head>
 <body>
     <header>
-    	<a href="/fiin/main.jsp">
+    	<a href="/fiin/main">
     		<img src="${pageContext.request.contextPath}/image/logo.svg" alt="logo이미지" />
     	</a>
         <ul class="menu_wrap">
           <li>
-            <a href="campaign.jsp">캠페인</a>
+            <a href="/fiin/campaignList">캠페인</a>
           </li>
           <li>
-            <a href="influencer.jsp">인플루언서</a>
+            <a href="/fiin/influencerList">인플루언서</a>
           </li>
           <li>
-            <a href="register_campaign.jsp">등록하기</a>
+          	<c:choose>
+          		<c:when test="${influencer eq null && advertiser eq null}">
+          			<a href="main">등록하기</a>
+          		</c:when>
+          		<c:when test="${advertiser eq null}">
+          			<a href="/fiin/influencerRegister">등록하기</a>
+          		</c:when>
+          		<c:otherwise>
+		            <a href="/fiin/campaignRegister">등록하기</a>  			
+          		</c:otherwise>
+          	</c:choose>
           </li>
           <li>
             <a href="payment">결제하기</a>
@@ -58,7 +62,7 @@
 			</c:when>
 			<c:otherwise>
 				<div class="navbar_login">
-					<div class="login_info" OnClick="location.href ='/fiin/mypage/mypage_campaign_influencer.jsp'">
+					<div class="login_info" OnClick="location.href ='/fiin/mypage/mypage_campaign_advertiser.jsp'">
 						<div class="login_img">
 	            			<img src="https://img.icons8.com/?size=100&id=43942&format=png&color=ffffff">
 	            		</div>

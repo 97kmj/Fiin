@@ -5,13 +5,11 @@
 
 <!--// 상민 - influencerRegister (인플루언서 등록)-->
 <mapper namespace="mapper.influencer">
-
 	<insert id="insertInfluencer" parameterType="influencer">
-
-	<![CDATA[
-		insert into influencer (user_email, password, name, nickname, mobile_number, address) 
-			values (#{userEmail}, #{password}, #{name}, #{nickname}, #{mobileNumber}, #{address})
-	]]>
+		<![CDATA[
+			insert into influencer (user_email, password, name, nickname, mobile_number, address) 
+				values (#{userEmail}, #{password}, #{name}, #{nickname}, #{mobileNumber}, #{address})
+		]]>
 	</insert>
 
 	<select id="selectInfluencerList" parameterType="Integer" resultType="influencer">
@@ -22,13 +20,13 @@
 	
 	<select id="selectInfluencer" parameterType="Integer" resultType="influencer">
 		<![CDATA[ 
-			select * from influencer where influencer_num = #{influencer_num} 
+			select * from influencer where influencer_num = #{influencerNum} 
 		]]>
 	</select>
 	
 	<select id="selectInfluencerByEmail" parameterType="String" resultType="influencer">
 		<![CDATA[ 
-			select * from influencer where user_email = #{user_email} 
+			select * from influencer where user_email = #{userEmail} 
 		]]>
 	</select>
 	
@@ -41,7 +39,7 @@
 			<if test="mobile_number != null">mobile_number = #{mobile_number},</if>
 			<if test="address != null">address = #{address}</if>
 		</set>
-		where user_email = #{user_email}
+		where user_email = #{userEmail}
 	</update>
 	
 	<select id="selectInfluencerCount" resultType="Integer">
@@ -58,13 +56,11 @@
 			</if>
 		</where>
 	</select>
-
-
-	<select id="selectInfluencerCount" resultType="Integer">
+	
+	<select id="selectInfluencerListForMain" resultType="influencer">
 		<![CDATA[
-			select count(*) from influencer
+			select * from influencer order by regist_date desc limit 0, 8
 		]]>
 	</select>
-
 </mapper>
 

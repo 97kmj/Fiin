@@ -17,4 +17,5 @@ public interface InfluencerService {
 	Influencer influencerDetail(Integer influencerNum) throws Exception;
 	Integer checkBookmarkCampaign(Integer InfluencerNum, Integer CampaignNum) throws Exception;
 	boolean toggleBookmarkCampaign(Integer InfluencerNum, Integer CampaignNum) throws Exception;
+	List<Influencer> influencerListForMain() throws Exception;
 }

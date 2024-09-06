@@ -22,11 +22,11 @@
         <div class="sideitem">
             <h3 style="color:#4948e8;font-weight:bold;padding-left:20px;">마이 파인</h3>
             <ul>
-            <li><a href="mypage/influencer/campaign"><img class="icons" src="https://img.icons8.com/?size=100&id=6YVjhQYEKHAS&format=png&color=000000">캠페인 관리</a></li>
-            <li><a href="mypage/influencer/info"><img class="icons" src="https://img.icons8.com/?size=100&id=zxB19VPoVLjK&format=png&color=000000">프로필 관리</a></li>
-            <li><a href="mypage/pointrecord"><img class="icons" src="https://img.icons8.com/?size=100&id=xDnuaxgjAmJP&format=png&color=000000">포인트 관리</a></li>
-            <li><a href="mypage/influencer/SNS"><img class="icons" src="https://img.icons8.com/?size=100&id=DpOQ6G5p47f0&format=png&color=000000">나의 SNS관리</a></li>
-            <li><a href="mypage/influencer/bookmark"><img class="icons" src="https://img.icons8.com/?size=100&id=RvKp6z6EcIsB&format=png&color=000000">북마크 관리</a></li>
+            <li><a href="/fiin/mypage/influencer/campaign"><img class="icons" src="https://img.icons8.com/?size=100&id=6YVjhQYEKHAS&format=png&color=000000">캠페인 관리</a></li>
+            <li><a href="/fiin/mypage/influencer/info"><img class="icons" src="https://img.icons8.com/?size=100&id=zxB19VPoVLjK&format=png&color=000000">프로필 관리</a></li>
+            <li><a href="/fiin/mypage/pointrecord"><img class="icons" src="https://img.icons8.com/?size=100&id=xDnuaxgjAmJP&format=png&color=000000">포인트 관리</a></li>
+            <li><a href="/fiin/mypage/influencer/SNS"><img class="icons" src="https://img.icons8.com/?size=100&id=DpOQ6G5p47f0&format=png&color=000000">나의 SNS관리</a></li>
+            <li><a href="/fiin/mypage/influencer/bookmark"><img class="icons" src="https://img.icons8.com/?size=100&id=RvKp6z6EcIsB&format=png&color=000000">북마크 관리</a></li>
             </ul>
         </div>
     </div>

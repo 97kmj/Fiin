@@ -14,8 +14,11 @@ import util.MybatisSqlSessionFactory;
 public class CampaignDaoImpl implements CampaignDao {
 
 
-	private SqlSession sqlSession = MybatisSqlSessionFactory.getSqlSessionFactory().openSession();
-
+	private SqlSession sqlSession;
+	public CampaignDaoImpl() {
+		sqlSession = MybatisSqlSessionFactory.getSqlSessionFactory().openSession();
+	}
+	
 	@Override
 	public void registerCampaign(Campaign cam) throws Exception {
 
@@ -41,6 +44,11 @@ public class CampaignDaoImpl implements CampaignDao {
 		map.put("row", row-1);
 		return sqlSession.selectList("mapper.campaign.selectAllCampaign", map);
 
+	}
+
+	@Override
+	public List<Campaign> selectCampaignListForMain() throws Exception {
+		return sqlSession.selectList("mapper.campaign.selectCampaignListForMain");
 	}
 
 }
