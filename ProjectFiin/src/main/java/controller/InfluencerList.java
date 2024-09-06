@@ -46,13 +46,14 @@ public class InfluencerList extends HttpServlet {
 			PageInfo pageInfo = new PageInfo();
 			pageInfo.setCurPage(page);
 			List<Influencer> influencerList = service.influencerList(pageInfo);
+			System.out.println(influencerList.toString());
 			request.setAttribute("influencerList", influencerList);
 			request.setAttribute("pageInfo", pageInfo);
-			request.getRequestDispatcher("/influencer/influencer_list.jsp").forward(request, response);
+			request.getRequestDispatcher("influencer/influencer_list.jsp").forward(request, response);
 		} catch (Exception e) {
 			e.printStackTrace();
-			request.setAttribute("err", "인플루언서 목록 오류");
-			request.getRequestDispatcher("influencer_list.jsp").forward(request, response);
+			request.setAttribute("err", e.getMessage());
+			request.getRequestDispatcher("err.jsp").forward(request, response);
 		}
 	}
 
