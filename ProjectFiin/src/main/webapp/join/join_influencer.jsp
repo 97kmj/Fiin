@@ -64,7 +64,10 @@
 			})
 		})
 		
-		var reg = /^(?=.*[a-zA-Z])(?=.*[0-9]).{8,25}$/;
+		var pwReg = /^(?=.*[a-zA-Z])(?=.*[0-9]).{8,25}$/;
+		var emailReg = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;
+		var nameReg = /^[가-힣]{2,4}$/;
+		var pnReg = /^(01[016789]{1})-?[0-9]{3,4}-?[0-9]{4}$/;
 		
 		$(".signup_btn").click(function(e) {
 			e.preventDefault();
@@ -72,11 +75,15 @@
 				alert("이메일을 입력해주세요.");
 				$("#userEmail").focus();
 				return false;
+			} else if (!emailReg.test($("#userEmail").val())) {
+				alert("이메일 형식이 올바르지 않습니다.");
+				$("#userEmail").focus();
+				return false;
 			} else if ($("#password").val() === "") {
 				alert("비밀번호를 입력해주세요.");
 				$("#password").focus();
 				return false;
-			} else if (!reg.test($("#password").val())) {
+			} else if (!pwReg.test($("#password").val())) {
 				alert("비밀번호는 영문, 숫자포함 최소 8자리 이상 입력해주세요.");
 				$("password").focus();
 				return false;
@@ -88,6 +95,10 @@
 				alert("이름을 입력해주세요.");
 				$("#name").focus();
 				return false;
+			} else if (!nameReg.test($("#name").val())) {
+				alert("이름을 확인해주세요.(한글 2~4자 이내)");
+				$("#name").focus();
+				return false;
 			} else if ($("#nickname").val() === "") {
 				alert("닉네임을 입력해주세요.");
 				$("#nickname").focus();
@@ -96,11 +107,19 @@
 				alert("휴대폰번호를 입력해주세요.");
 				$("#mobileNumber").focus();
 				return false;
+			} else if (!pnReg.test($("#mobileNumber").val())) {
+				alert("휴대폰번호를 확인해주세요.");
+				$("#mobileNumber").focus();
+				return false;
 			} else if ($("#address").val() === "") {
 				alert("주소를 검색해주세요.");
 				$("#address").focus();
 				return false;
+			} else if (!$("#terms_necessary").is(":checked")) {
+				alert("필수 이용약관에 동의해주세요.");
+				return false;
 			}
+				
 			$(".signup_form").submit();
 		})
 	})
