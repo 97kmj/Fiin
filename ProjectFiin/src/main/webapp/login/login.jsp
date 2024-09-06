@@ -59,7 +59,7 @@
           <input type="text" class="signin_input" placeholder="이메일" name="userEmail" id="userEmail" />
           <input type="password" class="signin_input" placeholder="비밀번호" name="password" id="password" />
           <div class="findinfo_wrap">
-            <a href="findid.jsp">아이디</a>
+            <a href="/fiin/findId">아이디</a>
             <span></span>
             <a href="findpassword.jsp">비밀번호를 잊으셨나요?</a>
           </div>
