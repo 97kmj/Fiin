@@ -9,6 +9,12 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/reset.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/header.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<script>
+	window.onload = function() {
+		let name = document.getElementById("userName").innerText;
+		alert(name+"님 환영합니다!");
+	}
+</script>
 </head>
 <body>
     <header>
@@ -41,7 +47,7 @@
 						<div class="login_img">
 		            		<img src="https://img.icons8.com/?size=100&id=43942&format=png&color=ffffff">
 		            	</div>
-		            	<p>${influencer.name}</p>
+		            	<p id="userName">${influencer.name}</p>
 	            	</div>
 	            	<div class="logout_img">
 	            		<a href="logout">
@@ -56,7 +62,7 @@
 						<div class="login_img">
 	            			<img src="https://img.icons8.com/?size=100&id=43942&format=png&color=ffffff">
 	            		</div>
-	            		<p>${advertiser.name}</p>
+	            		<p id="userName">${advertiser.name}</p>
 					</div>
 	            	<div class="logout_img">
 	            		<a href="logout">
