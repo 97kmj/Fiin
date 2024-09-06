@@ -12,7 +12,7 @@ public class Influencer {
 	private String name;
 	private String nickname;
 	private Integer pointBalance;
-	
+
 	private Integer isRegist;
 
 	private String youtubeName;       // 데이터베이스 컬럼: youtube_name
@@ -31,9 +31,28 @@ public class Influencer {
 	private String profileImage;      // 데이터베이스 컬럼: profile_image
 	private String introduction;
 	private String introLine;         // 데이터베이스 컬럼: intro_line
-	
+
 	private Timestamp registDate;
 	private String address;
+
+	//InfluencerRegister 객체(인플루언서 등록 시 사용)
+	public Influencer(String introLine, String profileImage, String youtubeName, Integer youtubeFollower, String youtubeUrl, String instagramName, Integer instagramFollower, String instagramUrl, String blogName,
+			Integer blogFollower, String blogUrl, Integer categoryId, String introduction) {
+		this.introLine = introLine;
+		this.profileImage = profileImage;
+		this.youtubeName = youtubeName;
+		this.youtubeFollower = youtubeFollower;
+		this.youtubeUrl = youtubeUrl;
+		this.instagramName = instagramName;
+		this.instagramFollower = instagramFollower;
+		this.instagramUrl = instagramUrl;
+		this.blogName = blogName;
+		this.blogFollower = blogFollower;
+		this.blogUrl = blogUrl;
+		this.categoryId = categoryId;
+		this.introduction = introduction;
+	}
+
 	public Integer getInfluencerNum() {
 		return influencerNum;
 	}
@@ -224,5 +243,5 @@ public class Influencer {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	
+
 }

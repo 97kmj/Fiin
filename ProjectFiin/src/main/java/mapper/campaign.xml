@@ -3,12 +3,14 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 
-<!--// dto와 sql문 이어주는 Mapper-->
-<!--	# // influencer ( ) 부분은 db와 매핑 되는 값-->
+<!--// Mapper: dto와 sql문 이어주는 역할 -->
+<!--	# // campaign ( ) 부분은 db와 매핑 되는 값-->
 <!--	# // value (#{}...) 부분은 dto와 매핑되는 값-->
 
 <mapper namespace="mapper.campaign">
-	<insert id="registerCampaign" parameterType="campaign">
+
+<!--	//상민 - campaignRegister(캠페인 등록)-->
+	<insert id="registerCampaign" parameterType="campaign" >
 	<![CDATA[
    		INSERT INTO campaign (company_name, company_url, campaign_title, product_name, requirement,
                      CHANNEL, image, category_id)
@@ -16,6 +18,7 @@
            			#{channel}, #{image}, #{categoryId})
     	]]>
 	</insert>
+
 	<select id="selectCampaign" parameterType="Integer" resultType="campaign">											
 		<![CDATA[
 		 	select * from campaign where campaign_num = ?

@@ -14,22 +14,22 @@
 <div class="bodyBackground">
 
     <!-- 통합된 폼 -->
-    <form action="/submit" method="post" enctype="multipart/form-data">
+    <form action="campaignRegister" method="post" enctype="multipart/form-data">
 		<h2>캠페인 등록하기</h2>
         <div id="adChannel">
             <h3>희망 광고 채널</h3>
             <div id="channel">
                 <label class="label" for="youtube">
                     <div><img src="${pageContext.request.contextPath}/image/youtube.png" alt=""></div>
-                    <input type="checkbox" name="ad" id="youtube" value="youtube">
+                    <input type="checkbox" name="channel" id="youtube" value="youtube">
                 </label>
                 <label class="label" for="insta">
                     <div><img src="${pageContext.request.contextPath}/image/instagram.png" alt=""></div>
-                    <input type="checkbox" name="ad" id="insta" value="insta">
+                    <input type="checkbox" name="channel" id="insta" value="insta">
                 </label>
                 <label class="label" for="blog">
                     <div><img src="${pageContext.request.contextPath}/image/blog.png" alt=""></div>
-                    <input type="checkbox" name="ad" id="blog" value="blog">
+                    <input type="checkbox" name="channel" id="blog" value="blog">
                 </label>
             </div>
         </div>
@@ -46,7 +46,7 @@
                 </div>
                 <div class="form-group">
                     <label for="campaignName">캠페인 이름</label>
-                    <input type="text" id="campaignName" name="campaignName">
+                    <input type="text" id="campaignName" name="campaignTitle">
                 </div>
                 <div class="form-group">
                     <label for="productName">상품명</label>
@@ -55,7 +55,7 @@
             </div>
             <img id="uploadImage" src="${pageContext.request.contextPath}/image/upload.png" alt="">
             <!-- 파일 입력 필드 -->
-            <input type="file" id="fileInput" name="fileInput"/>
+            <input type="file" id="fileInput" name="image"/>
         </div>
 
         <div class="form-group-group">
@@ -71,7 +71,6 @@
             <div class="form-group1">
                 <label for="adPeriod">광고 기간</label>
                 <select id="adPeriod" name="adPeriod">
-                    <option value="select">select Date</option>
                     <option value="start_date">start Date</option>
                     <option value="end_date">end Date</option>
                 </select>
