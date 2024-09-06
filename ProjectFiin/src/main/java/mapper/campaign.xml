@@ -3,12 +3,14 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 
-<!--// dto와 sql문 이어주는 Mapper-->
-<!--	# // influencer ( ) 부분은 db와 매핑 되는 값-->
+<!--// Mapper: dto와 sql문 이어주는 역할 -->
+<!--	# // campaign ( ) 부분은 db와 매핑 되는 값-->
 <!--	# // value (#{}...) 부분은 dto와 매핑되는 값-->
 
 <mapper namespace="mapper.campaign">
-	<insert id="registerCampaign" parameterType="campaign">
+
+<!--	//상민 - campaignRegister(캠페인 등록)-->
+	<insert id="registerCampaign" parameterType="campaign" >
 	<![CDATA[
    		INSERT INTO campaign (company_name, company_url, campaign_title, product_name, requirement,
                      CHANNEL, image, category_id)
@@ -16,23 +18,35 @@
            			#{channel}, #{image}, #{categoryId})
     	]]>
 	</insert>
+
 	<select id="selectCampaign" parameterType="Integer" resultType="campaign">											
 		<![CDATA[
 		 	select * from campaign where campaign_num = ?
 		]]>
 	</select>
-	<select id="selectAllCampaign" parameterType="Integer" resultType="campaign">
-		<![CDATA[	
-			select * from campaign 
-			where categoryId = ? and channel like '%?%'
-			order by update_start_date desc limit #{row}, 8
-		]]>
+	
+	<select id="selectAllCampaign" parameterType="Map" resultType="campaign">
+		select * from campaign 
+		where 1=1
+			<if test="categoryId != 0">
+				and category_id=#{categoryId}
+			</if>
+			<if test="channel != null">
+				and channel like ‘%${channel}%’
+			</if>
+		order by update_start_date desc limit #{row}, 8
 	</select>
+	
 	<select id="selectCampaignCount" resultType="integer">
 		<![CDATA[
 			select Count(*) from Campaign
 		]]>
 	</select>
+	
+	
+	
+	
+	
 	<select id="selectCampaignAndReceive" parameterType="integer" resultType="campaign">											
 		<![CDATA[
 		 	select * from campaign c join receive_campaign r 

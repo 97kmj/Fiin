@@ -2,6 +2,8 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD mapper 3.0//EN"
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
+
+<!--// 상민 - influencerRegister (인플루언서 등록)-->
 <mapper namespace="mapper.influencer">
 	<insert id="insertInfluencer" parameterType="influencer">
 	<![CDATA[
@@ -40,5 +42,6 @@
 		</set>
 		where user_email = #{user_email}
 	</update>
+
 </mapper>
 

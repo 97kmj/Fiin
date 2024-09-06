@@ -7,6 +7,7 @@ import java.util.Map;
 import org.apache.ibatis.session.SqlSession;
 
 import dto.Point;
+import dto.PointRecord;
 import util.MybatisSqlSessionFactory;
 
 public class PointDaoImpl implements PointDao {
@@ -18,14 +19,6 @@ public class PointDaoImpl implements PointDao {
 	@Override
 	public List<Point> selectPointList() throws Exception {
 		return sqlSession.selectList("mapper.point.selectPointList");
-	}
-	@Override
-	public void insertPointRecord(Integer num, Integer pointAmount) throws Exception {
-		Map<String,Integer> param = new HashMap<>();
-		param.put("influencer_num",num);
-		param.put("point_amount", pointAmount);
-		sqlSession.insert("mapper.pointRecord.insertPointRecordInf", param);
-		sqlSession.commit();
 	}
 	
 }
