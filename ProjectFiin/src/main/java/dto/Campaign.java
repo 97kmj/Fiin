@@ -18,14 +18,12 @@ public class Campaign {
 	private String channel;
 	private String image;
 	private Integer isRecruit;
-  private String address;
-	private String requirement;
 
   public Campaign(Integer campaignNum, Integer advertiserNum, Integer categoryId,
 			String companyName,
 			String companyUrl, String campaignTitle, String productName, Timestamp updateStartDate,
 			Timestamp updateEndDate, Timestamp adStartDate, Timestamp adEndDate, String channel,
-			String image, Integer isRecruit, String address, String requirement) {
+			String image, Integer isRecruit, String requirement) {
 
 		this.campaignNum = campaignNum;
 		this.advertiserNum = advertiserNum;
@@ -42,7 +40,6 @@ public class Campaign {
 		this.channel = channel;
 		this.image = image;
 		this.isRecruit = isRecruit;
-		this.address = address;
 	}
 
 	// 상민) 캠페인 등록시 사용
@@ -59,17 +56,6 @@ public class Campaign {
 		this.adEndDate = adEndDate;
 		this.categoryId = categoryId;
 	}
-
-	public String getRequirement() {
-		return requirement;
-	}
-	public void setRequirement(String requirement) {
-		this.requirement = requirement;
-	}
-	public Integer getAdvertiserNum() {
-		return advertiserNum;
-	}
-
 
 	public Integer getCampaignNum() {
 		return campaignNum;
@@ -230,8 +216,7 @@ public class Campaign {
 	public void setIsRecruit(Integer isRecruit) {
 		this.isRecruit = isRecruit;
 	}
-
-
+	
 	public Campaign() {
 		super();
 		// TODO Auto-generated constructor stub
