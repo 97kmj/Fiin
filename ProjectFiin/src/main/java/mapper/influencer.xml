@@ -43,10 +43,6 @@
 		where user_email = #{user_email}
 	</update>
 
-	<select id="selectInfluencerList" parameterType="Integer" resultType="influencer">
-		<![CDATA[
-			select * from influencer order by registDate desc limit #{row}, 8
-		]]>
-	</select>
+
 </mapper>
 
