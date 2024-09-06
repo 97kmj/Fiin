@@ -8,34 +8,49 @@
 <title>Insert title here</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/reset.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/campaign_list.css?ver=1">
+<script src="http://code.jquery.com//jquery-latest.min.js"></script>
 </head>
 <body>
 	<%@ include file="../include/header.jsp"%>
 	<div class="container">
 		<div id="categoryBar">
-			<h2>인플루언서</h2>
+			<h2>카테고리</h2>
 			<div class="categoryWrap">
-				<input type="radio" id="all" name="category"><label for="all">전체</label>
+<!-- 				<input type="radio" id="all" name="category" value="0" checked><label for="all">전체</label>
 				<input type="radio" id="fasion" name="category" value="2"><label for="fasion">패션</label>
+				<input type="radio" id="fasion" name="category" value="2"><a href="2">패션</a>&nbsp;
 				 <input type="radio" id="beauty" name="category" value="1"><label for="beauty">뷰티</label>
 			 	 <input type="radio" id="daily" name="category" value="8"><label for="daily">생활용품</label>
 				 <input type="radio" id="sport" name="category" value="3"><label for="sport">스포츠</label>
 				 <input type="radio" id="travel" name="category" value="4"><label for="travel">여행/숙박</label>
-				 <input type="radio" id="goodTaste" name="category" value="5"><label for="goodTaste">맛집</label>
+				 <input type="radio" id="goodTaste" name="category" value="5"><label for="goodTaste">맛집</label> -->
+				 
+				 <input type="radio" id="all" name="category" checked><a href="0">전체</a>&nbsp;&nbsp;&nbsp;
+				 <input type="radio" id="fasion" name="category"><a href="2">패션</a>&nbsp;&nbsp;&nbsp;
+			 	 <input type="radio" id="daily" name="category" ><a href="6">생활용품</a>&nbsp;&nbsp;&nbsp;
+				 <input type="radio" id="sport" name="category"><a href="3">스포츠</a>&nbsp;&nbsp;&nbsp;
+				 <input type="radio" id="travel" name="category"><a href="4">여행/숙박</a>&nbsp;&nbsp;&nbsp;
+				 <input type="radio" id="goodTaste" name="category"><a href="5">맛집</a>&nbsp;&nbsp;&nbsp;
 			</div>
 		</div>
+		<form id="categoryform" action="campaignList" method="get">
+			<input type="hidden" name="categoryId"> 
+		</form>
+		
 		
 		<hr style="border: 1px solid #e5e5e5; width: 1200px; margin: 12px 0;">
 		
 		<div class="channelBar">
 			<h2>채널</h2>
 			<div class="channelButton">
-				<label> <input type="checkbox" name="instagram"
-					value="instagram"> <span>인스타그램</span>
-				</label> <label> <input type="checkbox" name="blog" value="blog">
+				<label><input type="checkbox" name="channel" value="instagram">
+					<span>인스타그램</span>
+				</label> 
+				<label><input type="checkbox" name="channel" value="blog">
 					<span>블로그</span>
-				</label> <label> <input type="checkbox" name="youtube"
-					value="youtube"> <span>유튜브</span>
+				</label>
+				<label><input type="checkbox" name="channel" value="youtube">
+					<span>유튜브</span>
 				</label>
 			</div>
 		</div>
@@ -55,6 +70,12 @@
 				</div>
 			</c:forEach> 
 		</div>
+		
+		
+		
+		
+		
+		
 		<!-- 페이지 처리  -->
 		<div style="text-align:center">
 			<!-- 페이지 이전버튼 생성  -->
@@ -91,4 +112,19 @@
     </div>
 	<%@include file="../include/footer.jsp" %>
 </body>
+<script>
+	$(".categoryWrap a").on("click", function(e){
+		e.preventDefault();
+		let categoryId= $(this).attr("href");
+		$("#categoryform input[name='categoryId']").val(categoryId);
+		$("input[name='channel']:checked").each(function(){
+
+			console.log($("input[name='channel']:checked")).val()
+
+		});
+		$("#categoryform").submit();
+	});
+
+	
+</script>
 </html>

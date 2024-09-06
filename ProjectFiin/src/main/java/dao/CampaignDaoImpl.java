@@ -1,6 +1,8 @@
 package dao;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 
@@ -28,7 +30,11 @@ public class CampaignDaoImpl implements CampaignDao {
 	}
 
 	@Override
-	public List<Campaign> selectCampaignList(Integer row) throws Exception {
-		return sqlSession.selectList("mapper.campaign.selectAllCampaign", row);
+	public List<Campaign> selectCampaignList(Integer row, String channel, Integer categoryId) throws Exception {
+		Map<String,Object> map = new HashMap<>();
+		map.put("categoryId", categoryId);
+		map.put("channel", channel);
+		map.put("row", row-1);
+		return sqlSession.selectList("mapper.campaign.selectAllCampaign", map);
 	}
 }

@@ -21,18 +21,29 @@
 		 	select * from campaign where campaign_num = ?
 		]]>
 	</select>
-	<select id="selectAllCampaign" parameterType="Integer" resultType="campaign">
-		<![CDATA[	
-			select * from campaign 
-			where categoryId = ? and channel like '%?%'
-			order by update_start_date desc limit #{row}, 8
-		]]>
+	
+	<select id="selectAllCampaign" parameterType="Map" resultType="campaign">
+		select * from campaign 
+		where 1=1
+			<if test="categoryId != 0">
+				and category_id=#{categoryId}
+			</if>
+			<if test="channel != null">
+				and channel like ‘%${channel}%’
+			</if>
+		order by update_start_date desc limit #{row}, 8
 	</select>
+	
 	<select id="selectCampaignCount" resultType="integer">
 		<![CDATA[
 			select Count(*) from Campaign
 		]]>
 	</select>
+	
+	
+	
+	
+	
 	<select id="selectCampaignAndReceive" parameterType="integer" resultType="campaign">											
 		<![CDATA[
 		 	select * from campaign c join receive_campaign r 
