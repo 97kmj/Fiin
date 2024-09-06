@@ -15,7 +15,7 @@
     box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 64px 0px;
 }
 
-table {
+#pointrecord {
     margin:0 auto;
     width: 90%;
     border-collapse:collapse;
@@ -30,13 +30,16 @@ tr {
 }
 .td1{
     width: 20%;
+    vertical-align:middle;	
 }
 .td2{
     width: 60%;
-    text-align:left
+    text-align:left;
+	vertical-align:middle;	
 }
 .td3{
     width: 20%;
+    vertical-align:middle;		
 }
 .td3 div:nth-child(1){
     color:#4849e8;

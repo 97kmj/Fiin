@@ -43,6 +43,5 @@
 		where user_email = #{user_email}
 	</update>
 
-
 </mapper>
 
