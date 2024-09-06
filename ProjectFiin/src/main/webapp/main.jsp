@@ -24,11 +24,27 @@
         slidesPerView: "auto",
       });
     });
+    
+	let name = document.getElementById("userName").innerText;
+	if (name != null && name != "") {			
+		alert(name+"님 환영합니다!");
+		return false;
+	}
   };
 </script>
 </head>
 <body>
     <%@ include file="./include/header.jsp" %>
+ 	<!-- 로그인 알림 설정 -->	
+     <c:choose>
+		<c:when test="${advertiser eq null}">
+			<p id="userName" style="display: none;">${influencer.name}</p>  
+		</c:when>
+		<c:otherwise>
+	    	<p id="userName" style="display: none;">${advertiser.name}</p>		
+		</c:otherwise>
+    </c:choose>
+    
     <!-- banner -->
     <div class="banner">
             <div class="banner_text">

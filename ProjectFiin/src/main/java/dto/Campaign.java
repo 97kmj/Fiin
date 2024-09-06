@@ -216,7 +216,7 @@ public class Campaign {
 	public void setIsRecruit(Integer isRecruit) {
 		this.isRecruit = isRecruit;
 	}
-	
+
 	public Campaign() {
 		super();
 		// TODO Auto-generated constructor stub
