@@ -12,4 +12,5 @@ public interface InfluencerDao {
 	Influencer selectInfluencerByEmail(String userEmail) throws Exception;
 	void updateInfluencer(Influencer influencer) throws Exception;
     List<Influencer> selectInfluencerList(Integer row) throws Exception;
+
 }
