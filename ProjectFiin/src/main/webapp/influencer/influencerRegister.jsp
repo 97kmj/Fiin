@@ -1,4 +1,4 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%--<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>--%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html>
@@ -19,7 +19,7 @@
 
     <div id="main">
 
-        <form action="registerInfluencer" method="post"
+        <form action="influencerRegister" method="post"
               enctype="multipart/form-data">
 
             <div class="main_first_line">
@@ -190,8 +190,8 @@
             </div>
 
             <div class="bottom-button">
-                <button>등록하기</button>
-                <button>뒤로가기</button>
+                <button type="submit" value="등록">등록하기</button>
+                <button type="button" value="뒤로가기">뒤로가기</button>
             </div>
 
         </form>
@@ -208,3 +208,4 @@
 </script>
 </body>
 </html>
+

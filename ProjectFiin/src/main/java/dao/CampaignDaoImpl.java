@@ -1,5 +1,6 @@
 package dao;
 
+import dto.Influencer;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;

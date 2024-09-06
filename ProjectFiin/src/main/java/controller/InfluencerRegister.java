@@ -12,16 +12,20 @@ import javax.servlet.http.HttpServletResponse;
 import service.InfluencerService;
 import service.InfluencerServiceImpl;
 
-@WebServlet("/registerInfluencer")
+@WebServlet("/influencerRegister")
 public class InfluencerRegister extends HttpServlet {
+  private static final long serialVersionUID = 1L;
 
+  public InfluencerRegister() {
+    super();
+  }
 
   @Override
   protected void doGet(HttpServletRequest req, HttpServletResponse resp)
       throws ServletException, IOException {
-    super.doGet(req, resp);
+    req.getRequestDispatcher("/influencer/influencerRegister.jsp").forward(req, resp);
+//    System.out.println("InfluencerRegister doGet");
   }
-
 
   //인플루언서 등록
   @Override
@@ -62,7 +66,7 @@ public class InfluencerRegister extends HttpServlet {
 
       //3. 처리한 데이터 View 지정하여 넘겨주기
       request.setAttribute("influencer", inff);
-      request.getRequestDispatcher("accountinfo.jsp").forward(request, response);
+      request.getRequestDispatcher("/influencer/influencerRegister.jsp").forward(request, response);
       ////////////////////////
     } catch (Exception e) {
       e.printStackTrace();

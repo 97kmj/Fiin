@@ -15,15 +15,6 @@ public class InfluencerServiceImpl implements InfluencerService {
 		influencerDao = new InfluencerDaoImpl();
 	}
 
-	@Override
-	public Influencer register(Influencer inf) throws Exception {
-
-		influencerDao.registerInfluencer(inf);
-		//dao에 데이터를 넣으면 끝 맞는지?
-		return inf;
-
-	}
-
 
 	@Override
 	public void join(Influencer influencer) throws Exception {
