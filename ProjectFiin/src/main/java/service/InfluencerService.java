@@ -13,14 +13,13 @@ public interface InfluencerService {
 
 	void join(Influencer influencer) throws Exception;
 	
-  Influencer login(String userEmail, String password) throws Exception;
+	Influencer login(String userEmail, String password) throws Exception;
 	
+
   boolean checkDoubleEmail(String userEmail) throws Exception;
-	
-  Influencer influencerRegister(Influencer influencer) throws Exception;
 
-
-	List<Influencer> influencerList(PageInfo pageInfo) throws Exception;
+  	Influencer influencerRegister(Influencer influencer) throws Exception;
+  	List<Influencer> influencerList(PageInfo pageInfo) throws Exception;
 		
 	Influencer influencerDetail(Integer influencerNum) throws Exception;
 
