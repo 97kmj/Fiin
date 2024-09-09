@@ -96,7 +96,7 @@
     <div class="findId_container">
         <div class="title_wrap">
           <h2>인플루언서 아이디 찾기</h2>
-          <a href="login.jsp">
+          <a href="login">
             <img src="${pageContext.request.contextPath}/image/closeIcon.svg" alt="닫기아이콘" />
           </a>
         </div>
@@ -136,13 +136,13 @@
         	<div class="modal_content">
         		<div class="title_wrap">
 		          <h2>인플루언서 아이디 찾기</h2>
-		          <a href="/fiin/login" id="modal_close_btn">
+		          <a href="login" id="modal_close_btn">
 		            <img src="${pageContext.request.contextPath}/image/closeIcon.svg" alt="닫기아이콘" />
 		          </a>
         		</div>
 		        <p>입력하신 정보와 일치하는 이메일(아이디)입니다.</p>
 		       	<div class="email"></div>
-		        	<a href="/fiin/findPassword" class="find_password">비밀번호를 잊으셨나요?</a>
+		        	<a href="findPassword" class="find_password">비밀번호를 잊으셨나요?</a>
 		        </div>
         	</div>
       </div>

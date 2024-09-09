@@ -84,7 +84,7 @@
     <div class="signin_container">
         <div class="title_wrap">
           <h2>인플루언서 로그인</h2>
-          <a href="main.jsp">
+          <a href="main">
             <img src="${pageContext.request.contextPath}/image/closeIcon.svg" alt="닫기아이콘" />
           </a>
         </div>
@@ -99,9 +99,9 @@
           <input type="text" class="signin_input" placeholder="이메일" name="userEmail" id="userEmail" />
           <input type="password" class="signin_input" placeholder="비밀번호" name="password" id="password" />
           <div class="findinfo_wrap">
-            <a href="/fiin/findId">아이디</a>
+            <a href="findId">아이디</a>
             <span></span>
-            <a href="/fiin/findPassword">비밀번호를 잊으셨나요?</a>
+            <a href="findPassword">비밀번호를 잊으셨나요?</a>
           </div>
           <button type="submit" id="login_btn">로그인 하기</button>
         </form>

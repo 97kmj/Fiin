@@ -91,11 +91,11 @@
     <div class="findpassword_container">
         <div class="title_wrap">
           <h2>인플루언서 비밀번호 찾기</h2>
-          <a href="/fiin/login">
+          <a href="login">
             <img src="${pageContext.request.contextPath}/image/closeIcon.svg" alt="닫기아이콘" />
           </a>
         </div>
-        <form action="findpassword_result.jsp" class="findpassword_form"> 
+        <form action="findPassword" class="findpassword_form"> 
           <div class="tab_wrap">
 		  	<input type="radio" class="radio_btn" name="type" value="influencer" id="type_influencer" checked="checked" style="appearence: none;-webkit-appearance: none;-moz-appearance: none;"/>
 		  	<label for="type_influencer" class="influencer_tab" style="width: 49%; background-color: #ddf344;color: white;border-radius: 4px;font-weight: bold;padding: 10px 0;cursor: pointer;">인플루언서</label>
@@ -120,7 +120,7 @@
         	<div class="modal_content">
 		        <div class="title_wrap">
 		          <h2>인플루언서 비밀번호 찾기</h2>
-		          <a href="login">
+		          <a href="findPassword">
 		            <img src="${pageContext.request.contextPath}/image/closeIcon.svg" alt="닫기아이콘" />
 		          </a>
 		        </div>
