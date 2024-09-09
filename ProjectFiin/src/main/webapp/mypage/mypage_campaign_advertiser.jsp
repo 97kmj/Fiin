@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>    
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/reset.css">
-	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/mypage_campaign_advertiser.css?ver=1">
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/mypage_campaign_advertiser.css?after">
 <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
 </head>
 <body>
@@ -15,24 +17,39 @@
 
 <div id="container">
 	<%@ include file="../include/sidebar_advertiser.jsp" %>
-    <div id="main">       
+    <div id="main" >       
     	<h2 style="font-weight:bold;text-align:left">나의 캠페인 현황</h2>
         <div id="filter">
-            <div class="filterbtn"><a href="#">전체</a></div>
-            <div class="filterbtn"><a href="#">모집중</a></div>
-            <div class="filterbtn"><a href="#">모집종료</a></div>
+            <div class="filterbtn" id="allList">전체</div>
+            <div class="filterbtn" id="ingList">모집중</div>
+            <div class="filterbtn" id="endList">모집종료</div>
         </div>
         <h3 style="font-weight:bold">전체 캠페인</h3>
-        <div id="campaignwrap">
-        <form action="#" method="get">
-            <div class="campaign" id="campaignNum1">
+        <div id="campaignwrap" >
+        <c:forEach items="${campaignList }" var="campaign">
+        	<c:choose>
+       		<c:when test="${campaign.isRecruit eq 1}">
+        		<div class="campaign valid" id="${campaign.campaignNum }">
+       		</c:when>
+       		<c:otherwise>
+        		<div class="campaign invalid" id="${campaign.campaignNum }">
+       		</c:otherwise>
+        	</c:choose>
+					<div class="img"><img src="${pageContext.request.contextPath}/upload/${campaign.image}" style="width:200px;height:200px"/></div>
+	                <div class="name">${campaign.campaignTitle }</div>
+	                <div class="date"><fmt:formatDate value="${campaign.adStartDate }" pattern="yyyy-MM-dd"/> ~ <fmt:formatDate value="${campaign.adEndDate }" pattern="yyyy-MM-dd"/></div>
+	                <button class="email btn">이메일발송</button>
+	                <button class="apply btn">신청 목록</button>      
+      	     	</div> 
+        </c:forEach>
+           <!--  <div class="campaign" id="campaignNum1">
                 <div class="img"><img src="https://dummyimage.com/200x200/000000/fff" style="width:200px;height:200px"></div>
                 <div class="name">캠페인 제목</div>
                 <div class="date">2024-01-01 ~ 2024-01-15</div>
                 <button class="email btn">이메일발송</button>
                 <button class="apply btn">신청 목록</button>
             </div>
-		</form>                
+		                
             <div class="campaign" id="campaignNum2">
                 <div class="img"><img src="https://dummyimage.com/200x200/000000/fff" style="width:200px;height:200px"></div>
                 <div class="name">캠페인 제목</div>
@@ -57,9 +74,10 @@
                 <button class="email btn">이메일발송</button>
                 <button class="apply btn">신청 목록</button>
             </div>
-            
+             -->
         </div>
     </div>
+    
 <div class="modal applylist">
 	<div class="modal_body">
 	<button class="closebtn"><img src="https://img.icons8.com/?size=100&id=J3PhU48KWI9A&format=png&color=000000" style="width:20px;height:20px"></button><br>
@@ -98,6 +116,9 @@
 <%@ include file="../include/footer.jsp" %>    
 </body>
 <script>
+	$(".invalid .btn").attr("disabled",true);
+	$(".invalid .btn").css("cursor","default");
+
 	$(".apply").on('click',function(e){
 		e.preventDefault()
 		$(".applylist").addClass('show-modal');
