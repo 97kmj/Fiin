@@ -24,9 +24,9 @@
 			<transactionManager type="JDBC"/>
 			<dataSource type="POOLED">
 				<property name="driver" value="org.mariadb.jdbc.Driver"/>
-				<property name="url" value="jdbc:mariadb://localhost:3306/mini"/>
+				<property name="url" value="jdbc:mariadb://localhost:3309/mini"/>
 				<property name="username" value="root"/>
-				<property name="password" value="7564"/>
+				<property name="password" value="1234"/>
 			</dataSource>
 		</environment>
 	</environments>
