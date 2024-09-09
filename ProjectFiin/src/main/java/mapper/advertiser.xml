@@ -33,4 +33,10 @@
 			select * from advertiser where user_email = #{user_email} 
 		]]>
 	</select>
+	
+	<select id="selectAdvertiserForFindEmail" parameterType="map" resultType="advertiser">
+		<![CDATA[
+			select user_email from advertiser where name = #{name} and mobile_number = #{mobileNumber}
+		]]>
+	</select>
 </mapper>

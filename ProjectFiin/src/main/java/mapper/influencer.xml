@@ -63,7 +63,7 @@
 		]]>
 	</select>
 	
-	<select id="selectInfluencerForFindId" parameterType="map" resultType="influencer">
+	<select id="selectInfluencerForFindEmail" parameterType="map" resultType="influencer">
 		<![CDATA[
 			select user_email from influencer where name = #{name} and mobile_number = #{mobileNumber}
 		]]>

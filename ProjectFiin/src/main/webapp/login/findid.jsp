@@ -22,6 +22,7 @@
 				"font-weight" : "normal",
 			});
 			$(".title_wrap h2").text("인플루언서 아이디 찾기");
+			$(".modal_wrap .title_wrap h2").text("인플루언서 아이디 찾기");
 		});
 	
 		$(".advertiser_tab").on("click", function() {
@@ -36,6 +37,7 @@
 				"font-weight" : "normal",
 			});
 			$(".title_wrap h2").text("광고주 아이디 찾기");
+			$(".modal_wrap .title_wrap h2").text("광고주 아이디 찾기");
 		});
 		
 		$(".findId_btn").click(function(e) {
@@ -52,7 +54,7 @@
 				success: function(result) {
 					if (result == 'false') {
 						// 이메일 찾기 실패 시
-						alert("이메일 찾기가 실패하였습니다. 이름이나 휴대폰번호를 확인해주세요.");
+						alert("이메일 찾기가 실패하였습니다. 이름, 회원유형 또는 휴대폰번호를 확인해주세요.");
 					} else {
 						// 이메일 찾기 성공 시	
 						$('.modal_wrap').css('display', 'flex');
@@ -117,7 +119,7 @@
         <div class="modal_wrap">
         	<div class="modal_content">
         		<div class="title_wrap">
-		          <h2>아이디 찾기</h2>
+		          <h2>인플루언서 아이디 찾기</h2>
 		          <a href="/fiin/login" id="modal_close_btn">
 		            <img src="${pageContext.request.contextPath}/image/closeIcon.svg" alt="닫기아이콘" />
 		          </a>

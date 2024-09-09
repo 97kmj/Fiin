@@ -49,10 +49,10 @@ public class FindId extends HttpServlet {
 			
 			if (type.equals("influencer")) {
 				String userEmail = iService.influencerEmail(name, mobileNumber);
-				request.setAttribute("userEmail", userEmail);
 				response.getWriter().write(userEmail);
 			} else {
-				
+				String userEmail = aService.advertiserEmail(name, mobileNumber);
+				response.getWriter().write(userEmail);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
