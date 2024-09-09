@@ -80,7 +80,7 @@ public class InfluencerServiceImpl implements InfluencerService {
 		return influencers;
 	}
 	@Override
-	public List<Influencer> influencerList(String channel, Integer categoryId, PageInfo pageInfo) throws Exception {
+	public List<Influencer> influencerList(List<String> channels, Integer categoryId, PageInfo pageInfo) throws Exception {
 		Integer influencerCnt = influencerDao.selectInfluencerCount();
 		Integer allPage = (int)Math.ceil((double)influencerCnt/8);
 		Integer startPage = (pageInfo.getCurPage()-1/10*10+1);
@@ -92,7 +92,7 @@ public class InfluencerServiceImpl implements InfluencerService {
 		pageInfo.setEndPage(endPage);
 		
 		Integer row = (pageInfo.getCurPage()-1)*10+1;
-		return influencerDao.selectInfluencerList(row,channel,categoryId);
+		return influencerDao.selectInfluencerList(row,channels,categoryId);
 	}
 }
 

@@ -56,14 +56,27 @@
 
 	<select id="selectAllInfluencer" parameterType="Map" resultType="influencer">
 		select * from influencer
-		where 1=1
-			<if test="categoryId != 0">
-				and category_id = #{categoryId}
+		<where>
+			<if test="category != null">
+				category = #{category}
 			</if>
-			<if test="channel != null">
-				and channel like '%${channel}%'
+			<if test="channels != null and channels.size()>0">
+				and channel in
+				<foreach item="channel" collection="channels" open="(" separator="," close=")">
+					#{channel}				
+				</foreach>
 			</if>
-		order by regist_date DESC limit #{row}, 8		
+			<if test="youtube==1">
+				and youtube like '%${youtube_url}%'
+			</if>
+			<if test="instagram==1">
+				and instagram like '%${instagram_url}%'
+			</if>
+			<if test="blog==1">
+				and blog like '%${blog_url}%'
+			</if>			
+		</where>
+		order by regist_date DESC limit #{row}, 8	
 	</select>
 </mapper>
 

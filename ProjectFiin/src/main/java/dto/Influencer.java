@@ -14,15 +14,15 @@ public class Influencer {
 	private Integer pointBalance;
 
 	private Integer isRegist;
-
+	private Integer youtube;
 	private String youtubeName;       // 데이터베이스 컬럼: youtube_name
 	private Integer youtubeFollower;      // 데이터베이스 컬럼: youtube_follower
 	private String youtubeUrl;        // 데이터베이스 컬럼: youtube_url
-
+	private Integer instagram;
 	private String instagramName;     // 데이터베이스 컬럼: instagram_name
 	private Integer instagramFollower;    // 데이터베이스 컬럼: instagram_follower
 	private String instagramUrl;      // 데이터베이스 컬럼: instagram_url
-
+	private Integer blog;
 	private String blogName;          // 데이터베이스 컬럼: blog_name
 	private Integer blogFollower;         // 데이터베이스 컬럼: blog_follower
 	private String blogUrl;           // 데이터베이스 컬럼: blog_url
@@ -197,22 +197,38 @@ public class Influencer {
 	public void setAddress(String address) {
 		this.address = address;
 	}
-	@Override
-	public String toString() {
-		return "Influencer [influencerNum=" + influencerNum + ", userEmail=" + userEmail + ", password=" + password
-				+ ", mobileNumber=" + mobileNumber + ", createAt=" + createAt + ", name=" + name + ", nickname="
-				+ nickname + ", pointBalance=" + pointBalance + ", isRegist=" + isRegist + ", youtubeName="
-				+ youtubeName + ", youtubeFollower=" + youtubeFollower + ", youtubeUrl=" + youtubeUrl
-				+ ", instagramName=" + instagramName + ", instagramFollower=" + instagramFollower + ", instagramUrl="
-				+ instagramUrl + ", blogName=" + blogName + ", blogFollower=" + blogFollower + ", blogUrl=" + blogUrl
-				+ ", categoryId=" + categoryId + ", profileImage=" + profileImage + ", introduction=" + introduction
-				+ ", introLine=" + introLine + ", registDate=" + registDate + ", address=" + address + "]";
+
+	public Integer getYoutube() {
+		return youtube;
 	}
+
+	public void setYoutube(Integer youtube) {
+		this.youtube = youtube;
+	}
+
+	public Integer getInstagram() {
+		return instagram;
+	}
+
+	public void setInstagram(Integer instagram) {
+		this.instagram = instagram;
+	}
+
+	public Integer getBlog() {
+		return blog;
+	}
+
+	public void setBlog(Integer blog) {
+		this.blog = blog;
+	}
+
+	
 	public Influencer(Integer influencerNum, String userEmail, String password, String mobileNumber, Timestamp createAt,
-			String name, String nickname, Integer pointBalance, Integer isRegist, String youtubeName,
-			Integer youtubeFollower, String youtubeUrl, String instagramName, Integer instagramFollower,
-			String instagramUrl, String blogName, Integer blogFollower, String blogUrl, Integer categoryId,
-			String profileImage, String introduction, String introLine, Timestamp registDate, String address) {
+			String name, String nickname, Integer pointBalance, Integer isRegist, Integer youtube, String youtubeName,
+			Integer youtubeFollower, String youtubeUrl, Integer instagram, String instagramName,
+			Integer instagramFollower, String instagramUrl, Integer blog, String blogName, Integer blogFollower,
+			String blogUrl, Integer categoryId, String profileImage, String introduction, String introLine,
+			Timestamp registDate, String address) {
 		super();
 		this.influencerNum = influencerNum;
 		this.userEmail = userEmail;
@@ -223,12 +239,15 @@ public class Influencer {
 		this.nickname = nickname;
 		this.pointBalance = pointBalance;
 		this.isRegist = isRegist;
+		this.youtube = youtube;
 		this.youtubeName = youtubeName;
 		this.youtubeFollower = youtubeFollower;
 		this.youtubeUrl = youtubeUrl;
+		this.instagram = instagram;
 		this.instagramName = instagramName;
 		this.instagramFollower = instagramFollower;
 		this.instagramUrl = instagramUrl;
+		this.blog = blog;
 		this.blogName = blogName;
 		this.blogFollower = blogFollower;
 		this.blogUrl = blogUrl;
@@ -239,6 +258,21 @@ public class Influencer {
 		this.registDate = registDate;
 		this.address = address;
 	}
+
+	
+	@Override
+	public String toString() {
+		return "Influencer [influencerNum=" + influencerNum + ", userEmail=" + userEmail + ", password=" + password
+				+ ", mobileNumber=" + mobileNumber + ", createAt=" + createAt + ", name=" + name + ", nickname="
+				+ nickname + ", pointBalance=" + pointBalance + ", isRegist=" + isRegist + ", youtube=" + youtube
+				+ ", youtubeName=" + youtubeName + ", youtubeFollower=" + youtubeFollower + ", youtubeUrl=" + youtubeUrl
+				+ ", instagram=" + instagram + ", instagramName=" + instagramName + ", instagramFollower="
+				+ instagramFollower + ", instagramUrl=" + instagramUrl + ", blog=" + blog + ", blogName=" + blogName
+				+ ", blogFollower=" + blogFollower + ", blogUrl=" + blogUrl + ", categoryId=" + categoryId
+				+ ", profileImage=" + profileImage + ", introduction=" + introduction + ", introLine=" + introLine
+				+ ", registDate=" + registDate + ", address=" + address + "]";
+	}
+
 	public Influencer() {
 		super();
 		// TODO Auto-generated constructor stub

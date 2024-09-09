@@ -2,6 +2,7 @@ package controller;
 
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -43,7 +44,7 @@ public class InfluencerList extends HttpServlet {
 		if(request.getParameter("category") != null) {
 			category = Integer.parseInt(request.getParameter("category"));
 		}
-		
+		System.out.println(request.getParameter("category"));
 		Integer page = 1;
 		if (paramPage != null) {
 			page = Integer.parseInt(paramPage);
@@ -54,17 +55,13 @@ public class InfluencerList extends HttpServlet {
 			PageInfo pageInfo = new PageInfo();
 			pageInfo.setCurPage(page);
 			List<Influencer> influencerList;
-			String[] nchannel = new String[1];
-			if(channels == null) {
-				nchannel[0] = "";
-				influencerList = service.influencerList(nchannel[0], category, pageInfo);
-			} else {
-				influencerList = service.influencerList(channels[0], category, pageInfo);
-			}
+			List<String> channelList = (channels == null)?Collections.singletonList("") : Arrays.asList(channels);
+			influencerList = service.influencerList(channelList, category, pageInfo);
+			
 			request.setAttribute("influencerList", influencerList);
 			request.setAttribute("pageInfo", pageInfo);
 			request.setAttribute("category", category);
-			request.setAttribute("channel", channels==null? Arrays.asList(nchannel):Arrays.asList(channels));
+			request.setAttribute("channel", channelList); 
 			request.getRequestDispatcher("influencer/influencer_list.jsp").forward(request, response);
 		} catch (Exception e) {
 			e.printStackTrace();
