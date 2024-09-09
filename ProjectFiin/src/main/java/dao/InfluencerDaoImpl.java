@@ -3,12 +3,12 @@ package dao;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Locale.Category;
 
 import org.apache.ibatis.session.SqlSession;
 
 import dto.Influencer;
 import util.MybatisSqlSessionFactory;
+
 
 public class InfluencerDaoImpl implements InfluencerDao {
 	private SqlSession sqlSession;
@@ -40,8 +40,12 @@ public class InfluencerDaoImpl implements InfluencerDao {
 	}
 	
   	@Override
-	public List<Influencer> selectInfluencerList(Integer row) throws Exception {
-		return sqlSession.selectList("mapper.influencer.selectInfluencerList", row-1);
+	public List<Influencer> selectInfluencerList(Integer row, String channel, Integer categoryId) throws Exception {
+		Map<String,Object>map = new HashMap<>();
+		map.put("categoryId", categoryId);
+		map.put("channel", channel);
+		map.put("row", row-1);
+		return sqlSession.selectList("mapper.influencer.selectAllInfluencer", map);
     }
 
 	@Override
@@ -51,14 +55,10 @@ public class InfluencerDaoImpl implements InfluencerDao {
 	}
 
 	@Override
-	public Category selectCategory(Integer categoryId) throws Exception {
-		return sqlSession.selectOne("mapper.category.selectCategory", categoryId); 
-	}
-
-	@Override
 	public Integer selectInfluencerCount() throws Exception {
 		return sqlSession.selectOne("mapper.influencer.selectInfluencerCount");
 	}
+
 
 	@Override
 	public List<Influencer> selectInfluencerListForMain() throws Exception {
@@ -71,5 +71,5 @@ public class InfluencerDaoImpl implements InfluencerDao {
 		param.put("name", name);
 		param.put("mobileNumber", mobileNumber);
 		return sqlSession.selectOne("mapper.influencer.selectInfluencerForFindEmail", param);
-	}
+  }  
 }

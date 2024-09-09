@@ -1,7 +1,6 @@
 package controller;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,22 +8,22 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import dto.Advertiser;
 import dto.Campaign;
 import service.CampaignService;
 import service.CampaignServiceImpl;
 
 /**
- * Servlet implementation class MypageCampaignAdvertiser
+ * Servlet implementation class CampaignDetail
  */
-@WebServlet("/mypage/campaign/advertiser")
-public class MypageCampaignAdvertiser extends HttpServlet {
+@WebServlet("/campaignDetail")
+public class CampaignDetail extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
+	
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MypageCampaignAdvertiser() {
+    public CampaignDetail() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,17 +32,16 @@ public class MypageCampaignAdvertiser extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("utf-8");
-		Advertiser advertiser = (Advertiser)request.getSession().getAttribute("advertiser");
-		Integer advertiserNum = advertiser.getAdvertiserNum();
+		Integer campaignNum = Integer.parseInt(request.getParameter("campaignNum"));
 		try {
 			CampaignService service = new CampaignServiceImpl();
-			List<Campaign> campaignList = service.campaignListForAdvertiser(advertiserNum);
-			System.out.println(campaignList);
-			request.setAttribute("campaignList", campaignList);
-			request.getRequestDispatcher("/mypage/mypage_campaign_advertiser.jsp").forward(request, response);
+			Campaign campign = service.Detail(campaignNum);
+			System.out.println(campaignNum);
 
-		} catch (Exception e) {
+			request.setAttribute("campaign", campign);
+			request.getRequestDispatcher("campaign/campaign_detail").forward(request, response);
+			
+		}catch(Exception e) {
 			e.printStackTrace();
 			request.setAttribute("err", e.getMessage());
 			request.getRequestDispatcher("err.jsp").forward(request, response);

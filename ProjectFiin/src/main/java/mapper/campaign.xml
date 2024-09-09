@@ -27,13 +27,16 @@
 	
 	<select id="selectAllCampaign" parameterType="Map" resultType="campaign">
 		select * from campaign 
-		where 1=1
-			<if test="categoryId != 0">
-				and category_id=#{categoryId}
-			</if>
-			<if test="channel != null">
-				and channel like '%${channel}%'
-			</if>
+			<where>
+				<if test="channel != null and channel.size()>0">
+					<foreach collection="channel" item="item" separator="or" open="(" close=")">
+					 	channel like CONCAT('%', #{item},'%')
+					 </foreach>
+				</if>
+				<if test="categoryId != 0">
+					 and category_id=#{categoryId}
+				</if>
+			</where> 
 		order by update_start_date desc limit #{row}, 8
 	</select>
 	
@@ -43,34 +46,15 @@
 		]]>
 	</select>
 	
-	<select id="selectCampaignAndReceive" parameterType="integer" resultType="campaign">											
-		<![CDATA[
-		 	select * from campaign c join receive_campaign r 
-		 	using(campaign_num)
-		 	where influencer_num = ? order by c.update_start_date desc limit #{row}, 8
-		]]>
-	</select>
-	
-	<select id="selectCampaignAndrequest" parameterType="integer" resultType="campaign">											
-		<![CDATA[
-		 	select * from campaign c left join request.campaign r 
-		 	using(campaign_num)
-		 	where influencer_num = ? order by c.update_start_date desc limit #{row}, 8
-		]]>
-	</select>
-	
-	<select id="selectInfluencerAndrequest" parameterType="integer" resultType="campaign">											
-		<![CDATA[
-			SELECT *FROM influencer inf LEFT JOIN influencer_detail inf_det
-			ON inf.influencer_id = inf_det.influencer_id
-			WHERE influencer_id = (SELECT * FROM request WHERE campain_no =?)
-		]]>
-	</select>
-	
 	<select id="selectCampaignListForMain" resultType="campaign">
 		<![CDATA[
 			select * from campaign order by update_start_date desc limit 0, 8
 		]]>
 	</select>
+	
+	<select id="selectCampaignByAdNum" parameterType="integer" resultType="campaign">
+		select * from campaign where advertiser_num = #{advertiserNum} order by update_start_date desc 
+	</select>
+	
 </mapper>	
 
