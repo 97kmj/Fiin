@@ -19,6 +19,7 @@ public class Campaign {
 	private String image;
 	private Integer isRecruit;
 
+
   public Campaign(Integer campaignNum, Integer advertiserNum, Integer categoryId,
 			String companyName,
 			String companyUrl, String campaignTitle, String productName, Timestamp updateStartDate,
@@ -42,6 +43,7 @@ public class Campaign {
 		this.isRecruit = isRecruit;
 	}
 
+
 	// 상민) 캠페인 등록시 사용
 	public Campaign(String channel, String companyName, String companyUrl, String campaignTitle, String productName, Timestamp updateStartDate, Timestamp updateEndDate, Timestamp adStartDate, Timestamp adEndDate,
 			Integer categoryId) {
@@ -56,6 +58,7 @@ public class Campaign {
 		this.adEndDate = adEndDate;
 		this.categoryId = categoryId;
 	}
+
 
 	public Integer getCampaignNum() {
 		return campaignNum;
@@ -78,9 +81,9 @@ public class Campaign {
 	}
 
 
-	public Integer getAdvertiserNum() {
-		return advertiserNum;
-	}
+//	public Integer getAdvertiserNum() {
+//		return advertiserNum;
+//	}
 
 
 	public void setAdvertiserNum(Integer advertiserNum) {
@@ -178,14 +181,14 @@ public class Campaign {
 	}
 
 
-	public String getRequirement() {
-		return requirement;
-	}
+//	public String /*getRequirement() {
+//		return requirement;
+//	}*/
 
 
-	public void setRequirement(String requirement) {
-		this.requirement = requirement;
-	}
+//	public void setRequirement(String requirement) {
+//		this.requirement = requirement;
+//	}
 
 
 	public String getChannel() {

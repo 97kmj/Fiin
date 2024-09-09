@@ -56,11 +56,12 @@
 			</if>
 		</where>
 	</select>
-	
+
 	<select id="selectInfluencerListForMain" resultType="influencer">
 		<![CDATA[
 			select * from influencer order by regist_date desc limit 0, 8
 		]]>
 	</select>
+
 </mapper>
 

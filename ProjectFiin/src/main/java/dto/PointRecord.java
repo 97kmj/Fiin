@@ -8,27 +8,30 @@ public class PointRecord {
     private Integer advertiserNum;
     private Timestamp updateAt;
     private Integer changePoint;
+    private String detail;
 
     public PointRecord() {
     	super();
       // TODO Auto-generated constructor stub
     }
 
-    public PointRecord(Integer payNum, Integer influencerNum, Integer advertiserNum, Timestamp updateAt, Integer changePoint) {
+    public PointRecord(Integer payNum, Integer influencerNum, Integer advertiserNum, Timestamp updateAt, Integer changePoint, String detail) {
     	super();
     	this.payNum = payNum;
     	this.influencerNum = influencerNum;
     	this.advertiserNum = advertiserNum;
     	this.updateAt = updateAt;
     	this.changePoint = changePoint;
+    	this.detail = detail;
     }
 
     @Override
-    public String toString() {
-    	return "PointRecord [payNum=" + payNum + ", influencerNum=" + influencerNum + ", advertiserNum=" + advertiserNum + ", updateAt=" + updateAt + ", changePoint=" + changePoint + "]";
-    }
+	public String toString() {
+		return "PointRecord [payNum=" + payNum + ", influencerNum=" + influencerNum + ", advertiserNum=" + advertiserNum
+				+ ", updateAt=" + updateAt + ", changePoint=" + changePoint + ", detail=" + detail + "]";
+	}
 
-    public Integer getPayNum() {
+	public Integer getPayNum() {
     	return payNum;
     }
 
@@ -67,4 +70,14 @@ public class PointRecord {
     public void setChangePoint(Integer changePoint) {
     	this.changePoint = changePoint;
     }
+
+	public String getDetail() {
+		return detail;
+	}
+
+	public void setDetail(String detail) {
+		this.detail = detail;
+	}
+    
+    
 }

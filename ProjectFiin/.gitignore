@@ -33,7 +33,5 @@ Thumbs.db
 *~
 *.swp
 *.swo
-=======
-.project
->>>>>>> refs/remotes/origin/develop-jy
+
 /bin/

@@ -7,7 +7,10 @@
 <title>Insert title here</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/reset.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/payment.css">
+<script src="http://code.jquery.com//jquery-latest.min.js"></script>
+
 </head>
+
 <body>
 <%@ include file="../include/header.jsp" %>
 <div id="container">
@@ -45,16 +48,22 @@
 	</div>
 <%@ include file="../include/footer.jsp" %>  
 </body>
-<script src="http://code.jquery.com//jquery-latest.min.js"></script>
+
 <script src="https://cdn.iamport.kr/v1/iamport.js"></script>
     <script>
-    //결제 api 
+    	//결제 api 
     	document.getElementById("submitbtn").onclick = function(e){
     		requestPay();
     	}
-/*     	var type = sessionStorage.getItem('type');
-    	var member = JSON.parse(sessionStorage.getItem('member'));
-		var num= member.num; */
+    	console.log('${influencer}');
+    	console.log('${advertiser}');
+		var type = '${type}';
+    	var userNum = '${type eq "influencer"? influencer.influencerNum:advertiser.advertiserNum}';
+    	var email = '${type eq "influencer"? influencer.userEmail:advertiser.userEmail}';
+    	var name = '${type eq "influencer"? influencer.name : advertiser.name}';
+    	var tel = '${type eq "influencer"? influencer.mobileNumber:advertiser.mobileNumber}';
+		console.log(userNum);
+		console.log('${type eq "influencer"? influencer.mobileNumber:advertiser.mobileNumber}');
         function requestPay() {
             IMP.init("imp18223576"); // 예: 'imp00000000'
             const checkPoint =$('input:radio[name="point"]:checked');
@@ -68,9 +77,9 @@
                         merchant_uid: 'merchant_'+new Date().getTime(), // 주문 고유 번호
                         name: "파인 "+pointAmount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")+"Point", // 숫자 3자리마다 , 찍어주는 것 
                         amount: pointPrice,  
-                        buyer_email: "kmj0376@gmail.com",
-                        buyer_name: "김민준",
-                        buyer_tel: "010-9954-0377", //번호 필수
+                        buyer_email: email,
+                        buyer_name: name,
+                        buyer_tel: tel, //번호 필수
                     },
                     function (response) {
                         if (response.success) {
@@ -79,7 +88,7 @@
    	                        	url:"payment",
        	                    	type:"POST",
            	                	async:true,
-               	            	data:{data:JSON.stringify({type:'influencer',num:1, changePoint:pointAmount})},
+               	            	data:{data:JSON.stringify({type:type,num:userNum, changePoint:pointAmount})},
 	                           	success: function(result){
                             		alert(result);
 		                            location.replace("http://localhost:8080/fiin/mypage/pointrecord");
