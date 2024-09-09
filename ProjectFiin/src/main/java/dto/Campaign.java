@@ -41,7 +41,8 @@ public class Campaign {
 		this.channel = channel;
 		this.image = image;
 		this.isRecruit = isRecruit;
-		}
+	}
+
 
 	// 상민) 캠페인 등록시 사용
 	public Campaign(String channel, String companyName, String companyUrl, String campaignTitle, String productName, Timestamp updateStartDate, Timestamp updateEndDate, Timestamp adStartDate, Timestamp adEndDate,
@@ -58,7 +59,6 @@ public class Campaign {
 		this.categoryId = categoryId;
 	}
 
-	
 
 	public Integer getCampaignNum() {
 		return campaignNum;
@@ -219,7 +219,6 @@ public class Campaign {
 	public void setIsRecruit(Integer isRecruit) {
 		this.isRecruit = isRecruit;
 	}
-
 
 	public Campaign() {
 		super();
