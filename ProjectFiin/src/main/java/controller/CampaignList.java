@@ -56,7 +56,6 @@ public class CampaignList extends HttpServlet {
 			page = Integer.parseInt(paramPage);
 		}
 		
-		
 		try {
 			CampaignService service = new CampaignServiceImpl();
 			PageInfo pageInfo = new PageInfo();

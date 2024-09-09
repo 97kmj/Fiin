@@ -41,6 +41,7 @@ public class CampaignDaoImpl implements CampaignDao {
 		map.put("categoryId", categoryId);
 		map.put("channel", channel);
 		map.put("row", row-1);
+		System.out.println(row);
 		return sqlSession.selectList("mapper.campaign.selectAllCampaign", map);
 
 	}
