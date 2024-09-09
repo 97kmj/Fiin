@@ -48,20 +48,22 @@
 		]]>
 	</select>
 	
-	<select id="selectCategory" parameterType="Integer" resultType="category">
-		select * from category
-		<where>
-			<if test="categoryId != null">
-				and categoryId = #{categoryId}
-			</if>
-		</where>
-	</select>
-
 	<select id="selectInfluencerListForMain" resultType="influencer">
 		<![CDATA[
 			select * from influencer order by regist_date desc limit 0, 8
 		]]>
 	</select>
 
+	<select id="selectAllInfluencer" parameterType="Map" resultType="influencer">
+		select * from influencer
+		where 1=1
+			<if test="categoryId != 0">
+				and category_id = #{categoryId}
+			</if>
+			<if test="channel != null">
+				and channel like '%${channel}%'
+			</if>
+		order by regist_date DESC limit #{row}, 8		
+	</select>
 </mapper>
 

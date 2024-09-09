@@ -43,23 +43,6 @@ public class InfluencerServiceImpl implements InfluencerService {
 	}
 
 	@Override
-	public List<Influencer> influencerList(PageInfo pageInfo) throws Exception {
-		Integer influencerCnt = influencerDao.selectInfluencerCount();
-		
-		Integer allPage = (int)Math.ceil((double)influencerCnt/8);
-		Integer startPage = (pageInfo.getCurPage()-1/10*10+1);
-		Integer endPage = startPage+10-1;
-		if(endPage>allPage) endPage = allPage;
-		
-		pageInfo.setAllPage(allPage);
-		pageInfo.setStartPage(startPage);
-		pageInfo.setEndPage(endPage);
-		
-		Integer row = (pageInfo.getCurPage()-1)*10+1;
-		return influencerDao.selectInfluencerList(row);
-	}
-
-	@Override
 	public Influencer influencerDetail(Integer influencerNum) throws Exception {
 		Influencer influencer = influencerDao.selectInfluencer(influencerNum);
 		if(influencer == null) throw new Exception("인플루언서를 찾지 못했습니다.");
@@ -90,16 +73,26 @@ public class InfluencerServiceImpl implements InfluencerService {
 		return influencer;
 
 	}
-	@Override
-	public List<Influencer> influencerListByChannels(PageInfo pageInfo, String categoryId, String[] channels) {
-		
-		return null;
-	}
 	
 	@Override
 	public List<Influencer> influencerListForMain() throws Exception {
 		List<Influencer> influencers = influencerDao.selectInfluencerListForMain();
 		return influencers;
+	}
+	@Override
+	public List<Influencer> influencerList(String channel, Integer categoryId, PageInfo pageInfo) throws Exception {
+		Integer influencerCnt = influencerDao.selectInfluencerCount();
+		Integer allPage = (int)Math.ceil((double)influencerCnt/8);
+		Integer startPage = (pageInfo.getCurPage()-1/10*10+1);
+		Integer endPage = startPage+10-1;
+		if(endPage>allPage) endPage = allPage;
+		
+		pageInfo.setAllPage(allPage);
+		pageInfo.setStartPage(startPage);
+		pageInfo.setEndPage(endPage);
+		
+		Integer row = (pageInfo.getCurPage()-1)*10+1;
+		return influencerDao.selectInfluencerList(row,channel,categoryId);
 	}
 }
 

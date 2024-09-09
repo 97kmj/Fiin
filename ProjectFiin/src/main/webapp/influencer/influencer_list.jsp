@@ -14,46 +14,39 @@
 <body>
 	<%@ include file="../include/header.jsp"%>
 	<div class="container">
-		<div id="categoryBar">
-			<h2>인플루언서</h2>
-			<div class="categoryWrap">
-				<input type="radio" id="all" name="category" value="0" checked
-					onclick="submitForm()"> <label for="all">전체</label> <input
-					type="radio" id="fasion" name="category" value="2"
-					onclick="submitForm()"> <label for="fasion">패션</label> <input
-					type="radio" id="beauty" name="category" value="1"
-					onclick="submitForm()"> <label for="beauty">뷰티</label> <input
-					type="radio" id="daily" name="category" value="6"
-					onclick="submitForm()"> <label for="daily">생활용품</label> <input
-					type="radio" id="sport" name="category" value="3"
-					onclick="submitForm()"> <label for="sport">스포츠</label> <input
-					type="radio" id="travel" name="category" value="4"
-					onclick="submitForm()"> <label for="travel">여행/숙박</label> <input
-					type="radio" id="goodTaste" name="category" value="5"
-					onclick="submitForm()"> <label for="goodTaste">맛집</label>
+		<form id="filterform" action="influencerList" method="get">
+			<div id="categoryBar">
+				<h2>인플루언서</h2>
+				<div class="categoryWrap">
+					<input type="radio" id="all" name="category" value="0" checked><label
+						for="all"><a href="0">전체</a></label> <input type="radio"
+						id="fasion" name="category" value="2"><label for="fasion"><a
+						href="2">패션</a></label> <input type="radio" id="beauty" name="category"
+						value="1"><label for="beauty"><a href="1">뷰티</a></label> <input
+						type="radio" id="daily" name="category" value="6"><label
+						for="daily"><a href="6">생활용품</a></label> <input type="radio"
+						id="sport" name="category" value="3"><label for="sport"><a
+						href="3">스포츠</a></label> <input type="radio" id="travel" name="category"
+						value="4"> <label for="travel"><a href="4">여행/숙박</a></label>
+					<input type="radio" id="goodTaste" name="category" value="5"><label
+						for="goodTaste"><a href="5">맛집</a></label>
+				</div>
 			</div>
-		</div>
 
-		<form id="categoryform" action="InfluencerList" method="get">
-			<input type="hidden" name="categoryId" id="categoryId">
-		</form>
-
-
-		<hr style="border: 1px solid #e5e5e5; width: 1200px; margin: 12px 0;">
-		<form id="filterForm" action="InfluencerList" method="get">
+			<hr style="border: 1px solid #e5e5e5; width: 1200px; margin: 12px 0;">
 			<div class="channelBar">
 				<h2>채널</h2>
 				<div class="channelButton">
 					<label> <input type="checkbox" name="channel"
-						value="instagram" onchange="submitForm()"> <span>인스타그램</span></label>
-					<label> <input type="checkbox" name="channel" value="blog"
-						onchange="submitForm()"><span>블로그</span></label><label> <input
-						type="checkbox" name="channel" value="youtube"
-						onchange="submitForm()"><span>유튜브</span></label>
+						value="instagram"> <span>인스타그램</span></label> <label> <input
+						type="checkbox" name="channel" value="blog"><span>블로그</span></label>
+					<label><input type="checkbox" name="channel"
+						value="youtube"><span>유튜브</span></label>
 				</div>
 			</div>
 		</form>
 		<div class="contents_wrap">
+
 			<div class="allBar">
 				<h2>전체</h2>
 				<div class="search_btn_wrap">
@@ -131,18 +124,35 @@
 			</c:otherwise>
 		</c:choose>
 	</div>
-
-	<script>
-		function submitForm() {
-			const selectedCategory = document
-					.querySelector('input[name="category"]:checked').value;
-			document.getElementById('categoryId').value = selectedCategory;
-			
-			document.getElementById('categoryform').submit();
-			document.getElementById('filterForm').submit();
-		}
-	</script>
-
 	<%@include file="../include/footer.jsp"%>
 </body>
+
+	<script>
+		${".categoryWrap a"}.click(function(e) {
+			e.preventDefault();
+			$(this).prev().click();
+			$("#filterform").submit)();
+		})
+		$(".channelButton input").click(function(e){
+			e.preventDefault();
+			$(this).prev().click();
+			$("filterform").submit();
+		})
+		var channels = `${channel}`;
+		
+		let channelChecks = document.querySelectorAll("input[name='channel']");
+		channelChecks.forEach(function(item) {
+			if(channels.includes(item.value)) {
+				item.checked = true;
+			}
+		})
+		var category = `${category}`;
+		let categoryList = document.querySelectorAll("input[name='category']");
+		categoryList.forEach(function(item) {
+		if(item.value == category) {
+			item.checked = true;
+		}
+	})
+	</script>
+
 </html>
