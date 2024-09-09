@@ -57,4 +57,9 @@ public class InfluencerDaoImpl implements InfluencerDao {
 	public Integer selectInfluencerCount() throws Exception {
 		return sqlSession.selectOne("mapper.influencer.selectInfluencerCount");
 	}
+
+	@Override
+	public List<Influencer> selectInfluencerListForMain() throws Exception {
+		return sqlSession.selectList("mapper.influencer.selectInfluencerListForMain");
+	}
 }

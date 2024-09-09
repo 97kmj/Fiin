@@ -37,31 +37,6 @@
 			});
 			$(".title_wrap h2").text("광고주 로그인");
 		});
-		
-		/* $("#login_btn").click(function(e) {
-			e.preventDefault();
-			$.ajax({
-				url: 'login',
-				type: 'post',
-				async: true,
-				dataType: 'text',
-				data: { userEmail: $("#userEmail").val(), 
-						password: $("#password").val(),
-						type: $("input[name='type']:checked").val()
-					  },
-				success: function(result) {
-					console.log(result)
-					if (result == 'true') {
-						alert("로그인에 성공하였습니다.");
-					} else {
-						alert("로그인에 실패하였습니다. 아이디나 비밀번호를 확인해주세요.");
-					}
-				},
-				error: function(err) {
-					console.log(err);
-				}
-			})
-		}) */
 	});
 </script>
 </head>
@@ -84,7 +59,7 @@
           <input type="text" class="signin_input" placeholder="이메일" name="userEmail" id="userEmail" />
           <input type="password" class="signin_input" placeholder="비밀번호" name="password" id="password" />
           <div class="findinfo_wrap">
-            <a href="findid.jsp">아이디</a>
+            <a href="/fiin/findId">아이디</a>
             <span></span>
             <a href="findpassword.jsp">비밀번호를 잊으셨나요?</a>
           </div>
@@ -92,7 +67,7 @@
         </form>
         <div class="signup_btn">
           <a href="joinInfluencer">인플루언서로 가입하기</a>
-          <a href="joinAdvertiser.jsp">광고주로 가입하기</a>
+          <a href="joinAdvertiser">광고주로 가입하기</a>
         </div>
       </div>
 </body>

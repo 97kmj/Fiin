@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import dto.Advertiser;
+import dto.Influencer;
 import dto.PointRecord;
 import service.PointService;
 import service.PointServiceImpl;
@@ -40,13 +42,25 @@ public class MypagePointRecord extends HttpServlet {
 			page = Integer.parseInt(paramPage);
 		}
 		
+		
 		try {
 			PointService service = new PointServiceImpl();
 			PageInfo pageInfo = new PageInfo();
 			pageInfo.setCurPage(page);
-			List<PointRecord> pointRecordList = service.showPointRecord("influencer", 1, pageInfo);
+			String type = (String)request.getSession().getAttribute("type");
+			Integer userNum;
+			if(type.equals("influencer")) {
+				Influencer influencer = (Influencer)request.getSession().getAttribute("influencer");
+				userNum = influencer.getInfluencerNum();
+			} else {
+				Advertiser advertiser = (Advertiser)request.getSession().getAttribute("advertiser");
+				userNum = advertiser.getAdvertiserNum();
+			}
+			List<PointRecord> pointRecordList = service.showPointRecord(type, userNum, pageInfo);
+			System.out.println(pointRecordList.toString());
 			request.setAttribute("pointRecordList", pointRecordList);
 			request.setAttribute("pageInfo", pageInfo);
+			
 			request.getRequestDispatcher("/mypage/mypage_point_record.jsp").forward(request, response);
 			
 		} catch (Exception e) {

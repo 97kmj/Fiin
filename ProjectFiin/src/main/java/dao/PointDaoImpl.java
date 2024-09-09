@@ -21,4 +21,12 @@ public class PointDaoImpl implements PointDao {
 		return sqlSession.selectList("mapper.point.selectPointList");
 	}
 	
+	@Override
+	public Integer getPointBalance(String type, Integer num) throws Exception {
+		Map<String,Object> param = new HashMap<>();
+		param.put("type", type);
+		param.put("user_num", num);
+		return sqlSession.selectOne("mapper.point.selectPointBalance",param);
+	}
+	
 }

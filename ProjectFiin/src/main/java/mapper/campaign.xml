@@ -11,12 +11,12 @@
 
 <!--	//상민 - campaignRegister(캠페인 등록)-->
 	<insert id="registerCampaign" parameterType="campaign" >
-	<![CDATA[
-   		INSERT INTO campaign (company_name, company_url, campaign_title, product_name, requirement,
-                     CHANNEL, image, category_id)
-    	VALUES (#{companyName}, #{companyUrl}, #{campaignTitle}, #{productName}, #{requirement},
-           			#{channel}, #{image}, #{categoryId})
-    	]]>
+		<![CDATA[
+	   		INSERT INTO campaign (company_name, company_url, campaign_title, product_name, requirement,
+	                     CHANNEL, image, category_id)
+	    	VALUES (#{companyName}, #{companyUrl}, #{campaignTitle}, #{productName}, #{requirement},
+	           			#{channel}, #{image}, #{categoryId})
+	    ]]>
 	</insert>
 
 	<select id="selectCampaign" parameterType="Integer" resultType="campaign">											
@@ -32,7 +32,7 @@
 				and category_id=#{categoryId}
 			</if>
 			<if test="channel != null">
-				and channel like ‘%${channel}%’
+				and channel like '%${channel}%'
 			</if>
 		order by update_start_date desc limit #{row}, 8
 	</select>
@@ -43,10 +43,6 @@
 		]]>
 	</select>
 	
-	
-	
-	
-	
 	<select id="selectCampaignAndReceive" parameterType="integer" resultType="campaign">											
 		<![CDATA[
 		 	select * from campaign c join receive_campaign r 
@@ -54,6 +50,7 @@
 		 	where influencer_num = ? order by c.update_start_date desc limit #{row}, 8
 		]]>
 	</select>
+	
 	<select id="selectCampaignAndrequest" parameterType="integer" resultType="campaign">											
 		<![CDATA[
 		 	select * from campaign c left join request.campaign r 
@@ -61,11 +58,18 @@
 		 	where influencer_num = ? order by c.update_start_date desc limit #{row}, 8
 		]]>
 	</select>
-		<select id="selectInfluencerAndrequest" parameterType="integer" resultType="campaign">											
+	
+	<select id="selectInfluencerAndrequest" parameterType="integer" resultType="campaign">											
 		<![CDATA[
 			SELECT *FROM influencer inf LEFT JOIN influencer_detail inf_det
 			ON inf.influencer_id = inf_det.influencer_id
 			WHERE influencer_id = (SELECT * FROM request WHERE campain_no =?)
+		]]>
+	</select>
+	
+	<select id="selectCampaignListForMain" resultType="campaign">
+		<![CDATA[
+			select * from campaign order by update_start_date desc limit 0, 8
 		]]>
 	</select>
 </mapper>	

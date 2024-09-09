@@ -19,6 +19,21 @@ span {
 	align-items: center;
 }
 
+.tab_wrap {
+	display: flex;
+	padding: 0 6px;
+	justify-content: space-between;
+	margin: 20px 0;
+	text-align: center;
+	font-size: 12px;
+}
+
+input[type="radio"] {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+}
+
 .findId_form {
 	display: flex;
 	flex-direction: column;

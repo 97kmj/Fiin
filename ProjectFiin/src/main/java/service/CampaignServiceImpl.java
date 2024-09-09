@@ -21,7 +21,7 @@ public class CampaignServiceImpl implements CampaignService {
 	  }
 	  
 	  @Override
-	  public List<Campaign> campaignList(String channel,Integer categoryId,PageInfo pageinfo) throws Exception {
+	  public List<Campaign> campaignList(String channel, Integer categoryId, PageInfo pageinfo) throws Exception {
 		  Integer campaignCnt = campaignDao.selectCampaignCount();
 		  Integer allPage = (int)Math.ceil((double)campaignCnt/8);
 		  Integer startPage =(pageinfo.getCurPage()-1)/8*8+1;
@@ -33,7 +33,12 @@ public class CampaignServiceImpl implements CampaignService {
 		  pageinfo.setEndPage(endPage);
 			
 		  Integer row = (pageinfo.getCurPage()-1)*8+1;
-		  System.out.println(row);
+//		  System.out.println(row);
 		  return campaignDao.selectCampaignList(row,channel,categoryId);
 		}
+
+	@Override
+	public List<Campaign> campaignListForMain() throws Exception {
+		return campaignDao.selectCampaignListForMain();
+	}
 }
