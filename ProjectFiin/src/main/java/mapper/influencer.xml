@@ -105,6 +105,6 @@
 		<![CDATA[
 			select insert(password, 4, 5, '*****') from influencer where user_email = #{userEmail}
 		]]>
-</select>
+	</select>
 </mapper>
 

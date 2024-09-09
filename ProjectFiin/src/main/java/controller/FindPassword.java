@@ -49,10 +49,9 @@ public class FindPassword extends HttpServlet {
 			if (type.equals("influencer")) {
 				String password = iService.influencerFindPassword(userEmail);
 				response.getWriter().write(password);
-				System.out.println(password);
 			} else {
-				//String userEmail = aService.advertiserEmail(name, mobileNumber);
-				//response.getWriter().write(userEmail);
+				String password = aService.advertiserPassword(userEmail);
+				response.getWriter().write(password);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
