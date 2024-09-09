@@ -164,6 +164,10 @@ public class Campaign {
 		this.adEndDate = adEndDate;
 		this.categoryId = categoryId;
 	}
+	public Campaign() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
 	public Campaign(Integer campaignNum, Integer advertiserNum, Integer categoryId, String companyName,
 			String companyUrl, String campaignTitle, String productName, Timestamp updateStartDate,
@@ -185,7 +189,6 @@ public class Campaign {
 		this.channel = channel;
 		this.image = image;
 		this.isRecruit = isRecruit;
-
 	}
 
 }

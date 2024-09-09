@@ -31,7 +31,10 @@ public class CampaignDaoImpl implements CampaignDao {
 	}
 
 	@Override
-	public Integer selectCampaignCount() throws Exception {
+	public Integer selectCampaignCount(List<String> channels, Integer category) throws Exception {
+		Map<String,Object> map = new HashMap<>();
+		map.put("channels", channels);
+		map.put("category", category);
 		return sqlSession.selectOne("mapper.campaign.selectCampaignCount");
 	}
 
@@ -43,7 +46,6 @@ public class CampaignDaoImpl implements CampaignDao {
 		map.put("row", row-1);
 		System.out.println(row);
 		return sqlSession.selectList("mapper.campaign.selectAllCampaign", map);
-
 	}
 
 	@Override
@@ -55,5 +57,6 @@ public class CampaignDaoImpl implements CampaignDao {
 	public List<Campaign> selectCampaignListForAdvertiser(Integer advertiserNum) throws Exception {
 		return sqlSession.selectList("mapper.campaign.selectCampaignByAdNum",advertiserNum);
 	}
+
 
 }
