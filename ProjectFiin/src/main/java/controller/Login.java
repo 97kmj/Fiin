@@ -62,8 +62,7 @@ public class Login extends HttpServlet {
 				request.getSession().removeAttribute("influencer");
 				request.getSession().setAttribute("type", type);
 				request.getSession().setAttribute("advertiser", advertiser);
-				response.sendRedirect("main");
-					
+				response.sendRedirect("main");		
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

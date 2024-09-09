@@ -47,7 +47,7 @@ public class JoinInfluencer extends HttpServlet {
 	 influencer.setMobileNumber(request.getParameter("mobileNumber"));
 	 String address = request.getParameter("address") + " " + request.getParameter("addressDetail");
 	 influencer.setAddress(address);
-	 
+
 	 try {
 		 InfluencerService service = new InfluencerServiceImpl();
 		 service.join(influencer);

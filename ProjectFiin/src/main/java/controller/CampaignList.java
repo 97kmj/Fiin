@@ -5,16 +5,15 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import dto.Campaign;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
-
 import dto.Campaign;
 import service.CampaignService;
 import service.CampaignServiceImpl;
@@ -80,28 +79,5 @@ public class CampaignList extends HttpServlet {
 			request.getRequestDispatcher("err.jsp").forward(request, response);
 		}
 	}
-	/*
-	 * } protected void doPost(HttpServletRequest request, HttpServletResponse
-	 * response) throws ServletException, IOException {
-	 * response.setCharacterEncoding("utf-8"); String param =
-	 * request.getParameter("param"); System.out.println(param);
-	 * 
-	 * List<String> channels = new ArrayList<>(); String category = null; Long page
-	 * = null;
-	 * 
-	 * try { JSONParser parser = new JSONParser(); JSONObject jsonObj =
-	 * (JSONObject)parser.parse(param); JSONArray chennelArr =
-	 * (JSONArray)jsonObj.get("channels");
-	 * 
-	 * for (int i= 0; i<chennelArr.size(); i++) {
-	 * channels.add((String)chennelArr.get(i)); } category =
-	 * (String)jsonObj.get("category"); page = (Long)jsonObj.get("page");
-	 * 
-	 * CampaignService service = new CampaignServiceImpl();
-	 * 
-	 * List<Campaign> CampaignList = service.campaignList(channels, category, page);
-	 * }
-	 * 
-	 * }
-	 */
+
 }

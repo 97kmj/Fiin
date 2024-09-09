@@ -36,4 +36,9 @@ public class CampaignServiceImpl implements CampaignService {
 //		  System.out.println(row);
 		  return campaignDao.selectCampaignList(row,channel,categoryId);
 		}
+
+	@Override
+	public List<Campaign> campaignListForMain() throws Exception {
+		return campaignDao.selectCampaignListForMain();
+	}
 }

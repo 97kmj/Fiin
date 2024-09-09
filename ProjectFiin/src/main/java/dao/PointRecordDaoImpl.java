@@ -18,10 +18,11 @@ public class PointRecordDaoImpl implements PointRecordDao {
 	
 	
 	@Override
-	public void insertPointRecord(String type, Integer num, Integer pointAmount) throws Exception {
-		Map<String,Integer> param = new HashMap<>();
+	public void insertPointRecord(String type, Integer num, Integer pointAmount,String detail) throws Exception {
+		Map<String,Object> param = new HashMap<>();
 		param.put("user_num",num);
 		param.put("point_amount", pointAmount);
+		param.put("detail", detail);
 		if (type.equals("influencer")) {
 			sqlSession.insert("mapper.pointRecord.insertPointRecordInf", param);
 			sqlSession.commit();

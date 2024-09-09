@@ -20,7 +20,9 @@ public class CampaignRegister extends HttpServlet {
   @Override
   protected void doGet(HttpServletRequest req, HttpServletResponse resp)
       throws ServletException, IOException {
-    super.doGet(req, resp);
+
+    req.getRequestDispatcher("/campaign/campaign_register.jsp").forward(req, resp);
+
   }
 
   //인플루언서 등록

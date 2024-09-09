@@ -6,16 +6,16 @@
 	<!-- 광고주일 때 포인트내역 insert -->
 	<insert id="insertPointRecordAd" parameterType="Map">
 		<![CDATA[
-			insert into point_record (advertiser_num, change_point)
-			values(#{user_num},#{point_amount})
+			insert into point_record (advertiser_num, change_point, detail)
+			values(#{user_num},#{point_amount},#{detail})
 		]]>
 	</insert>
 
 	<!-- 인플루언서일 때 포인트내역 insert-->
 	<insert id="insertPointRecordInf" parameterType="Map">
 		<![CDATA[
-			insert into point_record (influencer_num, change_point)
-			values(#{user_num},#{point_amount})
+			insert into point_record (influencer_num, change_point, detail)
+			values(#{user_num},#{point_amount},#{detail})
 		]]>
 	</insert>
 	
