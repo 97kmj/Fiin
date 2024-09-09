@@ -11,4 +11,5 @@ public interface CampaignService {
 	List<Campaign> campaignList(String channel,Integer categoryId,PageInfo pageinfo)throws Exception;
     List<Campaign> campaignListForMain()throws Exception;
 
+    List<Campaign> campaignListForAdvertiser(Integer advertiserNum) throws Exception;
 }

@@ -50,5 +50,10 @@ public class CampaignDaoImpl implements CampaignDao {
 	public List<Campaign> selectCampaignListForMain() throws Exception {
 		return sqlSession.selectList("mapper.campaign.selectCampaignListForMain");
 	}
+	
+	@Override
+	public List<Campaign> selectCampaignListForAdvertiser(Integer advertiserNum) throws Exception {
+		return sqlSession.selectList("mapper.campaign.selectCampaignByAdNum",advertiserNum);
+	}
 
 }
