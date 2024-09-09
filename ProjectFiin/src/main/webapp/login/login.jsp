@@ -37,6 +37,24 @@
 			});
 			$(".title_wrap h2").text("광고주 로그인");
 		});
+		
+		var emailReg = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;
+		var pwReg = /^(?=.*[a-zA-Z])(?=.*[0-9]).{8,25}$/;
+		
+		$("#login_btn").click(function(e) {
+			e.preventDefault();
+			if ($("#userEmail").val() === "") {				
+				alert("이메일을 입력해주세요.");
+				$("#userEmail").focus();
+				return false;
+			} else if ($("#password").val() === "") {
+				alert("비밀번호를 입력해주세요.");
+				$("#password").focus();
+				return false;
+			} 
+				
+			$(".signin_form").submit();
+		})
 	});
 </script>
 </head>
