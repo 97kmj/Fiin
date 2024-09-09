@@ -98,13 +98,16 @@
 <%@ include file="../include/footer.jsp" %>    
 </body>
 <script>
-	$(".apply").on('click',function(){
+	$(".apply").on('click',function(e){
+		e.preventDefault()
 		$(".applylist").addClass('show-modal');
 	})
-	$(".email").on('click',function(){
+	$(".email").on('click',function(e){
+		e.preventDefault()
 		$(".sendemail").addClass('show-modal');
 	})
-	$(".closebtn").on('click',function(){
+	$(".closebtn").on('click',function(e){
+		e.preventDefault()
 		$(".applylist").removeClass('show-modal');
 		$(".sendemail").removeClass('show-modal');
 	})
