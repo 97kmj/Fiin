@@ -44,4 +44,9 @@ public class AdvertiserDaoImpl implements AdvertiserDao {
 		return sqlsession.selectOne("mapper.advertiser.selectAdvertiserForFindEmail", param);
 	}
 
+	@Override
+	public String selectAdvertiserForFindPassword(String userEmail) throws Exception {
+		return sqlsession.selectOne("mapper.advertiser.selectAdvertiserForFindPassword", userEmail);
+	}
+
 }

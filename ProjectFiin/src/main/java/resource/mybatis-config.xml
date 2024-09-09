@@ -17,6 +17,7 @@
 		<typeAlias type="dto.ReceiveCampaign" alias="receiveCampaign"/>
 		<typeAlias type="dto.RequestCampaign" alias="requestCampaign"/>
 		<typeAlias type="dto.Category" alias="category"/>
+
 	</typeAliases>
 
 	<environments default="development">
@@ -24,9 +25,9 @@
 			<transactionManager type="JDBC"/>
 			<dataSource type="POOLED">
 				<property name="driver" value="org.mariadb.jdbc.Driver"/>
-				<property name="url" value="jdbc:mariadb://localhost:3309/mini"/>
+				<property name="url" value="jdbc:mariadb://localhost:3306/mini"/>
 				<property name="username" value="root"/>
-				<property name="password" value="1234"/>
+				<property name="password" value="7564"/>
 			</dataSource>
 		</environment>
 	</environments>

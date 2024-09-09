@@ -18,10 +18,6 @@
 <div class="bodyBackground">
     <div id="main">
         <form action="influencerRegister" method="post" enctype="multipart/form-data">
-
-
-            <%--        <form action="influencerRegister" method="post" enctype="multipart/form-data">--%>
-
             <div class="main_first_line">
                 <div class="first_line">
                     <div class="influencer_register">

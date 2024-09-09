@@ -5,9 +5,8 @@
 
 <mapper namespace="mapper.influencer">
 
-
   <!--// 상민 - influencerRegister (인플루언서 등록)-->
-  <update id="updateInfluencerRegister" parameterType="influencerRegister">
+  <update id="updateInfluencerRegister" parameterType="influencer">
     UPDATE influencer
     <set>
      <if test="introLine != null">intro_line = #{introLine},</if>
@@ -36,39 +35,21 @@
     ]]>
 	</select>
 
-	<insert id="insertInfluencer" parameterType="influencer">
+  <select id="selectInfluencer" parameterType="Integer" resultType="influencer">
 		<![CDATA[
-			insert into influencer (user_email, password, name, nickname, mobile_number, address) 
-				values (#{userEmail}, #{password}, #{name}, #{nickname}, #{mobileNumber}, #{address})
-		]]>
-	</insert>
-
-	
-	
-	<select id="selectInfluencer" parameterType="Integer" resultType="influencer">
-		<![CDATA[ 
-			select * from influencer where influencer_num = #{influencerNum} 
-		]]>
+    select *
+    from influencer
+    where influencer_num = #{influencer_num}
+    ]]>
 	</select>
-	
-	<select id="selectInfluencerByEmail" parameterType="String" resultType="influencer">
-		<![CDATA[ 
-			select * from influencer where user_email = #{userEmail} 
-		]]>
-	</select>
-	
-	<update id="updateInfluencer" parameterType="influencer">
-		update influencer
-		<set>
-			<if test="password != null">password = #{password},</if>
-			<if test="name != null">name = #{name},</if>
-			<if test="nickname != null">nickname = #{nickname},</if>
-			<if test="mobile_number != null">mobile_number = #{mobileNumber},</if>
-			<if test="address != null">address = #{address}</if>
-		</set>
-		where user_email = #{userEmail}
-	</update>
 
+  <select id="selectInfluencerByEmail" parameterType="String" resultType="influencer">
+		<![CDATA[
+    select *
+    from influencer
+    where user_email = #{user_email}
+    ]]>
+	</select>
 
   <update id="updateInfluencer" parameterType="influencer">
     update influencer
@@ -84,8 +65,8 @@
 
   <select id="selectInfluencerCount" resultType="Integer">
 		<![CDATA[
-     select count(*)
-     from influencer
+    select count(*)
+    from influencer
     ]]>
 	</select>
 
@@ -94,7 +75,7 @@
 			select * from influencer where regist_date IS NOT NULL order by regist_date desc limit 0, 8
 		]]>
 	</select>
-	
+
 	<select id="selectInfluencerForFindEmail" parameterType="map" resultType="influencer">
 		<![CDATA[
 			select user_email from influencer where name = #{name} and mobile_number = #{mobileNumber}
@@ -110,7 +91,20 @@
 			<if test="channel != null">
 				and channel like '%${channel}%'
 			</if>
-		order by regist_date DESC limit #{row}, 8		
+		order by regist_date DESC limit #{row}, 8
+	</select>
+	
+	<insert id="insertInfluencer" parameterType="influencer">
+		<![CDATA[
+			insert into influencer (user_email, password, name, nickname, mobile_number, address) 
+				values (#{userEmail}, #{password}, #{name}, #{nickname}, #{mobileNumber}, #{address})
+		]]>
+	</insert>
+	
+	<select id="selectInfluencerForFindPassword" parameterType="String" resultType="String">
+		<![CDATA[
+			select insert(password, 4, 5, '*****') from influencer where user_email = #{userEmail}
+		]]>
 	</select>
 </mapper>
 
