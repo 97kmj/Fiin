@@ -18,7 +18,6 @@ public class Campaign {
 	private String channel;
 	private String image;
 	private Integer isRecruit;
-	private String address;
 
 	public Campaign(Integer campaignNum, Integer advertiserNum, Integer categoryId,
 			String companyName,
@@ -82,9 +81,9 @@ public class Campaign {
 	}
 
 
-//	public Integer getAdvertiserNum() {
-//		return advertiserNum;
-//	}
+	public Integer getAdvertiserNum() {
+		return advertiserNum;
+	}
 
 
 	public void setAdvertiserNum(Integer advertiserNum) {
@@ -182,14 +181,14 @@ public class Campaign {
 	}
 
 
-//	public String /*getRequirement() {
-//		return requirement;
-//	}*/
+	public String getRequirement() {
+		return requirement;
+	}
 
 
-//	public void setRequirement(String requirement) {
-//		this.requirement = requirement;
-//	}
+	public void setRequirement(String requirement) {
+		this.requirement = requirement;
+	}
 
 
 	public String getChannel() {

@@ -51,5 +51,10 @@
 			select * from campaign order by update_start_date desc limit 0, 8
 		]]>
 	</select>
+	
+	<select id="selectCampaignByAdNum" parameterType="integer" resultType="campaign">
+		select * from campaign where advertiser_num = #{advertiserNum} order by update_start_date desc 
+	</select>
+	
 </mapper>	
 

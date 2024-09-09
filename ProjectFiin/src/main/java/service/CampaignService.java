@@ -13,4 +13,5 @@ public interface CampaignService {
     Campaign Detail (Integer campaignNum) throws Exception; 
 
 
+    List<Campaign> campaignListForAdvertiser(Integer advertiserNum) throws Exception;
 }
