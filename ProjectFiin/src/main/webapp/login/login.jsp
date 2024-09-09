@@ -53,7 +53,30 @@
 				return false;
 			} 
 				
-			$(".signin_form").submit();
+			$.ajax({
+				url: 'login',
+				type: 'post',
+				async: true,
+				dataType: 'text',
+				data: { userEmail: $("#userEmail").val(), 
+						password: $("#password").val(), 
+						type: $("input:radio[name='type']:checked").val()
+					  },
+				success: function(result) {
+					console.log(result)
+					if (result == 'false') {
+						alert("로그인에 실패하였습니다.");
+						return false;
+					} else {
+						// 로그인 성공 시
+						location.href = "/fiin/main";
+						alert("로그인에 성공하였습니다.")
+					}
+				},
+				error: function(err) {
+					console.log(err);
+				}
+			})
 		})
 	});
 </script>
