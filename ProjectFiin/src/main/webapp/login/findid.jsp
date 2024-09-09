@@ -111,7 +111,7 @@
               name="mobileNumber"
             />
           </label>	
-          <a href="findpassword.jsp" class="find_password">비밀번호를 잊으셨나요?</a>
+          <a href="/fiin/findPassword" class="find_password">비밀번호를 잊으셨나요?</a>
           <button type="submit" class="findId_btn">아이디 찾기</button>  
         </form>
         
