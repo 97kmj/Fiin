@@ -40,8 +40,24 @@
 			$(".modal_wrap .title_wrap h2").text("광고주 아이디 찾기");
 		});
 		
+		var pnReg = /^(01[016789]{1})-?[0-9]{3,4}-?[0-9]{4}$/;
 		$(".findId_btn").click(function(e) {
 			e.preventDefault();
+		
+			if ($('#name').val() === "") {
+				alert("이름을 입력해주세요.");
+				$("#name").focus();
+				return false;
+			} else if ($("#mobileNumber").val() === "") {
+				alert("휴대폰번호를 입력해주세요.");
+				$("#mobileNumber").focus();
+				return false;
+			} else if (!pnReg.test($("#mobileNumber").val())) {
+				alert("휴대폰번호를 확인해주세요.");
+				$("#mobileNumber").focus();
+				return false;
+			}
+			
 			$.ajax({
 				url: 'findId',
 				type: 'post',

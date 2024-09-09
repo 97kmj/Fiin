@@ -45,6 +45,7 @@
 			
 			if ($('#userEmail').val() === "") {
 				alert("아이디(이메일)을 입력해주세요.");
+				$("#userEmail").focus();
 				return false;
 			}
 			
