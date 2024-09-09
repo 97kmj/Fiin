@@ -36,7 +36,7 @@ public class CampaignDaoImpl implements CampaignDao {
 	}
 
 	@Override
-	public List<Campaign> selectCampaignList(Integer row, String channel, Integer categoryId) throws Exception {
+	public List<Campaign> selectCampaignList(Integer row, List<String> channel, Integer categoryId) throws Exception {
 		Map<String,Object> map = new HashMap<>();
 		map.put("categoryId", categoryId);
 		map.put("channel", channel);
@@ -48,6 +48,11 @@ public class CampaignDaoImpl implements CampaignDao {
 	@Override
 	public List<Campaign> selectCampaignListForMain() throws Exception {
 		return sqlSession.selectList("mapper.campaign.selectCampaignListForMain");
+	}
+	
+	@Override
+	public List<Campaign> selectCampaignListForAdvertiser(Integer advertiserNum) throws Exception {
+		return sqlSession.selectList("mapper.campaign.selectCampaignByAdNum",advertiserNum);
 	}
 
 }

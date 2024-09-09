@@ -1,6 +1,5 @@
 package dao;
 
-
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -67,5 +66,11 @@ public class InfluencerDaoImpl implements InfluencerDao {
 		return sqlSession.selectList("mapper.influencer.selectInfluencerListForMain");
 	}
 
-
+	@Override
+	public Influencer selectInfluencerForFindEmail(String name, String mobileNumber) throws Exception {
+		Map<String, String> param = new HashMap<>();
+		param.put("name", name);
+		param.put("mobileNumber", mobileNumber);
+		return sqlSession.selectOne("mapper.influencer.selectInfluencerForFindEmail", param);
+  }  
 }

@@ -91,7 +91,7 @@
                     <input type="text" id="instagram_channel" name="instagramName">
 
                     <label for="instagram_subscriber">구독자 수</label>
-                    <input type="text" id="instagram_subscriber" name="instagramFollower">
+                    <input type="number" id="instagram_subscriber" name="instagramFollower">
 
 
                 </div>
@@ -122,7 +122,7 @@
                     <input type="text" id="blog_channel" name="blogName">
 
                     <label for="blog_subscriber">구독자 수</label>
-                    <input type="text" id="blog_subscriber" name="blogFollower">
+                    <input type="number" id="blog_subscriber" name="blogFollower">
 
 
                 </div>
@@ -151,9 +151,9 @@
 
                             <img src="${pageContext.request.contextPath}/image/beauty.png" alt="뷰티"
                                  class="radio-image">
-
+                            <input type="radio" id="beauty" name="category" value="1">
                         </label>
-                        <input type="radio" id="beauty" name="category" value="1">
+
                     </div>
 
                     <div class="category">
@@ -161,9 +161,9 @@
 
                             <img src="${pageContext.request.contextPath}/image/fashion.png" alt="패션"
                                  class="radio-image">
-
+                            <input type="radio" id="fashion" name="category" value="2">
                         </label>
-                        <input type="radio" id="fashion" name="category" value="2">
+
                     </div>
 
                     <div class="category">
@@ -171,9 +171,9 @@
 
                             <img src="${pageContext.request.contextPath}/image/sport.png" alt="스포츠"
                                  class="radio-image">
-
+                            <input type="radio" id="sport" name="category" value="3">
                         </label>
-                        <input type="radio" id="sport" name="category" value="3">
+
                     </div>
                 </div>
 
@@ -183,9 +183,9 @@
 
                             <img src="${pageContext.request.contextPath}/image/travel.png" alt="여행"
                                  class="radio-image">
-
+                            <input type="radio" id="travel" name="category" value="4">
                         </label>
-                        <input type="radio" id="travel" name="category" value="4">
+
                     </div>
 
                     <div class="category">
@@ -193,9 +193,9 @@
 
                             <img src="${pageContext.request.contextPath}/image/food.png" alt="식품"
                                  class="radio-image">
-
+                            <input type="radio" id="food" name="category" value="5">
                         </label>
-                        <input type="radio" id="food" name="category" value="5">
+
                     </div>
 
                     <div class="category">
@@ -203,9 +203,9 @@
 
                             <img src="${pageContext.request.contextPath}/image/life.png" alt="생활용품"
                                  class="radio-image">
-
+                            <input type="radio" id="life" name="category" value="6">
                         </label>
-                        <input type="radio" id="life" name="category" value="6">
+
                     </div>
                 </div>
             </div>

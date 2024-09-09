@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,6 +8,7 @@
 <title>Insert title here</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/reset.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/campaign_detail.css?ver=1">
+<Script src="http://code.jquery.com/jquery-latest.min.js"></Script>
 </head>
 <body>
 <%@ include file="../include/header.jsp" %>
@@ -18,7 +20,7 @@
 	</div>
 	<br>
 	<div class="campaign_first_header"  >
-		<div class="img"><img src="${pageContext.request.contextPath}/img/campaign.png" style="width:380px;height:280px; border-radius:10px;"></div>
+		<div class="img"><img src="${pageContext.request.contextPath}/img/${campaign.image }" style="width:380px;height:280px; border-radius:10px;"></div>
 		<div class="imgtext">
 			<div style="font-size:30px; color : white;  padding :10px;" >
 				<span style="background-color : #000000; border-radius:10px; margin-left: 95px;">&nbsp;<b>모집완료</b>&nbsp;</span>
@@ -31,20 +33,24 @@
 			</div>
 			<br>
 			<div>
-				<span style="font-size:25px; text-align: left; padding :10px; 	margin-left: 90px;"><b>블로그</b></span>&nbsp;|&nbsp;<a style="font-size:25px; padding :10px;"><b>제품</b></a>
+				<span style="font-size:25px; text-align: left; padding :10px; 	margin-left: 90px;"><b>${campaign.channel }</b></span>&nbsp;|&nbsp;<a style="font-size:25px; padding :10px;"><b>${campaign.category }</b></a>
 			</div>
 			<br>
-			<div style="font-size:25px; text-align: left; padding :10px; margin-left: 90px;"><b>[24-7]비거너리 멀티 비타민 앤뷰티리뷰</b></div>
-			<div style="font-size:20px; text-align: left; padding :20px; margin-left: 80px;">2024-07-30~2024-05-14</div>
+			<div style="font-size:25px; text-align: left; padding :10px; margin-left: 90px;"><b>${campaign.companyName }</b></div>
+			<div style="font-size:20px; text-align: left; padding :20px; margin-left: 80px;">${campaign.adStartDate }~${campaign.adEndDate }</div>
 			<br>
 			<div >
-<!-- 				<div style=" text-align: center;">
-					<a href="signIn.jsp" type="button" class="basic_login" >로그인후 신청해주세요</a>
-				</div> -->
-				<div  class= "container">
-					<img src="${pageContext.request.contextPath}/img/북마크.png" class="bookmark">
-					<input type="button"  class="basic_btn" value = "제안하기">
-				</div>
+				<c:when test="${user_id = null }">
+					<div style=" text-align: center;">
+						<a href="signIn.jsp" type="button" class="basic_login" >로그인후 신청해주세요</a>
+					</div>
+				</c:when>
+				<c:otherwise>
+					<div  class= "container">
+						<img src="${pageContext.request.contextPath}/img/북마크.png" class="bookmark">
+						<input type="button"  class="basic_btn" value = "제안하기">
+					</div>
+				</c:otherwise>
 			</div>
 		</div>	
 	
@@ -53,8 +59,8 @@
 			<br>
 			<br>
 			<div class="middletext"><img src="img/watch.png" class="middle_text_img"><b>일정정보</b></div>
-			<div class="date_information">인플루언서모집기간 2024-07-10~2024-08-14<br>
-								 광고기간 2024-08-27 ~ 2024-10-10</div>
+			<div class="date_information">인플루언서모집기간 ${campaign.updateStartDate }~${campaign.updateEndDate }<br>
+								 광고기간 ${campaign.adStartDate }~${campaign.adEndDate }</div>
 		</div>
 		<br>
 		<br>
@@ -63,11 +69,11 @@
 		<div class="basic_info">
 		<br>
 			<div style="font-size:25px; padding : 10px 40px ;"><b>상품명</b></div>
-			<div class="prodname">비거너리 멀티 비타민</div>
+			<div class="prodname">${campaign.prodName }</div>
 			<br>
 			<div style="font-size:25px;padding : 10px 40px;"><b>카테고리</b></div>
 			<div class="chanimg">
-				<input type="button" class ="prodbut"  value = "식품">
+				<input type="button" class ="prodbut"  value = ${campaign.category }>
 			</div>
 			<br>
 			<br>
@@ -84,41 +90,7 @@
 			<br>
 			<div style="font-size:25px; padding : 0px 40px 10px 40px;"><b>광고 요구 사항</b></div>
 			<div class="con_middle"> 
-				<div class="campaign_request" style="word-break: normal;"><br>내가 느낀 그를 향한 이끌림
-									사랑이 아니기를 나는
-									기도했었지
-									나를 보는 안타까운 그 눈빛
-									제발 나의 착각이길 바랬지
-									지금이라도 피하고싶어
-									오랫동안 친구의
-									사랑이었던 그를
-									하지만 이젠 너무나
-									간절히 원하는
-									서로의 마음 속일순 없어
-									그 사람 때문에
-									많은걸 잃게 되겠지
-									힘들때마다 기대온 우정까지
-									하지만 어렵게 시작된
-									우리 사랑은
-									하늘만은 허락할거야
-									그 마음을 받아들인 후부터
-									나는 친구 얼굴을 바로 볼 수 없었지
-									변해가는 사랑속에 얼마나
-									아파하는지 알고 있었기에
-									정말 미안해 날 용서해줘
-									이런 얘긴 이제는 아무 소용 없지만
-									그래도 나를 조금만
-									이해해주겠니
-									그 없인 나도 견딜수 없어
-									이 사람 때문에
-									많은걸 잃게 되겠지
-									힘들때마다 기대온 우정까지
-									하지만 어렵게 시작된
-									우리 사랑은
-									하늘만은 허락할거야
-									우리를 위해서 흘려진
-									눈물 기억해
-									그만큼 소중히 아낄게
+				<div class="campaign_request" style="word-break: normal;"><br>${campaign.requirement }
 				</div>
 				</div>
 				<br>

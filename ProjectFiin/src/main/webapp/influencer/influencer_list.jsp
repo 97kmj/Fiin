@@ -148,6 +148,7 @@
 			item.checked = true;
 		}
 	})
+	
 	</script>
 
 </html>

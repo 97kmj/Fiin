@@ -69,6 +69,7 @@ public class InfluencerServiceImpl implements InfluencerService {
 	@Override
 	public Influencer influencerRegister(Influencer influencer) throws Exception {
 		// Dto에서 받은 정보들을 dao에 전달
+
 		influencerDao.registerInfluencer(influencer);
 		return influencer;
 
@@ -79,6 +80,7 @@ public class InfluencerServiceImpl implements InfluencerService {
 		List<Influencer> influencers = influencerDao.selectInfluencerListForMain();
 		return influencers;
 	}
+
 	@Override
 	public List<Influencer> influencerList(List<String> channels, Integer categoryId, PageInfo pageInfo) throws Exception {
 		Integer influencerCnt = influencerDao.selectInfluencerCount();
@@ -92,8 +94,16 @@ public class InfluencerServiceImpl implements InfluencerService {
 		pageInfo.setEndPage(endPage);
 		
 		Integer row = (pageInfo.getCurPage()-1)*10+1;
-		return influencerDao.selectInfluencerList(row,channels,categoryId);
+		return null;
+			
 	}
+
+  @Override
+	public String influencerEmail(String name, String mobileNumber) throws Exception {
+		Influencer influencer = influencerDao.selectInfluencerForFindEmail(name, mobileNumber);
+		if (influencer == null) throw new Exception("이메일을 찾지 못했습니다.");
+		return influencer.getUserEmail();
+  }
 }
 
 
