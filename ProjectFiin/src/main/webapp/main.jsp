@@ -87,9 +87,19 @@
 	                <img src="${pageContext.request.contextPath}/image/campaign_img01.png" alt="캠페인이미지01" />
 	              </div>
 	              <div class="campaign_text">
-	                <!-- campaign.channel 배열 필요 -->
-	                <p class="campaign_sns">블로그</p>
-	                <!--  -->
+	                <c:forEach items="${campaign.channel.split('#')}" var="channel">
+	                	<div class="sns_wrap">
+	                		<c:if test="${channel.equals('blog')}">
+	                    		<p>블로그</p>
+	                    	</c:if>
+	                    	<c:if test="${channel.equals('insta')}">
+	                    		<p>인스타그램</p>
+	                    	</c:if>
+	                    	<c:if test="${channel.equals('youtube')}">
+	                    		<p>유튜브</p>
+	                    	</c:if>
+	                	</div>
+	                </c:forEach>
 	                <h3>${campaign.companyName}</h3>
 	                <h4>${campaign.campaignTitle}</h4>
 	                <p>
