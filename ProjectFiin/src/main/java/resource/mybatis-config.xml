@@ -17,6 +17,7 @@
 		<typeAlias type="dto.ReceiveCampaign" alias="receiveCampaign"/>
 		<typeAlias type="dto.RequestCampaign" alias="requestCampaign"/>
 		<typeAlias type="dto.Category" alias="category"/>
+
 	</typeAliases>
 
 	<environments default="development">
