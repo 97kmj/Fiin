@@ -48,7 +48,7 @@
 			</c:when>
 			<c:otherwise>
 				<div class="navbar_login">
-					<div class="login_info" OnClick="location.href ='/fiin/mypage/mypage_campaign_influencer.jsp'">
+					<div class="login_info" OnClick="location.href ='mypageCampaignAdvertiser'">
 						<div class="login_img">
 		            		<img src="https://img.icons8.com/?size=100&id=43942&format=png&color=ffffff">
 		            	</div>
