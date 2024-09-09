@@ -39,19 +39,27 @@
             <a href="payment">결제하기</a>
           </li>
         </ul>
+        
         <c:choose>
 			<c:when test="${influencer eq null && advertiser eq null}">
 				<a href="login" class="menu_button">
         			로그인/회원가입
         		</a>
 			</c:when>
-			<c:when test="${advertiser eq null}">
+			<c:otherwise>
 				<div class="navbar_login">
 					<div class="login_info" OnClick="location.href ='/fiin/mypage/mypage_campaign_influencer.jsp'">
 						<div class="login_img">
 		            		<img src="https://img.icons8.com/?size=100&id=43942&format=png&color=ffffff">
 		            	</div>
-		            	<p id="userName">${influencer.name}</p>
+		            	<c:choose>
+				            <c:when test="${advertiser eq null}">
+				            	<p id="userName">${influencer.name}</p>
+				        	</c:when>
+				            <c:otherwise>
+				            	<p id="userName">${advertiser.name}</p>
+				            </c:otherwise>
+				        </c:choose>
 	            	</div>
 	            	<div class="logout_img">
 	            		<a href="logout">
@@ -59,23 +67,6 @@
 	            		</a>
 	            	</div>
 	            </div>
-			</c:when>
-			<c:otherwise>
-				<div class="navbar_login">
-
-					<div class="login_info" OnClick="location.href ='/fiin/mypage/mypage_campaign_advertiser.jsp'">
-
-						<div class="login_img">
-	            			<img src="https://img.icons8.com/?size=100&id=43942&format=png&color=ffffff">
-	            		</div>
-	            		<p id="userName">${advertiser.name}</p>
-					</div>
-	            	<div class="logout_img">
-	            		<a href="logout">
-	            			<img src="https://img.icons8.com/?size=100&id=3HSHWjvK9Yxq&format=png&color=000000"/>
-	            		</a>
-	            	</div>
-	            </div>				
 			</c:otherwise>
 		</c:choose>
       </header>
