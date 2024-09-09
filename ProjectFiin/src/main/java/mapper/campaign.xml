@@ -21,7 +21,7 @@
 
 	<select id="selectCampaign" parameterType="Integer" resultType="campaign">											
 		<![CDATA[
-		 	select * from campaign where campaign_num = ?
+		 	select * from campaign where campaign_num = #{campaignNum}
 		]]>
 	</select>
 	

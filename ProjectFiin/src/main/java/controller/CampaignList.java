@@ -62,9 +62,7 @@ public class CampaignList extends HttpServlet {
 			PageInfo pageInfo = new PageInfo();
 			pageInfo.setCurPage(page);
 			List<Campaign> campaignList;
-			String[] nchannel = new String[1];
 			campaignList = service.campaignList(channels, category, pageInfo);
-			
 			request.setAttribute("campaignList", campaignList);
 			request.setAttribute("pageInfo", pageInfo);
 			request.setAttribute("category", category);

@@ -52,7 +52,7 @@
 		<div class="campaignWrap" style="justify-content:left">
 	 		<c:forEach items="${campaignList }" var="campaign">
 	 			<div class="campaign_pick" id="pickNum1"
-				onclick="location.href='campaign/campaignDetail?campaignNum=${campaign.campaignNum }'">
+				onclick="location.href='campaignDetail?campaignNum=${campaign.campaignNum }'">
 					<img src="${pageContext.request.contextPath}/image/${campaign.image}" class="campaign_img">
 					<div>${campaign.channel } | ${campaign.categoryId }</div>
 					<div id="channelName">${campaignA.companyName }</div>
