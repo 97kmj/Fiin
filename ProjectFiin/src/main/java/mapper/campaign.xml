@@ -32,7 +32,7 @@
 				and category_id=#{categoryId}
 			</if>
 			<if test="channel != null">
-				and channel like ‘%${channel}%’
+				and channel like '%${channel}%'
 			</if>
 		order by update_start_date desc limit #{row}, 8
 	</select>
