@@ -93,6 +93,18 @@
 			</if>
 		order by regist_date DESC limit #{row}, 8
 	</select>
-
+	
+	<insert id="insertInfluencer" parameterType="influencer">
+		<![CDATA[
+			insert into influencer (user_email, password, name, nickname, mobile_number, address) 
+				values (#{userEmail}, #{password}, #{name}, #{nickname}, #{mobileNumber}, #{address})
+		]]>
+	</insert>
+	
+	<select id="selectInfluencerForFindPassword" parameterType="String" resultType="String">
+		<![CDATA[
+			select insert(password, 4, 5, '*****') from influencer where user_email = #{userEmail}
+		]]>
+</select>
 </mapper>
 

@@ -40,11 +40,16 @@
 			$(".modal_wrap .title_wrap h2").text("광고주 비밀번호 찾기");
 		});
 		
+		var emailReg = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;
 		$(".findpassword_btn").click(function(e) {
 			e.preventDefault();
 			
 			if ($('#userEmail').val() === "") {
 				alert("아이디(이메일)을 입력해주세요.");
+				$("#userEmail").focus();
+				return false;
+			} else if (!emailReg.test($("#userEmail").val())) {
+				alert("이메일 형식이 올바르지 않습니다.");
 				$("#userEmail").focus();
 				return false;
 			}
@@ -115,14 +120,13 @@
         	<div class="modal_content">
 		        <div class="title_wrap">
 		          <h2>인플루언서 비밀번호 찾기</h2>
-		          <a href="/fiin/login">
+		          <a href="login">
 		            <img src="${pageContext.request.contextPath}/image/closeIcon.svg" alt="닫기아이콘" />
 		          </a>
 		        </div>
 		        <p>입력하신 정보와 일치하는 비밀번호입니다.</p>
 		       	<div class="password"></div>
-		       	<!-- <div class="password">kosta********</div> -->
-		       	<a href="/fiin/login" class="login_btn">로그인 하기</a>
+		       	<a href="login" class="login_btn">로그인 하기</a>
 		    </div>
 		</div>
 	</div>

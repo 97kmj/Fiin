@@ -7,6 +7,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import service.AdvertiserService;
+import service.AdvertiserServiceImpl;
+import service.InfluencerService;
+import service.InfluencerServiceImpl;
+
 /**
  * Servlet implementation class FindPassword
  */
@@ -33,7 +38,25 @@ public class FindPassword extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("utf-8");
+		String userEmail = request.getParameter("userEmail");
+		String type = request.getParameter("type");
 		
+		try {
+			InfluencerService iService = new InfluencerServiceImpl();
+			AdvertiserService aService = new AdvertiserServiceImpl();
+			
+			if (type.equals("influencer")) {
+				String password = iService.influencerFindPassword(userEmail);
+				response.getWriter().write(password);
+				System.out.println(password);
+			} else {
+				//String userEmail = aService.advertiserEmail(name, mobileNumber);
+				//response.getWriter().write(userEmail);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			response.getWriter().write(String.valueOf(false));
+		}
 	}
-
 }
