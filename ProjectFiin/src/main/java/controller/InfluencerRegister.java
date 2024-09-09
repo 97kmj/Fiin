@@ -42,15 +42,17 @@ public class InfluencerRegister extends HttpServlet {
 //    Integer youtubeFollower = Integer.parseInt(request.getParameter("youtubeFollower"));
 
     String youtubeFollowerStr = request.getParameter("youtubeFollower");
-
     int youtubeFollower = 0;
-    try {
-      if (!youtubeFollowerStr.isEmpty()) {
+
+    if (youtubeFollowerStr != null && !youtubeFollowerStr.isEmpty()) {
+      try {
         youtubeFollower = Integer.parseInt((youtubeFollowerStr));
+      } catch (NumberFormatException e) {
+        e.printStackTrace();
+        System.out.println("youtubeFollower는 숫자여야 합니다.");
       }
-    } catch (Exception e) {
-      e.printStackTrace();
-      System.out.println("youtubeFollower는 빈값이 되면 안됩니다.");
+    } else {
+      System.out.println("youtubeFollower값이 비어있습니다.");
     }
 
     String youtubeUrl = request.getParameter("youtubeUrl");
@@ -59,7 +61,7 @@ public class InfluencerRegister extends HttpServlet {
     String instagramFollowerStr = request.getParameter("instagramFollower");
     int instagramFollower = 0;
     try {
-      if (!youtubeFollowerStr.isEmpty()) {
+      if (!instagramFollowerStr.isEmpty()) {
         instagramFollower = Integer.parseInt((instagramFollowerStr));
       }
     } catch (Exception e) {
@@ -82,14 +84,13 @@ public class InfluencerRegister extends HttpServlet {
       System.out.println("blogFollower는 빈값이 되면 안됩니다.");
     }
 
-
     String blogUrl = request.getParameter("blogUrl");
 
     //파라미터로 가져오는 category는 array형식(복수형)
 //    Integer categoryId = Integer.parseInt(request.getParameter("category"));
 
     String categoryIdStr = request.getParameter("category");
-    if(categoryIdStr != null && !categoryIdStr.isEmpty()) {
+    if (categoryIdStr != null && !categoryIdStr.isEmpty()) {
       System.out.println("CategoryId = " + categoryIdStr);
     } else {
       System.out.println("No Category selected");
@@ -97,7 +98,6 @@ public class InfluencerRegister extends HttpServlet {
 
     //여기 에러나옴 -> 주말에 이어서 해결하기
     Integer categoryId = Integer.parseInt(categoryIdStr);
-
 
     String introduction = request.getParameter("introduction");
 

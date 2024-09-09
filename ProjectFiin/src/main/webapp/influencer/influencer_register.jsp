@@ -62,7 +62,7 @@
                     <input type="text" id="youtube_channel" name="youtubeName">
 
                     <label for="youtube_subscriber">구독자 수</label>
-                    <input type="text" id="youtube_subscriber" name="youtubeFollower">
+                    <input type="number" id="youtube_subscriber" name="youtubeFollower">
 
                 </div>
 
