@@ -38,14 +38,14 @@ public class InfluencerDaoImpl implements InfluencerDao {
 		sqlSession.update("mapper.influencer.updateInfluencer", influencer);
 		sqlSession.commit();
 	}
-	
+	  
   	@Override
 	public List<Influencer> selectInfluencerList(Integer row, List<String> channels, Integer categoryId) throws Exception {
 		Map<String,Object>map = new HashMap<>();
-		map.put("categoryId", categoryId);
-		map.put("channel", channels);
+		map.put("channels", channels);
 		map.put("row", row-1);
-		System.out.println(categoryId);
+		map.put("categoryId", categoryId);
+		
 		return sqlSession.selectList("mapper.influencer.selectAllInfluencer", map);
     }
 

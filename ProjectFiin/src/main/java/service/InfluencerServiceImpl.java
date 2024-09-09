@@ -82,19 +82,22 @@ public class InfluencerServiceImpl implements InfluencerService {
 	}
 
 	@Override
-	public List<Influencer> influencerList(List<String> channels, Integer categoryId, PageInfo pageInfo) throws Exception {
+	public List<Influencer> getInfluencerList(List<String> channels, Integer categoryId, PageInfo pageInfo) throws Exception {
+		
 		Integer influencerCnt = influencerDao.selectInfluencerCount();
+		
 		Integer allPage = (int)Math.ceil((double)influencerCnt/8);
-		Integer startPage = (pageInfo.getCurPage()-1/10*10+1);
-		Integer endPage = startPage+10-1;
+		Integer startPage = (pageInfo.getCurPage()-1)/8*8+1;
+		Integer endPage = startPage+8-1;
 		if(endPage>allPage) endPage = allPage;
 		
 		pageInfo.setAllPage(allPage);
 		pageInfo.setStartPage(startPage);
 		pageInfo.setEndPage(endPage);
 		
-		Integer row = (pageInfo.getCurPage()-1)*10+1;
-		return null;
+		Integer row = (pageInfo.getCurPage()-1)*8+1;
+		List<Influencer> influencerList = influencerDao.selectInfluencerList(row, channels, categoryId);
+		return influencerList;
 			
 	}
 

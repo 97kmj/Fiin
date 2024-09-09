@@ -34,7 +34,7 @@
 	display: none;
 }
 
-.categoryWrap input[type="radio"]:checked+label {
+.categoryWrap input[type="radio"]:checked+a {
 	background-color: white;
 	color: #4849e8;
 }

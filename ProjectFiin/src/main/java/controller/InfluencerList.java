@@ -1,8 +1,7 @@
 package controller;
 
 import java.io.IOException;
-import java.util.Arrays;
-import java.util.Collections;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -38,10 +37,23 @@ public class InfluencerList extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
+
 		String paramPage = request.getParameter("page");
 		String[] channels = request.getParameterValues("channel");
+		System.out.println(channels.toString());
+		List<String> channelList = new ArrayList<>();
+		if (channels == null) {
+			channelList.add("youtube");
+			channelList.add("instagram");
+			channelList.add("blog");
+		} else {
+			for (String channel : channels) {
+				channelList.add(channel);
+			}
+			System.out.println(channelList);
+		}
 		Integer category = 0;
-		if(request.getParameter("category") != null) {
+		if (request.getParameter("category") != null) {
 			category = Integer.parseInt(request.getParameter("category"));
 		}
 		System.out.println(request.getParameter("category"));
@@ -49,19 +61,19 @@ public class InfluencerList extends HttpServlet {
 		if (paramPage != null) {
 			page = Integer.parseInt(paramPage);
 		}
-		
+
 		try {
 			InfluencerService service = new InfluencerServiceImpl();
 			PageInfo pageInfo = new PageInfo();
 			pageInfo.setCurPage(page);
 			List<Influencer> influencerList;
-			List<String> channelList = (channels == null)?Collections.singletonList("") : Arrays.asList(channels);
-			influencerList = service.influencerList(channelList, category, pageInfo);
-			
+
+			influencerList = service.getInfluencerList(channelList, category, pageInfo);
+
 			request.setAttribute("influencerList", influencerList);
 			request.setAttribute("pageInfo", pageInfo);
 			request.setAttribute("category", category);
-			request.setAttribute("channel", channelList); 
+			request.setAttribute("channels", channelList);
 			request.getRequestDispatcher("influencer/influencer_list.jsp").forward(request, response);
 		} catch (Exception e) {
 			e.printStackTrace();

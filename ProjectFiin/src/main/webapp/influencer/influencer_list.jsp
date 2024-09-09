@@ -32,11 +32,9 @@
 			<div class="channelBar">
 				<h2>채널</h2>
 				<div class="channelButton">
-					<label> <input type="checkbox" name="channel"
-						value="instagram"> <span>인스타그램</span></label> <label> <input
-						type="checkbox" name="channel" value="blog"><span>블로그</span></label>
-					<label><input type="checkbox" name="channel"
-						value="youtube"><span>유튜브</span></label>
+					<label><input type="checkbox" name="channel" value="instagram"> <span>인스타그램</span></label>
+					<label><input type="checkbox" name="channel" value="blog"><span>블로그</span></label>
+					<label><input type="checkbox" name="channel" value="youtube"><span>유튜브</span></label>
 				</div>
 			</div>
 		</form>
@@ -63,10 +61,10 @@
 						<div>${influencer.youtube }|${influencer.categoryId }</div>
 						<div id="channelName">
 							<c:if test="${influencer.youtubeName ne null }">
-								${influencer.youtubeName }&nbsp;
+								${influencer.youtubeName }
 							</c:if>
 							<c:if test="${influencer.instagramName ne null }">
-								${influencer.instagramName }&nbsp;
+								${influencer.instagramName }
 							</c:if>
 							<c:if test="${influencer.blogName ne null }">
 								${influencer.blogName }
@@ -123,7 +121,7 @@
 </body>
 
 <script>
-		${".categoryWrap a"}.click(function(e) {
+		$(".categoryWrap a").click(function(e) {
 			e.preventDefault();
 			$(this).prev().click();
 			$("#filterform").submit();
@@ -131,9 +129,10 @@
 		$(".channelButton input").click(function(e){
 			e.preventDefault();
 			$(this).prev().click();
-			$("filterform").submit();
+			$("#filterform").submit();
 		})
-		var channels = `${channel}`;
+		
+		var channels = `${channels}`;
 		
 		let channelChecks = document.querySelectorAll("input[name='channel']");
 		channelChecks.forEach(function(item) {
