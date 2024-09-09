@@ -43,7 +43,9 @@ public class CampaignList extends HttpServlet {
 
 		request.setCharacterEncoding("UTF-8");
 		String paramPage = request.getParameter("page");
-		String[] channels = request.getParameterValues("channel");
+		String[] channelsArray = request.getParameterValues("channel");
+		List<String> channels = channelsArray != null? Arrays.asList(channelsArray): new ArrayList<>();
+		
 		Integer category = 0;
 		if (request.getParameter("category") != null) {
 			category = Integer.parseInt(request.getParameter("category"));
@@ -61,17 +63,12 @@ public class CampaignList extends HttpServlet {
 			pageInfo.setCurPage(page);
 			List<Campaign> campaignList;
 			String[] nchannel = new String[1];
-			if (channels==null) {
-				nchannel[0] = "";
-				campaignList = service.campaignList(nchannel[0], category, pageInfo);
-			} else {
-				campaignList = service.campaignList(channels[0], category, pageInfo);
-			}
+			campaignList = service.campaignList(channels, category, pageInfo);
 			
 			request.setAttribute("campaignList", campaignList);
 			request.setAttribute("pageInfo", pageInfo);
 			request.setAttribute("category", category);
-			request.setAttribute("channel", channels == null? Arrays.asList(nchannel):Arrays.asList(channels));
+			request.setAttribute("channel", channels);
 			request.getRequestDispatcher("campaign/campaign_list.jsp").forward(request, response);
 		} catch (Exception e) {
 			e.printStackTrace();

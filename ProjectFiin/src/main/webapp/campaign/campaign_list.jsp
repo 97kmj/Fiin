@@ -49,13 +49,13 @@
 			<h2></h2>
 			<button id="registerButton" onclick="location.href='campaign/campaign_register.jsp'">캠페인 등록하기</button>
 		</div>
-		<div class="campaignWrap">
+		<div class="campaignWrap" style="justify-content:left">
 	 		<c:forEach items="${campaignList }" var="campaign">
 	 			<div class="campaign_pick" id="pickNum1"
-				onclick="location.href='campaign/campaign_detail.jsp'">
-					<img src="${pageContext.request.contextPath}/image/campaign_img01.png" class="campaign_img">
+				onclick="location.href='campaign/campaignDetail?campaignNum=${campaign.campaignNum }'">
+					<img src="${pageContext.request.contextPath}/image/${campaign.image}" class="campaign_img">
 					<div>${campaign.channel } | ${campaign.categoryId }</div>
-					<div id="channelName">${campaign.companyName }</div>
+					<div id="channelName">${campaignA.companyName }</div>
 					<div id="title">${campaign.productName }</div>
 					<div>${campaign.adStartDate} ~ ${campaign.adEndDate}</div>
 				</div>
@@ -65,9 +65,12 @@
 		<!-- 페이지 처리  -->
 		<div style="text-align:center">
 			<!-- 페이지 이전버튼 생성  -->
+
  			<c:choose>
 				<c:when test="${pageInfo.curPage>1 }">
+
 				 	<a href="campaignList?page=${pageInfo.curPage-1 }">&lt;</a>
+
 				 </c:when>
 				 <c:otherwise>
 				 	<a>&lt;</a>
