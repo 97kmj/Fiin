@@ -97,6 +97,13 @@ public class InfluencerServiceImpl implements InfluencerService {
 		List<Influencer> influencers = influencerDao.selectInfluencerListForMain();
 		return influencers;
 	}
+	
+	@Override
+	public String influencerEmail(String name, String mobileNumber) throws Exception {
+		Influencer influencer = influencerDao.selectInfluencerForFindId(name, mobileNumber);
+		if (influencer == null) throw new Exception("이메일을 찾지 못했습니다.");
+		return influencer.getUserEmail();
+	}
 }
 
 

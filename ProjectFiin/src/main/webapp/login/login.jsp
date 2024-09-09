@@ -63,7 +63,6 @@
 						type: $("input:radio[name='type']:checked").val()
 					  },
 				success: function(result) {
-					console.log(result)
 					if (result == 'false') {
 						alert("로그인에 실패하였습니다.");
 						return false;
@@ -102,7 +101,7 @@
           <div class="findinfo_wrap">
             <a href="/fiin/findId">아이디</a>
             <span></span>
-            <a href="findpassword.jsp">비밀번호를 잊으셨나요?</a>
+            <a href="/fiin/findPassword">비밀번호를 잊으셨나요?</a>
           </div>
           <button type="submit" id="login_btn">로그인 하기</button>
         </form>

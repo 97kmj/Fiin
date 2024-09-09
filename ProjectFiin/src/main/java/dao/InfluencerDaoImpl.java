@@ -1,6 +1,8 @@
 package dao;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Locale.Category;
 
 import org.apache.ibatis.session.SqlSession;
@@ -61,5 +63,13 @@ public class InfluencerDaoImpl implements InfluencerDao {
 	@Override
 	public List<Influencer> selectInfluencerListForMain() throws Exception {
 		return sqlSession.selectList("mapper.influencer.selectInfluencerListForMain");
+	}
+
+	@Override
+	public Influencer selectInfluencerForFindId(String name, String mobileNumber) throws Exception {
+		Map<String,Object> param = new HashMap<>();
+		param.put("name", name);
+		param.put("mobileNumber", mobileNumber);
+		return sqlSession.selectOne("mapper.influencer.selectInfluencerForFindId", param);
 	}
 }

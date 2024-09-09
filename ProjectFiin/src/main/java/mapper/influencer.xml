@@ -36,7 +36,7 @@
 			<if test="password != null">password = #{password},</if>
 			<if test="name != null">name = #{name},</if>
 			<if test="nickname != null">nickname = #{nickname},</if>
-			<if test="mobile_number != null">mobile_number = #{mobile_number},</if>
+			<if test="mobile_number != null">mobile_number = #{mobileNumber},</if>
 			<if test="address != null">address = #{address}</if>
 		</set>
 		where user_email = #{userEmail}
@@ -62,6 +62,11 @@
 			select * from influencer where regist_date IS NOT NULL order by regist_date desc limit 0, 8
 		]]>
 	</select>
-
+	
+	<select id="selectInfluencerForFindId" parameterType="map" resultType="influencer">
+		<![CDATA[
+			select user_email from influencer where name = #{name} and mobile_number = #{mobileNumber}
+		]]>
+	</select>
 </mapper>
 
