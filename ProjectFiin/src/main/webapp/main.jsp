@@ -69,7 +69,11 @@
               	</c:forEach>
               </ul>
             </div>
+<<<<<<< HEAD
             <a href="/fiin/influencerList" class="moreview_btn">인플루언서 더보기</a>
+=======
+            <a href="/fiin/influencer/influencer_list.jsp" class="moreview_btn">인플루언서 더보기</a>
+>>>>>>> branch 'develop-sw' of https://github.com/97kmj/Fiin.git
     </div>
     
     <div class="campaign">

@@ -84,8 +84,8 @@
 
   <select id="selectInfluencerCount" resultType="Integer">
 		<![CDATA[
-    select count(*)
-    from influencer
+     select count(*)
+     from influencer
     ]]>
 	</select>
 
@@ -95,5 +95,16 @@
 		]]>
 </select>
 
+	<select id="selectAllInfluencer" parameterType="Map" resultType="influencer">
+		select * from influencer
+		where 1=1
+			<if test="categoryId != 0">
+				and category_id = #{categoryId}
+			</if>
+			<if test="channel != null">
+				and channel like '%${channel}%'
+			</if>
+		order by regist_date DESC limit #{row}, 8		
+	</select>
 </mapper>
 
