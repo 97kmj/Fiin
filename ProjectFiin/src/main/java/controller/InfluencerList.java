@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -37,20 +38,38 @@ public class InfluencerList extends HttpServlet {
 			throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
 		String paramPage = request.getParameter("page");
+		String[] channels = request.getParameterValues("channel");
+		Integer category = 0;
+		if(request.getParameter("category") != null) {
+			category = Integer.parseInt(request.getParameter("category"));
+		}
+		
 		Integer page = 1;
 		if (paramPage != null) {
 			page = Integer.parseInt(paramPage);
 		}
+		
 		try {
 			InfluencerService service = new InfluencerServiceImpl();
 			PageInfo pageInfo = new PageInfo();
 			pageInfo.setCurPage(page);
-			List<Influencer> influencerList = service.influencerList(pageInfo);
+			List<Influencer> influencerList;
+			String[] nchannel = new String[1];
+			if(channels == null) {
+				nchannel[0] = "";
+				influencerList = service.influencerList(nchannel[0], category, pageInfo);
+			} else {
+				influencerList = service.influencerList(channels[0], category, pageInfo);
+			}
 			request.setAttribute("influencerList", influencerList);
 			request.setAttribute("pageInfo", pageInfo);
-			request.getRequestDispatcher("/influencer/influencerList.jsp").forward(request, response);
+			request.setAttribute("category", category);
+			request.setAttribute("channel", channels==null? Arrays.asList(nchannel):Arrays.asList(channels));
+			request.getRequestDispatcher("influencer/influencer_list.jsp").forward(request, response);
 		} catch (Exception e) {
 			e.printStackTrace();
+			request.setAttribute("err", e.getMessage());
+			request.getRequestDispatcher("err.jsp").forward(request, response);
 		}
 	}
 

@@ -30,7 +30,6 @@
 			</dataSource>
 		</environment>
 	</environments>
-
 	<mappers>
 		<mapper resource="mapper/influencer.xml"/>
 		<mapper resource="mapper/advertiser.xml"/>

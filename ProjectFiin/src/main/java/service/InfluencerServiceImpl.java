@@ -1,13 +1,11 @@
 package service;
 
+import java.util.List;
 import dao.BookmarkCampaignDao;
 import dao.BookmarkCampaignDaoImpl;
-
-
 import dao.InfluencerDao;
 import dao.InfluencerDaoImpl;
 import dto.Influencer;
-import java.util.List;
 import util.PageInfo;
 
 public class InfluencerServiceImpl implements InfluencerService {
@@ -45,23 +43,6 @@ public class InfluencerServiceImpl implements InfluencerService {
 	}
 
 	@Override
-	public List<Influencer> influencerList(PageInfo pageInfo) throws Exception {
-		Integer influencerCnt = influencerDao.selectInfluencerCount();
-		
-		Integer allPage = (int)Math.ceil((double)influencerCnt/8);
-		Integer startPage = (pageInfo.getCurPage()-1/10*10+1);
-		Integer endPage = startPage+10-1;
-		if(endPage>allPage) endPage = allPage;
-		
-		pageInfo.setAllPage(allPage);
-		pageInfo.setStartPage(startPage);
-		pageInfo.setEndPage(endPage);
-		
-		Integer row = (pageInfo.getCurPage()-1)*10+1;
-		return influencerDao.selectInfluencerList(row);
-	}
-
-	@Override
 	public Influencer influencerDetail(Integer influencerNum) throws Exception {
 		Influencer influencer = influencerDao.selectInfluencer(influencerNum);
 		if(influencer == null) throw new Exception("인플루언서를 찾지 못했습니다.");
@@ -80,7 +61,7 @@ public class InfluencerServiceImpl implements InfluencerService {
 			bookmarkCampaignDao.insertBookmarkCampaign(InfluencerNum, CampaignNum);
 			return true;
 		} else {
-			bookmarkCampaignDao.deleterBookmarkCampaign(InfluencerNum, CampaignNum);
+			bookmarkCampaignDao.deleteBookmarkCampaign(InfluencerNum, CampaignNum);
 			return false;
 		}
 	}
@@ -88,8 +69,10 @@ public class InfluencerServiceImpl implements InfluencerService {
 	@Override
 	public Influencer influencerRegister(Influencer influencer) throws Exception {
 		// Dto에서 받은 정보들을 dao에 전달
+
 		influencerDao.registerInfluencer(influencer);
 		return influencer;
+
 	}
 	
 	@Override
@@ -97,6 +80,29 @@ public class InfluencerServiceImpl implements InfluencerService {
 		List<Influencer> influencers = influencerDao.selectInfluencerListForMain();
 		return influencers;
 	}
+
+  @Override
+	public List<Influencer> influencerList(String channel, Integer categoryId, PageInfo pageInfo) throws Exception {
+		Integer influencerCnt = influencerDao.selectInfluencerCount();
+		Integer allPage = (int)Math.ceil((double)influencerCnt/8);
+		Integer startPage = (pageInfo.getCurPage()-1/10*10+1);
+		Integer endPage = startPage+10-1;
+		if(endPage>allPage) endPage = allPage;
+		
+		pageInfo.setAllPage(allPage);
+		pageInfo.setStartPage(startPage);
+		pageInfo.setEndPage(endPage);
+		
+		Integer row = (pageInfo.getCurPage()-1)*10+1;
+		return influencerDao.selectInfluencerList(row,channel,categoryId);
+	}
+  
+  @Override
+	public String influencerEmail(String name, String mobileNumber) throws Exception {
+		Influencer influencer = influencerDao.selectInfluencerForFindEmail(name, mobileNumber);
+		if (influencer == null) throw new Exception("이메일을 찾지 못했습니다.");
+		return influencer.getUserEmail();
+  }
 }
 
 

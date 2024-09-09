@@ -1,11 +1,18 @@
 package controller;
 
 import java.io.IOException;
+import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import dto.Advertiser;
+import dto.Campaign;
+import service.CampaignService;
+import service.CampaignServiceImpl;
 
 /**
  * Servlet implementation class MypageCampaignAdvertiser
@@ -26,7 +33,21 @@ public class MypageCampaignAdvertiser extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getRequestDispatcher("/mypage/mypage_campaign_advertiser.jsp").forward(request, response);
+		request.setCharacterEncoding("utf-8");
+		Advertiser advertiser = (Advertiser)request.getSession().getAttribute("advertiser");
+		Integer advertiserNum = advertiser.getAdvertiserNum();
+		try {
+			CampaignService service = new CampaignServiceImpl();
+			List<Campaign> campaignList = service.campaignListForAdvertiser(advertiserNum);
+			System.out.println(campaignList);
+			request.setAttribute("campaignList", campaignList);
+			request.getRequestDispatcher("/mypage/mypage_campaign_advertiser.jsp").forward(request, response);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			request.setAttribute("err", e.getMessage());
+			request.getRequestDispatcher("err.jsp").forward(request, response);
+		}
 	}
 
 	/**

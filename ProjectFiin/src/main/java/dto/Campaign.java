@@ -124,6 +124,7 @@ public class Campaign {
 				+ ", requirement=" + requirement + ", channel=" + channel + ", image=" + image + ", isRecruit="
 				+ isRecruit + ", address=" + address + "]";
 	}
+	// 상민) 캠페인 등록시 사용
 	public Campaign(String channel, String companyName, String companyUrl, String campaignTitle, String productName, Timestamp updateStartDate, Timestamp updateEndDate, Timestamp adStartDate, Timestamp adEndDate,
 			Integer categoryId) {
 		this.channel = channel;
@@ -159,9 +160,6 @@ public class Campaign {
 		this.isRecruit = isRecruit;
 		this.address = address;
 	}
-	public Campaign() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-	
+
+
 }
