@@ -64,7 +64,6 @@
 							$('.modal_content').css('display', 'none');
 							location.href = "/ffin/login";
 						});
-						//alert(result);
 					} 
 				},
 				error: function(err) {

@@ -15,5 +15,5 @@ public interface InfluencerDao {
 	Category selectCategory(Integer categoryId) throws Exception;
 	Integer selectInfluencerCount() throws Exception;
 	List<Influencer> selectInfluencerListForMain() throws Exception;
-	Influencer selectInfluencerForFindId(String name, String mobileNumber) throws Exception;
+	Influencer selectInfluencerForFindEmail(String name, String mobileNumber) throws Exception;
 }
