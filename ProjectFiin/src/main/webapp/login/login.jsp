@@ -68,7 +68,7 @@
 						return false;
 					} else {
 						// 로그인 성공 시
-						location.href = "/fiin/main";
+						location.href = "main";
 						alert("로그인에 성공하였습니다.")
 					}
 				},
