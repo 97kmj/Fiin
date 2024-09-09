@@ -19,6 +19,7 @@ public class Campaign {
 	private String image;
 	private Integer isRecruit;
 	private String address;
+	
 	public Integer getCampaignNum() {
 		return campaignNum;
 	}
