@@ -12,11 +12,11 @@
 <body>
  	<div id="sidebar">
         <div class="sideitem">
-            <h3>홍길동님</h3>
+            <h3>${advertiser.name }님</h3>
         </div>
         <div class="sideitem" style="text-align:left;">
             <h3 style="margin-bottom:16px;">내 포인트 ></h3>
-            <h3 style="color:#4948e8;"><fmt:formatNumber value='${type eq "influencer" ? (influencer.pointBalance eq null? 0 : influencer.pointBalance): (advertiser.pointBalance eq null? 0 : advertiser.pointBalance)}'/>P</h3>
+            <h3 style="color:#4948e8;"><fmt:formatNumber value='${(advertiser.pointBalance eq null? 0 : advertiser.pointBalance)}'/>P</h3>
         </div>
         <div class="sideitem">
             <h3 style="color:#4948e8;">마이 파인</h3>
