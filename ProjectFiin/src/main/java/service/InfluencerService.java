@@ -2,9 +2,6 @@ package service;
 
 import java.util.List;
 
-import javax.servlet.ServletResponse;
-import javax.servlet.http.HttpServletRequest;
-
 import dto.Influencer;
 import util.PageInfo;
 
@@ -20,8 +17,6 @@ public interface InfluencerService {
 	
   Influencer influencerRegister(Influencer influencer) throws Exception;
 
-
-	List<Influencer> influencerList(PageInfo pageInfo) throws Exception;
 		
 	Influencer influencerDetail(Integer influencerNum) throws Exception;
 
@@ -29,4 +24,9 @@ public interface InfluencerService {
 
 	boolean toggleBookmarkCampaign(Integer InfluencerNum, Integer CampaignNum) throws Exception;
 
+	List<Influencer> influencerList(PageInfo pageInfo) throws Exception;
+
+	List<Influencer> influencerListByChannels(PageInfo pageInfo, String categoryId, String[] channels);
+
+	
 }

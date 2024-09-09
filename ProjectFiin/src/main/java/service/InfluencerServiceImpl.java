@@ -2,17 +2,13 @@ package service;
 
 
 
-import javax.servlet.ServletResponse;
-import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 import dao.BookmarkCampaignDao;
 import dao.BookmarkCampaignDaoImpl;
-
-
 import dao.InfluencerDao;
 import dao.InfluencerDaoImpl;
 import dto.Influencer;
-import java.util.List;
 import util.PageInfo;
 
 public class InfluencerServiceImpl implements InfluencerService {
@@ -85,7 +81,7 @@ public class InfluencerServiceImpl implements InfluencerService {
 			bookmarkCampaignDao.insertBookmarkCampaign(InfluencerNum, CampaignNum);
 			return true;
 		} else {
-			bookmarkCampaignDao.deleterBookmarkCampaign(InfluencerNum, CampaignNum);
+			bookmarkCampaignDao.deleteBookmarkCampaign(InfluencerNum, CampaignNum);
 			return false;
 		}
 	}
@@ -96,6 +92,12 @@ public class InfluencerServiceImpl implements InfluencerService {
 		// Dto에서 받은 정보들을 dao에 전달
 		influencerDao.registerInfluencer(influencer);
 		return influencer;
+
+	}
+	@Override
+	public List<Influencer> influencerListByChannels(PageInfo pageInfo, String categoryId, String[] channels) {
+		
+		return null;
 	}
 }
 

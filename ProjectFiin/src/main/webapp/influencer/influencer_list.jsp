@@ -15,37 +15,44 @@
 	<%@ include file="../include/header.jsp"%>
 	<div class="container">
 		<div id="categoryBar">
-			<!-- javascript -->
 			<h2>인플루언서</h2>
 			<div class="categoryWrap">
-				<input type="radio" id="all" name="category" checked><a
-					href="0">전체</a> <input type="radio" id="fasion" name="category"><a
-					href="2">패션</a> <input type="radio" id="beauty" name="category"><a
-					href="1">뷰티</a> <input type="radio" id="daily" name="category"><a
-					href="6">생활용품</a> <input type="radio" id="sport" name="category"><a
-					href="3">스포츠</a> <input type="radio" id="travel" name="category"><a
-					href="4">여행/숙박</a> <input type="radio" id="goodTaste"
-					name="category"><a href="5">맛집</a>
+				<input type="radio" id="all" name="category" value="0" checked
+					onclick="submitForm()"> <label for="all">전체</label> <input
+					type="radio" id="fasion" name="category" value="2"
+					onclick="submitForm()"> <label for="fasion">패션</label> <input
+					type="radio" id="beauty" name="category" value="1"
+					onclick="submitForm()"> <label for="beauty">뷰티</label> <input
+					type="radio" id="daily" name="category" value="6"
+					onclick="submitForm()"> <label for="daily">생활용품</label> <input
+					type="radio" id="sport" name="category" value="3"
+					onclick="submitForm()"> <label for="sport">스포츠</label> <input
+					type="radio" id="travel" name="category" value="4"
+					onclick="submitForm()"> <label for="travel">여행/숙박</label> <input
+					type="radio" id="goodTaste" name="category" value="5"
+					onclick="submitForm()"> <label for="goodTaste">맛집</label>
 			</div>
 		</div>
-		<form id="categoryform" action="influencerList" method="get">
-			<input type="hidden" name="categoryId">
+
+		<form id="categoryform" action="InfluencerList" method="get">
+			<input type="hidden" name="categoryId" id="categoryId">
 		</form>
 
-		<!-- 채널, 검색 jstl 수정해야함 -->
+
 		<hr style="border: 1px solid #e5e5e5; width: 1200px; margin: 12px 0;">
-		<div class="channelBar">
-			<h2>채널</h2>
-			<div class="channelButton">
-				<label> <input type="checkbox" name="instagram"
-					value="instagram"> <span>인스타그램</span>
-				</label> <label> <input type="checkbox" name="blog" value="blog">
-					<span>블로그</span>
-				</label> <label> <input type="checkbox" name="youtube"
-					value="youtube"> <span>유튜브</span>
-				</label>
+		<form id="filterForm" action="InfluencerList" method="get">
+			<div class="channelBar">
+				<h2>채널</h2>
+				<div class="channelButton">
+					<label> <input type="checkbox" name="channel"
+						value="instagram" onchange="submitForm()"> <span>인스타그램</span></label>
+					<label> <input type="checkbox" name="channel" value="blog"
+						onchange="submitForm()"><span>블로그</span></label><label> <input
+						type="checkbox" name="channel" value="youtube"
+						onchange="submitForm()"><span>유튜브</span></label>
+				</div>
 			</div>
-		</div>
+		</form>
 		<div class="contents_wrap">
 			<div class="allBar">
 				<h2>전체</h2>
@@ -124,6 +131,22 @@
 			</c:otherwise>
 		</c:choose>
 	</div>
+
+	<script>
+		function submitForm() {
+			const selectedCategory = document
+					.querySelector('input[name="category"]:checked').value;
+			document.getElementById('categoryId').value = selectedCategory;
+			
+			const channels = Array.from(document.querySelectorAll('input[name="channel"]:checked))
+							.map(channel => channel.value);
+			const channelInput = document.createElement('input');
+			channelInput.type = 
+			
+			document.getElementById('categoryform').submit();
+			document.getElementById('filterForm').submit();
+		}
+	</script>
 
 	<%@include file="../include/footer.jsp"%>
 </body>
