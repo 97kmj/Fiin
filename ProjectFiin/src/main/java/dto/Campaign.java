@@ -18,9 +18,9 @@ public class Campaign {
 	private String channel;
 	private String image;
 	private Integer isRecruit;
+	private String address;
 
-
-  public Campaign(Integer campaignNum, Integer advertiserNum, Integer categoryId,
+	public Campaign(Integer campaignNum, Integer advertiserNum, Integer categoryId,
 			String companyName,
 			String companyUrl, String campaignTitle, String productName, Timestamp updateStartDate,
 			Timestamp updateEndDate, Timestamp adStartDate, Timestamp adEndDate, String channel,
@@ -58,6 +58,7 @@ public class Campaign {
 		this.adEndDate = adEndDate;
 		this.categoryId = categoryId;
 	}
+
 
 
 	public Integer getCampaignNum() {

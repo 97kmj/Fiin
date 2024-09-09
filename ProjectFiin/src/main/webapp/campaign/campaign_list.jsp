@@ -7,37 +7,26 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/reset.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/campaign_list.css?ver=1">
+<%-- <link rel="stylesheet" href="${pageContext.request.contextPath}/css/campaign_list.css?ver=1"> --%>
+<link rel="stylesheet" href="<c:url value='/css/campaign_list.css'/>"/>
+
 <script src="http://code.jquery.com//jquery-latest.min.js"></script>
 </head>
 <body>
 	<%@ include file="../include/header.jsp"%>
 	<div class="container">
+		<form id="filterform" action="campaignList" method="get">
 		<div id="categoryBar">
 			<h2>카테고리</h2>
 			<div class="categoryWrap">
-<!-- 				<input type="radio" id="all" name="category" value="0" checked><label for="all">전체</label>
-				<input type="radio" id="fasion" name="category" value="2"><label for="fasion">패션</label>
-				<input type="radio" id="fasion" name="category" value="2"><a href="2">패션</a>&nbsp;
-				 <input type="radio" id="beauty" name="category" value="1"><label for="beauty">뷰티</label>
-			 	 <input type="radio" id="daily" name="category" value="8"><label for="daily">생활용품</label>
-				 <input type="radio" id="sport" name="category" value="3"><label for="sport">스포츠</label>
-				 <input type="radio" id="travel" name="category" value="4"><label for="travel">여행/숙박</label>
-				 <input type="radio" id="goodTaste" name="category" value="5"><label for="goodTaste">맛집</label> -->
-				 
-				 <input type="radio" id="all" name="category" checked><a href="0">전체</a>&nbsp;&nbsp;&nbsp;
-				 <input type="radio" id="fasion" name="category"><a href="2">패션</a>&nbsp;&nbsp;&nbsp;
-			 	 <input type="radio" id="daily" name="category" ><a href="6">생활용품</a>&nbsp;&nbsp;&nbsp;
-				 <input type="radio" id="sport" name="category"><a href="3">스포츠</a>&nbsp;&nbsp;&nbsp;
-				 <input type="radio" id="travel" name="category"><a href="4">여행/숙박</a>&nbsp;&nbsp;&nbsp;
-				 <input type="radio" id="goodTaste" name="category"><a href="5">맛집</a>&nbsp;&nbsp;&nbsp;
+				 <input type="radio" id="category" name="category" checked value="0"><a href="0">전체</a>&nbsp;&nbsp;&nbsp;
+				 <input type="radio" id="category" name="category" value="2"><a href="2">패션</a>&nbsp;&nbsp;&nbsp;
+			 	 <input type="radio" id="category" name="category"  value="6"><a href="6">생활용품</a>&nbsp;&nbsp;&nbsp;
+				 <input type="radio" id="category" name="category" value="3"><a href="3">스포츠</a>&nbsp;&nbsp;&nbsp;
+				 <input type="radio" id="category" name="category" value="4"><a href="4">여행/숙박</a>&nbsp;&nbsp;&nbsp;
+				 <input type="radio" id="category" name="category" value="5"><a href="5">맛집</a>&nbsp;&nbsp;&nbsp;
 			</div>
 		</div>
-		<form id="categoryform" action="campaignList" method="get">
-			<input type="hidden" name="categoryId"> 
-		</form>
-		
-		
 		<hr style="border: 1px solid #e5e5e5; width: 1200px; margin: 12px 0;">
 		
 		<div class="channelBar">
@@ -54,6 +43,8 @@
 				</label>
 			</div>
 		</div>
+		</form>
+		
 		<div class="allBar">
 			<h2></h2>
 			<button id="registerButton" onclick="location.href='campaign/campaign_register.jsp'">캠페인 등록하기</button>
@@ -70,12 +61,7 @@
 				</div>
 			</c:forEach> 
 		</div>
-		
-		
-		
-		
-		
-		
+
 		<!-- 페이지 처리  -->
 		<div style="text-align:center">
 			<!-- 페이지 이전버튼 생성  -->
@@ -112,19 +98,36 @@
     </div>
 	<%@include file="../include/footer.jsp" %>
 </body>
+
 <script>
-	$(".categoryWrap a").on("click", function(e){
+	$(".categoryWrap a").click(function(e) {
 		e.preventDefault();
-		let categoryId= $(this).attr("href");
-		$("#categoryform input[name='categoryId']").val(categoryId);
-		$("input[name='channel']:checked").each(function(){
+		$(this).prev().click();
+		$("#filterform").submit();
+	})
+	$(".channelButton input").click(function(e) {
+		e.preventDefault();
+		$(this).prev().click();
+		$("#filterform").submit();
+	})
+	var channels = `${channel}`;
+	
+	let channelChecks = document.querySelectorAll("input[name='channel']");
+	channelChecks.forEach(function(item) {
+		if(channels.includes(item.value)) {
+			item.checked = true;
+		}
+	})
 
-			console.log($("input[name='channel']:checked")).val()
-
-		});
-		$("#categoryform").submit();
-	});
-
+	var category = `${category}`;
+	let categoryList = document.querySelectorAll("input[name='category']");
+	categoryList.forEach(function(item) {
+		if(item.value == category) {
+			item.checked = true;
+		}
+	})
 	
 </script>
+
+
 </html>
