@@ -5,6 +5,7 @@ import java.util.Locale.Category;
 
 import dto.Influencer;
 
+
 public interface InfluencerDao {
 	void registerInfluencer(Influencer influencer) throws Exception;
 	void insertInfluencer(Influencer influencer) throws Exception;
@@ -15,4 +16,5 @@ public interface InfluencerDao {
 	Category selectCategory(Integer categoryId) throws Exception;
 	Integer selectInfluencerCount() throws Exception;
 	List<Influencer> selectInfluencerListForMain() throws Exception;
+
 }

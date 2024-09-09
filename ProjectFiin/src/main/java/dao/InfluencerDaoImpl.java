@@ -1,12 +1,15 @@
 package dao;
 
+
 import java.util.List;
 import java.util.Locale.Category;
+
 
 import org.apache.ibatis.session.SqlSession;
 
 import dto.Influencer;
 import util.MybatisSqlSessionFactory;
+
 
 public class InfluencerDaoImpl implements InfluencerDao {
 	private SqlSession sqlSession;
@@ -58,8 +61,11 @@ public class InfluencerDaoImpl implements InfluencerDao {
 		return sqlSession.selectOne("mapper.influencer.selectInfluencerCount");
 	}
 
+
 	@Override
 	public List<Influencer> selectInfluencerListForMain() throws Exception {
 		return sqlSession.selectList("mapper.influencer.selectInfluencerListForMain");
 	}
+
+
 }

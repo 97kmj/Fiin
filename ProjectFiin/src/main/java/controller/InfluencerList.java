@@ -37,6 +37,7 @@ public class InfluencerList extends HttpServlet {
 			throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
 		String paramPage = request.getParameter("page");
+		
 		Integer page = 1;
 		if (paramPage != null) {
 			page = Integer.parseInt(paramPage);
@@ -45,12 +46,16 @@ public class InfluencerList extends HttpServlet {
 			InfluencerService service = new InfluencerServiceImpl();
 			PageInfo pageInfo = new PageInfo();
 			pageInfo.setCurPage(page);
+			
 			List<Influencer> influencerList = service.influencerList(pageInfo);
+			
 			request.setAttribute("influencerList", influencerList);
 			request.setAttribute("pageInfo", pageInfo);
-			request.getRequestDispatcher("/influencer/influencerList.jsp").forward(request, response);
+			request.getRequestDispatcher("influencer/influencer_list.jsp").forward(request, response);
 		} catch (Exception e) {
 			e.printStackTrace();
+			request.setAttribute("err", e.getMessage());
+			request.getRequestDispatcher("err.jsp").forward(request, response);
 		}
 	}
 
