@@ -52,22 +52,20 @@ public class Login extends HttpServlet {
 			if (type.equals("influencer")) {
 				Influencer influencer =  iService.login(userEmail, password);
 				influencer.setPassword("");
-				request.getSession().removeAttribute("advertiser");
 				request.getSession().setAttribute("influencer", influencer);
 				request.getSession().setAttribute("type", type);
 				response.sendRedirect("main");
-			} else {
+			} else if(type.equals("advertiser")) {
 				Advertiser advertiser = aService.login(userEmail, password);
 				advertiser.setPassword("");
-				request.getSession().removeAttribute("influencer");
 				request.getSession().setAttribute("type", type);
 				request.getSession().setAttribute("advertiser", advertiser);
 				response.sendRedirect("main");		
-			}
+			} 
 		} catch (Exception e) {
 			e.printStackTrace();
 			request.setAttribute("err", e.getMessage());
-			request.getRequestDispatcher("err.jsp").forward(request, response);
+			response.getWriter().write(String.valueOf(false));
 		}
 	}
 

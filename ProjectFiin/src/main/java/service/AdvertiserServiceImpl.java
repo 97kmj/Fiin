@@ -31,4 +31,11 @@ public class AdvertiserServiceImpl implements AdvertiserService {
 		if (advertiser == null) return false;
 		return true;
 	}
+
+	@Override
+	public String advertiserEmail(String name, String mobileNumber) throws Exception {
+		Advertiser advertiser = advertiserDao.selectAdvertiserForFindEmail(name, mobileNumber);
+		if (advertiser == null) throw new Exception("이메일 찾기 오류");
+		return advertiser.getUserEmail();
+	}
 }
