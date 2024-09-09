@@ -57,7 +57,7 @@ span {
 	height: 280px;
 }
 
-.influencer_item .sns_wrap {
+.sns_wrap {
 	display: flex;
 	margin: 12px 0;
 }

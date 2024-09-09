@@ -92,3 +92,57 @@ input[type="radio"] {
 	font-size: 16px;
 	cursor: pointer;
 }
+
+/* 모달창 */
+.modal_wrap{
+	width: 100%;
+	height: 100%;
+	display: none;
+	justify-content: center;
+	align-items: center;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 99;
+	background-color: rgba(0,0,0,0.5);
+}
+
+.modal_wrap button{
+	width: 100px;
+	height: 30px;
+	border: none;
+	margin-top: 10px;
+	align-self: center;
+	cursor: pointer;
+}
+
+.modal_content{
+	display: none;
+	width: 580px;
+	border-radius: 20px;
+	box-shadow: 3px 5px 10px rgb(0, 0, 0, 0.25);
+	padding: 66px;
+	text-align: center;	
+	background-color: white;
+}
+
+.modal_content p {
+	margin-top: 20px;
+}
+
+.email {
+	border-radius: 8px;
+	background-color: #f6f7f8;
+	border: 1px solid #e5e5e5;
+	padding: 22px 16px;
+	width: 100%;
+	margin: 26px 0;
+	font-weight: bold;
+}
+.find_password {
+	color: #525252;
+	font-weight: bold;
+	font-size: 12px;
+	text-decoration: underline;
+	text-align: center;
+}

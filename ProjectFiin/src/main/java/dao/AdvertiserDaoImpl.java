@@ -1,5 +1,8 @@
 package dao;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.apache.ibatis.session.SqlSession;
 
 import dto.Advertiser;
@@ -31,6 +34,14 @@ public class AdvertiserDaoImpl implements AdvertiserDao {
 	@Override
 	public Advertiser selectAdvertiserByEmail(String userEmail) throws Exception {
 		return sqlsession.selectOne("mapper.advertiser.selectAdvertiserByEmail", userEmail);
+	}
+
+	@Override
+	public Advertiser selectAdvertiserForFindEmail(String name, String mobileNumber) throws Exception {
+		Map<String, String> param = new HashMap<>();
+		param.put("name", name);
+		param.put("mobileNumber", mobileNumber);
+		return sqlsession.selectOne("mapper.advertiser.selectAdvertiserForFindEmail", param);
 	}
 
 }
