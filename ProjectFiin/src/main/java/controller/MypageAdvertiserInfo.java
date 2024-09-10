@@ -48,7 +48,6 @@ public class MypageAdvertiserInfo extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
-		Integer advertiserNum = Integer.parseInt(request.getParameter("advertiserNum"));
 		String password = request.getParameter("password");
 		String name = request.getParameter("name");
 		String companyName = request.getParameter("companyName");
@@ -58,7 +57,7 @@ public class MypageAdvertiserInfo extends HttpServlet {
 		
 		try {
 			AdvertiserService service = new AdvertiserServiceImpl();
-			Advertiser advertiser = service.advertiserDetail(advertiserNum);
+			Advertiser advertiser = (Advertiser)request.getSession().getAttribute("advertiser");
 			advertiser.setPassword(password);
 			advertiser.setName(name);
 			advertiser.setCompanyName(companyName);
@@ -67,6 +66,10 @@ public class MypageAdvertiserInfo extends HttpServlet {
 			advertiser.setAddressDetail(addressDetail);
 			service.advertiserModify(advertiser);
 			request.getSession().setAttribute("advertiser", advertiser);
+			response.setContentType("text/html; charset=UTF-8");
+			PrintWriter out = response.getWriter();
+			out.println("<script>alert('회원정보가 수정되었습니다.');</script>"); 
+			out.flush();
 			request.getRequestDispatcher("/mypage/mypage_advertiser_info.jsp").forward(request, response);
 		} catch (Exception e) {
 			e.printStackTrace();

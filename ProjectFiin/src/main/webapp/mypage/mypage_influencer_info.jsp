@@ -95,10 +95,7 @@
 		<%@ include file="../include/sidebar_influencer.jsp" %>
 		<div class="main">
 			<h2>프로필 관리</h2>
-			<form action="mypageInfluencerInfo" class="edit_form" method="post">
-				  <!-- 인플루언서 번호 숨겨놓는 input -->
-				  <input type="hidden" id="influencerNum" name="influencerNum" value="${influencer.influencerNum}" />
-				  
+			<form action="mypageInfluencerInfo" class="edit_form" method="post"> 
 				  <label for="userEmail" class="input_label">
 		            이메일<span>*</span> <span class="br_style"><br /></span>
 		            <input

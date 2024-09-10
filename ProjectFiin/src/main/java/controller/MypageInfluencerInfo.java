@@ -48,7 +48,6 @@ public class MypageInfluencerInfo extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
-		Integer influencerNum = Integer.parseInt(request.getParameter("influencerNum"));
 		String password = request.getParameter("password");
 		String name = request.getParameter("name");
 		String nickname = request.getParameter("nickname");
@@ -58,7 +57,7 @@ public class MypageInfluencerInfo extends HttpServlet {
 		
 		try {
 			InfluencerService service = new InfluencerServiceImpl();
-			Influencer influencer = service.influencerDetail(influencerNum);
+			Influencer influencer = (Influencer)request.getSession().getAttribute("influencer");
 			influencer.setPassword(password);
 			influencer.setName(name);
 			influencer.setNickname(nickname);
@@ -67,7 +66,7 @@ public class MypageInfluencerInfo extends HttpServlet {
 			influencer.setAddressDetail(addressDetail);
 			service.influencerModify(influencer);
 			request.getSession().setAttribute("influencer", influencer);
-			request.getRequestDispatcher("/mypage/mypage_influencer_info.jsp").forward(request, response);;
+			request.getRequestDispatcher("/mypage/mypage_influencer_info.jsp").forward(request, response);
 		} catch (Exception e) {
 			e.printStackTrace();
 			request.setAttribute("err", e.getMessage());
