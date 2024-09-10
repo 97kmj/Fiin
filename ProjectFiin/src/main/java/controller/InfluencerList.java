@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import dto.Influencer;
+
 import service.InfluencerService;
 import service.InfluencerServiceImpl;
 import util.PageInfo;
@@ -78,16 +78,16 @@ public class InfluencerList extends HttpServlet {
 			pageInfo.setCurPage(page);
 			
 			List<Map<String, Object>> influencerList;
-			List<Influencer> searchInfluencerList;
 
-			influencerList = service.getInfluencerList(channelList, category, pageInfo);
-			searchInfluencerList = service.searchInfluencerList(keyword, pageInfo);
+
+			influencerList = service.getInfluencerList(channelList, keyword, category, pageInfo);
+
 			
 			request.setAttribute("influencerList", influencerList);
 			request.setAttribute("pageInfo", pageInfo);
 			request.setAttribute("category", category);
 			request.setAttribute("channels", channelList);
-			request.setAttribute("searchInfluencerList", searchInfluencerList);
+
 			request.getRequestDispatcher("influencer/influencer_list.jsp").forward(request, response);
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -12,10 +12,9 @@ public interface InfluencerDao {
 	Influencer selectInfluencer(Integer influencerNum) throws Exception;
 	Influencer selectInfluencerByEmail(String userEmail) throws Exception;
 	void updateInfluencer(Influencer influencer) throws Exception;
-	List<Map<String,Object>> selectInfluencerList(Integer row, List<String> channels, Integer categoryId) throws Exception;
+	List<Map<String,Object>> selectInfluencerList(Integer row, String keyword, List<String> channels, Integer categoryId) throws Exception;
 	Integer selectInfluencerCount() throws Exception;
 	List<Influencer> selectInfluencerListForMain() throws Exception;
 	Influencer selectInfluencerForFindEmail(String name, String mobileNumber) throws Exception;
 	String selectInfluencerForFindPassword(String userEmail) throws Exception;
-	List<Influencer> selectInfluencerListBySearch(Integer row, String keyword) throws Exception;
 }

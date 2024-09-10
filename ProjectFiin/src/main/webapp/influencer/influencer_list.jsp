@@ -55,7 +55,7 @@
 				</div>
 			</div>
 			<div class="influencerWrap">
-				<c:forEach items="${searchInfluencerList}" var="influencer">
+				<c:forEach items="${influencerList}" var="influencer">
 					<div class="influencer_pick" id="pickNum1">
 						<img
 							src="${pageContext.request.contextPath}/image/influencer_img01.png"

@@ -54,17 +54,11 @@
 			<if test="categoryId != 0">
 				and category_id = #{categoryId}
 			</if>
+				and	
+				(youtube_name like '%${keyword}%' or instagram_name like '%${keyword}%' or blog_name like '%${keyword}%')
 		</where>
 		order by regist_date DESC limit #{row}, 8
 
-	</select>
-	
-	<select id="selectSearchInfluencer" parameterType="Map" resultType="Map">
-		select * from influencer
-		where youtube_name like '%${keyword}%' or
-		instagram_name like '%${keyword}%' or
-		blog_name like '%${keyword}%'
-		order by regist_date DESC limit #{row}, 8
 	</select>
 
 	<!--세나-->

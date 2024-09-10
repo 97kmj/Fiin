@@ -89,7 +89,7 @@ public class InfluencerServiceImpl implements InfluencerService {
 	}
 
 	@Override
-	public List<Map<String,Object>> getInfluencerList(List<String> channels, Integer categoryId, PageInfo pageInfo) throws Exception {
+	public List<Map<String,Object>> getInfluencerList(List<String> channels, String keyword, Integer categoryId, PageInfo pageInfo) throws Exception {
 		
 		Integer influencerCnt = influencerDao.selectInfluencerCount();
 		
@@ -104,7 +104,7 @@ public class InfluencerServiceImpl implements InfluencerService {
 		
 		Integer row = (pageInfo.getCurPage()-1)*8+1;
 		
-		List<Map<String,Object>> influencerList = influencerDao.selectInfluencerList(row, channels, categoryId);
+		List<Map<String,Object>> influencerList = influencerDao.selectInfluencerList(row, keyword, channels, categoryId);
 		return influencerList;
 			
 	}
@@ -142,24 +142,7 @@ public class InfluencerServiceImpl implements InfluencerService {
 			}
 		}
 	}
-	@Override
-	public List<Influencer> searchInfluencerList(String keyword, PageInfo pageInfo) throws Exception {
-		Integer influencerCnt = influencerDao.selectInfluencerCount();
-		
-		Integer allPage = (int)Math.ceil((double)influencerCnt/8);
-		Integer startPage = (pageInfo.getCurPage()-1)/8*8+1;
-		Integer endPage = startPage+8-1;
-		if(endPage>allPage) endPage = allPage;
-		
-		pageInfo.setAllPage(allPage);
-		pageInfo.setStartPage(startPage);
-		pageInfo.setEndPage(endPage);
-		
-		Integer row = (pageInfo.getCurPage()-1)*8+1;
-		List<Influencer> searchInfluencer = influencerDao.selectInfluencerListBySearch(row, keyword);
-		
-		return searchInfluencer;
-	}
+
 }
 
 
