@@ -25,67 +25,23 @@
 		WHERE influencer_num = #{influencerNum}
 	</update>
 
-	<select id="selectInfluencerList" parameterType="Integer"
-		resultType="influencer">
+	<!--세원-->
+	<select id="selectInfluencerList" parameterType="Integer" resultType="influencer">
 		<![CDATA[
-    select *
-    from influencer
-    order by regist_date desc
-    limit #{row}, 8
-    ]]>
+		    select *
+		    from influencer
+		    order by regist_date desc
+		    limit #{row}, 8
+	    	]]>
 	</select>
-
-	<select id="selectInfluencer" parameterType="Integer"
-		resultType="influencer">
-		<![CDATA[
-    select *
-    from influencer
-    where influencer_num = #{influencer_num}
-    ]]>
-	</select>
-
-	<select id="selectInfluencerByEmail" parameterType="String"
-		resultType="influencer">
-		<![CDATA[
-    select *
-    from influencer
-    where user_email = #{user_email}
-    ]]>
-	</select>
-
-	<update id="updateInfluencer" parameterType="influencer">
-		update influencer
-		<set>
-			<if test="password != null">password = #{password},</if>
-			<if test="name != null">name = #{name},</if>
-			<if test="nickname != null">nickname = #{nickname},</if>
-			<if test="mobile_number != null">mobile_number = #{mobile_number},</if>
-			<if test="address != null">address = #{address}</if>
-		</set>
-		where user_email = #{user_email}
-	</update>
-
+	
 	<select id="selectInfluencerCount" resultType="Integer">
 		<![CDATA[
     		select count(*) from influencer
     	]]>
 	</select>
 
-	<select id="selectInfluencerListForMain" resultType="influencer">
-		<![CDATA[
-			select * from influencer where regist_date IS NOT NULL order by regist_date desc limit 0, 8
-		]]>
-	</select>
-
-	<select id="selectInfluencerForFindEmail" parameterType="map"
-		resultType="influencer">
-		<![CDATA[
-			select user_email from influencer where name = #{name} and mobile_number = #{mobileNumber}
-		]]>
-	</select>
-
-	<select id="selectAllInfluencer" parameterType="Map"
-resultType="influencer">
+	<select id="selectAllInfluencer" parameterType="Map" resultType="influencer">
 		select * from influencer
 		<where>
 			1=1
@@ -102,8 +58,47 @@ resultType="influencer">
 		order by regist_date DESC limit #{row}, 8
 
 	</select>
-	
 
+	<!--세나-->
+	<select id="selectInfluencer" parameterType="Integer" resultType="influencer">
+		<![CDATA[
+		    select *
+		    from influencer
+		    where influencer_num = #{influencer_num}
+	    	]]>
+	</select>
+
+	<select id="selectInfluencerByEmail" parameterType="String" resultType="influencer">
+		<![CDATA[
+			select *
+	    		from influencer
+	    		where user_email = #{user_email}
+	    	]]>
+	</select>
+
+	<update id="updateInfluencer" parameterType="influencer">
+		update influencer
+		<set>
+			<if test="password != null">password = #{password},</if>
+			<if test="name != null">name = #{name},</if>
+			<if test="nickname != null">nickname = #{nickname},</if>
+			<if test="mobile_number != null">mobile_number = #{mobile_number},</if>
+			<if test="address != null">address = #{address}</if>
+		</set>
+		where user_email = #{user_email}
+	</update>
+
+	<select id="selectInfluencerListForMain" resultType="influencer">
+		<![CDATA[
+			select * from influencer where regist_date IS NOT NULL order by regist_date desc limit 0, 8
+		]]>
+	</select>
+
+	<select id="selectInfluencerForFindEmail" parameterType="map" resultType="String">
+		<![CDATA[
+			select user_email from influencer where name = #{name} and mobile_number = #{mobileNumber}
+		]]>
+	</select>
 	<insert id="insertInfluencer" parameterType="influencer">
 		<![CDATA[
 			insert into influencer (user_email, password, name, nickname, mobile_number, address) 
