@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/reset.css">
-<%-- <link rel="stylesheet" href="${pageContext.request.contextPath}/css/campaign_list.css?ver=1"> --%>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/campaign_list.css?ver=1">
 <link rel="stylesheet" href="<c:url value='/css/campaign_list.css'/>"/>
 
 <script src="http://code.jquery.com//jquery-latest.min.js"></script>
@@ -52,7 +52,7 @@
 		<div class="campaignWrap" style="justify-content:left">
 	 		<c:forEach items="${campaignList }" var="campaign">
 	 			<div class="campaign_pick" id="pickNum1"
-				onclick="location.href='campaign/campaignDetail?campaignNum=${campaign.campaignNum }'">
+				onclick="location.href='/campaignDetail?campaignNum=${campaign.campaignNum }'">
 					<img src="${pageContext.request.contextPath}/image/${campaign.image}" class="campaign_img">
 					<div>${campaign.channel } | ${campaign.categoryId }</div>
 					<div id="channelName">${campaignA.companyName }</div>
@@ -65,12 +65,9 @@
 		<!-- 페이지 처리  -->
 		<div style="text-align:center">
 			<!-- 페이지 이전버튼 생성  -->
-
  			<c:choose>
 				<c:when test="${pageInfo.curPage>1 }">
-
 				 	<a href="campaignList?page=${pageInfo.curPage-1 }">&lt;</a>
-
 				 </c:when>
 				 <c:otherwise>
 				 	<a>&lt;</a>
@@ -98,11 +95,14 @@
 				</c:otherwise>
 			</c:choose>
     	</div>
+    	
+    	
+    	
     </div>
 	<%@include file="../include/footer.jsp" %>
 </body>
-
 <script>
+
 	$(".categoryWrap a").click(function(e) {
 		e.preventDefault();
 		$(this).prev().click();

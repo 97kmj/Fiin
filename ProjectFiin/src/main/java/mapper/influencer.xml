@@ -2,7 +2,6 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-
 <mapper namespace="mapper.influencer">
 
   <!--// 상민 - influencerRegister (인플루언서 등록)-->
@@ -80,7 +79,7 @@
 		<![CDATA[
 			select user_email from influencer where name = #{name} and mobile_number = #{mobileNumber}
 		]]>
-</select>
+	</select>
 
 	<select id="selectAllInfluencer" parameterType="Map" resultType="influencer">
 		select * from influencer

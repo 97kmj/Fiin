@@ -56,15 +56,12 @@ public class CampaignList extends HttpServlet {
 			page = Integer.parseInt(paramPage);
 		}
 		
-		
 		try {
 			CampaignService service = new CampaignServiceImpl();
 			PageInfo pageInfo = new PageInfo();
 			pageInfo.setCurPage(page);
 			List<Campaign> campaignList;
-			String[] nchannel = new String[1];
 			campaignList = service.campaignList(channels, category, pageInfo);
-			
 			request.setAttribute("campaignList", campaignList);
 			request.setAttribute("pageInfo", pageInfo);
 			request.setAttribute("category", category);
@@ -76,5 +73,41 @@ public class CampaignList extends HttpServlet {
 			request.getRequestDispatcher("err.jsp").forward(request, response);
 		}
 	}
-
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		/*
+		 * response.setCharacterEncoding("utf-8"); String param =
+		 * request.getParameter("param"); System.out.println(param);
+		 * 
+		 * List<String> channels = new ArrayList<>(); Integer category = null; Long page
+		 * = null;
+		 * 
+		 * try { JSONParser parser = new JSONParser(); JSONObject jsonObj =
+		 * (JSONObject)parser.parse(param); JSONArray channelArr =
+		 * (JSONArray)jsonObj.get("channels");
+		 * 
+		 * for (int i=0; i<channelArr.size();i++) {
+		 * channels.add((String)channelArr.get(i)); } category =
+		 * (Integer)jsonObj.get("category"); page = (Long)jsonObj.get("page");
+		 * 
+		 * CampaignService service = new CampaignServiceImpl();
+		 * 
+		 * List<Campaign> cam = service.getCampaignList(channels, category,
+		 * page.intValue()); Integer maxPage = service.getCampaignMaxPage(channels,
+		 * category);
+		 * 
+		 * JSONObject resJson = new JSONObject(); resJson.put("page", page);
+		 * resJson.put("maxPage", maxPage); JSONArray jsonCams = new JSONArray();
+		 * for(Campaign campaign : cam) { JSONObject jsonCam = new JSONObject();
+		 * jsonCam.put("campaignNum", campaign.getCampaignNum());
+		 * jsonCam.put("campaignTitle", campaign.getCampaignTitle());
+		 * jsonCams.add(jsonCams); } resJson.put("cam", jsonCams);
+		 * response.getWriter().write(resJson.toJSONString());
+		 * 
+		 * 
+		 * }catch(Exception e) { e.printStackTrace(); request.setAttribute("err",
+		 * e.getMessage()); request.getRequestDispatcher("err.jsp").forward(request,
+		 * response); }
+		 */
+		
+	}	
 }

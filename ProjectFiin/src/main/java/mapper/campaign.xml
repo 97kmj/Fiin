@@ -21,7 +21,8 @@
 
 	<select id="selectCampaign" parameterType="Integer" resultType="campaign">											
 		<![CDATA[
-		 	select * from campaign where campaign_num = ?
+		 	select * from campaign where campaign_num = #{campaignNum}
+		 	
 		]]>
 	</select>
 	
@@ -40,10 +41,19 @@
 		order by update_start_date desc limit #{row}, 8
 	</select>
 	
-	<select id="selectCampaignCount" resultType="integer">
-		<![CDATA[
-			select Count(*) from Campaign
-		]]>
+	<select id="selectCampaignCount" parameterType="Map" resultType="integer">
+		select Count(*) from Campaign
+		<where>
+			<if test="channel != null and channel.size()>0">
+				<foreach collection="channel" item="item" separator="or" open="(" close=")">
+					channel like CONCAT('%', #{item},'%')
+				</foreach>
+			</if>
+			<if test="categoryId != 0">
+				and category_id=#{categoryId}
+			</if>
+		</where>
+	
 	</select>
 	
 	<select id="selectCampaignListForMain" resultType="campaign">
@@ -55,6 +65,5 @@
 	<select id="selectCampaignByAdNum" parameterType="integer" resultType="campaign">
 		select * from campaign where advertiser_num = #{advertiserNum} order by update_start_date desc 
 	</select>
-	
 </mapper>	
 
