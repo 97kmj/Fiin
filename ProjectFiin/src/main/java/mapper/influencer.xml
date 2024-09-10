@@ -41,13 +41,6 @@
     	]]>
 	</select>
 	
-	<select id="SearchSelectInfluencerCount" resultType="Integer">
-		select count(*) from influencer
-		where youtube_name like '%${keyword}%' or
-		instagram_name like '%${keyword}%' or
-		blog_name like '%${keyword}%'
-	</select>
-	
 	<select id="selectAllInfluencer" parameterType="Map" resultType="Map">
 		select i.*,c.category_name from influencer i join category c using(category_id)
 		<where>
@@ -66,7 +59,7 @@
 
 	</select>
 	
-	<select id="selectSearchInfluencer" parameterType="String" resultType="influencer">
+	<select id="selectSearchInfluencer" parameterType="Map" resultType="Map">
 		select * from influencer
 		where youtube_name like '%${keyword}%' or
 		instagram_name like '%${keyword}%' or

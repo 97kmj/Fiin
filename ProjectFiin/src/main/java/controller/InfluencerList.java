@@ -61,12 +61,13 @@ public class InfluencerList extends HttpServlet {
 			category = Integer.parseInt(request.getParameter("category"));
 		}
 		System.out.println(request.getParameter("category"));
+		
 		Integer page = 1;
 		if (paramPage != null) {
 			page = Integer.parseInt(paramPage);
 		}
 
-		if(keyword != null) {
+		if (keyword != null) {
 			category = 0;
 			channels = null;
 		}
@@ -75,17 +76,18 @@ public class InfluencerList extends HttpServlet {
 			InfluencerService service = new InfluencerServiceImpl();
 			PageInfo pageInfo = new PageInfo();
 			pageInfo.setCurPage(page);
-			List<Map<String,Object>> influencerList;
-			List<Influencer> searchInflunecerList;
 			
+			List<Map<String, Object>> influencerList;
+			List<Influencer> searchInfluencerList;
+
 			influencerList = service.getInfluencerList(channelList, category, pageInfo);
-			searchInflunecerList = service.searchInfluencerList(keyword, pageInfo);
+			searchInfluencerList = service.searchInfluencerList(keyword, pageInfo);
 			
 			request.setAttribute("influencerList", influencerList);
 			request.setAttribute("pageInfo", pageInfo);
 			request.setAttribute("category", category);
 			request.setAttribute("channels", channelList);
-			request.setAttribute("searchInfluencerList", searchInflunecerList);
+			request.setAttribute("searchInfluencerList", searchInfluencerList);
 			request.getRequestDispatcher("influencer/influencer_list.jsp").forward(request, response);
 		} catch (Exception e) {
 			e.printStackTrace();

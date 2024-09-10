@@ -18,5 +18,4 @@ public interface InfluencerDao {
 	Influencer selectInfluencerForFindEmail(String name, String mobileNumber) throws Exception;
 	String selectInfluencerForFindPassword(String userEmail) throws Exception;
 	List<Influencer> selectInfluencerListBySearch(Integer row, String keyword) throws Exception;
-	Integer SearchSelectInfluencerCount() throws Exception;
 }

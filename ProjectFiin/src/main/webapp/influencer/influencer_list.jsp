@@ -55,7 +55,7 @@
 				</div>
 			</div>
 			<div class="influencerWrap">
-				<c:forEach items="${influencerList}" var="influencer">
+				<c:forEach items="${searchInfluencerList}" var="influencer">
 					<div class="influencer_pick" id="pickNum1">
 						<img
 							src="${pageContext.request.contextPath}/image/influencer_img01.png"
@@ -89,13 +89,13 @@
 						<div id="title">${influencer.intro_line }</div>
 						<div id="subscriber">
 							<c:if test="${influencer.youtube_follower != null }">
-								${influencer.youtube_follower }
+								${influencer.youtube_follower }명
 							</c:if>
 							<c:if test="${influencer.instagram_follower != null }">
-								${influencer.instagram_follower }
+								${influencer.instagram_follower }명
 							</c:if>
 							<c:if test="${influecner.blog_follower != null }">
-								${influencer.blog_follower }
+								${influencer.blog_follower }명
 							</c:if>
 						</div>
 					</div>
@@ -113,8 +113,7 @@
 				<a>&lt;</a>
 			</c:otherwise>
 		</c:choose>
-		<c:forEach begin="${pageInfo.startPage }" end="${pageInfo.endPage }"
-			var="i">
+		<c:forEach begin="${pageInfo.startPage }" end="${pageInfo.endPage }" var="i">
 			<c:choose>
 				<c:when test="${i eq pageInfo.curPage }">
 					<a href="influencerList?page=${i }" class="select">${i }</a>
@@ -167,6 +166,7 @@
 		let param = $("#keyword").val();
 		$("#searchForm").submit();
 	})
+
 </script>
 
 </html>
