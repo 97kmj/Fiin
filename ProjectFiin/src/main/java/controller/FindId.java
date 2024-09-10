@@ -48,7 +48,7 @@ public class FindId extends HttpServlet {
 			AdvertiserService aService = new AdvertiserServiceImpl();
 			
 			if (type.equals("influencer")) {
-				String userEmail = iService.influencerEmail(name, mobileNumber);
+				String userEmail = iService.influencerFindEmail(name, mobileNumber);
 				response.getWriter().write(userEmail);
 			} else {
 				String userEmail = aService.advertiserEmail(name, mobileNumber);

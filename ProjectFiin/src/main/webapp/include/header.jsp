@@ -12,7 +12,7 @@
 </head>
 <body>
     <header>
-    	<a href="/fiin/main">
+    	<a href="main">
     		<img src="${pageContext.request.contextPath}/image/logo.svg" alt="logo이미지" />
     	</a>
         <ul class="menu_wrap">
@@ -28,10 +28,10 @@
           			<a href="main">등록하기</a>
           		</c:when>
           		<c:when test="${advertiser eq null}">
-          			<a href="/fiin/influencerRegister">등록하기</a>
+          			<a href="influencerRegister">등록하기</a>
           		</c:when>
           		<c:otherwise>
-		            <a href="/fiin/campaignRegister">등록하기</a>  			
+		            <a href="campaignRegister">등록하기</a>  			
           		</c:otherwise>
           	</c:choose>
           </li>
@@ -48,20 +48,25 @@
 			</c:when>
 			<c:otherwise>
 				<div class="navbar_login">
-					<div class="login_info" OnClick="location.href ='mypageCampaignAdvertiser'">
-						<div class="login_img">
-		            		<img src="https://img.icons8.com/?size=100&id=43942&format=png&color=ffffff">
-		            	</div>
-		            	<c:choose>
-				            <c:when test="${advertiser eq null}">
-				            	<p id="userName">${influencer.name}</p>
-				        	</c:when>
-				            <c:otherwise>
-				            	<p id="userName">${advertiser.name}</p>
-				            </c:otherwise>
-				        </c:choose>
-	            	</div>
-	            	<div class="logout_img">
+					<c:choose>
+						<c:when test="${advertiser eq null}">
+							<div class="login_info" OnClick="location.href ='mypageCampaignInfluencer'">
+								<div class="login_img">
+				            		<img src="https://img.icons8.com/?size=100&id=43942&format=png&color=ffffff">
+				            	</div>
+						        <p id="userName">${influencer.name}</p>        
+	            			</div>
+						</c:when>
+						<c:otherwise>
+							<div class="login_info" OnClick="location.href ='mypageCampaignAdvertiser'">
+								<div class="login_img">
+				            		<img src="https://img.icons8.com/?size=100&id=43942&format=png&color=ffffff">
+				            	</div>
+						        <p id="userName">${advertiser.name}</p>
+					        </div>     
+						</c:otherwise>
+					</c:choose>
+					<div class="logout_img">
 	            		<a href="logout">
 	            			<img src="https://img.icons8.com/?size=100&id=3HSHWjvK9Yxq&format=png&color=000000"/>
 	            		</a>

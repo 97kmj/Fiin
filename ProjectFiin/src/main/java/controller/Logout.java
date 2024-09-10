@@ -26,8 +26,9 @@ public class Logout extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.getSession().removeAttribute("type");
 		if (request.getSession().getAttribute("influencer") == null) {
-			request.getSession().removeAttribute("advertiser");	
+			request.getSession().removeAttribute("advertiser");
 		} else {
 			request.getSession().removeAttribute("influencer");	
 		}

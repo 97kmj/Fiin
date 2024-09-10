@@ -8,4 +8,5 @@ public interface AdvertiserDao {
 	void updateAdvertiser(Advertiser advertiser) throws Exception;
 	Advertiser selectAdvertiserByEmail(String userEmail) throws Exception;
 	Advertiser selectAdvertiserForFindEmail(String name, String mobileNumber) throws Exception;
+	String selectAdvertiserForFindPassword(String userEmail) throws Exception;
 }
