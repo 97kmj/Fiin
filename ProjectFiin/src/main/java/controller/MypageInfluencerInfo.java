@@ -1,6 +1,8 @@
 package controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -30,7 +32,15 @@ public class MypageInfluencerInfo extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getRequestDispatcher("/mypage/mypage_influencer_info.jsp").forward(request, response);
+		// 로그인 여부 확인
+		if (request.getSession().getAttribute("influencer") == null) {
+			response.setContentType("text/html; charset=UTF-8");
+			PrintWriter out = response.getWriter();
+			out.println("<script>alert('로그인이 필요한 페이지입니다'); location.href='login'; </script>"); 
+			out.flush();
+		} else {
+			request.getRequestDispatcher("/mypage/mypage_influencer_info.jsp").forward(request, response);
+		}
 	}
 
 	/**
