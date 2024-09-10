@@ -3,6 +3,7 @@ package service;
 import java.util.List;
 
 import dto.Campaign;
+import dto.Category;
 import util.PageInfo;
 
 
@@ -13,6 +14,7 @@ public interface CampaignService {
     
 	List<Campaign> campaignList(List<String> channel,Integer categoryId,PageInfo pageinfo)throws Exception;
     Campaign detail (Integer campaignNum) throws Exception; 
+    List<Category> categoryList() throws Exception;
     
     
     

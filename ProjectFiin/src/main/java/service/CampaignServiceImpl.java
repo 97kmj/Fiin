@@ -6,6 +6,7 @@ import java.util.List;
 import dao.CampaignDao;
 import dao.CampaignDaoImpl;
 import dto.Campaign;
+import dto.Category;
 import util.PageInfo;
 
 public class CampaignServiceImpl implements CampaignService {
@@ -29,8 +30,6 @@ public class CampaignServiceImpl implements CampaignService {
 	  @Override
 	  public List<Campaign> campaignList(List<String> channel, Integer categoryId, PageInfo pageinfo) throws Exception {
 		  Integer campaignCnt = campaignDao.selectCampaignCount(channel,categoryId);
-		  System.out.println(campaignCnt);
-
 		  Integer allPage = (int)Math.ceil((double)campaignCnt/8);
 		  Integer startPage =(pageinfo.getCurPage()-1)/8*8+1;
 			
@@ -58,6 +57,12 @@ public class CampaignServiceImpl implements CampaignService {
 	@Override
 	public List<Campaign> campaignListForAdvertiser(Integer advertiserNum) throws Exception {
 		return campaignDao.selectCampaignListForAdvertiser(advertiserNum);
+	}
+
+	@Override
+	public List<Category> categoryList() throws Exception {
+	
+		return campaignDao.selectCategoryList();
 	}
 
 	 

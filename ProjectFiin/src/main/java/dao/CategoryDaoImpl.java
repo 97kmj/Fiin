@@ -13,8 +13,8 @@ public class CategoryDaoImpl implements CategoryDao {
 	}
 	
 	@Override
-	public Category selectCategory(Integer categoryNum) throws Exception {
-
+	public Category selectCategory() throws Exception {
+		// TODO Auto-generated method stub
 		return null;
 	}
 

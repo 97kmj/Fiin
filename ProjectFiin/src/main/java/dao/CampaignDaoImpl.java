@@ -8,6 +8,7 @@ import java.util.Map;
 import org.apache.ibatis.session.SqlSession;
 
 import dto.Campaign;
+import dto.Category;
 import util.MybatisSqlSessionFactory;
 
 public class CampaignDaoImpl implements CampaignDao {
@@ -57,7 +58,12 @@ public class CampaignDaoImpl implements CampaignDao {
 		return sqlSession.selectList("mapper.campaign.selectCampaignByAdNum",advertiserNum);
 	}
 
+	@Override
+	public List<Category> selectCategoryList() throws Exception {
+		return sqlSession.selectList("mapper.category.selectCategoryList");
+	}
 
+	
 	
 
 

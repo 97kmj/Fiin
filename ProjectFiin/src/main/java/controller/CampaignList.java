@@ -5,13 +5,14 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import dto.Campaign;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import dto.Campaign;
+import dto.Category;
 import service.CampaignService;
 import service.CampaignServiceImpl;
 import util.PageInfo;
@@ -59,7 +60,13 @@ public class CampaignList extends HttpServlet {
 			PageInfo pageInfo = new PageInfo();
 			pageInfo.setCurPage(page);
 			List<Campaign> campaignList;
+			List<Category> categoryList;
 			campaignList = service.campaignList(channels, category, pageInfo);
+			
+			categoryList = service.categoryList();
+			
+			request.setAttribute("categoryList", categoryList);
+			
 			request.setAttribute("campaignList", campaignList);
 			request.setAttribute("pageInfo", pageInfo);
 			request.setAttribute("category", category);
