@@ -16,6 +16,7 @@
 	<%@ include file="../include/header.jsp"%>
 	<div class="container">
 		<form id="filterform" action="campaignList" method="get">
+		<input type="hidden" name="page" id="page" value="1"/>
 		<div id="categoryBar">
 			<h2>카테고리</h2>
 			<div class="categoryWrap">
@@ -63,11 +64,11 @@
 		</div>
 
 		<!-- 페이지 처리  -->
-		<div style="text-align:center">
+		<div class="pageDiv"; style="text-align:center">
 			<!-- 페이지 이전버튼 생성  -->
  			<c:choose>
 				<c:when test="${pageInfo.curPage>1 }">
-				 	<a href="campaignList?page=${pageInfo.curPage-1 }">&lt;</a>
+				 	<a href="#" data-page="{pageInfo.curPage-1 }">&lt;</a>
 				 </c:when>
 				 <c:otherwise>
 				 	<a>&lt;</a>
@@ -77,10 +78,10 @@
 			<c:forEach begin="${pageInfo.startPage }" end="${pageInfo.endPage }" var="i">
 				<c:choose>
 					<c:when test="${i eq pageInfo.curPage }">
-						<a href="campaignList?page=${i}" class="select">${i }</a>
+						<a href="#" class="select" data-page="${i }">${i }</a>
 					</c:when>
 					<c:otherwise>
-						<a href="campaignList?page=${i}" class="btn">${i }</a>
+						<a href="#" class="btn" data-page="${i }">${i }</a>
 					</c:otherwise>
 				</c:choose>
 			</c:forEach>
@@ -88,7 +89,7 @@
 			<!-- 페이지 다음버튼 생성  -->
 			<c:choose>
 				<c:when test="${pageInfo.curPage<pageInfo.allPage }">
-					<a href="campaignList?page=${pageInfo.curPage+1 }">&gt;</a>
+					<a href="#" data-page="${pageInfo.curPage+1 }">&gt;</a>
 				</c:when>
 				<c:otherwise>
 					<a>&gt;</a>
@@ -102,6 +103,12 @@
 	<%@include file="../include/footer.jsp" %>
 </body>
 <script>
+
+	$(".pageDiv a").click(function(e) {
+		e.preventDefault();
+		$("#page").val($(this).data("page"));
+		$("#filterform").submit();
+	})
 
 	$(".categoryWrap a").click(function(e) {
 		e.preventDefault();

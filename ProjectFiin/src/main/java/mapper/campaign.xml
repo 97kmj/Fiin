@@ -54,9 +54,9 @@
 				and category_id=#{categoryId}
 			</if>
 		</where>
-	
 	</select>
 
+	
 	<!--세나-->
 	<select id="selectCampaignListForMain" resultType="campaign">
 		<![CDATA[
