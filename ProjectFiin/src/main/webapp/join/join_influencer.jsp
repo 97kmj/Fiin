@@ -37,7 +37,7 @@
 	                	$('#address').val = '';
 	                }
 		            $("#address").val(addr + " " + extraAddr);
-		            $("#addressDetail").attr("disabled", false);
+		            $("#addressDetail").attr("readonly", false);
 		            $("#addressDetail").focus();
 		        }
 	    	}).open();
@@ -218,7 +218,7 @@
             class="input_btn_style"
             name="addressDetail"
             id="addressDetail"
-            disabled
+            readonly="readonly"
           />
           </label>
           <div class="terms_wrap">

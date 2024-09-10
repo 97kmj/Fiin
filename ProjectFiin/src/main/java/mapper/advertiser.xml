@@ -6,14 +6,14 @@
 	<!--세나-->
 	<insert id="insertAdvertiser" parameterType="advertiser">
 		<![CDATA[ 
-			insert into advertiser (user_email, password, name, company_name, mobile_number, address) 
-			values (#{userEmail}, #{password}, #{name}, #{companyName}, #{mobileNumber}, #{address}) 
+			insert into advertiser (user_email, password, name, company_name, mobile_number, address, address_detail) 
+			values (#{userEmail}, #{password}, #{name}, #{companyName}, #{mobileNumber}, #{address}, #{addressDetail}) 
 		]]>
 	</insert>
 	
 	<select id="selectAdvertiser" parameterType="Integer" resultType="advertiser">
 		<![CDATA[ 
-			select * from advertiser where advertiser_num = #{advertiser_num} 
+			select * from advertiser where advertiser_num = #{advertiserNum} 
 		]]>
 	</select>
 	
@@ -22,16 +22,17 @@
 		<set>
 			<if test="password != null">password = #{password},</if>
 			<if test="name != null">name = #{name},</if>
-			<if test="nickname != null">company_name = #{company_name},</if>
-			<if test="mobile_number != null">mobile_number = #{mobile_number},</if>
+			<if test="nickname != null">company_name = #{companyName},</if>
+			<if test="mobile_number != null">mobile_number = #{mobileNumber},</if>
 			<if test="address != null">address = #{address}</if>
+			<if test="address_detail != null">address_detail = #{addressDetail}</if>
 		</set>
-		where advertiser_num = #{advertiser_num}
+		where advertiser_num = #{advertiserNum}
 	</update>
 	
 	<select id="selectAdvertiserByEmail" parameterType="String" resultType="advertiser">
 		<![CDATA[ 
-			select * from advertiser where user_email = #{user_email} 
+			select * from advertiser where user_email = #{userEmail} 
 		]]>
 	</select>
 	

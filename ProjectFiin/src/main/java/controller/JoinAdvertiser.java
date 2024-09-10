@@ -47,9 +47,9 @@ public class JoinAdvertiser extends HttpServlet {
 		 advertiser.setName(request.getParameter("name"));
 		 advertiser.setCompanyName(request.getParameter("companyName"));
 		 advertiser.setMobileNumber(request.getParameter("mobileNumber"));
-		 String address = request.getParameter("address") + " " + request.getParameter("addressDetail");
-		 advertiser.setAddress(address);
-		 System.out.println(advertiser);
+		 advertiser.setAddress(request.getParameter("address"));
+		 advertiser.setAddressDetail(request.getParameter("addressDetail"));
+		 
 		 try {
 			 AdvertiserService service = new AdvertiserServiceImpl();
 			 service.join(advertiser);
