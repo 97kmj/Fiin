@@ -19,7 +19,7 @@ import util.PageInfo;
 /**
  * Servlet implementation class PointRecord
  */
-@WebServlet("/mypage/pointrecord")
+@WebServlet("/pointrecord")
 public class MypagePointRecord extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
