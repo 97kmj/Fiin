@@ -31,13 +31,11 @@
 			</dataSource>
 		</environment>
 	</environments>
-
 	<mappers>
 		<mapper resource="mapper/influencer.xml"/>
 		<mapper resource="mapper/advertiser.xml"/>
 		<mapper resource="mapper/campaign.xml"/>
 		<mapper resource="mapper/point.xml"/>
-		<mapper resource="mapper/advertiser.xml"/>
 		<mapper resource="mapper/bookmarkCampaign.xml"/>
 		<mapper resource="mapper/bookmarkInfluencer.xml"/>
 		<mapper resource="mapper/category.xml"/>
@@ -45,6 +43,5 @@
 		<mapper resource="mapper/pointRecord.xml"/>
 		<mapper resource="mapper/receiveCampaign.xml"/>
 		<mapper resource="mapper/requestCampaign.xml"/>
-		<mapper resource="mapper/campaign.xml"/>
 	</mappers>
 </configuration>

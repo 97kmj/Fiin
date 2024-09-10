@@ -15,6 +15,6 @@ public interface InfluencerService {
 	boolean toggleBookmarkCampaign(Integer InfluencerNum, Integer CampaignNum) throws Exception;
 	List<Influencer> influencerListForMain() throws Exception;
 	List<Influencer> getInfluencerList(List<String> channels, Integer categoryId, PageInfo pageInfo)throws Exception;
-	String influencerEmail(String name, String mobileNumber) throws Exception;
-
+	String influencerFindEmail(String name, String mobileNumber) throws Exception;
+  String influencerFindPassword(String userEmail) throws Exception;
 }

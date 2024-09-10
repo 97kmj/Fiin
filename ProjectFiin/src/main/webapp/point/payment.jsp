@@ -53,7 +53,12 @@
     <script>
     	//결제 api 
     	document.getElementById("submitbtn").onclick = function(e){
-    		requestPay();
+    		if(userNum == '') {
+    			alert("로그인 후 이용가능합니다.");
+    			location.replace("http://localhost:8080/fiin/login");
+    		} else {
+	    		requestPay();
+    		}
     	}
     	console.log('${influencer}');
     	console.log('${advertiser}');

@@ -40,8 +40,24 @@
 			$(".modal_wrap .title_wrap h2").text("광고주 아이디 찾기");
 		});
 		
+		var pnReg = /^(01[016789]{1})-?[0-9]{3,4}-?[0-9]{4}$/;
 		$(".findId_btn").click(function(e) {
 			e.preventDefault();
+		
+			if ($('#name').val() === "") {
+				alert("이름을 입력해주세요.");
+				$("#name").focus();
+				return false;
+			} else if ($("#mobileNumber").val() === "") {
+				alert("휴대폰번호를 입력해주세요.");
+				$("#mobileNumber").focus();
+				return false;
+			} else if (!pnReg.test($("#mobileNumber").val())) {
+				alert("휴대폰번호를 확인해주세요.");
+				$("#mobileNumber").focus();
+				return false;
+			}
+			
 			$.ajax({
 				url: 'findId',
 				type: 'post',
@@ -80,7 +96,7 @@
     <div class="findId_container">
         <div class="title_wrap">
           <h2>인플루언서 아이디 찾기</h2>
-          <a href="login.jsp">
+          <a href="login">
             <img src="${pageContext.request.contextPath}/image/closeIcon.svg" alt="닫기아이콘" />
           </a>
         </div>
@@ -111,7 +127,7 @@
               name="mobileNumber"
             />
           </label>	
-          <a href="/fiin/findPassword" class="find_password">비밀번호를 잊으셨나요?</a>
+          <a href="findPassword" class="find_password">비밀번호를 잊으셨나요?</a>
           <button type="submit" class="findId_btn">아이디 찾기</button>  
         </form>
         
@@ -120,13 +136,13 @@
         	<div class="modal_content">
         		<div class="title_wrap">
 		          <h2>인플루언서 아이디 찾기</h2>
-		          <a href="/fiin/login" id="modal_close_btn">
+		          <a href="login" id="modal_close_btn">
 		            <img src="${pageContext.request.contextPath}/image/closeIcon.svg" alt="닫기아이콘" />
 		          </a>
         		</div>
 		        <p>입력하신 정보와 일치하는 이메일(아이디)입니다.</p>
 		       	<div class="email"></div>
-		        	<a href="/fiin/findPassword" class="find_password">비밀번호를 잊으셨나요?</a>
+		        	<a href="findPassword" class="find_password">비밀번호를 잊으셨나요?</a>
 		        </div>
         	</div>
       </div>

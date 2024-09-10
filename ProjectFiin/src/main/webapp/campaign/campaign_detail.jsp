@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/reset.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/campaign_detail.css?ver=1">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/campaign_detail.css?after">
 <Script src="http://code.jquery.com/jquery-latest.min.js"></Script>
 </head>
 <body>
@@ -33,24 +33,24 @@
 			</div>
 			<br>
 			<div>
-				<span style="font-size:25px; text-align: left; padding :10px; 	margin-left: 90px;"><b>${campaign.channel }</b></span>&nbsp;|&nbsp;<a style="font-size:25px; padding :10px;"><b>${campaign.category }</b></a>
+				<span style="font-size:25px; text-align: left; padding :10px; 	margin-left: 90px;"><b>${campaign.channel }</b></span>&nbsp;|&nbsp;<a style="font-size:25px; padding :10px;"><b>${campaign.categoryId }</b></a>
 			</div>
 			<br>
 			<div style="font-size:25px; text-align: left; padding :10px; margin-left: 90px;"><b>${campaign.companyName }</b></div>
 			<div style="font-size:20px; text-align: left; padding :20px; margin-left: 80px;">${campaign.adStartDate }~${campaign.adEndDate }</div>
 			<br>
 			<div >
-				<c:when test="${user_id = null }">
+<%-- 				<c:when test="${user_id == null }">
 					<div style=" text-align: center;">
 						<a href="signIn.jsp" type="button" class="basic_login" >로그인후 신청해주세요</a>
 					</div>
 				</c:when>
-				<c:otherwise>
+				<c:otherwise> --%>
 					<div  class= "container">
 						<img src="${pageContext.request.contextPath}/img/북마크.png" class="bookmark">
 						<input type="button"  class="basic_btn" value = "제안하기">
 					</div>
-				</c:otherwise>
+				<%-- </c:otherwise> --%>
 			</div>
 		</div>	
 	
@@ -69,11 +69,11 @@
 		<div class="basic_info">
 		<br>
 			<div style="font-size:25px; padding : 10px 40px ;"><b>상품명</b></div>
-			<div class="prodname">${campaign.prodName }</div>
+			<div class="prodname">${campaign.productName }</div>
 			<br>
 			<div style="font-size:25px;padding : 10px 40px;"><b>카테고리</b></div>
 			<div class="chanimg">
-				<input type="button" class ="prodbut"  value = ${campaign.category }>
+				<input type="button" class ="prodbut"  value = ${campaign.categoryId }>
 			</div>
 			<br>
 			<br>

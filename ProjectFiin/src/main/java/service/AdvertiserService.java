@@ -7,4 +7,5 @@ public interface AdvertiserService {
 	Advertiser login(String userEmail, String password) throws Exception;
 	boolean checkDoubleEmail(String userEmail) throws Exception;
 	String advertiserEmail(String name, String mobileNumber) throws Exception;
+	String advertiserPassword(String userEmail) throws Exception;
 }

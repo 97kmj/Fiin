@@ -2,7 +2,6 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-
 <mapper namespace="mapper.influencer">
 
 	<!--// 상민 - influencerRegister (인플루언서 등록) -->
@@ -103,6 +102,19 @@ resultType="influencer">
 		order by regist_date DESC limit #{row}, 8
 
 	</select>
+	
 
+	<insert id="insertInfluencer" parameterType="influencer">
+		<![CDATA[
+			insert into influencer (user_email, password, name, nickname, mobile_number, address) 
+				values (#{userEmail}, #{password}, #{name}, #{nickname}, #{mobileNumber}, #{address})
+		]]>
+	</insert>
+	
+	<select id="selectInfluencerForFindPassword" parameterType="String" resultType="String">
+		<![CDATA[
+			select insert(password, 4, 5, '*****') from influencer where user_email = #{userEmail}
+		]]>
+	</select>
 </mapper>
 

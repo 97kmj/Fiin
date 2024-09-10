@@ -35,11 +35,11 @@ public class CampaignDetail extends HttpServlet {
 		Integer campaignNum = Integer.parseInt(request.getParameter("campaignNum"));
 		try {
 			CampaignService service = new CampaignServiceImpl();
-			Campaign campign = service.Detail(campaignNum);
-			System.out.println(campaignNum);
+			Campaign campaign = service.detail(campaignNum);
+			System.out.println(campaign);
 
-			request.setAttribute("campaign", campign);
-			request.getRequestDispatcher("campaign/campaign_detail").forward(request, response);
+			request.setAttribute("campaign", campaign);
+			request.getRequestDispatcher("campaign/campaign_detail.jsp").forward(request, response);
 			
 		}catch(Exception e) {
 			e.printStackTrace();

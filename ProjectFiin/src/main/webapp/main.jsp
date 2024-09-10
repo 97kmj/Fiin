@@ -69,7 +69,7 @@
               	</c:forEach>
               </ul>
             </div>
-            <a href="/fiin/influencerList" class="moreview_btn">인플루언서 더보기</a>
+            <a href="influencerList" class="moreview_btn">인플루언서 더보기</a>
     </div>
     
     <div class="campaign">
@@ -110,7 +110,7 @@
 	          </li>
           </c:forEach>       
         </ul>
-        <a href="/fiin/campaignList" class="moreview_btn">캠페인 더보기</a>
+        <a href="campaignList" class="moreview_btn">캠페인 더보기</a>
     </div>
     <%@ include file="./include/footer.jsp" %>
 </body>

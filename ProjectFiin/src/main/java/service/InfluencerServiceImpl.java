@@ -102,15 +102,17 @@ public class InfluencerServiceImpl implements InfluencerService {
 	}
 
   @Override
-	public String influencerEmail(String name, String mobileNumber) throws Exception {
+	public String influencerFindEmail(String name, String mobileNumber) throws Exception {
 		Influencer influencer = influencerDao.selectInfluencerForFindEmail(name, mobileNumber);
-		if (influencer == null) throw new Exception("이메일을 찾지 못했습니다.");
+		if (influencer == null) throw new Exception("이메일 찾기 오류");
 		return influencer.getUserEmail();
   }
+	@Override
+	public String influencerFindPassword(String userEmail) throws Exception {
+		String password = influencerDao.selectInfluencerForFindPassword(userEmail);
+		if (password == null) throw new Exception("비밀번호 찾기 오류");
+		return password;
+	}
 }
-
-
-
-
 
 
