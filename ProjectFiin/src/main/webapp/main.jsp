@@ -81,8 +81,7 @@
         <!-- 캠페인 리스트 -->
         <ul class="campaign_container">
           <c:forEach items="${campaignList}" var="campaign">
-          	  <!-- OnClick="location.href ='/fiin/campaign_detail.jsp'" -->
-	          <li class="campaign_item">    
+	          <li class="campaign_item" OnClick="location.href='campaignDetail?campaignNum=' + ${campaign.campaignNum}">    
 	              <div class="campaign_img_wrap">
 	                <img src="${pageContext.request.contextPath}/image/campaign_img01.png" alt="캠페인이미지01" />
 	              </div>
