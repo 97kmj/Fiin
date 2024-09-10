@@ -34,6 +34,8 @@ public class Influencer {
 
 	private Timestamp registDate;
 	private String address;
+	
+	private String keyword;
 
 	//InfluencerRegister 객체(인플루언서 등록 시 사용)
 	public Influencer(String introLine, String profileImage, String youtubeName, Integer youtubeFollower, String youtubeUrl, String instagramName, Integer instagramFollower, String instagramUrl, String blogName,
@@ -221,8 +223,16 @@ public class Influencer {
 	public void setBlog(Integer blog) {
 		this.blog = blog;
 	}
-
 	
+	
+	public String getKeyword() {
+		return keyword;
+	}
+
+	public void setKeyword(String keyword) {
+		this.keyword = keyword;
+	}
+
 	public Influencer(Integer influencerNum, String userEmail, String password, String mobileNumber, Timestamp createAt,
 			String name, String nickname, Integer pointBalance, Integer isRegist, Integer youtube, String youtubeName,
 			Integer youtubeFollower, String youtubeUrl, Integer instagram, String instagramName,

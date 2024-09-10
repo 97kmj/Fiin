@@ -58,6 +58,14 @@
 		order by regist_date DESC limit #{row}, 8
 
 	</select>
+	
+	<select id="selectSearchInfluencer" parameterType="String" resultType="influencer">
+		select * from influencer
+		where youtube_name like '%${keyword}%' or
+		instagram_name like '%${keyword}%' or
+		blog_name like '%${keyword}%'
+		order by regist_date DESC limit #{row}, 8
+	</select>
 
 	<!--세나-->
 	<select id="selectInfluencer" parameterType="Integer" resultType="influencer">

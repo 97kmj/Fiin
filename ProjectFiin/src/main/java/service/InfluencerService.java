@@ -21,6 +21,6 @@ public interface InfluencerService {
 	String influencerFindEmail(String name, String mobileNumber) throws Exception;
 	String influencerFindPassword(String userEmail) throws Exception;
   	void imageView(HttpServletRequest request, OutputStream out, String file) throws Exception;
-  	
+  	List<Influencer>searchInfluencerList(String keyword, PageInfo pageInfo) throws Exception;
 }
 
