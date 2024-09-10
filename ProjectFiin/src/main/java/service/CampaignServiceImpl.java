@@ -47,7 +47,6 @@ public class CampaignServiceImpl implements CampaignService {
 
 		return campaignDao.selectCampaign(campaignNum);
 	}
-
 	@Override
 	public List<Campaign> campaignListForAdvertiser(Integer advertiserNum) throws Exception {
 		return campaignDao.selectCampaignListForAdvertiser(advertiserNum);

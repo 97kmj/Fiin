@@ -21,7 +21,7 @@
 <body>
 <div id="sidebar">
         <div class="sideitem" style="text-align:center">
-            <h3 style="padding: 0; margin-bottom: 16px;">홍길동</h3>
+            <h3 style="padding: 0; margin-bottom: 16px;">${influencer.nickname }</h3>
             <div class="profile_img" style="margin:10px auto;">
            	<c:choose>
             	<c:when test="${influencer.profileImage eq null }">
@@ -35,7 +35,7 @@
         </div>
         <div class="sideitem" style="text-align:left;">
             <h3 style="font-weight:bold ;padding-left:20px;margin-bottom:16px;">내 포인트 > </h3>
-            <h3 style="color:#4948e8;font-weight:bold;padding-left:20px;"><fmt:formatNumber value='${type eq "influencer" ? (influencer.pointBalance eq null? 0 : influencer.pointBalance): (advertiser.pointBalance eq null? 0 : advertiser.pointBalance)}'/>P</h3>
+            <h3 style="color:#4948e8;font-weight:bold;padding-left:20px;"><fmt:formatNumber value='${(influencer.pointBalance eq null? 0 : influencer.pointBalance)}'/>P</h3>
         </div>
         <div class="sideitem">
             <h3 style="color:#4948e8;font-weight:bold;padding-left:20px;">마이 파인</h3>

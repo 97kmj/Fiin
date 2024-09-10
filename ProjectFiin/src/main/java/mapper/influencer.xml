@@ -94,6 +94,7 @@
 		order by regist_date DESC limit #{row}, 8
 	</select>
 	
+
 	<insert id="insertInfluencer" parameterType="influencer">
 		<![CDATA[
 			insert into influencer (user_email, password, name, nickname, mobile_number, address) 

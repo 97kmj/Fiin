@@ -50,7 +50,7 @@
 				<div class="navbar_login">
 					<c:choose>
 						<c:when test="${advertiser eq null}">
-							<div class="login_info" OnClick="location.href ='mypagecampaignInfluencer'">
+							<div class="login_info" OnClick="location.href ='mypageCampaignInfluencer'">
 								<div class="login_img">
 				            		<img src="https://img.icons8.com/?size=100&id=43942&format=png&color=ffffff">
 				            	</div>

@@ -17,7 +17,7 @@ import service.CampaignServiceImpl;
 /**
  * Servlet implementation class MypageCampaignAdvertiser
  */
-@WebServlet("/mypage/campaign/advertiser")
+@WebServlet("/mypageCampaignAdvertiser")
 public class MypageCampaignAdvertiser extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
