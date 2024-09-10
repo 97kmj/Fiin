@@ -66,15 +66,21 @@ public class InfluencerServiceImpl implements InfluencerService {
 		}
 	}
 
+	//상민 - 인플루언서 등록
 	@Override
 	public Influencer influencerRegister(Influencer influencer) throws Exception {
 		// Dto에서 받은 정보들을 dao에 전달
 
 		influencerDao.registerInfluencer(influencer);
 		return influencer;
-
 	}
-	
+
+	//상민 - 인플루언서 찾기
+	@Override
+	public Influencer findInfluencerByNum(Integer influencerNum) throws Exception {
+		return influencerDao.selectInfluencer(influencerNum);
+	}
+
 	@Override
 	public List<Influencer> influencerListForMain() throws Exception {
 		List<Influencer> influencers = influencerDao.selectInfluencerListForMain();

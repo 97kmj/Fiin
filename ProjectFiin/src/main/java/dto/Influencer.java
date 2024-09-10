@@ -36,22 +36,24 @@ public class Influencer {
 	private String address;
 
 	//InfluencerRegister 객체(인플루언서 등록 시 사용)
-	public Influencer(String introLine, String profileImage, String youtubeName, Integer youtubeFollower, String youtubeUrl, String instagramName, Integer instagramFollower, String instagramUrl, String blogName,
-			Integer blogFollower, String blogUrl, Integer categoryId, String introduction) {
-		this.introLine = introLine;
-		this.profileImage = profileImage;
-		this.youtubeName = youtubeName;
-		this.youtubeFollower = youtubeFollower;
-		this.youtubeUrl = youtubeUrl;
-		this.instagramName = instagramName;
-		this.instagramFollower = instagramFollower;
-		this.instagramUrl = instagramUrl;
-		this.blogName = blogName;
-		this.blogFollower = blogFollower;
-		this.blogUrl = blogUrl;
-		this.categoryId = categoryId;
-		this.introduction = introduction;
-	}
+  public Influencer(Integer influencerNum, String profileImage, String youtubeName,
+      Integer youtubeFollower, String youtubeUrl, String instagramName, Integer instagramFollower,
+      String instagramUrl, String blogName,
+      Integer blogFollower, String blogUrl, Integer categoryId, String introduction) {
+    this.influencerNum = influencerNum;
+    this.profileImage = profileImage;
+    this.youtubeName = youtubeName;
+    this.youtubeFollower = youtubeFollower;
+    this.youtubeUrl = youtubeUrl;
+    this.instagramName = instagramName;
+    this.instagramFollower = instagramFollower;
+    this.instagramUrl = instagramUrl;
+    this.blogName = blogName;
+    this.blogFollower = blogFollower;
+    this.blogUrl = blogUrl;
+    this.categoryId = categoryId;
+    this.introduction = introduction;
+  }
 
 	public Integer getInfluencerNum() {
 		return influencerNum;
@@ -222,7 +224,7 @@ public class Influencer {
 		this.blog = blog;
 	}
 
-	
+
 	public Influencer(Integer influencerNum, String userEmail, String password, String mobileNumber, Timestamp createAt,
 			String name, String nickname, Integer pointBalance, Integer isRegist, Integer youtube, String youtubeName,
 			Integer youtubeFollower, String youtubeUrl, Integer instagram, String instagramName,
@@ -259,7 +261,7 @@ public class Influencer {
 		this.address = address;
 	}
 
-	
+
 	@Override
 	public String toString() {
 		return "Influencer [influencerNum=" + influencerNum + ", userEmail=" + userEmail + ", password=" + password
