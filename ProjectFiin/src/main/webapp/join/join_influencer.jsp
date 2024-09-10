@@ -64,6 +64,28 @@
 			})
 		})
 		
+		$("#sendSms").click(function(e) {
+			e.preventDefault();
+			$.ajax({
+				url: 'sendSms',
+				type: 'post',
+				async: true,
+				dataType: 'text',
+				data: {mobileNumber: $("#mobileNumber").val()},
+				success: function(result) {
+					console.log(result)
+					/* if (result == 'true') {
+						alert("사용중인 아이디입니다.");
+					} else {
+						alert("사용가능한 아이디입니다.");
+					} */
+				},
+				error: function(err) {
+					console.log(err);
+				}
+			})
+		})
+		
 		var pwReg = /^(?=.*[a-zA-Z])(?=.*[0-9]).{8,25}$/;
 		var emailReg = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;
 		var nameReg = /^[가-힣]{2,4}$/;
@@ -129,7 +151,7 @@
     <div class="signup_container">
         <div class="title_wrap">
           <h2>인플루언서 회원가입</h2>
-          <a href="login.jsp">
+          <a href="login">
             <img src="${pageContext.request.contextPath}/image//closeIcon.svg" alt="닫기아이콘" />
           </a>
         </div>
@@ -197,7 +219,7 @@
                 class="input_btn_style"
                 name="mobileNumber"
               />
-              <button type="button">인증</button>
+              <button type="button" id="sendSms">인증</button>
             </div>
           </label>
           <label for="address" class="input_label">
