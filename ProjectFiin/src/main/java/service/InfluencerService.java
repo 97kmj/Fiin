@@ -1,6 +1,9 @@
 package service;
 
+import java.io.OutputStream;
 import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
 
 import dto.Influencer;
 import util.PageInfo;
@@ -16,5 +19,8 @@ public interface InfluencerService {
 	List<Influencer> influencerListForMain() throws Exception;
 	List<Influencer> getInfluencerList(List<String> channels, Integer categoryId, PageInfo pageInfo)throws Exception;
 	String influencerFindEmail(String name, String mobileNumber) throws Exception;
-  String influencerFindPassword(String userEmail) throws Exception;
+	String influencerFindPassword(String userEmail) throws Exception;
+  	void imageView(HttpServletRequest request, OutputStream out, String file) throws Exception;
+  	
 }
+

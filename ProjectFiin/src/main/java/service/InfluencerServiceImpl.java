@@ -1,6 +1,12 @@
 package service;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.OutputStream;
 import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+
 import dao.BookmarkCampaignDao;
 import dao.BookmarkCampaignDaoImpl;
 import dao.InfluencerDao;
@@ -112,6 +118,27 @@ public class InfluencerServiceImpl implements InfluencerService {
 		String password = influencerDao.selectInfluencerForFindPassword(userEmail);
 		if (password == null) throw new Exception("비밀번호 찾기 오류");
 		return password;
+	}
+	@Override
+	public void imageView(HttpServletRequest request, OutputStream out, String file) throws Exception {
+		FileInputStream fis = null;
+		String path = request.getServletContext().getRealPath("upload");
+		try {
+			fis = new FileInputStream(new File(path,file));
+			byte[] buff = new byte[4096];
+			int len;
+			while((len=fis.read(buff))>0) {
+				out.write(buff,0,len);
+			}
+		} catch(Exception e){
+			e.printStackTrace();
+		} finally {
+			try {
+				if(fis!=null) fis.close();
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
 	}
 }
 
