@@ -37,10 +37,53 @@
 	                	$('#address').val = '';
 	                }
 		            $("#address").val(addr + " " + extraAddr);
-		            $("#addressdetail").attr("disabled", false);
 		            $("#addressdetail").focus();
 		        }
 	    	}).open();
+		})
+		
+		var pwReg = /^(?=.*[a-zA-Z])(?=.*[0-9]).{8,25}$/;
+		var nameReg = /^[가-힣]{2,4}$/;
+		var pnReg = /^(01[016789]{1})-?[0-9]{3,4}-?[0-9]{4}$/;
+		
+		$(".edit_btn").click(function(e) {
+			e.preventDefault();
+
+			if ($("#password").val() === "") {
+				alert("비밀번호를 입력해주세요.");
+				$("#password").focus();
+				return false;
+			} else if (!pwReg.test($("#password").val())) {
+				alert("비밀번호는 영문, 숫자포함 최소 8자리 이상 입력해주세요.");
+				$("password").focus();
+				return false;
+			} else if ($("#name").val() === "") {
+				alert("이름을 입력해주세요.");
+				$("#name").focus();
+				return false;
+			} else if (!nameReg.test($("#name").val())) {
+				alert("이름을 확인해주세요.(한글 2~4자 이내)");
+				$("#name").focus();
+				return false;
+			} else if ($("#companyName").val() === "") {
+				alert("회사명을 입력해주세요.");
+				$("#companyName").focus();
+				return false;
+			} else if ($("#mobileNumber").val() === "") {
+				alert("휴대폰번호를 입력해주세요.");
+				$("#mobileNumber").focus();
+				return false;
+			} else if (!pnReg.test($("#mobileNumber").val())) {
+				alert("휴대폰번호를 확인해주세요.");
+				$("#mobileNumber").focus();
+				return false;
+			} else if ($("#address").val() === "") {
+				alert("주소를 검색해주세요.");
+				$("#address").focus();
+				return false;
+			} 
+				
+			$(".edit_form").submit();
 		})
 	})
 </script>
@@ -52,15 +95,18 @@
 		
 		<div class="main">
 			<h2>프로필 관리</h2>
-			<form action="#" class="edit_form">
-				  <label for="email" class="input_label">
+			<form action="mypageAdvertiserInfo" class="edit_form" method="post">
+				  <!-- 광고주 번호 숨겨놓는 input -->
+				  <input type="hidden" id="advertiserNum" name="advertiserNum" value="${advertiser.advertiserNum}" />
+				  
+				  <label for="userEmail" class="input_label">
 		            이메일<span>*</span> <span class="br_style"><br /></span>
 		            <input
 		              type="text"
-		              id="email"
-		              value="kosta@kosta.com"
+		              id="userEmail"
+		              value="${advertiser.userEmail}"
 		              class="input_style"
-		              name="email"
+		              name="userEmail"
 		              disabled
 		            />
 		          </label>
@@ -69,7 +115,7 @@
 			             <input
 			                type="password"
 			                id="password"
-			                value="***********"
+			                value="${advertiser.password}"
 			                class="input_style"
 			       			name="password"
 			             />
@@ -79,29 +125,29 @@
 		            <input
 		              type="text"
 		              id="name"
-		              value="홍길동"
+		              value="${advertiser.name}"
 		              class="input_style"
 		              name="name"
 		            />
 		          </label>
-		          <label for="name" class="input_label">
+		          <label for="companyName" class="input_label">
 		            업체명<span>*</span> <span class="br_style"><br /></span>
 		            <input
 		              type="text"
-		              id="companyname"
-		              value="코스타"
+		              id="companyName"
+		              value="${advertiser.companyName}"
 		              class="input_style"
-		              name="companyname"
+		              name="companyName"
 		            />
 		          </label>
-		          <label for="number" class="input_label">
+		          <label for="mobileNumber" class="input_label">
 		            휴대폰번호<span>*</span> <span class="br_style"><br /></span>
 		              <input
 		                type="text"
-		                id="number"
-						value="01012345678"
+		                id="mobileNumber"
+						value="${advertiser.mobileNumber}"
 		                class="input_style"
-		                name="number"
+		                name="mobileNumber"
 		              />
 		          </label>
 		          <label for="address" class="input_label">
@@ -109,21 +155,20 @@
 		            <div class="input_btn_wrap">
 		              <input
 		                type="text"
-		                value="서울특별시 금천구 가산디지털1로 70"
+		                value="${advertiser.address}"
 		                class="input_btn_style"
 		                name="address"
 		                id="address"
-		                disabled
+		                readonly="readonly"
 		              />
 		              <button type="button" class="address_btn">주소검색</button>
 		            </div>
 		            <input
 			            type="text"
-			            value="호서대벤처타워 9층"
+			            value="${advertiser.addressDetail}"
 			            class="input_btn_style"
-			            name="addressdetail"
-			            id="addressdetail"
-			            disabled
+			            name="addressDetail"
+			            id="addressDetail"
 		          	/>
 		          </label>
           		  <input type="submit" class="edit_btn" value="수정하기">

@@ -22,10 +22,10 @@
 		<set>
 			<if test="password != null">password = #{password},</if>
 			<if test="name != null">name = #{name},</if>
-			<if test="nickname != null">company_name = #{companyName},</if>
-			<if test="mobile_number != null">mobile_number = #{mobileNumber},</if>
-			<if test="address != null">address = #{address}</if>
-			<if test="address_detail != null">address_detail = #{addressDetail}</if>
+			<if test="companyName != null">company_name = #{companyName},</if>
+			<if test="mobileNumber != null">mobile_number = #{mobileNumber},</if>
+			<if test="address != null">address = #{address},</if>
+			<if test="addressDetail != null">address_detail = #{addressDetail}</if>
 		</set>
 		where advertiser_num = #{advertiserNum}
 	</update>
