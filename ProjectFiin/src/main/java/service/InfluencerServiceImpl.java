@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.OutputStream;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -88,7 +89,7 @@ public class InfluencerServiceImpl implements InfluencerService {
 	}
 
 	@Override
-	public List<Influencer> getInfluencerList(List<String> channels, Integer categoryId, PageInfo pageInfo) throws Exception {
+	public List<Map<String,Object>> getInfluencerList(List<String> channels, Integer categoryId, PageInfo pageInfo) throws Exception {
 		
 		Integer influencerCnt = influencerDao.selectInfluencerCount();
 		
@@ -102,7 +103,7 @@ public class InfluencerServiceImpl implements InfluencerService {
 		pageInfo.setEndPage(endPage);
 		
 		Integer row = (pageInfo.getCurPage()-1)*8+1;
-		List<Influencer> influencerList = influencerDao.selectInfluencerList(row, channels, categoryId);
+		List<Map<String,Object>> influencerList = influencerDao.selectInfluencerList(row, channels, categoryId);
 		return influencerList;
 			
 	}
@@ -142,7 +143,7 @@ public class InfluencerServiceImpl implements InfluencerService {
 	}
 	@Override
 	public List<Influencer> searchInfluencerList(String keyword, PageInfo pageInfo) throws Exception {
-		Integer influencerCnt = influencerDao.selectInfluencerCount();
+		Integer influencerCnt = influencerDao.SearchSelectInfluencerCount();
 		
 		Integer allPage = (int)Math.ceil((double)influencerCnt/8);
 		Integer startPage = (pageInfo.getCurPage()-1)/8*8+1;

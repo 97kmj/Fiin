@@ -42,7 +42,7 @@ public class InfluencerDaoImpl implements InfluencerDao {
 	}
 	  
   	@Override
-	public List<Influencer> selectInfluencerList(Integer row, List<String> channels, Integer categoryId) throws Exception {
+	public List<Map<String,Object>> selectInfluencerList(Integer row, List<String> channels, Integer categoryId) throws Exception {
 		Map<String,Object>map = new HashMap<>();
 		map.put("channels", channels);
 		map.put("row", row-1);
@@ -87,5 +87,10 @@ public class InfluencerDaoImpl implements InfluencerDao {
 		keywordMap.put("keyword", keyword);
 		keywordMap.put("row", row-1);
 		return sqlSession.selectList("mapper.influencer.selectSearchInfluencer", keywordMap);
+	}
+
+	@Override
+	public Integer SearchSelectInfluencerCount() throws Exception {
+		return sqlSession.selectOne("mapper.influencer.SearchSelectInfluencerCount");
 	}  
 }

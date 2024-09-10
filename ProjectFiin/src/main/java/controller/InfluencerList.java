@@ -3,6 +3,7 @@ package controller;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -74,7 +75,7 @@ public class InfluencerList extends HttpServlet {
 			InfluencerService service = new InfluencerServiceImpl();
 			PageInfo pageInfo = new PageInfo();
 			pageInfo.setCurPage(page);
-			List<Influencer> influencerList;
+			List<Map<String,Object>> influencerList;
 			List<Influencer> searchInflunecerList;
 			
 			influencerList = service.getInfluencerList(channelList, category, pageInfo);

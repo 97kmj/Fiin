@@ -12,7 +12,7 @@ public class Influencer {
 	private String name;
 	private String nickname;
 	private Integer pointBalance;
-
+	private String categoryName;
 	private Integer isRegist;
 	private Integer youtube;
 	private String youtubeName;       // 데이터베이스 컬럼: youtube_name
@@ -231,6 +231,15 @@ public class Influencer {
 
 	public void setKeyword(String keyword) {
 		this.keyword = keyword;
+	}
+	
+
+	public String getCategoryName() {
+		return categoryName;
+	}
+
+	public void setCategoryName(String categoryName) {
+		this.categoryName = categoryName;
 	}
 
 	public Influencer(Integer influencerNum, String userEmail, String password, String mobileNumber, Timestamp createAt,

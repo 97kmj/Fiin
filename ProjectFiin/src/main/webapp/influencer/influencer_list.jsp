@@ -60,28 +60,42 @@
 						<img
 							src="${pageContext.request.contextPath}/image/influencer_img01.png"
 							class="influencer_img">
-						<div>${influencer.youtube }|${influencer.categoryId }</div>
+						<div>
+						<c:if test="${influencer.youtube ne null }">
+								<c:out value="유튜브"/>
+						</c:if>
+						<c:if test="${influencer.instagram ne null }">
+							<c:out value="인스타그램"/>
+						</c:if>
+						<c:if test="${influencer.blog ne null }">
+							<c:out value="블로그"/>
+						</c:if>
+						<br> 
+						 ${influencer.category_name }
+						</div>
 						<div id="channelName">
-							<a href="influecerDetail?num=${influencerNum }"> <c:if
-									test="${influencer.youtubeName ne null }">
-								${influencer.youtubeName }
-							</c:if> <c:if test="${influencer.instagramName ne null }">
-								${influencer.instagramName }
-							</c:if> <c:if test="${influencer.blogName ne null }">
-								${influencer.blogName }
+							<a href="influecerDetail?num=${influencer.influencer_num }"> 
+							<c:if test="${influencer.youtube_name ne null }">
+								${influencer.youtube_name }
+							</c:if>
+							 <c:if test="${influencer.instagram_name ne null }">
+								${influencer.instagram_name }
+							</c:if> 
+							<c:if test="${influencer.blog_name ne null }">
+								${influencer.blog_name }
 							</c:if>
 							</a>
 						</div>
-						<div id="title">${influencer.introLine }</div>
+						<div id="title">${influencer.intro_line }</div>
 						<div id="subscriber">
-							<c:if test="${influencer.youtubeFollower != null }">
-								${influencer.youtubeFollower }
+							<c:if test="${influencer.youtube_follower != null }">
+								${influencer.youtube_follower }
 							</c:if>
-							<c:if test="${influencer.instagramFollower != null }">
-								${influencer.instagramFollower }
+							<c:if test="${influencer.instagram_follower != null }">
+								${influencer.instagram_follower }
 							</c:if>
-							<c:if test="${influecner.blogFollower != null }">
-								${influencer.blogFollower }
+							<c:if test="${influecner.blog_follower != null }">
+								${influencer.blog_follower }
 							</c:if>
 						</div>
 					</div>
@@ -150,6 +164,7 @@
 		}
 	})
 	$("#searchButton").click(function(e) {
+		let param = $("#keyword").val();
 		$("#searchForm").submit();
 	})
 </script>
