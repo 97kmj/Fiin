@@ -40,8 +40,9 @@ public class InfluencerList extends HttpServlet {
 
 		String paramPage = request.getParameter("page");
 		String[] channels = request.getParameterValues("channel");
-		System.out.println(channels.toString());
+
 		List<String> channelList = new ArrayList<>();
+
 		if (channels == null) {
 			channelList.add("youtube");
 			channelList.add("instagram");
@@ -52,6 +53,7 @@ public class InfluencerList extends HttpServlet {
 			}
 			System.out.println(channelList);
 		}
+
 		Integer category = 0;
 		if (request.getParameter("category") != null) {
 			category = Integer.parseInt(request.getParameter("category"));
