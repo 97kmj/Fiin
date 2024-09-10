@@ -38,4 +38,11 @@ public class AdvertiserServiceImpl implements AdvertiserService {
 		if (advertiser == null) throw new Exception("이메일 찾기 오류");
 		return advertiser.getUserEmail();
 	}
+
+	@Override
+	public String advertiserPassword(String userEmail) throws Exception {
+		String password = advertiserDao.selectAdvertiserForFindPassword(userEmail);
+		if (password == null) throw new Exception("비밀번호 찾기 오류");
+		return password;
+	}
 }

@@ -71,5 +71,10 @@ public class InfluencerDaoImpl implements InfluencerDao {
 		param.put("name", name);
 		param.put("mobileNumber", mobileNumber);
 		return sqlSession.selectOne("mapper.influencer.selectInfluencerForFindEmail", param);
-  }  
+  }
+
+	@Override
+	public String selectInfluencerForFindPassword(String userEmail) throws Exception {
+		return sqlSession.selectOne("mapper.influencer.selectInfluencerForFindPassword", userEmail);
+	}  
 }
