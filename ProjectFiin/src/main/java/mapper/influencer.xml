@@ -4,28 +4,29 @@
 
 <mapper namespace="mapper.influencer">
 
-  <!--// 상민 - influencerRegister (인플루언서 등록)-->
-  <update id="updateInfluencerRegister" parameterType="influencer">
-    UPDATE influencer
-    <set>
-     <if test="introLine != null">intro_line = #{introLine},</if>
-     <if test="profileImage != null">profile_image = #{profileImage},</if>
-     <if test="youtubeName != null">youtube_name = #{youtubeName},</if>
-     <if test="youtubeFollower != null">youtube_follower = #{youtubeFollower},</if>
-     <if test="youtubeUrl != null">youtube_url = #{youtubeUrl},</if>
-     <if test="instagramName != null">instagram_name = #{instagramName},</if>
-     <if test="instagramFollower != null">instagram_follower = #{instagramFollower},</if>
-     <if test="instagramUrl != null">instagram_url = #{instagramUrl},</if>
-     <if test="blogName != null">blog_name = #{blogName},</if>
-     <if test="blogFollower != null">blog_follower = #{blogFollower},</if>
-     <if test="blogUrl != null">blog_url = #{blogUrl},</if>
-     <if test="categoryId != null">category_id = #{categoryId},</if>
-     <if test="introduction != null">introduction = #{introduction}</if>
-    </set>
-  WHERE influencer_num = #{influencerNum}
-</update>
+	<!--// 상민 - influencerRegister (인플루언서 등록) -->
+	<update id="updateInfluencerRegister" parameterType="influencer">
+		UPDATE influencer
+		<set>
+			<if test="introLine != null">intro_line = #{introLine},</if>
+			<if test="profileImage != null">profile_image = #{profileImage},</if>
+			<if test="youtubeName != null">youtube_name = #{youtubeName},</if>
+			<if test="youtubeFollower != null">youtube_follower = #{youtubeFollower},</if>
+			<if test="youtubeUrl != null">youtube_url = #{youtubeUrl},</if>
+			<if test="instagramName != null">instagram_name = #{instagramName},</if>
+			<if test="instagramFollower != null">instagram_follower = #{instagramFollower},</if>
+			<if test="instagramUrl != null">instagram_url = #{instagramUrl},</if>
+			<if test="blogName != null">blog_name = #{blogName},</if>
+			<if test="blogFollower != null">blog_follower = #{blogFollower},</if>
+			<if test="blogUrl != null">blog_url = #{blogUrl},</if>
+			<if test="categoryId != null">category_id = #{categoryId},</if>
+			<if test="introduction != null">introduction = #{introduction}</if>
+		</set>
+		WHERE influencer_num = #{influencerNum}
+	</update>
 
-  <select id="selectInfluencerList" parameterType="Integer" resultType="influencer">
+	<select id="selectInfluencerList" parameterType="Integer"
+		resultType="influencer">
 		<![CDATA[
     select *
     from influencer
@@ -34,7 +35,8 @@
     ]]>
 	</select>
 
-  <select id="selectInfluencer" parameterType="Integer" resultType="influencer">
+	<select id="selectInfluencer" parameterType="Integer"
+		resultType="influencer">
 		<![CDATA[
     select *
     from influencer
@@ -42,7 +44,8 @@
     ]]>
 	</select>
 
-  <select id="selectInfluencerByEmail" parameterType="String" resultType="influencer">
+	<select id="selectInfluencerByEmail" parameterType="String"
+		resultType="influencer">
 		<![CDATA[
     select *
     from influencer
@@ -50,23 +53,22 @@
     ]]>
 	</select>
 
-  <update id="updateInfluencer" parameterType="influencer">
-    update influencer
-    <set>
-      <if test="password != null">password = #{password},</if>
-      <if test="name != null">name = #{name},</if>
-      <if test="nickname != null">nickname = #{nickname},</if>
-      <if test="mobile_number != null">mobile_number = #{mobile_number},</if>
-      <if test="address != null">address = #{address}</if>
-    </set>
-    where user_email = #{user_email}
-  </update>
+	<update id="updateInfluencer" parameterType="influencer">
+		update influencer
+		<set>
+			<if test="password != null">password = #{password},</if>
+			<if test="name != null">name = #{name},</if>
+			<if test="nickname != null">nickname = #{nickname},</if>
+			<if test="mobile_number != null">mobile_number = #{mobile_number},</if>
+			<if test="address != null">address = #{address}</if>
+		</set>
+		where user_email = #{user_email}
+	</update>
 
-  <select id="selectInfluencerCount" resultType="Integer">
+	<select id="selectInfluencerCount" resultType="Integer">
 		<![CDATA[
-    select count(*)
-    from influencer
-    ]]>
+    		select count(*) from influencer
+    	]]>
 	</select>
 
 	<select id="selectInfluencerListForMain" resultType="influencer">
@@ -75,22 +77,30 @@
 		]]>
 	</select>
 
-	<select id="selectInfluencerForFindEmail" parameterType="map" resultType="influencer">
+	<select id="selectInfluencerForFindEmail" parameterType="map"
+		resultType="influencer">
 		<![CDATA[
 			select user_email from influencer where name = #{name} and mobile_number = #{mobileNumber}
 		]]>
 	</select>
 
-	<select id="selectAllInfluencer" parameterType="Map" resultType="influencer">
+	<select id="selectAllInfluencer" parameterType="Map"
+resultType="influencer">
 		select * from influencer
-		where 1=1
+		<where>
+			1=1
+			<if test="channels != null and channels.size > 0">
+				and
+				<foreach item="channel" collection="channels" open="(" separator="or" close=")">
+					${channel}= 1
+				</foreach>
+			</if>
 			<if test="categoryId != 0">
 				and category_id = #{categoryId}
 			</if>
-			<if test="channel != null">
-				and channel like '%${channel}%'
-			</if>
+		</where>
 		order by regist_date DESC limit #{row}, 8
+
 	</select>
 	
 

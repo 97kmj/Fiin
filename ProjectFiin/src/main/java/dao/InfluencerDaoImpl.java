@@ -40,13 +40,14 @@ public class InfluencerDaoImpl implements InfluencerDao {
 		 * sqlSession.commit();
 		 */
 	}
-	
+	  
   	@Override
-	public List<Influencer> selectInfluencerList(Integer row, String channel, Integer categoryId) throws Exception {
+	public List<Influencer> selectInfluencerList(Integer row, List<String> channels, Integer categoryId) throws Exception {
 		Map<String,Object>map = new HashMap<>();
-		map.put("categoryId", categoryId);
-		map.put("channel", channel);
+		map.put("channels", channels);
 		map.put("row", row-1);
+		map.put("categoryId", categoryId);
+		
 		return sqlSession.selectList("mapper.influencer.selectAllInfluencer", map);
     }
 

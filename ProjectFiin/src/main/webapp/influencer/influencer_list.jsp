@@ -8,7 +8,7 @@
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/css/reset.css">
 <link rel="stylesheet"
-	href="${pageContext.request.contextPath}/css/influencer_list.css?ver=1">
+	href="${pageContext.request.contextPath}/css/influencer_list.css?after">
 <script src="http://code.jquery.com//jquery-latest.min.js"></script>
 </head>
 <body>
@@ -18,18 +18,13 @@
 			<div id="categoryBar">
 				<h2>인플루언서</h2>
 				<div class="categoryWrap">
-					<input type="radio" id="all" name="category" value="0" checked><label
-						for="all"><a href="0">전체</a></label> <input type="radio"
-						id="fasion" name="category" value="2"><label for="fasion"><a
-						href="2">패션</a></label> <input type="radio" id="beauty" name="category"
-						value="1"><label for="beauty"><a href="1">뷰티</a></label> <input
-						type="radio" id="daily" name="category" value="6"><label
-						for="daily"><a href="6">생활용품</a></label> <input type="radio"
-						id="sport" name="category" value="3"><label for="sport"><a
-						href="3">스포츠</a></label> <input type="radio" id="travel" name="category"
-						value="4"> <label for="travel"><a href="4">여행/숙박</a></label>
-					<input type="radio" id="goodTaste" name="category" value="5"><label
-						for="goodTaste"><a href="5">맛집</a></label>
+					<input type="radio" id="all" name="category" value="0" checked><a href="0">전체</a> 
+					<input type="radio" id="fasion" name="category" value="2"><a href="2">패션</a>
+					<input type="radio" id="beauty" name="category" value="1"><a href="1">뷰티</a>
+					<input type="radio" id="daily" name="category" value="6"><a href="6">생활용품</a>
+					<input type="radio" id="sport" name="category" value="3"><a href="3">스포츠</a> 
+					<input type="radio" id="travel" name="category" value="4"><a href="4">여행/숙박</a>
+					<input type="radio" id="goodTaste" name="category" value="5"><a href="5">맛집</a>
 				</div>
 			</div>
 
@@ -37,11 +32,9 @@
 			<div class="channelBar">
 				<h2>채널</h2>
 				<div class="channelButton">
-					<label> <input type="checkbox" name="channel"
-						value="instagram"> <span>인스타그램</span></label> <label> <input
-						type="checkbox" name="channel" value="blog"><span>블로그</span></label>
-					<label><input type="checkbox" name="channel"
-						value="youtube"><span>유튜브</span></label>
+					<label><input type="checkbox" name="channel" value="instagram"> <span>인스타그램</span></label>
+					<label><input type="checkbox" name="channel" value="blog"><span>블로그</span></label>
+					<label><input type="checkbox" name="channel" value="youtube"><span>유튜브</span></label>
 				</div>
 			</div>
 		</form>
@@ -54,39 +47,39 @@
 						<input type="text" placeholder="검색">
 						<button type="button" id="searchButton">검색</button>
 					</div>
-					<button id="registerButton" onclick="location.href='register.jsp'">인플루언서
+					<button id="registerButton" onclick="location.href='influencer_register.jsp'">인플루언서
 						등록하기</button>
 				</div>
 			</div>
 			<div class="influencerWrap">
-				<c:forEach items="${influnencerList }" var="influencer">
+				<c:forEach items="${influencerList}" var="influencer">
 					<div class="influencer_pick" id="pickNum1"
 						onclick="location.href='influencerDetail.jsp'">
 						<img
 							src="${pageContext.request.contextPath}/image/influencer_img01.png"
 							class="influencer_img">
-						<div>${influencer.channel }|${influencer.categoryId }</div>
+						<div>${influencer.youtube }|${influencer.categoryId }</div>
 						<div id="channelName">
-							<c:if test="${influencer.youtube_name ne null }">
-								${influencer.youtube_name }&nbsp;
+							<c:if test="${influencer.youtubeName ne null }">
+								${influencer.youtubeName }
 							</c:if>
-							<c:if test="${influencer.instagram_name ne null }">
-								${influencer.instagram_name }&nbsp;
+							<c:if test="${influencer.instagramName ne null }">
+								${influencer.instagramName }
 							</c:if>
-							<c:if test="${influencer.blog_name ne null }">
-								${influencer.blog_name }
+							<c:if test="${influencer.blogName ne null }">
+								${influencer.blogName }
 							</c:if>
 						</div>
-						<div id="title">${influencer.intro_line }</div>
+						<div id="title">${influencer.introLine }</div>
 						<div id="subscriber">
-							<c:if test="${influencer.youtube_follower }">
-								${influencer.youtube_follwer }
+							<c:if test="${influencer.youtubeFollower != null }">
+								${influencer.youtubeFollower }
 							</c:if>
-							<c:if test="${influencer.instagram_follower }">
-								${influencer.instagram_follower }
+							<c:if test="${influencer.instagramFollower != null }">
+								${influencer.instagramFollower }
 							</c:if>
-							<c:if test="${influecner.blog_follower }">
-								${influencer.blog_follower }
+							<c:if test="${influecner.blogFollower != null }">
+								${influencer.blogFollower }
 							</c:if>
 						</div>
 					</div>
@@ -127,18 +120,19 @@
 	<%@include file="../include/footer.jsp"%>
 </body>
 
-	<script>
-		${".categoryWrap a"}.click(function(e) {
+<script>
+		$(".categoryWrap a").click(function(e) {
 			e.preventDefault();
 			$(this).prev().click();
-			$("#filterform").submit)();
+			$("#filterform").submit();
 		})
 		$(".channelButton input").click(function(e){
 			e.preventDefault();
 			$(this).prev().click();
-			$("filterform").submit();
+			$("#filterform").submit();
 		})
-		var channels = `${channel}`;
+		
+		var channels = `${channels}`;
 		
 		let channelChecks = document.querySelectorAll("input[name='channel']");
 		channelChecks.forEach(function(item) {
@@ -153,6 +147,7 @@
 			item.checked = true;
 		}
 	})
+	
 	</script>
 
 </html>

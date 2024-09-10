@@ -50,6 +50,7 @@ public class CampaignList extends HttpServlet {
 		if (request.getParameter("category") != null) {
 			category = Integer.parseInt(request.getParameter("category"));
 		}
+		
 
 		Integer page = 1;
 		if (paramPage != null) {
