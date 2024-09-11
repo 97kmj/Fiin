@@ -12,6 +12,7 @@
 <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.6.0.min.js"></script>
 <script>
 	$(function() {
+		/* 주소 검색 */
 		$(".address_btn").click(function () {
 			new daum.Postcode({
 		        oncomplete: function(data) {
@@ -98,7 +99,7 @@
 			
 			function convertSeconds(s){
 				if (s === 0) {
-					clearInterval(setTimer);	// 시간이 끝났을 때 멈추는 역할
+					clearInterval(setTimer);	// 시간 끝났을 때 멈추기
 					$("#confirmCode").attr('disabled', true);
 					$("#confirmCode").css({'border': '1px solid #e5e5e5', 'color': '#737373'});
 					$("#sendSms").attr('disabled', false);
@@ -206,12 +207,10 @@
 				alert("휴대폰번호를 확인해주세요.");
 				$("#mobileNumber").focus();
 				return false;
-			}
-			/* else if ($("#code").val() === "") {
+			} else if ($("#code").val() === "") {
 				alert("휴대폰번호 인증을 완료해주세요.");
 				return false;
-			} */
-			else if ($("#address").val() === "") {
+			} else if ($("#address").val() === "") {
 				alert("주소를 검색해주세요.");
 				$("#address").focus();
 				return false;
@@ -307,16 +306,6 @@
           		</label>
           	</c:otherwise>
           </c:choose>
-<!--           <label for="nickname" class="input_label">
-            닉네임<span>*</span> <span class="br_style"><br /></span>
-            <input
-              type="text"
-              id="nickname"
-              placeholder="닉네임을 입력해주세요."
-              class="input_style"
-              name="nickname"
-            />
-          </label> -->
           <label for="mobileNumber" class="input_label">
             휴대폰번호<span>*</span> <span class="br_style"><br /></span>
             <div class="input_btn_wrap">
