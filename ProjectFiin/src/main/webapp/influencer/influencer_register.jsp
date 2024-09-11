@@ -59,11 +59,13 @@
             <div class="main_second_line">
 
                 <div class="select_channel">
+                    <label for="youtube_checkbox">
                     <input type="checkbox" id="youtube_checkbox" name="youtube" value="youtube" style="display:none;"
                            <c:if test="${influencer.youtube==1}">checked</c:if>>
 <%--                    <label for="active_youtube">활동 채널</label>--%>
                     <img id="youtube_image"  src="${pageContext.request.contextPath}/image/youtube.png" alt="youtube"
                          class="radio-image" onclick="toggleImage('youtube')">
+                    </label>
                 </div>
 
 
@@ -326,13 +328,13 @@
 
     // 이미지 클릭 시, 체크박스의 상태를 반영하여 이미지 변경
     if (checkbox.checked) {
-      // 체크 해제 시 원래 이미지로 변경
-      image.src = `${pageContext.request.contextPath}/image/${platform}.png`;
-      checkbox.checked = false;
-    } else {
-      // 체크 시 선택된 이미지로 변경
+      // 체크 해제 시 원래 이미지로 변경 ??
       image.src = `${pageContext.request.contextPath}/image/${platform}_checked.png`;
       checkbox.checked = true;
+    } else {
+      // 체크 시 선택된 이미지로 변경 ??
+      image.src = `${pageContext.request.contextPath}/image/${platform}.png`;
+      checkbox.checked = false;
     }
   }
 
