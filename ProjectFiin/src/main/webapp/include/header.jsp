@@ -13,8 +13,8 @@
 <script>
 	$(document).ready(function() {
 		$(".alarm").on("click", function() {
-			$('.modal_wrap').css('display', 'block');
-			$('.modal_content').css('display', 'block');
+			$('.modal_wrap').toggle();
+			$('.modal_content').toggle();
 		});
 		
 		$('#modal_close_btn').click(function(){
@@ -39,7 +39,7 @@
           <li>
           	<c:choose>
           		<c:when test="${influencer eq null && advertiser eq null}">
-          			<a href="main">등록하기</a>
+          			<a href="javascript:alert('로그인 후 사용해주세요.'); location.href='login';">등록하기</a>
           		</c:when>
           		<c:when test="${advertiser eq null}">
           			<a href="influencerRegister">등록하기</a>
@@ -50,7 +50,14 @@
           	</c:choose>
           </li>
           <li>
-            <a href="payment">결제하기</a>
+          	<c:choose>
+          		<c:when test="${influencer eq null && advertiser eq null}">
+          			<a href="javascript:alert('로그인 후 사용해주세요.'); location.href='login'">결제하기</a>
+          		</c:when>
+          		<c:otherwise>
+					<a href="payment">결제하기</a>          		
+          		</c:otherwise>
+          	</c:choose>
           </li>
         </ul>
         
