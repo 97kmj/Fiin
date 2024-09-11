@@ -13,7 +13,7 @@
 	<%@ include file="../include/header.jsp"%>
 	<div class="container">
 		<form id="filterform" action="influencerList" method="get">
-			<input type="hidden" name="page" value="1"/>
+			<input type="hidden" name="page" value="1" id="page"/>
 			<div id="categoryBar">
 				<h2>인플루언서</h2>
 				<div class="categoryWrap">

@@ -66,7 +66,7 @@ public class InfluencerList extends HttpServlet {
 		if (paramPage != null) {
 			page = Integer.parseInt(paramPage);
 		}
-
+		System.out.println(page);
 		if (keyword != null) {
 			category = 0;
 			channels = null;

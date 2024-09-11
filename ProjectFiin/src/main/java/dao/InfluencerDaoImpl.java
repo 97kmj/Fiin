@@ -39,8 +39,19 @@ public class InfluencerDaoImpl implements InfluencerDao {
 		 sqlSession.commit();
 	}
 	  
+	@Override
+	public Integer selectAllInfluencerCount(String keyword, List<String> channels, Integer categoryId)
+			throws Exception {
+		Map<String,Object>map = new HashMap<>();
+		map.put("channels", channels);
+		map.put("categoryId", categoryId);
+		map.put("keyword", keyword);
+		return sqlSession.selectOne("mapper.influencer.selectAllInfluencerCount",map);
+	}
+
+	
   	@Override
-	public List<Map<String,Object>> selectInfluencerList(Integer row, String keyword, List<String> channels, Integer categoryId) throws Exception {
+	public List<Map<String,Object>> selectAllInfluencer(Integer row, String keyword, List<String> channels, Integer categoryId) throws Exception {
 		Map<String,Object>map = new HashMap<>();
 		map.put("channels", channels);
 		map.put("row", row-1);
