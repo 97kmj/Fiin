@@ -13,12 +13,13 @@ public class SendSmsService {
     public String sendSmsRequest(String mobileNumber) throws IOException {
     	String API_KEY = System.getenv("API_KEY");
         String API_SECRET = System.getenv("API_SECRET");
+        String FROM_NUMBER = System.getenv("FROM_NUMBER");
         Message coolsms = new Message(API_KEY, API_SECRET);
         String verificationCode = generateVerificationCode();
         
         HashMap<String, String> messageData = new HashMap<>();
         messageData.put("to", mobileNumber);	// 수신자 번호
-        messageData.put("from", "01022029308"); // 발신자 번호
+        messageData.put("from", FROM_NUMBER); // 발신자 번호
         messageData.put("text", "[파인] 인증번호는 [" + verificationCode + "]입니다.");
         messageData.put("type", "SMS");
 		
