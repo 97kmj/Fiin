@@ -35,10 +35,8 @@ public class InfluencerDaoImpl implements InfluencerDao {
 	
 	@Override
 	public void updateInfluencer(Influencer influencer) throws Exception {
-		/*
-		 * sqlSession.update("mapper.influencer.updateInfluencer", influencer);
-		 * sqlSession.commit();
-		 */
+		 sqlSession.update("mapper.influencer.updateInfluencer", influencer);
+		 sqlSession.commit();
 	}
 	  
   	@Override

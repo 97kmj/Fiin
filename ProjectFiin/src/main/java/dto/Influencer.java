@@ -34,6 +34,7 @@ public class Influencer {
 
 	private Timestamp registDate;
 	private String address;
+	private String addressDetail;
 
 	//InfluencerRegister 객체(인플루언서 등록 시 사용)
   public Influencer(Integer influencerNum, String profileImage, String youtubeName,
@@ -224,13 +225,20 @@ public class Influencer {
 		this.blog = blog;
 	}
 
+	public String getAddressDetail() {
+		return addressDetail;
+	}
+
+	public void setAddressDetail(String addressDetail) {
+		this.addressDetail = addressDetail;
+	}
 
 	public Influencer(Integer influencerNum, String userEmail, String password, String mobileNumber, Timestamp createAt,
 			String name, String nickname, Integer pointBalance, Integer isRegist, Integer youtube, String youtubeName,
 			Integer youtubeFollower, String youtubeUrl, Integer instagram, String instagramName,
 			Integer instagramFollower, String instagramUrl, Integer blog, String blogName, Integer blogFollower,
 			String blogUrl, Integer categoryId, String profileImage, String introduction, String introLine,
-			Timestamp registDate, String address) {
+			Timestamp registDate, String address, String addressDetail) {
 		super();
 		this.influencerNum = influencerNum;
 		this.userEmail = userEmail;
@@ -259,6 +267,7 @@ public class Influencer {
 		this.introLine = introLine;
 		this.registDate = registDate;
 		this.address = address;
+		this.addressDetail = addressDetail;
 	}
 
 
@@ -272,7 +281,7 @@ public class Influencer {
 				+ instagramFollower + ", instagramUrl=" + instagramUrl + ", blog=" + blog + ", blogName=" + blogName
 				+ ", blogFollower=" + blogFollower + ", blogUrl=" + blogUrl + ", categoryId=" + categoryId
 				+ ", profileImage=" + profileImage + ", introduction=" + introduction + ", introLine=" + introLine
-				+ ", registDate=" + registDate + ", address=" + address + "]";
+				+ ", registDate=" + registDate + ", address=" + address + ", addressDetail=" + addressDetail + "]";
 	}
 
 	public Influencer() {

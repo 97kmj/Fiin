@@ -8,4 +8,6 @@ public interface AdvertiserService {
 	boolean checkDoubleEmail(String userEmail) throws Exception;
 	String advertiserEmail(String name, String mobileNumber) throws Exception;
 	String advertiserPassword(String userEmail) throws Exception;
+	Advertiser advertiserDetail(Integer advertiserNum) throws Exception;
+	void advertiserModify(Advertiser advertiser) throws Exception;
 }

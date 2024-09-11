@@ -67,7 +67,7 @@
 		<![CDATA[
 		    select *
 		    from influencer
-		    where influencer_num = #{influencer_num}
+		    where influencer_num = #{influencerNum}
 	    	]]>
 	</select>
 
@@ -75,7 +75,7 @@
 		<![CDATA[
 			select *
 	    		from influencer
-	    		where user_email = #{user_email}
+	    		where user_email = #{userEmail}
 	    	]]>
 	</select>
 
@@ -85,10 +85,11 @@
 			<if test="password != null">password = #{password},</if>
 			<if test="name != null">name = #{name},</if>
 			<if test="nickname != null">nickname = #{nickname},</if>
-			<if test="mobile_number != null">mobile_number = #{mobile_number},</if>
-			<if test="address != null">address = #{address}</if>
+			<if test="mobileNumber != null">mobile_number = #{mobileNumber},</if>
+			<if test="address != null">address = #{address},</if>
+			<if test="addressDetail != null">address_detail = #{addressDetail}</if>
 		</set>
-		where user_email = #{user_email}
+		where influencer_num = #{influencerNum}
 	</update>
 
 	<select id="selectInfluencerListForMain" resultType="influencer">
@@ -104,8 +105,8 @@
 	</select>
 	<insert id="insertInfluencer" parameterType="influencer">
 		<![CDATA[
-			insert into influencer (user_email, password, name, nickname, mobile_number, address) 
-				values (#{userEmail}, #{password}, #{name}, #{nickname}, #{mobileNumber}, #{address})
+			insert into influencer (user_email, password, name, nickname, mobile_number, address, address_detail) 
+				values (#{userEmail}, #{password}, #{name}, #{nickname}, #{mobileNumber}, #{address}, #{addressDetail})
 		]]>
 	</insert>
 	

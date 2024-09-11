@@ -13,6 +13,7 @@ public class Advertiser {
 	private Timestamp createAt;
 	private Integer pointBalance;
 	private String address;
+	private String addressDetail;
 
 	public Integer getAdvertiserNum() {
 		return advertiserNum;
@@ -86,15 +87,23 @@ public class Advertiser {
 		this.address = address;
 	}
 
+	public String getAddressDetail() {
+		return addressDetail;
+	}
+
+	public void setAddressDetail(String addressDetail) {
+		this.addressDetail = addressDetail;
+	}
+
 	@Override
 	public String toString() {
 		return "Advertiser [advertiserNum=" + advertiserNum + ", userEmail=" + userEmail + ", password=" + password
 				+ ", name=" + name + ", companyName=" + companyName + ", mobileNumber=" + mobileNumber + ", createAt="
-				+ createAt + ", pointBalance=" + pointBalance + ", address=" + address + "]";
+				+ createAt + ", pointBalance=" + pointBalance + ", address=" + address + ", addressDetail=" + addressDetail + "]";
 	}
 
 	public Advertiser(Integer advertiserNum, String userEmail, String password, String name, String companyName,
-			String mobileNumber, Timestamp createAt, Integer pointBalance, String address) {
+			String mobileNumber, Timestamp createAt, Integer pointBalance, String address, String addressDetail) {
 		super();
 		this.advertiserNum = advertiserNum;
 		this.userEmail = userEmail;
@@ -105,6 +114,7 @@ public class Advertiser {
 		this.createAt = createAt;
 		this.pointBalance = pointBalance;
 		this.address = address;
+		this.addressDetail = addressDetail;
 	}
 
 	public Advertiser() {
