@@ -43,9 +43,9 @@
     		select count(*) from influencer
     	]]>
 	</select>
-
-	<select id="selectAllInfluencer" parameterType="Map" resultType="influencer">
-		select * from influencer
+	
+	<select id="selectAllInfluencer" parameterType="Map" resultType="Map">
+		select i.*,c.category_name from influencer i join category c using(category_id)
 		<where>
 			1=1
 			<if test="channels != null and channels.size > 0">
@@ -57,6 +57,8 @@
 			<if test="categoryId != 0">
 				and category_id = #{categoryId}
 			</if>
+				and	
+				(youtube_name like '%${keyword}%' or instagram_name like '%${keyword}%' or blog_name like '%${keyword}%')
 		</where>
 		order by regist_date DESC limit #{row}, 8
 

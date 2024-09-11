@@ -1,6 +1,13 @@
 package service;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.OutputStream;
 import java.util.List;
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+
 import dao.BookmarkCampaignDao;
 import dao.BookmarkCampaignDaoImpl;
 import dao.InfluencerDao;
@@ -88,7 +95,7 @@ public class InfluencerServiceImpl implements InfluencerService {
 	}
 
 	@Override
-	public List<Influencer> getInfluencerList(List<String> channels, Integer categoryId, PageInfo pageInfo) throws Exception {
+	public List<Map<String,Object>> getInfluencerList(List<String> channels, String keyword, Integer categoryId, PageInfo pageInfo) throws Exception {
 		
 		Integer influencerCnt = influencerDao.selectInfluencerCount();
 		
@@ -102,7 +109,8 @@ public class InfluencerServiceImpl implements InfluencerService {
 		pageInfo.setEndPage(endPage);
 		
 		Integer row = (pageInfo.getCurPage()-1)*8+1;
-		List<Influencer> influencerList = influencerDao.selectInfluencerList(row, channels, categoryId);
+		
+		List<Map<String,Object>> influencerList = influencerDao.selectInfluencerList(row, keyword, channels, categoryId);
 		return influencerList;
 			
 	}
@@ -120,6 +128,28 @@ public class InfluencerServiceImpl implements InfluencerService {
 		return password;
 	}
 	@Override
+  public void imageView(HttpServletRequest request, OutputStream out, String file) throws Exception {
+		FileInputStream fis = null;
+		String path = request.getServletContext().getRealPath("upload");
+		try {
+			fis = new FileInputStream(new File(path,file));
+			byte[] buff = new byte[4096];
+			int len;
+			while((len=fis.read(buff))>0) {
+				out.write(buff,0,len);
+			}
+		} catch(Exception e){
+			e.printStackTrace();
+		} finally {
+			try {
+				if(fis!=null) fis.close();
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+	}
+
+
 	public void influencerModify(Influencer influencer) throws Exception {
 		influencerDao.updateInfluencer(influencer);
 	}

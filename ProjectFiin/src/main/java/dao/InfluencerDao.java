@@ -1,7 +1,7 @@
 package dao;
 
 import java.util.List;
-
+import java.util.Map;
 
 import dto.Influencer;
 
@@ -12,7 +12,7 @@ public interface InfluencerDao {
 	Influencer selectInfluencer(Integer influencerNum) throws Exception;
 	Influencer selectInfluencerByEmail(String userEmail) throws Exception;
 	void updateInfluencer(Influencer influencer) throws Exception;
-	List<Influencer> selectInfluencerList(Integer row, List<String> channels, Integer categoryId) throws Exception;
+	List<Map<String,Object>> selectInfluencerList(Integer row, String keyword, List<String> channels, Integer categoryId) throws Exception;
 	Integer selectInfluencerCount() throws Exception;
 	List<Influencer> selectInfluencerListForMain() throws Exception;
 	Influencer selectInfluencerForFindEmail(String name, String mobileNumber) throws Exception;

@@ -3,6 +3,7 @@ package controller;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,7 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import dto.Influencer;
+
 import service.InfluencerService;
 import service.InfluencerServiceImpl;
 import util.PageInfo;
@@ -40,6 +41,7 @@ public class InfluencerList extends HttpServlet {
 
 		String paramPage = request.getParameter("page");
 		String[] channels = request.getParameterValues("channel");
+		String keyword = request.getParameter("keyword");
 
 		List<String> channelList = new ArrayList<>();
 
@@ -59,23 +61,33 @@ public class InfluencerList extends HttpServlet {
 			category = Integer.parseInt(request.getParameter("category"));
 		}
 		System.out.println(request.getParameter("category"));
+		
 		Integer page = 1;
 		if (paramPage != null) {
 			page = Integer.parseInt(paramPage);
 		}
 
+		if (keyword != null) {
+			category = 0;
+			channels = null;
+		}
+		System.out.println(keyword);
 		try {
 			InfluencerService service = new InfluencerServiceImpl();
 			PageInfo pageInfo = new PageInfo();
 			pageInfo.setCurPage(page);
-			List<Influencer> influencerList;
+			
+			List<Map<String, Object>> influencerList;
 
-			influencerList = service.getInfluencerList(channelList, category, pageInfo);
 
+			influencerList = service.getInfluencerList(channelList, keyword, category, pageInfo);
+
+			
 			request.setAttribute("influencerList", influencerList);
 			request.setAttribute("pageInfo", pageInfo);
 			request.setAttribute("category", category);
 			request.setAttribute("channels", channelList);
+
 			request.getRequestDispatcher("influencer/influencer_list.jsp").forward(request, response);
 		} catch (Exception e) {
 			e.printStackTrace();
