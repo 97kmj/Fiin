@@ -7,23 +7,26 @@
 	<!--// 상민 - influencerRegister (인플루언서 등록) -->
 	<update id="updateInfluencerRegister" parameterType="influencer">
 		UPDATE influencer
-		<set>
-			<if test="introLine != null">intro_line = #{introLine},</if>
-			<if test="profileImage != null">profile_image = #{profileImage},</if>
-			<if test="youtubeName != null">youtube_name = #{youtubeName},</if>
-			<if test="youtubeFollower != null">youtube_follower = #{youtubeFollower},</if>
-			<if test="youtubeUrl != null">youtube_url = #{youtubeUrl},</if>
-			<if test="instagramName != null">instagram_name = #{instagramName},</if>
-			<if test="instagramFollower != null">instagram_follower = #{instagramFollower},</if>
-			<if test="instagramUrl != null">instagram_url = #{instagramUrl},</if>
-			<if test="blogName != null">blog_name = #{blogName},</if>
-			<if test="blogFollower != null">blog_follower = #{blogFollower},</if>
-			<if test="blogUrl != null">blog_url = #{blogUrl},</if>
-			<if test="categoryId != null">category_id = #{categoryId},</if>
-			<if test="introduction != null">introduction = #{introduction}</if>
-		</set>
+		set
+		intro_line = #{introLine},
+		profile_image = #{profileImage},
+		youtube = #{youtube},
+		youtube_name = #{youtubeName},
+		youtube_follower = #{youtubeFollower},
+		youtube_url = #{youtubeUrl},
+		instagram = #{instagram},
+		instagram_name = #{instagramName},
+		instagram_follower = #{instagramFollower},
+		instagram_url = #{instagramUrl},
+		blog = #{blog},
+		blog_name = #{blogName},
+		blog_follower = #{blogFollower},
+		blog_url = #{blogUrl},
+		category_id = #{categoryId},
+		introduction = #{introduction}
+
 		WHERE influencer_num = #{influencerNum}
-	</update>
+		</update>
 
 	<!--세원-->
 	<select id="selectInfluencerList" parameterType="Integer" resultType="influencer">

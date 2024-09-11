@@ -16,6 +16,12 @@ public interface InfluencerService {
 	List<Influencer> influencerListForMain() throws Exception;
 	List<Influencer> getInfluencerList(List<String> channels, Integer categoryId, PageInfo pageInfo)throws Exception;
 	String influencerFindEmail(String name, String mobileNumber) throws Exception;
-    String influencerFindPassword(String userEmail) throws Exception;
-    void influencerModify(Influencer influencer) throws Exception;
+
+  String influencerFindPassword(String userEmail) throws Exception;
+
+	//상민 - 예시 추가
+	Influencer findInfluencerByNum(Integer influencerNum) throws Exception;
+
+  void influencerModify(Influencer influencer) throws Exception;
+
 }
