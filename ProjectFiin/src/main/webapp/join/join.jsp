@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>     
 <!DOCTYPE html>
 <html>
 <head>
@@ -46,6 +47,13 @@
 		/* 이메일 중복 확인 */
 		$("#emailCheck").click(function(e) {
 			e.preventDefault();
+			
+			if (!emailReg.test($("#userEmail").val())) {
+				alert("이메일 형식이 올바르지 않습니다.");
+				$("#userEmail").focus();
+				return false;
+			}
+			
 			$.ajax({
 				url: 'emailCheck',
 				type: 'post',
@@ -132,7 +140,7 @@
 							$("#sendSms").css({'background-color': '#f6f7f8', 'border': '1px solid #e5e5e5', 'color': '#737373'});
 							$("#confirmCode").attr('disabled', true);
 							$("#confirmCode").css({'border': '1px solid #e5e5e5', 'color': '#737373'});
-							$("#code").css('display', 'none');
+							$(".codeinput_btn_wrap").css('display', 'none');
 						} else {
 							alert("인증에 실패하였습니다. 인증코드를 확인해주세요.");
 							$("#code").focus();
@@ -186,6 +194,10 @@
 				alert("닉네임을 입력해주세요.");
 				$("#nickname").focus();
 				return false;
+			} else if ($("#companyName").val() === "") {
+				alert("업체명을 입력해주세요.");
+				$("#companyName").focus();
+				return false;
 			} else if ($("#mobileNumber").val() === "") {
 				alert("휴대폰번호를 입력해주세요.");
 				$("#mobileNumber").focus();
@@ -194,10 +206,12 @@
 				alert("휴대폰번호를 확인해주세요.");
 				$("#mobileNumber").focus();
 				return false;
-			} else if ($("#code").val() === "") {
+			}
+			/* else if ($("#code").val() === "") {
 				alert("휴대폰번호 인증을 완료해주세요.");
 				return false;
-			} else if ($("#address").val() === "") {
+			} */
+			else if ($("#address").val() === "") {
 				alert("주소를 검색해주세요.");
 				$("#address").focus();
 				return false;
@@ -214,12 +228,16 @@
 <body>
     <div class="signup_container">
         <div class="title_wrap">
-          <h2>인플루언서 회원가입</h2>
+          <c:choose>
+          	<c:when test="${sessionScope.type eq 'influencer'}"><h2>인플루언서 회원가입</h2></c:when>
+          	<c:otherwise><h2>광고주 회원가입</h2></c:otherwise>
+          </c:choose>
+      
           <a href="login">
             <img src="${pageContext.request.contextPath}/image//closeIcon.svg" alt="닫기아이콘" />
           </a>
         </div>
-        <form action="joinInfluencer" class="signup_form" method="post">
+        <form action="join" class="signup_form" method="post">
           <label for="userEmail" class="input_label">
             이메일<span>*</span> <span class="br_style"></span><br />
             <div class="input_btn_wrap">
@@ -263,7 +281,33 @@
               name="name"
             />
           </label>
-          <label for="nickname" class="input_label">
+          <c:choose>
+          	<c:when test="${sessionScope.type eq 'influencer'}">
+          		<label for="nickname" class="input_label">
+		            닉네임<span>*</span> <span class="br_style"><br /></span>
+		            <input
+		              type="text"
+		              id="nickname"
+		              placeholder="닉네임을 입력해주세요."
+		              class="input_style"
+		              name="nickname"
+		            />
+          		</label>
+          	</c:when>
+          	<c:otherwise>
+          		<label for="companyName" class="input_label">
+		            업체명<span>*</span> <span class="br_style"><br /></span>
+		            <input
+		              type="text"
+		              id="companyName"
+		              placeholder="업체명을 입력해주세요."
+		              class="input_style"
+		              name="companyName"
+		            />
+          		</label>
+          	</c:otherwise>
+          </c:choose>
+<!--           <label for="nickname" class="input_label">
             닉네임<span>*</span> <span class="br_style"><br /></span>
             <input
               type="text"
@@ -272,7 +316,7 @@
               class="input_style"
               name="nickname"
             />
-          </label>
+          </label> -->
           <label for="mobileNumber" class="input_label">
             휴대폰번호<span>*</span> <span class="br_style"><br /></span>
             <div class="input_btn_wrap">

@@ -69,7 +69,7 @@
 					} else {
 						// 로그인 성공 시
 						location.href = "main";
-						alert("로그인에 성공하였습니다.")
+						alert("로그인에 성공하였습니다.");						
 					}
 				},
 				error: function(err) {
@@ -106,8 +106,8 @@
           <button type="submit" id="login_btn">로그인 하기</button>
         </form>
         <div class="signup_btn">
-          <a href="joinInfluencer">인플루언서로 가입하기</a>
-          <a href="joinAdvertiser">광고주로 가입하기</a>
+          <a href="join?type=influencer">인플루언서로 가입하기</a>
+          <a href="join?type=advertiser">광고주로 가입하기</a>
         </div>
       </div>
 </body>
