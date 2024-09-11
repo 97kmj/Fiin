@@ -17,10 +17,10 @@
     	</a>
         <ul class="menu_wrap">
           <li>
-            <a href="/fiin/campaignList">캠페인</a>
+            <a href="campaignList">캠페인</a>
           </li>
           <li>
-            <a href="/fiin/influencerList">인플루언서</a>
+            <a href="influencerList">인플루언서</a>
           </li>
           <li>
           	<c:choose>
