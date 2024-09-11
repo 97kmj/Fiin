@@ -85,7 +85,6 @@ $(document).ready(function() {
 	$(".apply").on('click',function(e){
 		e.preventDefault();
 		var campaignNum = $(this).parent().attr("id");
-		
 		$.ajax({
 			url:"receiveList",
            	type:"POST",
