@@ -13,6 +13,8 @@ import dto.Advertiser;
 import dto.Campaign;
 import service.CampaignService;
 import service.CampaignServiceImpl;
+import service.ReceiveCampaignService;
+import service.ReceiveCampaignServiceImpl;
 
 /**
  * Servlet implementation class MypageCampaignAdvertiser
@@ -54,8 +56,8 @@ public class MypageCampaignAdvertiser extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		
+		
 	}
 
 }
