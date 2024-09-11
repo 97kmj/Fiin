@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/reset.css">
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/mypage_campaign_advertiser.css?after">
 <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+
 </head>
 <body>
 <%@ include file="../include/header.jsp" %>
@@ -42,61 +43,20 @@
 	                <button class="apply btn">신청 목록</button>      
       	     	</div> 
         </c:forEach>
-           <!--  <div class="campaign" id="campaignNum1">
-                <div class="img"><img src="https://dummyimage.com/200x200/000000/fff" style="width:200px;height:200px"></div>
-                <div class="name">캠페인 제목</div>
-                <div class="date">2024-01-01 ~ 2024-01-15</div>
-                <button class="email btn">이메일발송</button>
-                <button class="apply btn">신청 목록</button>
-            </div>
-		                
-            <div class="campaign" id="campaignNum2">
-                <div class="img"><img src="https://dummyimage.com/200x200/000000/fff" style="width:200px;height:200px"></div>
-                <div class="name">캠페인 제목</div>
-                <div class="date">2024-01-01 ~ 2024-01-15</div>
-                <button class="email btn">이메일발송</button>
-                <button class="apply btn">신청 목록</button>
-                
-            </div>
-            <div class="campaign" id="campaignNum3">
-                <div class="img"><img src="https://dummyimage.com/200x200/000000/fff" style="width:200px;height:200px"></div>
-                <div class="name">캠페인 제목</div>
-                <div class="date">2024-01-01 ~ 2024-01-15</div>
-                <button class="email btn">이메일발송</button>
-                <button class="apply btn">신청 목록</button>
-                
-            </div>
-            
-            <div class="campaign" id="campaignNum4">
-                <div class="img"><img src="https://dummyimage.com/200x200/000000/fff" style="width:200px;height:200px"></div>
-                <div class="name">캠페인 제목</div>
-                <div class="date">2024-01-01 ~ 2024-01-15</div>
-                <button class="email btn">이메일발송</button>
-                <button class="apply btn">신청 목록</button>
-            </div>
-             -->
+          
         </div>
     </div>
     
 <div class="modal applylist">
 	<div class="modal_body">
 	<button class="closebtn"><img src="https://img.icons8.com/?size=100&id=J3PhU48KWI9A&format=png&color=000000" style="width:20px;height:20px"></button><br>
-	<form action="#" method="post">
-	<table>
+	<table id="receiveCampaignList">
 		<h2>신청한 인플루언서</h2>
 	    <thead>
 	        <th>닉네임</th><th>카테고리</th><th>채널</th><th>수락</th>
 	    </thead>
-	    <tr>
-	        <td><img src="https://img.icons8.com/?size=30&id=NjOjDSZRU0Ma&format=png&color=4849e8">&nbsp;홍길동</td><td>식품</td><td>유튜브,인스타그램</td><td><input type="submit" name="status" value="수락" class="btn"></td>
-	    </tr>
-	    <tr>
-	        <td><img src="https://img.icons8.com/?size=30&id=NjOjDSZRU0Ma&format=png&color=4849e8">&nbsp;홍길동</td><td>식품</td><td>유튜브</td><td><input type="submit" name="status" value="수락" class="btn"></td>
-	    </tr>
-	    <tr>
-	        <td><img src="https://img.icons8.com/?size=30&id=NjOjDSZRU0Ma&format=png&color=4849e8">&nbsp;홍길동</td><td>식품</td><td>유튜브</td><td><input type="submit" name="status" value="수락" class="btn"></td>
-	    </tr>
-	    
+	    <tbody>
+	    </tbody>
       </table>
       </form>
      </div>
@@ -116,23 +76,89 @@
 <%@ include file="../include/footer.jsp" %>    
 </body>
 <script>
+$(document).ready(function() {
+	/*나의 캠페인 중 모집중이 아닌 것 버튼 기능 없애기 */
 	$(".invalid .btn").attr("disabled",true);
 	$(".invalid .btn").css("cursor","default");
 
+	/* 신청목록 보기 비동기 */
 	$(".apply").on('click',function(e){
-		e.preventDefault()
-		$(".applylist").addClass('show-modal');
+		e.preventDefault();
+		var campaignNum = $(this).parent().attr("id");
+		
+		$.ajax({
+			url:"receiveList",
+           	type:"POST",
+           	async:true,
+           	data:{campaignNum:campaignNum},
+           	success: function(result){
+        		$("#receiveCampaignList > tbody").append(result);
+				$(".applylist").addClass('show-modal');
+           	},
+			error: function (err) {
+                alert(err);
+            }
+		}) 
+	});
+	
+	/* 수락버튼 비동기 */
+
+	$(document).on('click',"button[name='accept']",function(e){
+		var applyNum = $(this).attr("value");
+		var div = this;
+		console.log(applyNum);
+		console.log(this);
+		$.ajax({
+			url: "accept",
+           	type: "POST",
+           	async:true,
+           	data:{applyNum:applyNum},
+           	success: function(result){
+			},
+			error: function (err) {
+                alert(err);
+            }
+		}) 
+		$(this).addClass("checked");
+		$(this).removeClass("accept");
+		$(this).append("완료");
+		
 	})
+	
 	$(".email").on('click',function(e){
-		e.preventDefault()
+		e.preventDefault();
 		$(".sendemail").addClass('show-modal');
 	})
+	
 	$(".closebtn").on('click',function(e){
 		e.preventDefault()
+		$("#receiveCampaignList > tbody ").empty();
 		$(".applylist").removeClass('show-modal');
 		$(".sendemail").removeClass('show-modal');
 	})
-		
+	
+	$("#allList").on('click',function(){
+		$(this).css("border","2px solid #4849e8");
+		$("#ingList").css("border","2px solid #939393");
+		$("#endList").css("border","2px solid #939393");
+		$(".campaign").css("display","flex");
+	})
+	$("#ingList").on('click',function(){
+		$(this).css("border","2px solid #4849e8")
+		$("#allList").css("border","2px solid #939393");
+		$("#endList").css("border","2px solid #939393");
+		$(".invalid").css("display","none");
+		$(".valid").css("display","flex");
+	})
+	$("#endList").on('click',function(){
+		$(this).css("border","2px solid #4849e8")
+		$("#ingList").css("border","2px solid #939393");
+		$("#allList").css("border","2px solid #939393");
+		$(".valid").css("display","none");
+		$(".invalid").css("display","flex");
+	})
+	
+});
 
 </script>
 

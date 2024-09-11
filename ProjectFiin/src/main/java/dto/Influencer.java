@@ -12,7 +12,7 @@ public class Influencer {
 	private String name;
 	private String nickname;
 	private Integer pointBalance;
-	private String categoryName;
+	
 	private Integer isRegist;
 	private Integer youtube;
 	private String youtubeName;       // 데이터베이스 컬럼: youtube_name
@@ -34,26 +34,28 @@ public class Influencer {
 
 	private Timestamp registDate;
 	private String address;
-	
-	private String keyword;
+  private String addressDetail;
+
 
 	//InfluencerRegister 객체(인플루언서 등록 시 사용)
-	public Influencer(String introLine, String profileImage, String youtubeName, Integer youtubeFollower, String youtubeUrl, String instagramName, Integer instagramFollower, String instagramUrl, String blogName,
-			Integer blogFollower, String blogUrl, Integer categoryId, String introduction) {
-		this.introLine = introLine;
-		this.profileImage = profileImage;
-		this.youtubeName = youtubeName;
-		this.youtubeFollower = youtubeFollower;
-		this.youtubeUrl = youtubeUrl;
-		this.instagramName = instagramName;
-		this.instagramFollower = instagramFollower;
-		this.instagramUrl = instagramUrl;
-		this.blogName = blogName;
-		this.blogFollower = blogFollower;
-		this.blogUrl = blogUrl;
-		this.categoryId = categoryId;
-		this.introduction = introduction;
-	}
+  public Influencer(Integer influencerNum, String profileImage, String youtubeName,
+      Integer youtubeFollower, String youtubeUrl, String instagramName, Integer instagramFollower,
+      String instagramUrl, String blogName,
+      Integer blogFollower, String blogUrl, Integer categoryId, String introduction) {
+    this.influencerNum = influencerNum;
+    this.profileImage = profileImage;
+    this.youtubeName = youtubeName;
+    this.youtubeFollower = youtubeFollower;
+    this.youtubeUrl = youtubeUrl;
+    this.instagramName = instagramName;
+    this.instagramFollower = instagramFollower;
+    this.instagramUrl = instagramUrl;
+    this.blogName = blogName;
+    this.blogFollower = blogFollower;
+    this.blogUrl = blogUrl;
+    this.categoryId = categoryId;
+    this.introduction = introduction;
+  }
 
 	public Integer getInfluencerNum() {
 		return influencerNum;
@@ -225,21 +227,14 @@ public class Influencer {
 	}
 	
 	
-	public String getKeyword() {
-		return keyword;
+
+	public String getAddressDetail() {
+		return addressDetail;
 	}
 
-	public void setKeyword(String keyword) {
-		this.keyword = keyword;
-	}
-	
+	public void setAddressDetail(String addressDetail) {
+		this.addressDetail = addressDetail;
 
-	public String getCategoryName() {
-		return categoryName;
-	}
-
-	public void setCategoryName(String categoryName) {
-		this.categoryName = categoryName;
 	}
 
 	public Influencer(Integer influencerNum, String userEmail, String password, String mobileNumber, Timestamp createAt,
@@ -247,7 +242,7 @@ public class Influencer {
 			Integer youtubeFollower, String youtubeUrl, Integer instagram, String instagramName,
 			Integer instagramFollower, String instagramUrl, Integer blog, String blogName, Integer blogFollower,
 			String blogUrl, Integer categoryId, String profileImage, String introduction, String introLine,
-			Timestamp registDate, String address) {
+			Timestamp registDate, String address, String addressDetail) {
 		super();
 		this.influencerNum = influencerNum;
 		this.userEmail = userEmail;
@@ -276,9 +271,10 @@ public class Influencer {
 		this.introLine = introLine;
 		this.registDate = registDate;
 		this.address = address;
+		this.addressDetail = addressDetail;
 	}
 
-	
+
 	@Override
 	public String toString() {
 		return "Influencer [influencerNum=" + influencerNum + ", userEmail=" + userEmail + ", password=" + password
@@ -289,7 +285,7 @@ public class Influencer {
 				+ instagramFollower + ", instagramUrl=" + instagramUrl + ", blog=" + blog + ", blogName=" + blogName
 				+ ", blogFollower=" + blogFollower + ", blogUrl=" + blogUrl + ", categoryId=" + categoryId
 				+ ", profileImage=" + profileImage + ", introduction=" + introduction + ", introLine=" + introLine
-				+ ", registDate=" + registDate + ", address=" + address + "]";
+				+ ", registDate=" + registDate + ", address=" + address + ", addressDetail=" + addressDetail + "]";
 	}
 
 	public Influencer() {

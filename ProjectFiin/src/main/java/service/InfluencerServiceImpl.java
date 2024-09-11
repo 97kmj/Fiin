@@ -73,15 +73,21 @@ public class InfluencerServiceImpl implements InfluencerService {
 		}
 	}
 
+	//상민 - 인플루언서 등록
 	@Override
 	public Influencer influencerRegister(Influencer influencer) throws Exception {
 		// Dto에서 받은 정보들을 dao에 전달
 
 		influencerDao.registerInfluencer(influencer);
 		return influencer;
-
 	}
-	
+
+	//상민 - 인플루언서 찾기
+	@Override
+	public Influencer findInfluencerByNum(Integer influencerNum) throws Exception {
+		return influencerDao.selectInfluencer(influencerNum);
+	}
+
 	@Override
 	public List<Influencer> influencerListForMain() throws Exception {
 		List<Influencer> influencers = influencerDao.selectInfluencerListForMain();
@@ -122,7 +128,7 @@ public class InfluencerServiceImpl implements InfluencerService {
 		return password;
 	}
 	@Override
-	public void imageView(HttpServletRequest request, OutputStream out, String file) throws Exception {
+  public void imageView(HttpServletRequest request, OutputStream out, String file) throws Exception {
 		FileInputStream fis = null;
 		String path = request.getServletContext().getRealPath("upload");
 		try {
@@ -143,6 +149,10 @@ public class InfluencerServiceImpl implements InfluencerService {
 		}
 	}
 
+
+	public void influencerModify(Influencer influencer) throws Exception {
+		influencerDao.updateInfluencer(influencer);
+	}
 }
 
 

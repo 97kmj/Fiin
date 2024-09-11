@@ -6,15 +6,21 @@ import java.util.List;
 import dao.CampaignDao;
 import dao.CampaignDaoImpl;
 import dto.Campaign;
+import dto.Category;
 import util.PageInfo;
 
 public class CampaignServiceImpl implements CampaignService {
+		
 
+	  
 	  private CampaignDao campaignDao;
 	  public CampaignServiceImpl() {
 	    campaignDao = new CampaignDaoImpl();
+	
 	  }
-
+	  
+	  
+	  
 	  @Override
 	  public Campaign register(Campaign cam) throws Exception {
 		  campaignDao.registerCampaign(cam);
@@ -34,7 +40,6 @@ public class CampaignServiceImpl implements CampaignService {
 		  pageinfo.setEndPage(endPage);
 			
 		  Integer row = (pageinfo.getCurPage()-1)*8+1;
-		  System.out.println(campaignCnt);
 
 		  
 		  return campaignDao.selectCampaignList(row,channel,categoryId);
@@ -54,17 +59,16 @@ public class CampaignServiceImpl implements CampaignService {
 		return campaignDao.selectCampaignListForAdvertiser(advertiserNum);
 	}
 
-	/*
-	 * @Override public List<Campaign> getCampaignList(List<String> channels,
-	 * Integer category, Integer page) throws Exception {
-	 * if(page>getCampaignMaxPage(channels, category)) return null; int row
-	 * =(page-1)*8;
-	 * 
-	 * return campaignDao.selectCampaignList(row,channels,category); }
-	 * 
-	 * @Override public Integer getCampaignMaxPage(List<String> channels, Integer
-	 * category) throws Exception { // TODO Auto-generated method stub return null;
-	 * }
-	 */
+	@Override
+	public List<Category> categoryList() throws Exception {
+	
+		return campaignDao.selectCategoryList();
+	}
+
+	 
+
+
+
+
 
 }

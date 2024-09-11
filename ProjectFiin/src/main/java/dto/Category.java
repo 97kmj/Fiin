@@ -3,6 +3,7 @@ package dto;
 public class Category {
 	private Integer categoryId;
 	private String categoryName;
+	
 	public Integer getCategoryId() {
 		return categoryId;
 	}

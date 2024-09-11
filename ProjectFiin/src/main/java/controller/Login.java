@@ -51,13 +51,11 @@ public class Login extends HttpServlet {
 			
 			if (type.equals("influencer")) {
 				Influencer influencer =  iService.login(userEmail, password);
-				influencer.setPassword("");
 				request.getSession().setAttribute("influencer", influencer);
 				request.getSession().setAttribute("type", type);
 				response.sendRedirect("main");
 			} else if(type.equals("advertiser")) {
 				Advertiser advertiser = aService.login(userEmail, password);
-				advertiser.setPassword("");
 				request.getSession().setAttribute("type", type);
 				request.getSession().setAttribute("advertiser", advertiser);
 				response.sendRedirect("main");		
