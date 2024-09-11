@@ -67,7 +67,6 @@ public class MailUtil {
 					+ "    </tr>\r\n"
 					+ "    <tr>\r\n"
 					+ "        <td style=\"padding-left: 20px;\">"+campaign.getCampaignTitle()+"</td>\r\n"
-					
 					+ "    </tr>\r\n"
 					+ "\r\n"
 					+ "    <tr>\r\n"
