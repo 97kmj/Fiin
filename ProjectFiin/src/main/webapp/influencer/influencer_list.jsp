@@ -56,9 +56,9 @@
 			<div class="influencerWrap">
 				<c:forEach items="${influencerList}" var="influencer">
 					<div class="influencer_pick" id="pickNum1">
-						<img
-							src="${pageContext.request.contextPath}/image/influencer_img01.png"
-							class="influencer_img">
+						<c:if test="${influencer.profile_image ne null }">
+						<img src="image?file=${influencer.profile_image }" class="influencer_img">
+						</c:if>
 						<div>
 						<c:if test="${influencer.youtube ne null }">
 								<c:out value="유튜브"/>
