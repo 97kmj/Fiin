@@ -71,11 +71,43 @@ span {
 }
 
 .input_btn_wrap button {
+	color: white;
+	background-color: #4849e8;
+	border-radius: 4px;
+	padding: 0 20px;
+	height: 60px;
+	cursor: pointer;
+	font-weight: bold;
+}
+
+.codeinput_btn_wrap {
+	display: none;
+	justify-content: space-between;
+}
+
+.code_wrap {
+	display: flex;
+	position: relative;
+	width: 80%;
+}
+
+#code {
+	width: 100%;
+}
+
+.code_wrap span {
+	position: absolute;
+	right: 16px;
+	top: 20px;
+	color: red;	
+}
+
+#confirmCode {
 	color: #4849e8;
+	background-color: white;
 	border: 1px solid #4849e8;
 	border-radius: 4px;
-	background-color: white;
-	padding: 0 20px;
+	padding: 0 19px;
 	height: 60px;
 	cursor: pointer;
 	font-weight: bold;

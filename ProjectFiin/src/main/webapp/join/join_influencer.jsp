@@ -43,6 +43,7 @@
 	    	}).open();
 		})
 		
+		/* 이메일 중복 확인 */
 		$("#emailCheck").click(function(e) {
 			e.preventDefault();
 			$.ajax({
@@ -64,8 +65,51 @@
 			})
 		})
 		
+		/* 휴대폰 인증 메세지 보내기 */
 		$("#sendSms").click(function(e) {
 			e.preventDefault();
+			
+			if ($("#mobileNumber").val() === "") {
+				alert("휴대폰번호를 입력해주세요.");
+				$("#mobileNumber").focus();
+				return false;
+			}  else if (!pnReg.test($("#mobileNumber").val())) {
+				alert("휴대폰번호를 확인해주세요.");
+				$("#mobileNumber").focus();
+				return false;
+			} else {
+				$("#sendSms").attr('disabled', true);
+				$("#sendSms").css({'background-color': '#f6f7f8', 'border': '1px solid #e5e5e5', 'color': '#737373'});
+				$(".codeinput_btn_wrap").css('display', 'flex');
+				$("#confirmCode").attr('disabled', false);
+			}
+			
+			/* 인증 타이머 */
+			var counter = 0;
+			var timeleft = 180; // 제한 시간 지정 값
+			
+			function convertSeconds(s){
+				if (s === 0) {
+					clearInterval(setTimer);	// 시간이 끝났을 때 멈추는 역할
+					$("#confirmCode").attr('disabled', true);
+					$("#confirmCode").css({'border': '1px solid #e5e5e5', 'color': '#737373'});
+					$("#sendSms").attr('disabled', false);
+					$("#sendSms").css({'background-color': '#4849e8', 'border': '1px solid #4849e8', 'color': 'white'});
+				}
+			    var min = Math.floor(s / 60);
+			    var sec = s % 60;
+			    return min +  ':' + String(sec).padStart(2, '0');
+			}
+
+			$("#time").html(convertSeconds(timeleft - counter));
+
+			function timeIt(){
+			    counter++;
+			    $("#time").html(convertSeconds(timeleft - counter));
+			}
+			var setTimer = setInterval(timeIt, 1000);
+			
+			/* ajax로 인증코드 요청하고 결과 확인하기 */
 			$.ajax({
 				url: 'sendSms',
 				type: 'post',
@@ -73,12 +117,28 @@
 				dataType: 'text',
 				data: {mobileNumber: $("#mobileNumber").val()},
 				success: function(result) {
-					console.log(result)
-					/* if (result == 'true') {
-						alert("사용중인 아이디입니다.");
-					} else {
-						alert("사용가능한 아이디입니다.");
-					} */
+					console.log(result);
+					$("#confirmCode").click(function(e) {
+						e.preventDefault();
+						
+						if ($("#code").val() === "") {				
+							alert("인증코드를 입력해주세요.");
+							$("#code").focus();
+							return false;
+						} else if (result === $("#code").val()) {
+							alert("인증이 성공하였습니다.");
+							clearInterval(setTimer);
+							$("#time").css('display', 'none');
+							$("#sendSms").css({'background-color': '#f6f7f8', 'border': '1px solid #e5e5e5', 'color': '#737373'});
+							$("#confirmCode").attr('disabled', true);
+							$("#confirmCode").css({'border': '1px solid #e5e5e5', 'color': '#737373'});
+							$("#code").css('display', 'none');
+						} else {
+							alert("인증에 실패하였습니다. 인증코드를 확인해주세요.");
+							$("#code").focus();
+							return false;
+						}
+					})
 				},
 				error: function(err) {
 					console.log(err);
@@ -86,6 +146,7 @@
 			})
 		})
 		
+		/* 회원가입 유효성 검증 */
 		var pwReg = /^(?=.*[a-zA-Z])(?=.*[0-9]).{8,25}$/;
 		var emailReg = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;
 		var nameReg = /^[가-힣]{2,4}$/;
@@ -132,6 +193,9 @@
 			} else if (!pnReg.test($("#mobileNumber").val())) {
 				alert("휴대폰번호를 확인해주세요.");
 				$("#mobileNumber").focus();
+				return false;
+			} else if ($("#code").val() === "") {
+				alert("휴대폰번호 인증을 완료해주세요.");
 				return false;
 			} else if ($("#address").val() === "") {
 				alert("주소를 검색해주세요.");
@@ -222,6 +286,19 @@
               <button type="button" id="sendSms">인증</button>
             </div>
           </label>
+          <div class="codeinput_btn_wrap">
+          	  <div class="code_wrap">
+	              <input
+	                type="text"
+	                id="code"
+	                placeholder="인증코드를 입력해주세요."
+	                class="input_btn_style"
+	                name="code"
+	              />
+	              <span id="time"></span>
+              </div>
+              <button type="button" id="confirmCode">확인</button>
+          </div> 
           <label for="address" class="input_label">
             주소<span>*</span> <span class="br_style"><br /></span>
             <div class="input_btn_wrap">
