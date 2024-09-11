@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="mapper.advertiser">
+	<!--세나-->
+	<insert id="insertAdvertiser" parameterType="advertiser">
+		<![CDATA[ 
+			insert into advertiser (user_email, password, name, company_name, mobile_number, address) 
+			values (#{userEmail}, #{password}, #{name}, #{companyName}, #{mobileNumber}, #{address}) 
+		]]>
+	</insert>
+	
+	<select id="selectAdvertiser" parameterType="Integer" resultType="advertiser">
+		<![CDATA[ 
+			select * from advertiser where advertiser_num = #{advertiser_num} 
+		]]>
+	</select>
+	
+	<update id="updateAdvertiser" parameterType="advertiser">
+		update advertiser
+		<set>
+			<if test="password != null">password = #{password},</if>
+			<if test="name != null">name = #{name},</if>
+			<if test="nickname != null">company_name = #{company_name},</if>
+			<if test="mobile_number != null">mobile_number = #{mobile_number},</if>
+			<if test="address != null">address = #{address}</if>
+		</set>
+		where advertiser_num = #{advertiser_num}
+	</update>
+	
+	<select id="selectAdvertiserByEmail" parameterType="String" resultType="advertiser">
+		<![CDATA[ 
+			select * from advertiser where user_email = #{user_email} 
+		]]>
+	</select>
+	
+	<select id="selectAdvertiserForFindEmail" parameterType="map" resultType="advertiser">
+		<![CDATA[
+			select user_email from advertiser where name = #{name} and mobile_number = #{mobileNumber}
+		]]>
+	</select>
+	
+	<select id="selectAdvertiserForFindPassword" parameterType="String" resultType="String">
+		<![CDATA[
+			select insert(password, 4, 5, '*****') from advertiser where user_email = #{userEmail}
+		]]>
+	</select>
+</mapper>

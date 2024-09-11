@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mapper.influencer">
+
+	<!--// 상민 - influencerRegister (인플루언서 등록) -->
+	<update id="updateInfluencerRegister" parameterType="influencer">
+		UPDATE influencer
+		set
+		intro_line = #{introLine},
+		profile_image = #{profileImage},
+		youtube = #{youtube},
+		youtube_name = #{youtubeName},
+		youtube_follower = #{youtubeFollower},
+		youtube_url = #{youtubeUrl},
+		instagram = #{instagram},
+		instagram_name = #{instagramName},
+		instagram_follower = #{instagramFollower},
+		instagram_url = #{instagramUrl},
+		blog = #{blog},
+		blog_name = #{blogName},
+		blog_follower = #{blogFollower},
+		blog_url = #{blogUrl},
+		category_id = #{categoryId},
+		introduction = #{introduction}
+
+		WHERE influencer_num = #{influencerNum}
+		</update>
+
+	<!--세원-->
+	<select id="selectInfluencerList" parameterType="Integer" resultType="influencer">
+		<![CDATA[
+		    select *
+		    from influencer
+		    order by regist_date desc
+		    limit #{row}, 8
+	    	]]>
+	</select>
+	
+	<select id="selectInfluencerCount" resultType="Integer">
+		<![CDATA[
+    		select count(*) from influencer
+    	]]>
+	</select>
+
+	<select id="selectAllInfluencer" parameterType="Map" resultType="influencer">
+		select * from influencer
+		<where>
+			1=1
+			<if test="channels != null and channels.size > 0">
+				and
+				<foreach item="channel" collection="channels" open="(" separator="or" close=")">
+					${channel}= 1
+				</foreach>
+			</if>
+			<if test="categoryId != 0">
+				and category_id = #{categoryId}
+			</if>
+		</where>
+		order by regist_date DESC limit #{row}, 8
+
+	</select>
+
+	<!--세나-->
+	<select id="selectInfluencer" parameterType="Integer" resultType="influencer">
+		<![CDATA[
+		    select *
+		    from influencer
+		    where influencer_num = #{influencer_num}
+	    	]]>
+	</select>
+
+	<select id="selectInfluencerByEmail" parameterType="String" resultType="influencer">
+		<![CDATA[
+			select *
+	    		from influencer
+	    		where user_email = #{user_email}
+	    	]]>
+	</select>
+
+	<update id="updateInfluencer" parameterType="influencer">
+		update influencer
+		<set>
+			<if test="password != null">password = #{password},</if>
+			<if test="name != null">name = #{name},</if>
+			<if test="nickname != null">nickname = #{nickname},</if>
+			<if test="mobile_number != null">mobile_number = #{mobile_number},</if>
+			<if test="address != null">address = #{address}</if>
+		</set>
+		where user_email = #{user_email}
+	</update>
+
+	<select id="selectInfluencerListForMain" resultType="influencer">
+		<![CDATA[
+			select * from influencer where regist_date IS NOT NULL order by regist_date desc limit 0, 8
+		]]>
+	</select>
+
+	<select id="selectInfluencerForFindEmail" parameterType="map" resultType="String">
+		<![CDATA[
+			select user_email from influencer where name = #{name} and mobile_number = #{mobileNumber}
+		]]>
+	</select>
+	<insert id="insertInfluencer" parameterType="influencer">
+		<![CDATA[
+			insert into influencer (user_email, password, name, nickname, mobile_number, address) 
+				values (#{userEmail}, #{password}, #{name}, #{nickname}, #{mobileNumber}, #{address})
+		]]>
+	</insert>
+	
+	<select id="selectInfluencerForFindPassword" parameterType="String" resultType="String">
+		<![CDATA[
+			select insert(password, 4, 5, '*****') from influencer where user_email = #{userEmail}
+		]]>
+	</select>
+</mapper>
+
