@@ -113,6 +113,10 @@ public class InfluencerServiceImpl implements InfluencerService {
 		if (password == null) throw new Exception("비밀번호 찾기 오류");
 		return password;
 	}
+	@Override
+	public void influencerModify(Influencer influencer) throws Exception {
+		influencerDao.updateInfluencer(influencer);
+	}
 }
 
 

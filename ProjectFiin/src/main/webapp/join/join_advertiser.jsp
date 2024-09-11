@@ -37,7 +37,7 @@
 	                	$('#address').val = '';
 	                }
 		            $("#address").val(addr + " " + extraAddr);
-		            $("#addressDetail").attr("disabled", false);
+		            $("#addressDetail").attr("readonly", false);
 		            $("#addressDetail").focus();
 		        }
 	    	}).open();
@@ -129,7 +129,7 @@
     <div class="signup_container">
         <div class="title_wrap">
           <h2>광고주 회원가입</h2>
-          <a href="login.jsp">
+          <a href="login">
             <img src="${pageContext.request.contextPath}/image//closeIcon.svg" alt="닫기아이콘" />
           </a>
         </div>
@@ -218,7 +218,7 @@
             class="input_btn_style"
             name="addressDetail"
             id="addressDetail"
-            disabled
+            readonly="readonly"
           />
           </label>
   		  <div class="terms_wrap">

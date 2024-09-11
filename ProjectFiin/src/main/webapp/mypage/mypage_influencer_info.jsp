@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <!DOCTYPE html>
 <html>
 <head>
@@ -37,10 +38,53 @@
 	                	$('#address').val = '';
 	                }
 		            $("#address").val(addr + " " + extraAddr);
-		            $("#addressdetail").attr("disabled", false);
 		            $("#addressdetail").focus();
 		        }
 	    	}).open();
+		})
+		
+		var pwReg = /^(?=.*[a-zA-Z])(?=.*[0-9]).{8,25}$/;
+		var nameReg = /^[가-힣]{2,4}$/;
+		var pnReg = /^(01[016789]{1})-?[0-9]{3,4}-?[0-9]{4}$/;
+		
+		$(".edit_btn").click(function(e) {
+			e.preventDefault();
+
+			if ($("#password").val() === "") {
+				alert("비밀번호를 입력해주세요.");
+				$("#password").focus();
+				return false;
+			} else if (!pwReg.test($("#password").val())) {
+				alert("비밀번호는 영문, 숫자포함 최소 8자리 이상 입력해주세요.");
+				$("password").focus();
+				return false;
+			} else if ($("#name").val() === "") {
+				alert("이름을 입력해주세요.");
+				$("#name").focus();
+				return false;
+			} else if (!nameReg.test($("#name").val())) {
+				alert("이름을 확인해주세요.(한글 2~4자 이내)");
+				$("#name").focus();
+				return false;
+			} else if ($("#nickname").val() === "") {
+				alert("닉네임을 입력해주세요.");
+				$("#nickname").focus();
+				return false;
+			} else if ($("#mobileNumber").val() === "") {
+				alert("휴대폰번호를 입력해주세요.");
+				$("#mobileNumber").focus();
+				return false;
+			} else if (!pnReg.test($("#mobileNumber").val())) {
+				alert("휴대폰번호를 확인해주세요.");
+				$("#mobileNumber").focus();
+				return false;
+			} else if ($("#address").val() === "") {
+				alert("주소를 검색해주세요.");
+				$("#address").focus();
+				return false;
+			} 
+				
+			$(".edit_form").submit();
 		})
 	})
 </script>
@@ -49,18 +93,17 @@
 	<%@ include file="../include/header.jsp" %>
 	<div class="edit_container">
 		<%@ include file="../include/sidebar_influencer.jsp" %>
-		
 		<div class="main">
 			<h2>프로필 관리</h2>
-			<form action="#" class="edit_form">
-				  <label for="email" class="input_label">
+			<form action="mypageInfluencerInfo" class="edit_form" method="post"> 
+				  <label for="userEmail" class="input_label">
 		            이메일<span>*</span> <span class="br_style"><br /></span>
 		            <input
 		              type="text"
-		              id="email"
-		              value="kosta@kosta.com"
+		              id="userEmail"
+		              value="${influencer.userEmail}"
 		              class="input_style"
-		              name="email"
+		              name="userEmail"
 		              disabled
 		            />
 		          </label>
@@ -69,7 +112,7 @@
 			             <input
 			                type="password"
 			                id="password"
-			                value="***********"
+			                value="${influencer.password}"
 			                class="input_style"
 			       			name="password"
 			             />
@@ -79,29 +122,29 @@
 		            <input
 		              type="text"
 		              id="name"
-		              value="홍길동"
+		              value="${influencer.name}"
 		              class="input_style"
 		              name="name"
 		            />
 		          </label>
-		          <label for="name" class="input_label">
+		          <label for="nickname" class="input_label">
 		            닉네임<span>*</span> <span class="br_style"><br /></span>
 		            <input
 		              type="text"
 		              id="nickname"
-		              value="레뷰"
+		              value="${influencer.nickname}"
 		              class="input_style"
 		              name="nickname"
 		            />
 		          </label>
-		          <label for="number" class="input_label">
+		          <label for="mobileNumber" class="input_label">
 		            휴대폰번호<span>*</span> <span class="br_style"><br /></span>
 		              <input
 		                type="text"
-		                id="number"
-						value="01012345678"
+		                id="mobileNumber"
+						value="${influencer.mobileNumber}"
 		                class="input_style"
-		                name="number"
+		                name="mobileNumber"
 		              />
 		          </label>
 		          <label for="address" class="input_label">
@@ -109,21 +152,20 @@
 		            <div class="input_btn_wrap">
 		              <input
 		                type="text"
-		                value="서울특별시 금천구 가산디지털1로 70"
+		                value="${influencer.address}"
 		                class="input_btn_style"
 		                name="address"
 		                id="address"
-		                disabled
+		                readonly="readonly"
 		              />
 		              <button type="button" class="address_btn">주소검색</button>
 		            </div>
 		            <input
 			            type="text"
-			            value="호서대벤처타워 9층"
+			            value="${influencer.addressDetail}"
 			            class="input_btn_style"
-			            name="addressdetail"
-			            id="addressdetail"
-			            disabled
+			            name="addressDetail"
+			            id="addressDetail"    
 		          	/>
 		          </label>
           		  <input type="submit" class="edit_btn" value="수정하기">

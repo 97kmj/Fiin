@@ -45,4 +45,16 @@ public class AdvertiserServiceImpl implements AdvertiserService {
 		if (password == null) throw new Exception("비밀번호 찾기 오류");
 		return password;
 	}
+
+	@Override
+	public Advertiser advertiserDetail(Integer advertiserNum) throws Exception {
+		Advertiser advertiser = advertiserDao.selectAdvertiser(advertiserNum);
+		if (advertiser == null) throw new Exception("광고주를 찾지 못했습니다.");
+		return advertiser;
+	}
+
+	@Override
+	public void advertiserModify(Advertiser advertiser) throws Exception {
+		advertiserDao.updateAdvertiser(advertiser);
+	}
 }
