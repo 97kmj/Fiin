@@ -49,6 +49,7 @@ src/main/webapp/WEB-INF/web.xml
 .DS_Store
 /bin/
 Fiin.iml
+../ProjectFiin.iml
 ProjectFiin.iml
 
 
