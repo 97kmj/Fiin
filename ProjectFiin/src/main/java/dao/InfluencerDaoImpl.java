@@ -19,6 +19,33 @@ public class InfluencerDaoImpl implements InfluencerDao {
     sqlSession = MybatisSqlSessionFactory.getSqlSessionFactory().openSession();
   }
 
+	@Override
+	public Integer selectAllInfluencerCount(String keyword, List<String> channels, Integer categoryId)
+			throws Exception {
+		Map<String,Object>map = new HashMap<>();
+		map.put("channels", channels);
+		map.put("categoryId", categoryId);
+		map.put("keyword", keyword);
+		return sqlSession.selectOne("mapper.influencer.selectAllInfluencerCount",map);
+	}
+	@Override
+	public List<Map<String,Object>> selectAllInfluencer(Integer row, String keyword, List<String> channels, Integer categoryId) throws Exception {
+		Map<String,Object>map = new HashMap<>();
+		map.put("channels", channels);
+		map.put("row", row-1);
+		map.put("categoryId", categoryId);
+		map.put("keyword", keyword);
+		return sqlSession.selectList("mapper.influencer.selectAllInfluencer", map);
+    }
+
+	// 상민 - 인플루언서 등록
+	@Override
+	public void registerInfluencer(Influencer influencer) throws Exception {
+		sqlSession.update("mapper.influencer.updateInfluencerRegister", influencer);
+		System.out.println(influencer);
+		sqlSession.commit();
+	}
+
   @Override
   public void insertInfluencer(Influencer influencer) throws Exception {
     sqlSession.insert("mapper.influencer.insertInfluencer", influencer);

@@ -6,8 +6,7 @@
 	<!--세원 -->
 	<select id="selectBookmarkInfluencer" parameterType="Map" resultType="Integer">
 		<![CDATA[
-			select advertiserNum from bookmarkInfluencer 
-			where advertiserNum=#{advertiserNum} and influencerNum=#{influencerNum}
+			select c
 		]]>		
 	</select>
 </mapper>    
