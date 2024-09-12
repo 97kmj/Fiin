@@ -64,12 +64,10 @@
 <div class="modal sendemail">
 	<div class="modal_body">
 	<button class="closebtn"><img src="https://img.icons8.com/?size=100&id=J3PhU48KWI9A&format=png&color=000000" style="width:20px;height:20px"></button><br>
-	<form action="#" method="post">
-		<h2 style="color:#4849e8;">이메일 발송기능이란?</h2>
+		<h2 style="text-align:center;color:#4849e8;">이메일 발송기능이란?</h2>
 		<p>상품 카테고리와 희망광고채널이 일치하는 인플루언서에게 캠페인을 알리는 이메일을 보내줍니다.<br> 더 많은 인플루언서에게 자사 제품을 홍보 요청해보세요.</p>
 		<p> &#8251;해당되는 모든 인플루언서들에게 이메일을 발송합니다.</p>
-		<input type="submit" name="status" value="이메일 발송" class="btn" >
-	</form>
+		<input type="button" name="sendEmail" value="이메일 발송" class="btn sendbtn" >
 	</div>
 </div>
 </div>
@@ -81,11 +79,10 @@ $(document).ready(function() {
 	$(".invalid .btn").attr("disabled",true);
 	$(".invalid .btn").css("cursor","default");
 
-	/* 신청목록 보기 비동기 */
+	/* 신청목록 모달 띄우기 비동기 */
 	$(".apply").on('click',function(e){
 		e.preventDefault();
 		var campaignNum = $(this).parent().attr("id");
-		
 		$.ajax({
 			url:"receiveList",
            	type:"POST",
@@ -102,7 +99,6 @@ $(document).ready(function() {
 	});
 	
 	/* 수락버튼 비동기 */
-
 	$(document).on('click',"button[name='accept']",function(e){
 		var applyNum = $(this).attr("value");
 		var div = this;
@@ -124,19 +120,45 @@ $(document).ready(function() {
 		$(this).append("완료");
 		
 	})
-	
+	/* 이메일전송 모달 띄우기 */
 	$(".email").on('click',function(e){
 		e.preventDefault();
+		var campaignNum = $(this).parent().attr("id");
+		$(".sendbtn").attr("id","campaignNum"+campaignNum);
 		$(".sendemail").addClass('show-modal');
+		
 	})
 	
+	/* 이메일 전송 기능 비동기처리 */
+	$(".sendbtn").on('click',function(e){
+		var campaignNum = $(this).attr("id").replace(/[^0-9]/g,"");
+		$.ajax({
+			url: "sendEmail",
+           	type: "POST",
+           	async:true,
+           	data:{campaignNum:campaignNum},
+           	success: function(result){
+           		
+			},
+			error: function (err) {
+                alert(err);
+            }
+		}) 
+		alert("메일 전송 완료");
+		$(".sendemail").removeClass('show-modal');
+	})
+	
+	
+	/* 모달창 닫기 버튼 */
 	$(".closebtn").on('click',function(e){
 		e.preventDefault()
+		$(".sendbtn").removeAttr("id");
 		$("#receiveCampaignList > tbody ").empty();
 		$(".applylist").removeClass('show-modal');
 		$(".sendemail").removeClass('show-modal');
 	})
 	
+	/* 전체,모집중,모집종료 필터링 버튼 */
 	$("#allList").on('click',function(){
 		$(this).css("border","2px solid #4849e8");
 		$("#ingList").css("border","2px solid #939393");

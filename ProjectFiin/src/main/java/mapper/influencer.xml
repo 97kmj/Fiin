@@ -118,5 +118,17 @@
 			select insert(password, 4, 5, '*****') from influencer where user_email = #{userEmail}
 		]]>
 	</select>
+	
+	
+	
+	<!-- 민준 -->
+	<select id="selectEmaliListByCampaign" parameterType="Map" resultType="String">
+		select user_email from influencer 
+		where category_id = #{categoryId} and   
+		<foreach item="channel" collection="channelList" open="(" separator="or" close=")">
+			${channel} = 1
+		</foreach>
+		limit 0,50
+	</select>
 </mapper>
 

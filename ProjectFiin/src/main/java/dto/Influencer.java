@@ -34,7 +34,7 @@ public class Influencer {
 
 	private Timestamp registDate;
 	private String address;
-  private String addressDetail;
+    private String addressDetail;
 
 
 	//InfluencerRegister 객체(인플루언서 등록 시 사용)

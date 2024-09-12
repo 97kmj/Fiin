@@ -1,6 +1,9 @@
 package dao;
 
+
 import dto.Influencer;
+import dto.Campaign;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -82,5 +85,19 @@ public class InfluencerDaoImpl implements InfluencerDao {
     return sqlSession.selectOne("mapper.influencer.selectInfluencerForFindPassword", userEmail);
   }
 
+	
+	//민준 - 캠페인의 카테고리랑 희망채널이 일치하는 인플루언서들의 이메일 목록 뽑아오기
+	@Override
+	public List<String> selectEmaliListByCampaign(Campaign campaign) throws Exception {
+		Map<String,Object> param = new HashMap<>();
+		String[] channels = campaign.getChannel().split("#");
+		List<String> channelList = new ArrayList<>();
+		for(String channel : channels) {
+			channelList.add(channel);
+		}
+		param.put("channelList",channelList);
+		param.put("categoryId", campaign.getCategoryId());
+		return sqlSession.selectList("mapper.influencer.selectEmaliListByCampaign",param);
+	}
 }
 
