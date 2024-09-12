@@ -89,15 +89,20 @@
 						</div>
 						<div id="title">${showinfluencer.intro_line }</div>
 						<div id="subscriber">
+		
+							<c:set var = "totalFollowers" value="0"/>
 							<c:if test="${showinfluencer.youtube_follower != null }">
-								${showinfluencer.youtube_follower }명
+							<c:set var="totalFollowers" value="${totalFollowers + showinfluencer.youtube_follower }"/>
 							</c:if>
 							<c:if test="${showinfluencer.instagram_follower != null }">
-								${showinfluencer.instagram_follower }명
+							<c:set var="totalFollowers" value="${totalFollowers + showinfluencer.instagram_follower }"/>
 							</c:if>
 							<c:if test="${showinfluecner.blog_follower != null }">
-								${showinfluencer.blog_follower }명
+							<c:set var="totalFollowers" value="${totalFollowers + showinfluencer.blog_follower }"/>
 							</c:if>
+							총 팔로워 수 : ${totalFollowers }명
+						
+						
 						</div>
 					</div>
 				</c:forEach>
