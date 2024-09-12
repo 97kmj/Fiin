@@ -18,10 +18,10 @@ public class CampaignDaoImpl implements CampaignDao {
 	public CampaignDaoImpl() {
 		sqlSession = MybatisSqlSessionFactory.getSqlSessionFactory().openSession();
 	}
-	
+
+	//상민 - campaign 등록
 	@Override
 	public void registerCampaign(Campaign cam) throws Exception {
-
 		sqlSession.insert("mapper.campaign.registerCampaign", cam);
 		sqlSession.commit();
 	}

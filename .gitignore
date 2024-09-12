@@ -1,13 +1,13 @@
 # 빌드 출력물
 /build/
 /target/
-.settings/
-.classpath
+/.settings/
+ProjectFiin/.classpath
 <<<<<<< HEAD
 .project
 
 # specific files and directories
-.idea/
+/.idea/
 *.iml
 *.iws
 
@@ -35,4 +35,7 @@ Thumbs.db
 *.swo
 
 /bin/
-/resource/
+mybatis-config.xml
+/classes/
+/.settings
+

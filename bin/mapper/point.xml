@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.point">
+	<!--민준-->
+	<select id="selectPointList" resultType="point">
+		<![CDATA[
+			select * from point
+		]]>
+	</select>
+	
+	<select id="selectPointBalance" parameterType="Map" resultType="Integer">
+		select point_balance from 
+			<choose>
+				<when test= 'type.equals("influencer")'>
+					<![CDATA[
+						influencer
+						where influencer_num = #{user_num}
+					]]>
+				</when>
+			<otherwise>
+				<![CDATA[
+					advertiser	
+					where advertiser_num = #{user_num}
+				]]>
+			</otherwise>
+		</choose>
+		</select>
+</mapper>

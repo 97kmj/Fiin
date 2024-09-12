@@ -6,6 +6,8 @@ import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 import dto.Influencer;
 import java.io.IOException;
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -19,10 +21,6 @@ public class InfluencerRegister extends HttpServlet {
 
   private static final long serialVersionUID = 1L;
 
-  public InfluencerRegister() {
-    super();
-  }
-
   @Override
   protected void doGet(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
@@ -33,12 +31,12 @@ public class InfluencerRegister extends HttpServlet {
       }
       InfluencerService service = new InfluencerServiceImpl();
       System.out.println( service.findInfluencerByNum(influencer.getInfluencerNum()));
+
       request.setAttribute("influencer", service.findInfluencerByNum(influencer.getInfluencerNum()));
       request.getRequestDispatcher("/influencer/influencer_register.jsp").forward(request,response);
 
     } catch (Exception e) {
       e.printStackTrace();
-
       request.setAttribute("err", e.getMessage());
       request.getRequestDispatcher("err.jsp").forward(request, response);
     }
@@ -122,6 +120,10 @@ public class InfluencerRegister extends HttpServlet {
 
       influencer.setCategoryId(category);
       influencer.setIntroduction(introduction);
+
+      //빈칸 부분 채워주기 (is_regist, profile_image, regist_date) -> 적용 안되는 이유 찾아보기
+      influencer.setIsRegist(1);
+      influencer.setRegistDate(Timestamp.valueOf(LocalDateTime.now()));
 
       InfluencerService service = new InfluencerServiceImpl();
       service.influencerRegister(influencer);

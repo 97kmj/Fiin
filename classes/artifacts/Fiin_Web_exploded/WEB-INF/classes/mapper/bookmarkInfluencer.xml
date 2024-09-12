@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.bookmarkInfluencer">
+
+	<!--세원 -->
+	<select id="selectBookmarkInfluencer" parameterType="Map" resultType="Integer">
+		<![CDATA[
+			select advertiserNum from bookmarkInfluencer 
+			where advertiserNum=#{advertiserNum} and influencerNum=#{influencerNum}
+		]]>		
+	</select>
+</mapper>    
+
