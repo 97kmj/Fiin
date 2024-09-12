@@ -27,7 +27,7 @@ public class InfluencerRegister extends HttpServlet {
     try {
       Influencer influencer = (Influencer) request.getSession().getAttribute("influencer");
       if (influencer == null) {
-        throw new Exception("로그인 처리 필요1");
+        throw new Exception("로그인 처리 필요11");
       }
       InfluencerService service = new InfluencerServiceImpl();
       System.out.println( service.findInfluencerByNum(influencer.getInfluencerNum()));
