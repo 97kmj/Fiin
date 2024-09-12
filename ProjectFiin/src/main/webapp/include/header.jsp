@@ -115,7 +115,7 @@
 		        	<li class="alarm_item">
 		        		<img src="https://img.icons8.com/?size=20&id=59817&format=png&color=000000" />
 		        		<div class="alarm_text_wrap">
-		        			<p>[24-8] "제주 히든클리프 호텔_체험형"에 선정되었습니다.</p>
+							<p>[24-8] "제주 히든클리프 호텔_체험형"에 선정되었습니다.</p>
 		        			<p>3시간 전</p>
 		        		</div>
 		        	</li>

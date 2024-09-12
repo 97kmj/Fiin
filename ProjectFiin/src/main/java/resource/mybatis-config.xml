@@ -44,5 +44,6 @@
 		<mapper resource="mapper/pointRecord.xml"/>
 		<mapper resource="mapper/receiveCampaign.xml"/>
 		<mapper resource="mapper/requestCampaign.xml"/>
+		
 	</mappers>
 </configuration>
