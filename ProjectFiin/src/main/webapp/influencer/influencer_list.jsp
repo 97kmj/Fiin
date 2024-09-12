@@ -53,13 +53,12 @@
 						등록하기</button>
 				</div>
 			</div>
-			<div class="influencerWrap">	
+			<div class="influencerWrap" >	
 				<c:forEach items="${influencerList}" var="showinfluencer">
-					<div class="influencer_pick" id="pickNum1">
+					<div class="influencer_pick" id="pickNum1" OnClick="location.href='influencerDetail?num=' + ${showinfluencer.influencer_num}">
 						<c:if test="${showinfluencer.profile_image ne null }">
-						<a href="influencerDetail?num=${showinfluencer.influencer_num }">
 						<img src="image?file=${showinfluencer.profile_image }" class="influencer_img">
-						</a>
+						<!-- </a> -->
 						</c:if>
 						<div>
 						<c:if test="${showinfluencer.youtube ne null }">

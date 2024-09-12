@@ -18,7 +18,7 @@ public class BookmarkInfluencerDaoImpl implements BookmarkInfluencerDao {
 	public void insertBookmarkInfluencer(Integer advertiserNum, Integer influencerNum) throws Exception {
 		Map<String,Object> param = new HashMap<>();
 		param.put("advertiser_num", advertiserNum);
-		param.put("influencerNum", influencerNum);
+		param.put("influencer_num", influencerNum);
 		sqlSession.insert("mapper.bookmarkInfluencer.insertBookmarkInfluencer", param);
 		sqlSession.commit();
 	}

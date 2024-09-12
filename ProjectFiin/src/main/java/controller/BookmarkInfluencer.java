@@ -31,7 +31,7 @@ public class BookmarkInfluencer extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getRequestDispatcher("utf-8");
+		request.setCharacterEncoding("utf-8");
 		Integer influencerNum = Integer.parseInt(request.getParameter("influencerNum"));
 		Advertiser advertiser = (Advertiser)request.getSession().getAttribute("advertiser");
 		Integer advertiserNum = advertiser.getAdvertiserNum();
