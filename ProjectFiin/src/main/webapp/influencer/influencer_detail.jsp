@@ -8,7 +8,7 @@
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/css/reset.css">
 <link rel="stylesheet"
-	href="${pageContext.request.contextPath}/css/influencer_detail.css?ver=1">
+	href="${pageContext.request.contextPath}/css/influencer_detail.css?after">
 <script>
 $(function() {
 	$("#bookmark").click(function(){
