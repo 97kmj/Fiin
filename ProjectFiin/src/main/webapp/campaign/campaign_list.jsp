@@ -58,7 +58,7 @@
 	 		<c:forEach items="${campaignList }" var="campaign">
 	 			<div class="campaign_pick" id="pickNum1"
 				onclick="location.href='campaignDetail?campaignNum=${campaign.campaignNum }'">
-					<img src="${pageContext.request.contextPath}/image/${campaign.image}" class="campaign_img">
+					<img src="image?file=${campaign.image}" class="campaign_img">
 					<div>${campaign.channel } | ${categoryList.get(campaign.categoryId-1).category_name }</div>
 					<div id="channelName">${campaign.companyName }</div>
 					<div id="title">${campaign.productName }</div>

@@ -11,8 +11,12 @@ import javax.servlet.http.HttpServletResponse;
 
 import dto.Campaign;
 import dto.Category;
+import dto.Influencer;
+import dto.RequestCampaign;
 import service.CampaignService;
 import service.CampaignServiceImpl;
+import service.RequestCampaignService;
+import service.RequestCampaignServiceImpl;
 
 /**
  * Servlet implementation class CampaignDetail
@@ -44,8 +48,22 @@ public class CampaignDetail extends HttpServlet {
 			categoryList = service.categoryList();
 			Campaign campaign = service.detail(campaignNum);
 			
+			Influencer influencer = (Influencer)request.getSession().getAttribute("influencer");
+			Integer infulencerNum = service.checkBookmark(influencer.getInfluencerNum(),campaignNum);
+			
+			RequestCampaignService reservice= new RequestCampaignServiceImpl();
+			boolean requestCampaign = reservice.requestCampaign( infulencerNum,campaignNum);
+			
+			
+			request.setAttribute("requestCampaign", requestCampaign);
 			request.setAttribute("categoryList", categoryList);
 			request.setAttribute("campaign", campaign);
+
+			if(influencer!=null) {//로그인 되었을 경우에만 좋아요 조회
+
+				request.setAttribute("bookmarkCampaign", String.valueOf(infulencerNum!=null));
+			}
+			
 			request.getRequestDispatcher("campaign/campaign_detail.jsp").forward(request, response);
 			
 		}catch(Exception e) {
@@ -59,7 +77,23 @@ public class CampaignDetail extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		
+		Integer campaignNum = Integer.parseInt(request.getParameter("campaignNum"));
+		Integer status = Integer.parseInt(request.getParameter("status"));
+		
+		try {
+			CampaignService service = new CampaignServiceImpl();
+			service.campaignIsRecruit(campaignNum,status);
+			Campaign campaign = service.detail(campaignNum);
+			request.setAttribute("campaign", campaign);
+			response.setCharacterEncoding("utf-8");
+			response.getWriter().write("성공");
+		}catch(Exception e){
+			e.printStackTrace();
+			request.setAttribute("err", e.getMessage());
+			request.getRequestDispatcher("err.jsp").forward(request, response);
+		}
+		
 	}
 
 }
