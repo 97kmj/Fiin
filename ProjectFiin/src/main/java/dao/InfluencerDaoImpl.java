@@ -68,23 +68,23 @@ public class InfluencerDaoImpl implements InfluencerDao {
     sqlSession.commit();
   }
 
-  @Override
-  public List<Map<String, Object>> selectInfluencerList(Integer row, String keyword,
-      List<String> channels, Integer categoryId) throws Exception {
-    Map<String, Object> map = new HashMap<>();
-    map.put("channels", channels);
-    map.put("row", row - 1);
-    map.put("categoryId", categoryId);
-    map.put("keyword", keyword);
-    return sqlSession.selectList("mapper.influencer.selectAllInfluencer", map);
-  }
-
-  // 상민 - 인플루언서 등록
-  @Override
-  public void registerInfluencer(Influencer influencer) throws Exception {
-    sqlSession.update("mapper.influencer.updateRegistInfluencer", influencer);
-    sqlSession.commit();
-  }
+//  @Override
+//  public List<Map<String, Object>> selectInfluencerList(Integer row, String keyword,
+//      List<String> channels, Integer categoryId) throws Exception {
+//    Map<String, Object> map = new HashMap<>();
+//    map.put("channels", channels);
+//    map.put("row", row - 1);
+//    map.put("categoryId", categoryId);
+//    map.put("keyword", keyword);
+//    return sqlSession.selectList("mapper.influencer.selectAllInfluencer", map);
+//  }
+//
+//  // 상민 - 인플루언서 등록
+//  @Override
+//  public void registerInfluencer(Influencer influencer) throws Exception {
+//    sqlSession.update("mapper.influencer.updateRegistInfluencer", influencer);
+//    sqlSession.commit();
+//  }
 
 
   @Override
