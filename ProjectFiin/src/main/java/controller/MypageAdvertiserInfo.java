@@ -33,7 +33,8 @@ public class MypageAdvertiserInfo extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// 로그인 여부 확인
-		if (request.getSession().getAttribute("advertiser") == null) {
+		Advertiser advertiser = (Advertiser)request.getSession().getAttribute("advertiser");
+		if (advertiser == null) {
 			response.setContentType("text/html; charset=UTF-8");
 			PrintWriter out = response.getWriter();
 			out.println("<script>alert('로그인이 필요한 페이지입니다'); location.href='login'; </script>"); 

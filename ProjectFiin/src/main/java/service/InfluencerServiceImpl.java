@@ -148,7 +148,7 @@ public class InfluencerServiceImpl implements InfluencerService {
 		}
 	}
 
-
+	@Override
 	public void influencerModify(Influencer influencer) throws Exception {
 		influencerDao.updateInfluencer(influencer);
 	}
