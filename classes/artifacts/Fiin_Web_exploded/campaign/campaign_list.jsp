@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,15 +19,17 @@
 	<%@ include file="../include/header.jsp"%>
 	<div class="container">
 		<form id="filterform" action="campaignList" method="get">
+		<input type="hidden" name="page" id="page" value="1"/>
 		<div id="categoryBar">
 			<h2>카테고리</h2>
 			<div class="categoryWrap">
-				 <input type="radio" id="category" name="category" checked value="0"><a href="0">전체</a>&nbsp;&nbsp;&nbsp;
-				 <input type="radio" id="category" name="category" value="2"><a href="2">패션</a>&nbsp;&nbsp;&nbsp;
-			 	 <input type="radio" id="category" name="category"  value="6"><a href="6">생활용품</a>&nbsp;&nbsp;&nbsp;
-				 <input type="radio" id="category" name="category" value="3"><a href="3">스포츠</a>&nbsp;&nbsp;&nbsp;
-				 <input type="radio" id="category" name="category" value="4"><a href="4">여행/숙박</a>&nbsp;&nbsp;&nbsp;
-				 <input type="radio" id="category" name="category" value="5"><a href="5">맛집</a>&nbsp;&nbsp;&nbsp;
+				 <input type="radio" id="category" name="category" checked value="0"><a href="0">전체</a>
+				 <input type="radio" id="category" name="category" value="2"><a href="2">패션</a>
+				 <input type="radio" id="category" name="category"  value="1"><a href="1">뷰티</a>
+			 	 <input type="radio" id="category" name="category"  value="6"><a href="6">생활용품</a>
+				 <input type="radio" id="category" name="category" value="3"><a href="3">스포츠</a>
+				 <input type="radio" id="category" name="category" value="4"><a href="4">여행/숙박</a>
+				 <input type="radio" id="category" name="category" value="5"><a href="5">맛집</a>
 			</div>
 		</div>
 		<hr style="border: 1px solid #e5e5e5; width: 1200px; margin: 12px 0;">
@@ -52,22 +57,25 @@
 		<div class="campaignWrap" style="justify-content:left">
 	 		<c:forEach items="${campaignList }" var="campaign">
 	 			<div class="campaign_pick" id="pickNum1"
-				onclick="location.href='/campaignDetail?campaignNum=${campaign.campaignNum }'">
+				onclick="location.href='campaignDetail?campaignNum=${campaign.campaignNum }'">
 					<img src="${pageContext.request.contextPath}/image/${campaign.image}" class="campaign_img">
-					<div>${campaign.channel } | ${campaign.categoryId }</div>
-					<div id="channelName">${campaignA.companyName }</div>
+					<div>${campaign.channel } | ${categoryList.get(campaign.categoryId-1).category_name }</div>
+					<div id="channelName">${campaign.companyName }</div>
 					<div id="title">${campaign.productName }</div>
-					<div>${campaign.adStartDate} ~ ${campaign.adEndDate}</div>
+					<div>
+						<fmt:formatDate value="${campaign.adStartDate}" pattern="yyyy-MM-dd" /> ~ <fmt:formatDate value="${campaign.adEndDate}"
+									pattern="yyyy-MM-dd" />
+					</div>
 				</div>
 			</c:forEach> 
 		</div>
 
 		<!-- 페이지 처리  -->
-		<div style="text-align:center">
+		<div class="pageDiv"; style="text-align:center">
 			<!-- 페이지 이전버튼 생성  -->
  			<c:choose>
 				<c:when test="${pageInfo.curPage>1 }">
-				 	<a href="campaignList?page=${pageInfo.curPage-1 }">&lt;</a>
+				 	<a href="#" data-page="{pageInfo.curPage-1 }">&lt;</a>
 				 </c:when>
 				 <c:otherwise>
 				 	<a>&lt;</a>
@@ -77,10 +85,10 @@
 			<c:forEach begin="${pageInfo.startPage }" end="${pageInfo.endPage }" var="i">
 				<c:choose>
 					<c:when test="${i eq pageInfo.curPage }">
-						<a href="campaignList?page=${i}" class="select">${i }</a>
+						<a href="#" class="select" data-page="${i }">${i }</a>
 					</c:when>
 					<c:otherwise>
-						<a href="campaignList?page=${i}" class="btn">${i }</a>
+						<a href="#" class="btn" data-page="${i }">${i }</a>
 					</c:otherwise>
 				</c:choose>
 			</c:forEach>
@@ -88,7 +96,7 @@
 			<!-- 페이지 다음버튼 생성  -->
 			<c:choose>
 				<c:when test="${pageInfo.curPage<pageInfo.allPage }">
-					<a href="campaignList?page=${pageInfo.curPage+1 }">&gt;</a>
+					<a href="#" data-page="${pageInfo.curPage+1 }">&gt;</a>
 				</c:when>
 				<c:otherwise>
 					<a>&gt;</a>
@@ -102,6 +110,12 @@
 	<%@include file="../include/footer.jsp" %>
 </body>
 <script>
+
+	$(".pageDiv a").click(function(e) {
+		e.preventDefault();
+		$("#page").val($(this).data("page"));
+		$("#filterform").submit();
+	})
 
 	$(".categoryWrap a").click(function(e) {
 		e.preventDefault();

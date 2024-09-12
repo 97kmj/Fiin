@@ -5,7 +5,7 @@
 <mapper namespace="mapper.influencer">
 
 	<!--// 상민 - influencerRegister (인플루언서 등록) -->
-	<update id="updateInfluencerRegister" parameterType="influencer">
+	<update id="updateRegistInfluencer" parameterType="influencer">
 		UPDATE influencer
 		set
 		intro_line = #{introLine},
@@ -23,7 +23,8 @@
 		blog_follower = #{blogFollower},
 		blog_url = #{blogUrl},
 		category_id = #{categoryId},
-		introduction = #{introduction}
+		introduction = #{introduction},
+		regist_date = #{registDate}
 
 		WHERE influencer_num = #{influencerNum}
 		</update>
@@ -43,9 +44,9 @@
     		select count(*) from influencer
     	]]>
 	</select>
-
-	<select id="selectAllInfluencer" parameterType="Map" resultType="influencer">
-		select * from influencer
+	
+	<select id="selectAllInfluencer" parameterType="Map" resultType="Map">
+		select i.*,c.category_name from influencer i join category c using(category_id)
 		<where>
 			1=1
 			<if test="channels != null and channels.size > 0">
@@ -57,6 +58,8 @@
 			<if test="categoryId != 0">
 				and category_id = #{categoryId}
 			</if>
+				and	
+				(youtube_name like '%${keyword}%' or instagram_name like '%${keyword}%' or blog_name like '%${keyword}%')
 		</where>
 		order by regist_date DESC limit #{row}, 8
 
@@ -67,7 +70,7 @@
 		<![CDATA[
 		    select *
 		    from influencer
-		    where influencer_num = #{influencer_num}
+		    where influencer_num = #{influencerNum}
 	    	]]>
 	</select>
 
@@ -75,7 +78,7 @@
 		<![CDATA[
 			select *
 	    		from influencer
-	    		where user_email = #{user_email}
+	    		where user_email = #{userEmail}
 	    	]]>
 	</select>
 
@@ -85,10 +88,11 @@
 			<if test="password != null">password = #{password},</if>
 			<if test="name != null">name = #{name},</if>
 			<if test="nickname != null">nickname = #{nickname},</if>
-			<if test="mobile_number != null">mobile_number = #{mobile_number},</if>
-			<if test="address != null">address = #{address}</if>
+			<if test="mobileNumber != null">mobile_number = #{mobileNumber},</if>
+			<if test="address != null">address = #{address},</if>
+			<if test="addressDetail != null">address_detail = #{addressDetail}</if>
 		</set>
-		where user_email = #{user_email}
+		where influencer_num = #{influencerNum}
 	</update>
 
 	<select id="selectInfluencerListForMain" resultType="influencer">
@@ -104,8 +108,8 @@
 	</select>
 	<insert id="insertInfluencer" parameterType="influencer">
 		<![CDATA[
-			insert into influencer (user_email, password, name, nickname, mobile_number, address) 
-				values (#{userEmail}, #{password}, #{name}, #{nickname}, #{mobileNumber}, #{address})
+			insert into influencer (user_email, password, name, nickname, mobile_number, address, address_detail) 
+				values (#{userEmail}, #{password}, #{name}, #{nickname}, #{mobileNumber}, #{address}, #{addressDetail})
 		]]>
 	</insert>
 	

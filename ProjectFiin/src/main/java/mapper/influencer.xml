@@ -5,7 +5,7 @@
 <mapper namespace="mapper.influencer">
 
 	<!--// 상민 - influencerRegister (인플루언서 등록) -->
-	<update id="updateInfluencerRegister" parameterType="influencer">
+	<update id="updateRegistInfluencer" parameterType="influencer">
 		UPDATE influencer
 		set
 		intro_line = #{introLine},
@@ -23,7 +23,8 @@
 		blog_follower = #{blogFollower},
 		blog_url = #{blogUrl},
 		category_id = #{categoryId},
-		introduction = #{introduction}
+		introduction = #{introduction},
+		regist_date = #{registDate}
 
 		WHERE influencer_num = #{influencerNum}
 		</update>

@@ -24,10 +24,64 @@ h2 {
   margin-top: 40px;
 }
 
+/*//youtube checkbox*/
+input[type="checkbox"]#youtube_checkbox+label {
+  display: block;
+  width: 150px;
+  height:100px;
+  background: url('../image/youtube.png') no-repeat 0 0px / contain;
+}
+
+input[type='checkbox']#youtube_checkbox:checked+label {
+  background: url('../image/youtube_checked.png') no-repeat 0 1px / contain;
+}
+
+input[type="checkbox"] {
+  display: none;
+}
+
+/*//instagram checkbox*/
+input[type="checkbox"]#instagram_checkbox+label {
+  display: block;
+  width: 150px;
+  height:100px;
+  background: url('../image/instagram.png') no-repeat 0 0px / contain;
+}
+
+input[type='checkbox']#instagram_checkbox:checked+label {
+  background: url('../image/instagram_checked.png') no-repeat 0 1px / contain;
+}
+
+input[type="checkbox"] {
+  display: none;
+}
+
+
+/*//blog checkbox*/
+input[type="checkbox"]#blog_checkbox+label {
+  display: block;
+  width: 150px;
+  height:100px;
+  background: url('../image/blog(un).png') no-repeat 0 0px / contain;
+}
+
+input[type='checkbox']#blog_checkbox:checked+label {
+  background: url('../image/blog_checked.png') no-repeat 0 1px / contain;
+}
+
+input[type="checkbox"] {
+  display: none;
+}
+
+
+
+
+
 .categoryContainer {
   display: flex;
   flex-direction: column;
   text-align: center;
+
   width: 100%;
 }
 
@@ -60,11 +114,13 @@ h2 {
 .first3, .second3 {
   display: flex;             /* 플렉스 박스로 설정 */
   justify-content: center;   /* 자식 요소들을 중앙에 정렬 */
+  align-items: center;
+
   margin-bottom: 20px;       /* 첫 번째와 두 번째 줄 사이의 간격 */
   margin-top: 30px;
 
   /*justify-content: space-between;*/
-  gap: 100px;
+  gap: 50px;
 }
 
 /* 각 카테고리 아이템 정렬 및 스타일 */
@@ -77,6 +133,104 @@ h2 {
   /*margin: 0 30px;            !* 각 카테고리 아이템 사이의 간격 *!*/
   width: 250px;
 }
+
+
+/*//beauty radio*/
+input[type="radio"]#beauty+label {
+  display: block;
+  width: 150px;
+  height:150px;
+  background: url('../image/beauty.png') no-repeat 0 0px / contain;
+}
+
+input[type='radio']#beauty:checked+label {
+  background: url('../image/beauty_clicked.png') no-repeat 0 1px / contain;
+}
+
+input[type="checkbox"] {
+  display: none;
+}
+
+/*//fashion radio*/
+input[type="radio"]#fashion+label {
+  display: block;
+  width: 150px;
+  height:150px;
+  background: url('../image/fashion.png') no-repeat 0 0px / contain;
+}
+
+input[type='radio']#fashion:checked+label {
+  background: url('../image/fashion_clicked.png') no-repeat 0 1px / contain;
+}
+
+input[type="checkbox"] {
+  display: none;
+}
+
+/*//sport radio*/
+input[type="radio"]#sport+label {
+  display: block;
+  width: 150px;
+  height:150px;
+  background: url('../image/sport.png') no-repeat 0 0px / contain;
+}
+
+input[type='radio']#sport:checked+label {
+  background: url('../image/sport_clicked.png') no-repeat 0 1px / contain;
+}
+
+input[type="checkbox"] {
+  display: none;
+}
+
+/*//travel radio*/
+input[type="radio"]#travel+label {
+  display: block;
+  width: 150px;
+  height:150px;
+  background: url('../image/travel.png') no-repeat 0 0px / contain;
+}
+
+input[type='radio']#travel:checked+label {
+  background: url('../image/travel_clicked.png') no-repeat 0 1px / contain;
+}
+
+input[type="checkbox"] {
+  display: none;
+}
+
+/*//food radio*/
+input[type="radio"]#food+label {
+  display: block;
+  width: 150px;
+  height:150px;
+  background: url('../image/food.png') no-repeat 0 0px / contain;
+}
+
+input[type='radio']#food:checked+label {
+  background: url('../image/food_clicked.png') no-repeat 0 1px / contain;
+}
+
+input[type="checkbox"] {
+  display: none;
+}
+
+/*//life radio*/
+input[type="radio"]#life+label {
+  display: block;
+  width: 150px;
+  height:150px;
+  background: url('../image/life.png') no-repeat 0 0px / contain;
+}
+
+input[type='radio']#life:checked+label {
+  background: url('../image/life_clicked.png') no-repeat 0 1px / contain;
+}
+
+input[type="checkbox"] {
+  display: none;
+}
+
 
 .radio-label {
   display: inline-block;

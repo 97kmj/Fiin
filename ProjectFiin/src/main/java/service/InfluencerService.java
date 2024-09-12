@@ -13,7 +13,6 @@ public interface InfluencerService {
 	void join(Influencer influencer) throws Exception;
 	Influencer login(String userEmail, String password) throws Exception;
 	boolean checkDoubleEmail(String userEmail) throws Exception;
-	Influencer influencerRegister(Influencer influencer) throws Exception;
 	Influencer influencerDetail(Integer influencerNum) throws Exception;
 	Integer checkBookmarkCampaign(Integer InfluencerNum, Integer CampaignNum) throws Exception;
 	boolean toggleBookmarkCampaign(Integer InfluencerNum, Integer CampaignNum) throws Exception;
@@ -24,8 +23,10 @@ public interface InfluencerService {
   
   void imageView(HttpServletRequest request, OutputStream out, String file) throws Exception;
 
-  //상민 - 예시 추가
+  //상민 - 인플루언서 찾기
 	Influencer findInfluencerByNum(Integer influencerNum) throws Exception;
+	Influencer influencerRegister(Influencer influencer) throws Exception;
+
   void influencerModify(Influencer influencer) throws Exception;
 
 }
