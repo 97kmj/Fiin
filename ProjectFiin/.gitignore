@@ -54,3 +54,5 @@ ProjectFiin.iml
 
 ## mybatis setting 제외
 src/main/java/resource/mybatis-config.xml
+
+# mybatis db부분 확인하기.
