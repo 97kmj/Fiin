@@ -1,7 +1,10 @@
 package dao;
 
 public interface BookmarkInfluencerDao {
-	void insertBookmarkInfluencer(Integer advertiserNum, Integer InfluencerNum) throws Exception;
-	Integer selectBookmarkInfluencer(Integer advertiserNum, Integer InfluencerNum) throws Exception;
-	void deleteBookmarkInfluencer(Integer advertiserNum, Integer InfluencerNum) throws Exception;
+	
+	void insertBookmarkInfluencer(Integer InfluencerNum, Integer CampaignNum) throws Exception;
+	
+	Integer selectBookmarkInfluencer(Integer InfluencerNum, Integer CampaignNum) throws Exception;
+	
+	void deleteBookmarkInfluencer(Integer InfluencerNum, Integer CampaignNum) throws Exception;
 }

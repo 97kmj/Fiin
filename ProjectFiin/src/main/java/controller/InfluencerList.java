@@ -45,17 +45,13 @@ public class InfluencerList extends HttpServlet {
 
 		List<String> channelList = new ArrayList<>();
 
-		if (channels == null) {
-			channelList.add("youtube");
-			channelList.add("instagram");
-			channelList.add("blog");
-		} else {
-			for (String channel : channels) {
+		
+		if( channels != null) {
+			for(String channel : channels) {
 				channelList.add(channel);
 			}
-			System.out.println(channelList);
 		}
-
+		
 		Integer category = 0;
 		if (request.getParameter("category") != null) {
 			category = Integer.parseInt(request.getParameter("category"));

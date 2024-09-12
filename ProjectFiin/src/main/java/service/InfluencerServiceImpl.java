@@ -8,8 +8,8 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
-import dao.BookmarkCampaignDao;
-import dao.BookmarkCampaignDaoImpl;
+import dao.BookmarkInfluencerDao;
+import dao.BookmarkInfluencerDaoImpl;
 import dao.InfluencerDao;
 import dao.InfluencerDaoImpl;
 import dto.Influencer;
@@ -18,11 +18,11 @@ import util.PageInfo;
 public class InfluencerServiceImpl implements InfluencerService {
 
 	private InfluencerDao influencerDao;
-	private BookmarkCampaignDao bookmarkCampaignDao;
+	private BookmarkInfluencerDao bookmarkInfluencerDao;
 	
 	public InfluencerServiceImpl() {
 		influencerDao = new InfluencerDaoImpl();
-		this.bookmarkCampaignDao = new BookmarkCampaignDaoImpl();
+		this.bookmarkInfluencerDao = new BookmarkInfluencerDaoImpl();
 	}
   @Override
 	public void join(Influencer influencer) throws Exception {
@@ -57,18 +57,18 @@ public class InfluencerServiceImpl implements InfluencerService {
 	}
 
 	@Override
-	public Integer checkBookmarkCampaign(Integer InfluencerNum, Integer CampaignNum) throws Exception {
-		return bookmarkCampaignDao.selectBookmarkCampaign(InfluencerNum, CampaignNum);
+	public Integer checkBookmarkInfluencer(Integer InfluencerNum, Integer CampaignNum) throws Exception {
+		return bookmarkInfluencerDao.selectBookmarkInfluencer(InfluencerNum, CampaignNum);
 	}
 
 	@Override
-	public boolean toggleBookmarkCampaign(Integer InfluencerNum, Integer CampaignNum) throws Exception {
-		Integer cbookmarkNum = bookmarkCampaignDao.selectBookmarkCampaign(InfluencerNum, CampaignNum);
+	public boolean toggleBookmarkInfluencer(Integer InfluencerNum, Integer CampaignNum) throws Exception {
+		Integer cbookmarkNum = bookmarkInfluencerDao.selectBookmarkInfluencer(InfluencerNum, CampaignNum);
 		if(cbookmarkNum==null) {
-			bookmarkCampaignDao.insertBookmarkCampaign(InfluencerNum, CampaignNum);
+			bookmarkInfluencerDao.insertBookmarkInfluencer(InfluencerNum, CampaignNum);
 			return true;
 		} else {
-			bookmarkCampaignDao.deleteBookmarkCampaign(InfluencerNum, CampaignNum);
+			bookmarkInfluencerDao.deleteBookmarkInfluencer(InfluencerNum, CampaignNum);
 			return false;
 		}
 	}
