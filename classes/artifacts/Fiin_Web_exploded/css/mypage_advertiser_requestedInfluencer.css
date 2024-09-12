@@ -1,0 +1,206 @@
+#container {
+  display: flex;
+  margin:30px auto;
+  padding:0;
+  width:1200px;
+}
+
+.mid {
+  display: flex;
+  flex-direction: row;
+  margin-top: 60px;
+  width: 1200px;
+  justify-content: space-between;
+}
+
+
+#profileimg {
+  width: 100px;
+  height: 100px;
+  background-color:white;
+  border-radius:50%;
+  margin:0 auto;
+}
+.profilebtn {
+  display: inline-block;
+  background-color:#e5e5e5;
+  border-radius:10px;
+  width:40px;
+  height:auto;
+  padding:4px 12px;
+  margin:10px 10px;
+}
+
+
+.icons {
+  align-items:center;
+  vertical-align:middle;
+  width: 30px;
+  height:30px;
+  margin-right:10px;
+}
+
+.icons1 {
+  align-items:center;
+  vertical-align:middle;
+  width: 30px;
+  height:30px;
+  margin-right:5px;
+}
+
+#main {
+	width: 880px;
+	box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 64px 0px;
+	border-radius: 16px;
+	padding: 60px 40px;
+	margin-bottom: 60px;
+}
+
+#mainwrap {
+  display: flex;
+  flex-direction: column;
+  text-align:left;
+  border-radius:20px;
+  margin-top: 40px;
+
+}
+#filter {
+  display:flex;
+  margin:20px auto;
+}
+.filterbtn {
+  border:2px solid #939393;
+  border-radius:10px;
+  text-align:center;
+  width:80px;
+  margin-right:10px;
+  padding:4px 6px;
+}
+
+#campaignwrap {
+  display:flex;
+  flex-wrap: wrap;
+  justify-content:space-between;
+  overflow-y: scroll; 
+}
+
+.campaign {
+  display:flex;
+  flex-direction:column;
+  margin:20px 10px;
+  padding:10px;
+  align-items:flex-start;
+  text-align: left;
+}
+
+.campaign-row {
+  display:flex;
+  flex-direction: row;
+}
+
+.campaign-row1 {
+  display:flex;
+  flex-direction: row;
+}
+
+
+#campaignNum1 {
+  margin-top: 10px;
+}
+
+.campaign_name {
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 200px;
+  margin-bottom: 20px;
+  gap: 5px;
+}
+
+.campaign >.category {
+  display:flex;
+  /*text-align: center;*/
+  justify-content: flex-start;
+  font-size: small;
+  margin-top: 10px;
+  margin-bottom:10px;
+}
+
+.channel {
+  font-size: small;
+  font-weight: bold;
+  margin-top: 10px;
+  margin-bottom:10px;
+}
+
+.subject {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.subscriberConut {
+  font-size: small;
+  font-weight: normal;
+  color: grey;
+  margin-bottom: 10px;
+}
+
+.status {
+  color: #4849E8;
+  font-size: small;
+  font-weight: bold;
+}
+
+.statusReject {
+  color: red;
+  font-size: small;
+  font-weight: bold;
+}
+
+
+
+
+.btn {
+  border:2px solid black;
+  border-radius:10px;
+  width: 100px;
+  height:auto;
+  text-align:center;
+  padding:4px 12px;
+  margin:8px auto;
+}
+.campaign .btn:hover {
+  cursor: pointer;
+}
+.applylist {
+  display:none;
+  width:100%;
+  position:absolute;
+}
+
+#showlist {
+  width:100%;
+  align-items:center;
+  vertical-align:middle;
+  margin:0 auto;
+}
+#showlist table {
+  text-align:center;
+  font-size:20px;
+  margin:10px auto;
+  width:100%;
+  line-height:50px;
+  border-collapse: separate;
+  border-spacing: 0;
+  border:1px solid #e5e5e5;
+}
+#showlist table th{
+  font-weight:bold;
+  background-color:#4849E8;
+  color:white;
+  border-collapse: collapse;
+}
+#showlist tr:nth-child(even) td {
+  background: #eaeaed;
+}

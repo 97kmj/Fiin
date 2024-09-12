@@ -33,6 +33,7 @@
 	</environments>
 	<mappers>
 		<mapper resource="mapper/influencer.xml"/>
+		
 		<mapper resource="mapper/advertiser.xml"/>
 		<mapper resource="mapper/campaign.xml"/>
 		<mapper resource="mapper/point.xml"/>

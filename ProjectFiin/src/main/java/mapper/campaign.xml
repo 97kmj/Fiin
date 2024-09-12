@@ -9,7 +9,7 @@
 
 <mapper namespace="mapper.campaign">
 
-<!--	//상민 - campaignRegister(캠페인 등록)-->
+<!-- 상민 - campaignRegister(캠페인 등록)-->
 	<insert id="registerCampaign" parameterType="campaign" >
 		<![CDATA[
 	   		INSERT INTO campaign (company_name, company_url, campaign_title, product_name, requirement,
