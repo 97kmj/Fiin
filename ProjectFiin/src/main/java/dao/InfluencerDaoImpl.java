@@ -79,14 +79,6 @@ public class InfluencerDaoImpl implements InfluencerDao {
     return sqlSession.selectList("mapper.influencer.selectAllInfluencer", map);
   }
 
-  // 상민 - 인플루언서 등록
-  @Override
-  public void registerInfluencer(Influencer influencer) throws Exception {
-    sqlSession.update("mapper.influencer.updateRegistInfluencer", influencer);
-    sqlSession.commit();
-  }
-
-
   @Override
   public Integer selectInfluencerCount() throws Exception {
     return sqlSession.selectOne("mapper.influencer.selectInfluencerCount");
