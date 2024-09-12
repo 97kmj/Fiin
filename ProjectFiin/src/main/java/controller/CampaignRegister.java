@@ -16,13 +16,28 @@ import service.CampaignServiceImpl;
 @WebServlet("/campaignRegister")
 public class CampaignRegister extends HttpServlet {
 
+  private static final long serialVersionUID = 1L;
+
 
   @Override
   protected void doGet(HttpServletRequest req, HttpServletResponse resp)
       throws ServletException, IOException {
 
-    req.getRequestDispatcher("/campaign/campaign_register.jsp").forward(req, resp);
+    try {
+      Campaign campaign = (Campaign) req.getSession().getAttribute("campaign");
+      if (campaign == null) {
+        throw new Exception("로그인 처리 필요");
+      }
+      CampaignService service = new CampaignServiceImpl();
+      System.out.println(service.findCampaignByNum(campaign.getCampaignNum()));
 
+      req.setAttribute("campaign", service.findCampaignByNum(campaign.getCampaignNum()));
+      req.getRequestDispatcher("/campaign/campaign_register.jsp").forward(req, resp);
+    } catch (Exception e) {
+      e.printStackTrace();
+      req.setAttribute("err", e.getMessage());
+      req.getRequestDispatcher("err.jsp").forward(req, resp);
+    }
   }
 
   //인플루언서 등록
@@ -50,7 +65,7 @@ public class CampaignRegister extends HttpServlet {
     try {
       // 데이터 처리하기 : Model
       CampaignService service = new CampaignServiceImpl();
-      Campaign camp = service.register(cam);
+      Campaign camp = service.campaignRegister(cam);
 
       // 처리한 데이터 View에 전달
       request.setAttribute("camp", camp);

@@ -1,30 +1,25 @@
 package service;
 
 
+
 import java.util.List;
 
+import dao.BookmarkCampaignDao;
+import dao.BookmarkCampaignDaoImpl;
 import dao.CampaignDao;
 import dao.CampaignDaoImpl;
 import dto.Campaign;
 import dto.Category;
+import java.util.List;
 import util.PageInfo;
 
 public class CampaignServiceImpl implements CampaignService {
-		
 
-	  
+	  private BookmarkCampaignDao bookmarkCampaignDao;
 	  private CampaignDao campaignDao;
 	  public CampaignServiceImpl() {
 	    campaignDao = new CampaignDaoImpl();
-	
-	  }
-	  
-	  
-	  
-	  @Override
-	  public Campaign register(Campaign cam) throws Exception {
-		  campaignDao.registerCampaign(cam);
-		  return cam;
+	    bookmarkCampaignDao = new BookmarkCampaignDaoImpl();
 	  }
 	  
 	  @Override
@@ -61,14 +56,50 @@ public class CampaignServiceImpl implements CampaignService {
 
 	@Override
 	public List<Category> categoryList() throws Exception {
-	
 		return campaignDao.selectCategoryList();
 	}
 
-	 
+	@Override
+	public void campaignIsRecruit(Integer campaignNum, Integer status) throws Exception {
+		campaignDao.updatecampaignIsRecruit(campaignNum,status);
+	}
 
 
 
+	@Override
+	public boolean toggleCampaign(Integer Influencer,Integer campaignNum) throws Exception {
+		Integer bookMark = bookmarkCampaignDao.selectBookmarkCampaign(Influencer,campaignNum);
+		if(bookMark==null) {
+			bookmarkCampaignDao.insertBookmarkCampaign(Influencer, campaignNum);
+			return true;
+		}else {
+			bookmarkCampaignDao.deleteBookmarkCampaign(Influencer, campaignNum);
+			return false;
+		}
+		
+	}
 
+
+
+	@Override
+	public Integer checkBookmark(Integer influencerNum, Integer campaignNum) throws Exception {
+		
+		return bookmarkCampaignDao.selectBookmarkCampaign(influencerNum, campaignNum);
+	}
+
+  //상민 - 캠페인 찾기
+  @Override
+  public Campaign findCampaignByNum(Integer cam) throws Exception {
+    return campaignDao.selectCampaign(cam);
+  }
+
+  // 상민) 캠페인 등록 시 사용
+  @Override
+  public Campaign campaignRegister(Campaign cam) throws Exception {
+    campaignDao.registerCampaign(cam);
+    return cam;
+  }
+
+ 
 
 }

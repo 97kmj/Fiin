@@ -7,7 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/sidebar.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/sidebar.css?after">
 
 <style>
 .profile_img {
@@ -22,13 +22,13 @@
 <div id="sidebar">
         <div class="sideitem" style="text-align:center">
             <h3 style="padding: 0; margin-bottom: 16px;">${influencer.nickname }</h3>
-            <div class="profile_img" style="margin:10px auto;">
+            <div class="side_profile_img" >
            	<c:choose>
             	<c:when test="${influencer.profileImage eq null }">
             		<img src="https://img.icons8.com/?size=100&id=43942&format=png&color=ffffff" >
             	</c:when>
             	<c:otherwise>
-	            	<img src="https://img.icons8.com/?size=50&id=NjOjDSZRU0Ma&format=png&color=4849e8">
+	            	<img src='image?file=${influencer.profileImage}'>
             	</c:otherwise>
            	</c:choose>
             </div>

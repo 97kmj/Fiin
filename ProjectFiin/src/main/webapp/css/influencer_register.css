@@ -142,6 +142,10 @@ h2 {
   align-items: center;
   text-align: center;
   width: 100%;
+  margin-top: 100px;
+  margin-bottom: 50px;
+
+  height: 100px;
 }
 
 .main_first_line .first_line_image {
@@ -157,8 +161,12 @@ h2 {
   justify-content: center;
   margin-top: 40px;
   margin-bottom: 40px;
-  /*margin-left: 80px;*/
   width: 100%;
+  height: auto;
+}
+
+#main form {
+  height: 1950px;
 }
 
 .influencer_register {
@@ -170,6 +178,7 @@ h2 {
   gap: 50px;
   width: 95%;
   height: 100px;
+  margin-top: 50px;
   margin-bottom: 10px;
   margin-left: 100px;
 }
@@ -193,6 +202,8 @@ h2 {
   text-align: left;
   justify-content: flex-start;
   width: 900px;
+
+  height: 300px;
   margin-right: 50px;
 }
 
@@ -257,8 +268,14 @@ form {
   align-items: center;
   justify-content: center;
   width: 100%;
-  margin-bottom: 20px;
+  /*margin-bottom: 20px;*/
   font-size: 30px;
+
+}
+
+.main_second_line .select_channel {
+  height: 60px;
+  margin-top: 30px;
 }
 
 .select_channel {
@@ -269,6 +286,7 @@ form {
   text-align: center;
   width: 100%;
   margin-bottom: 20px;
+
 }
 
 .select_channel input {
@@ -320,6 +338,152 @@ form {
 #blog_subscriber {
   margin-right: 80px;
 }
+
+/*//youtube checkbox*/
+input[type="checkbox"]#youtube_checkbox+label {
+  display: block;
+  width: 150px;
+  height:100px;
+  background: url('../image/youtube.png') no-repeat 0 0px / contain;
+}
+
+input[type='checkbox']#youtube_checkbox:checked+label {
+  background: url('../image/youtube_checked.png') no-repeat 0 1px / contain;
+}
+
+input[type="checkbox"] {
+  display: none;
+}
+
+/*//instagram checkbox*/
+input[type="checkbox"]#instagram_checkbox+label {
+  display: block;
+  width: 150px;
+  height:100px;
+  background: url('../image/instagram.png') no-repeat 0 0px / contain;
+}
+
+input[type='checkbox']#instagram_checkbox:checked+label {
+  background: url('../image/instagram_checked.png') no-repeat 0 1px / contain;
+}
+
+input[type="checkbox"] {
+  display: none;
+}
+
+
+/*//blog checkbox*/
+input[type="checkbox"]#blog_checkbox+label {
+  display: block;
+  width: 150px;
+  height:100px;
+  background: url('../image/blog(un).png') no-repeat 0 0px / contain;
+}
+
+input[type='checkbox']#blog_checkbox:checked+label {
+  background: url('../image/blog_checked.png') no-repeat 0 1px / contain;
+}
+
+input[type="checkbox"] {
+  display: none;
+}
+
+/*//beauty radio*/
+input[type="radio"]#beauty+label {
+  display: block;
+  width: 150px;
+  height:150px;
+  background: url('../image/beauty.png') no-repeat 0 0px / contain;
+}
+
+input[type='radio']#beauty:checked+label {
+  background: url('../image/beauty_clicked.png') no-repeat 0 1px / contain;
+}
+
+input[type="checkbox"] {
+  display: none;
+}
+
+/*//fashion radio*/
+input[type="radio"]#fashion+label {
+  display: block;
+  width: 150px;
+  height:150px;
+  background: url('../image/fashion.png') no-repeat 0 0px / contain;
+}
+
+input[type='radio']#fashion:checked+label {
+  background: url('../image/fashion_clicked.png') no-repeat 0 1px / contain;
+}
+
+input[type="checkbox"] {
+  display: none;
+}
+
+/*//sport radio*/
+input[type="radio"]#sport+label {
+  display: block;
+  width: 150px;
+  height:150px;
+  background: url('../image/sport.png') no-repeat 0 0px / contain;
+}
+
+input[type='radio']#sport:checked+label {
+  background: url('../image/sport_clicked.png') no-repeat 0 1px / contain;
+}
+
+input[type="checkbox"] {
+  display: none;
+}
+
+/*//travel radio*/
+input[type="radio"]#travel+label {
+  display: block;
+  width: 150px;
+  height:150px;
+  background: url('../image/travel.png') no-repeat 0 0px / contain;
+}
+
+input[type='radio']#travel:checked+label {
+  background: url('../image/travel_clicked.png') no-repeat 0 1px / contain;
+}
+
+input[type="checkbox"] {
+  display: none;
+}
+
+/*//food radio*/
+input[type="radio"]#food+label {
+  display: block;
+  width: 150px;
+  height:150px;
+  background: url('../image/food.png') no-repeat 0 0px / contain;
+}
+
+input[type='radio']#food:checked+label {
+  background: url('../image/food_clicked.png') no-repeat 0 1px / contain;
+}
+
+input[type="checkbox"] {
+  display: none;
+}
+
+/*//life radio*/
+input[type="radio"]#life+label {
+  display: block;
+  width: 150px;
+  height:150px;
+  background: url('../image/life.png') no-repeat 0 0px / contain;
+}
+
+input[type='radio']#life:checked+label {
+  background: url('../image/life_clicked.png') no-repeat 0 1px / contain;
+}
+
+input[type="checkbox"] {
+  display: none;
+}
+
 
 
 .channel_name {

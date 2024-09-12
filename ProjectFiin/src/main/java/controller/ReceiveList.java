@@ -42,7 +42,11 @@ public class ReceiveList extends HttpServlet {
 			String result ="";
 			for(Map<String,Object> receive : receiveList) {
 				String row = "<tr>";
-				row += "<td><div class=\"imgbox\"><img src=\"/fiin/upload/sampleimg.jpg\" ></div> "+receive.get("nickname")+"</td>";
+				if(receive.get("profile_image")==null) {
+					row += "<td><div class=\"imgbox\"><img src=\"https://img.icons8.com/?size=100&id=43942&format=png&color=ffffff\" ></div> "+receive.get("nickname")+"</td>";
+				} else {
+					row += "<td><div class=\"imgbox\"><img src=\"image?file="+receive.get("profile_image")+"\" ></div> "+receive.get("nickname")+"</td>";
+				}
 				row += "<td>"+receive.get("category_name")+"</td>";
 				row+="<td>";
 				if(receive.get("youtube")!=null && (boolean)receive.get("youtube")==true) {

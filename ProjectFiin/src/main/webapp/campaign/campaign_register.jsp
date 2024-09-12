@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Main Page</title>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/campaign_register.css?ver=1">
+    <link rel="stylesheet"
+          href="${pageContext.request.contextPath}/css/campaign_register.css?ver=1">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/reset.css">
 </head>
 <body>
@@ -15,21 +16,25 @@
 
     <!-- 통합된 폼 -->
     <form action="campaignRegister" method="post" enctype="multipart/form-data">
-		<h2>캠페인 등록하기</h2>
+        <h2>캠페인 등록하기</h2>
         <div id="adChannel">
             <h3>희망 광고 채널</h3>
             <div id="channel">
-                <label class="label" for="youtube">
-                    <div><img src="${pageContext.request.contextPath}/image/youtube.png" alt=""></div>
-                    <input type="checkbox" name="channel" id="youtube" value="youtube">
+                <input type="checkbox" name="channel" id="youtube_checkbox" value="youtube"
+                       style="display:none;"
+                       <c:if test="${campaign.youtube==1}">checked</c:if>>
+                <label for="youtube_checkbox">
                 </label>
-                <label class="label" for="insta">
-                    <div><img src="${pageContext.request.contextPath}/image/instagram.png" alt=""></div>
-                    <input type="checkbox" name="channel" id="insta" value="insta">
+
+                <input type="checkbox" name="channel" id="instagram_checkbox" value="insta"
+                       style="display:none;"
+                       <c:if test="${campaign.instagram==1}">checked</c:if>>
+                <label for="instagram_checkbox">
                 </label>
-                <label class="label" for="blog">
-                    <div><img src="${pageContext.request.contextPath}/image/blog.png" alt=""></div>
-                    <input type="checkbox" name="channel" id="blog" value="blog">
+
+                <input type="checkbox" name="channel" id="blog_checkbox" value="blog"
+                       <c:if test="${campaign.blog==1}">checked</c:if>>
+                <label for="blog_checkbox">
                 </label>
             </div>
         </div>
@@ -53,9 +58,24 @@
                     <input type="text" id="productName" name="productName">
                 </div>
             </div>
-            <img id="uploadImage" src="${pageContext.request.contextPath}/image/upload.png" alt="">
-            <!-- 파일 입력 필드 -->
-            <input type="file" id="fileInput" name="image"/>
+
+            <c:choose>
+                <c:when test="${campaign.profileImage==null}">
+                    <input type="file" id="fileInput" name="profileImage"
+                           style="display: none;"/>
+                    <img id="uploadImage"
+                         src="${pageContext.request.contextPath}/image/upload.png"
+                         alt="Upload Image" style="cursor: pointer">
+                </c:when>
+                <c:otherwise>
+                    <input type="file" id="fileInput" name="profileImage"
+                           style="display: none;" onchange="readURL(this)"/>
+                    <img id="uploadImage"
+                         src="${pageContext.request.contextPath}/image?file=${campaign.profileImage}"
+                         alt="Upload Image" style="cursor: pointer"
+                    />
+                </c:otherwise>
+            </c:choose>
         </div>
 
         <div class="form-group-group">
@@ -82,48 +102,47 @@
                 <h3 class="categoryH1">컨텐츠 카테고리 선택</h3>
                 <p>등록하고자 하는 캠페인 주제를 한 가지 선택해주세요.</p>
             </div>
+
             <div class="first3">
                 <div class="category">
                     <input type="radio" id="beauty" name="category" value="beauty"
-                           class="radio-input">
-                    <label for="beauty" class="radio-label">
-                        <img src="${pageContext.request.contextPath}/image/beauty.png" alt="뷰티" class="radio-image">
+                           class="radio-input" style="display:none;">
+                    <label for="beauty">
                     </label>
 
                 </div>
                 <div class="category">
                     <input type="radio" id="fashion" name="category" value="fashion"
-                           class="radio-input">
-                    <label for="fashion" class="radio-label">
-                        <img src="${pageContext.request.contextPath}/image/fashion.png" alt="패션" class="radio-image">
+                           class="radio-input" style="display:none;">
+                    <label for="fashion">
                     </label>
                 </div>
+
                 <div class="category">
                     <input type="radio" id="sport" name="category" value="sport"
-                           class="radio-input">
-                    <label for="sport" class="radio-label">
-                        <img src="${pageContext.request.contextPath}/image/sport.png" alt="스포츠" class="radio-image">
+                           class="radio-input" style="display:none;">
+                    <label for="sport">
                     </label>
                 </div>
             </div>
+
             <div class="second3">
                 <div class="category">
                     <input type="radio" id="travel" name="category" value="travel"
-                           class="radio-input">
-                    <label for="travel" class="radio-label">
-                        <img src="${pageContext.request.contextPath}/image/travel.png" alt="여행" class="radio-image">
+                           class="radio-input" style="display:none;">
+                    <label for="travel">
                     </label>
                 </div>
+
                 <div class="category">
-                    <input type="radio" id="food" name="category" value="food" class="radio-input">
-                    <label for="food" class="radio-label">
-                        <img src="${pageContext.request.contextPath}/image/food.png" alt="식품" class="radio-image">
+                    <input type="radio" id="food" name="category" value="food" class="radio-input" style="display:none;">
+                    <label for="food" >
                     </label>
                 </div>
+
                 <div class="category">
-                    <input type="radio" id="life" name="category" value="life" class="radio-input">
-                    <label for="life" class="radio-label">
-                        <img src="${pageContext.request.contextPath}/image/life.png" alt="생활용품" class="radio-image">
+                    <input type="radio" id="life" name="category" value="life" class="radio-input" style="display:none;">
+                    <label for="life">
                     </label>
                 </div>
             </div>
@@ -143,7 +162,6 @@
         </div>
 
 
-
     </form>
 
 </div>
@@ -152,5 +170,46 @@
 
 <%--    //푸터가 정 사이즈가 아니고, 그리고 우선 form안에 정보 다 넣었음--%>
 <%--    // 사이즈 조정 필요--%>
+
+<script>
+  //이미지 클릭 시, "찾기"로 이동
+  document.getElementById('uploadImage').addEventListener('click', function () {
+    document.getElementById('fileInput').click();
+  });
+</script>
+
+<script>
+  const file = document.getElementById("fileInput");
+  const preview = document.getElementById("uploadImage");
+
+  //파일 선택 시 미리보기 업데이트
+  file.addEventListener("change", () => {
+    const reader = new FileReader();
+    reader.onload = () => {
+      preview.src = reader.result;
+    };
+    // 선택된 파일이 존재하는 경우만 읽기
+    if (file.files && file.files[0]) {
+      reader.readAsDataURL(file.files[0]);
+    }
+  });
+</script>
+
+<script>
+  /* 파일용량 제한*/
+  $("input[name=profileImage]").on("change", function () {
+    let maxSize = 5 * 1024 * 1024; //* 5MB 사이즈 제한
+    let fileSize = this.files[0].size; //업로드한 파일용량
+
+    if (fileSize > maxSize) {
+      alert("파일첨부 사이즈는 5MB 이내로 가능합니다.");
+      $(this).val(''); //업로드한 파일 제거
+      return;
+    }
+  });
+
+</script>
+
+
 </body>
 </html>

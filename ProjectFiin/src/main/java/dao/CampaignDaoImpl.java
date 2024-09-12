@@ -18,10 +18,10 @@ public class CampaignDaoImpl implements CampaignDao {
 	public CampaignDaoImpl() {
 		sqlSession = MybatisSqlSessionFactory.getSqlSessionFactory().openSession();
 	}
-	
+
+	//상민 - campaign 등록
 	@Override
 	public void registerCampaign(Campaign cam) throws Exception {
-
 		sqlSession.insert("mapper.campaign.registerCampaign", cam);
 		sqlSession.commit();
 	}
@@ -61,6 +61,17 @@ public class CampaignDaoImpl implements CampaignDao {
 	@Override
 	public List<Category> selectCategoryList() throws Exception {
 		return sqlSession.selectList("mapper.category.selectCategoryList");
+	}
+
+	@Override
+	public void updatecampaignIsRecruit(Integer campaignNum, Integer status) throws Exception {
+		Map<String,Object> map = new HashMap<>();
+		map.put("campaignNum", campaignNum);
+		map.put("status", status);
+		
+		sqlSession.update("mapper.requestCampaign.CampaignIsRecruit", map);
+		sqlSession.commit();
+		
 	}
 
 	

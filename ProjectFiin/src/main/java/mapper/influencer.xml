@@ -5,9 +5,9 @@
 <mapper namespace="mapper.influencer">
 
 	<!--// 상민 - influencerRegister (인플루언서 등록) -->
-	<update id="updateInfluencerRegister" parameterType="influencer">
-		UPDATE
-		influencer
+
+	<update id="updateRegistInfluencer" parameterType="influencer">
+		UPDATE influencer
 		set
 		intro_line = #{introLine},
 		profile_image =
@@ -27,7 +27,8 @@
 		#{blogFollower},
 		blog_url = #{blogUrl},
 		category_id = #{categoryId},
-		introduction = #{introduction}
+		introduction = #{introduction},
+		regist_date = #{registDate}
 
 		WHERE influencer_num = #{influencerNum}
 	</update>
@@ -156,6 +157,18 @@
 		<![CDATA[
 			select insert(password, 4, 5, '*****') from influencer where user_email = #{userEmail}
 		]]>
+	</select>
+	
+	
+	
+	<!-- 민준 -->
+	<select id="selectEmaliListByCampaign" parameterType="Map" resultType="String">
+		select user_email from influencer 
+		where category_id = #{categoryId} and   
+		<foreach item="channel" collection="channelList" open="(" separator="or" close=")">
+			${channel} = 1
+		</foreach>
+		limit 0,50
 	</select>
 </mapper>
 

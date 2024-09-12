@@ -12,6 +12,7 @@ import dao.BookmarkInfluencerDao;
 import dao.BookmarkInfluencerDaoImpl;
 import dao.InfluencerDao;
 import dao.InfluencerDaoImpl;
+import dto.Campaign;
 import dto.Influencer;
 import util.PageInfo;
 
@@ -76,8 +77,6 @@ public class InfluencerServiceImpl implements InfluencerService {
 	//상민 - 인플루언서 등록
 	@Override
 	public Influencer influencerRegister(Influencer influencer) throws Exception {
-		// Dto에서 받은 정보들을 dao에 전달
-
 		influencerDao.registerInfluencer(influencer);
 		return influencer;
 	}
@@ -149,10 +148,18 @@ public class InfluencerServiceImpl implements InfluencerService {
 		}
 	}
 
-
+	@Override
 	public void influencerModify(Influencer influencer) throws Exception {
 		influencerDao.updateInfluencer(influencer);
 	}
+	
+	
+	//민준 - 캠페인의 카테고리랑 희망채널이 일치하는 인플루언서들의 이메일 목록 뽑아오기
+	@Override
+	public List<String> getEmaliListByCampaign(Campaign campaign) throws Exception {
+		return influencerDao.selectEmaliListByCampaign(campaign);
+	}
+	
 }
 
 

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>     
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,6 +12,7 @@
 <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.6.0.min.js"></script>
 <script>
 	$(function() {
+		/* 주소 검색 */
 		$(".address_btn").click(function () {
 			new daum.Postcode({
 		        oncomplete: function(data) {
@@ -43,8 +45,16 @@
 	    	}).open();
 		})
 		
+		/* 이메일 중복 확인 */
 		$("#emailCheck").click(function(e) {
 			e.preventDefault();
+			
+			if (!emailReg.test($("#userEmail").val())) {
+				alert("이메일 형식이 올바르지 않습니다.");
+				$("#userEmail").focus();
+				return false;
+			}
+			
 			$.ajax({
 				url: 'emailCheck',
 				type: 'post',
@@ -64,8 +74,51 @@
 			})
 		})
 		
+		/* 휴대폰 인증 메세지 보내기 */
 		$("#sendSms").click(function(e) {
 			e.preventDefault();
+			
+			if ($("#mobileNumber").val() === "") {
+				alert("휴대폰번호를 입력해주세요.");
+				$("#mobileNumber").focus();
+				return false;
+			}  else if (!pnReg.test($("#mobileNumber").val())) {
+				alert("휴대폰번호를 확인해주세요.");
+				$("#mobileNumber").focus();
+				return false;
+			} else {
+				$("#sendSms").attr('disabled', true);
+				$("#sendSms").css({'background-color': '#f6f7f8', 'border': '1px solid #e5e5e5', 'color': '#737373'});
+				$(".codeinput_btn_wrap").css('display', 'flex');
+				$("#confirmCode").attr('disabled', false);
+			}
+			
+			/* 인증 타이머 */
+			var counter = 0;
+			var timeleft = 180; // 제한 시간 지정 값
+			
+			function convertSeconds(s){
+				if (s === 0) {
+					clearInterval(setTimer);	// 시간 끝났을 때 멈추기
+					$("#confirmCode").attr('disabled', true);
+					$("#confirmCode").css({'border': '1px solid #e5e5e5', 'color': '#737373'});
+					$("#sendSms").attr('disabled', false);
+					$("#sendSms").css({'background-color': '#4849e8', 'border': '1px solid #4849e8', 'color': 'white'});
+				}
+			    var min = Math.floor(s / 60);
+			    var sec = s % 60;
+			    return min +  ':' + String(sec).padStart(2, '0');
+			}
+
+			$("#time").html(convertSeconds(timeleft - counter));
+
+			function timeIt(){
+			    counter++;
+			    $("#time").html(convertSeconds(timeleft - counter));
+			}
+			var setTimer = setInterval(timeIt, 1000);
+			
+			/* ajax로 인증코드 요청하고 결과 확인하기 */
 			$.ajax({
 				url: 'sendSms',
 				type: 'post',
@@ -73,12 +126,28 @@
 				dataType: 'text',
 				data: {mobileNumber: $("#mobileNumber").val()},
 				success: function(result) {
-					console.log(result)
-					/* if (result == 'true') {
-						alert("사용중인 아이디입니다.");
-					} else {
-						alert("사용가능한 아이디입니다.");
-					} */
+					console.log(result);
+					$("#confirmCode").click(function(e) {
+						e.preventDefault();
+						
+						if ($("#code").val() === "") {				
+							alert("인증코드를 입력해주세요.");
+							$("#code").focus();
+							return false;
+						} else if (result === $("#code").val()) {
+							alert("인증이 성공하였습니다.");
+							clearInterval(setTimer);
+							$("#time").css('display', 'none');
+							$("#sendSms").css({'background-color': '#f6f7f8', 'border': '1px solid #e5e5e5', 'color': '#737373'});
+							$("#confirmCode").attr('disabled', true);
+							$("#confirmCode").css({'border': '1px solid #e5e5e5', 'color': '#737373'});
+							$(".codeinput_btn_wrap").css('display', 'none');
+						} else {
+							alert("인증에 실패하였습니다. 인증코드를 확인해주세요.");
+							$("#code").focus();
+							return false;
+						}
+					})
 				},
 				error: function(err) {
 					console.log(err);
@@ -86,6 +155,7 @@
 			})
 		})
 		
+		/* 회원가입 유효성 검증 */
 		var pwReg = /^(?=.*[a-zA-Z])(?=.*[0-9]).{8,25}$/;
 		var emailReg = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;
 		var nameReg = /^[가-힣]{2,4}$/;
@@ -125,6 +195,10 @@
 				alert("닉네임을 입력해주세요.");
 				$("#nickname").focus();
 				return false;
+			} else if ($("#companyName").val() === "") {
+				alert("업체명을 입력해주세요.");
+				$("#companyName").focus();
+				return false;
 			} else if ($("#mobileNumber").val() === "") {
 				alert("휴대폰번호를 입력해주세요.");
 				$("#mobileNumber").focus();
@@ -132,6 +206,9 @@
 			} else if (!pnReg.test($("#mobileNumber").val())) {
 				alert("휴대폰번호를 확인해주세요.");
 				$("#mobileNumber").focus();
+				return false;
+			} else if ($("#code").val() === "") {
+				alert("휴대폰번호 인증을 완료해주세요.");
 				return false;
 			} else if ($("#address").val() === "") {
 				alert("주소를 검색해주세요.");
@@ -150,12 +227,16 @@
 <body>
     <div class="signup_container">
         <div class="title_wrap">
-          <h2>인플루언서 회원가입</h2>
+          <c:choose>
+          	<c:when test="${sessionScope.type eq 'influencer'}"><h2>인플루언서 회원가입</h2></c:when>
+          	<c:otherwise><h2>광고주 회원가입</h2></c:otherwise>
+          </c:choose>
+      
           <a href="login">
             <img src="${pageContext.request.contextPath}/image//closeIcon.svg" alt="닫기아이콘" />
           </a>
         </div>
-        <form action="joinInfluencer" class="signup_form" method="post">
+        <form action="join" class="signup_form" method="post">
           <label for="userEmail" class="input_label">
             이메일<span>*</span> <span class="br_style"></span><br />
             <div class="input_btn_wrap">
@@ -199,16 +280,32 @@
               name="name"
             />
           </label>
-          <label for="nickname" class="input_label">
-            닉네임<span>*</span> <span class="br_style"><br /></span>
-            <input
-              type="text"
-              id="nickname"
-              placeholder="닉네임을 입력해주세요."
-              class="input_style"
-              name="nickname"
-            />
-          </label>
+          <c:choose>
+          	<c:when test="${sessionScope.type eq 'influencer'}">
+          		<label for="nickname" class="input_label">
+		            닉네임<span>*</span> <span class="br_style"><br /></span>
+		            <input
+		              type="text"
+		              id="nickname"
+		              placeholder="닉네임을 입력해주세요."
+		              class="input_style"
+		              name="nickname"
+		            />
+          		</label>
+          	</c:when>
+          	<c:otherwise>
+          		<label for="companyName" class="input_label">
+		            업체명<span>*</span> <span class="br_style"><br /></span>
+		            <input
+		              type="text"
+		              id="companyName"
+		              placeholder="업체명을 입력해주세요."
+		              class="input_style"
+		              name="companyName"
+		            />
+          		</label>
+          	</c:otherwise>
+          </c:choose>
           <label for="mobileNumber" class="input_label">
             휴대폰번호<span>*</span> <span class="br_style"><br /></span>
             <div class="input_btn_wrap">
@@ -222,6 +319,19 @@
               <button type="button" id="sendSms">인증</button>
             </div>
           </label>
+          <div class="codeinput_btn_wrap">
+          	  <div class="code_wrap">
+	              <input
+	                type="text"
+	                id="code"
+	                placeholder="인증코드를 입력해주세요."
+	                class="input_btn_style"
+	                name="code"
+	              />
+	              <span id="time"></span>
+              </div>
+              <button type="button" id="confirmCode">확인</button>
+          </div> 
           <label for="address" class="input_label">
             주소<span>*</span> <span class="br_style"><br /></span>
             <div class="input_btn_wrap">
