@@ -20,7 +20,7 @@ public class SendSmsService {
         HashMap<String, String> messageData = new HashMap<>();
         messageData.put("to", mobileNumber);	// 수신자 번호
         messageData.put("from", FROM_NUMBER); // 발신자 번호
-        messageData.put("text", "[파인] 인증번호는 [" + verificationCode + "]입니다.");
+        messageData.put("text", "[파인]\n인증번호는 [" + verificationCode + "]입니다.");
         messageData.put("type", "SMS");
 		
 		try {
