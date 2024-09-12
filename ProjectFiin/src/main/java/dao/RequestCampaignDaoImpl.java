@@ -7,37 +7,37 @@ import org.apache.ibatis.session.SqlSession;
 
 import util.MybatisSqlSessionFactory;
 
-public class BookmarkCampaignDaoImpl implements BookmarkCampaignDao {
+public class RequestCampaignDaoImpl implements RequestCampaignDao {
 	private SqlSession sqlSession;
-	public BookmarkCampaignDaoImpl() {
+	public RequestCampaignDaoImpl() {
 		sqlSession = MybatisSqlSessionFactory.getSqlSessionFactory().openSession();
 	}
-	
-	
 	@Override
-	public void insertBookmarkCampaign(Integer influencerNum, Integer campaignNum) throws Exception {
+	public void insertRequestCampaign(Integer influencerNum, Integer campaignNum) throws Exception {
 		Map<String,Integer> param = new HashMap<>();
 		param.put("influencerNum", influencerNum);
 		param.put("campaignNum", campaignNum);
-		sqlSession.insert("mapper.bookmarkCampaign.insertBookmark",param);
+		sqlSession.insert("mapper.requestCampaign.insertRequest",param);
 		sqlSession.commit();
+
 	}
 
 	@Override
-	public Integer selectBookmarkCampaign(Integer influencerNum, Integer campaignNum) throws Exception {
+	public Integer selectRequestCampaign(Integer influencerNum, Integer campaignNum) throws Exception {
 		Map<String,Integer> param = new HashMap<>();
 		param.put("influencerNum", influencerNum);
 		param.put("campaignNum", campaignNum);
-		return sqlSession.selectOne("mapper.bookmarkCampaign.selectBookmark",param);
+		return sqlSession.selectOne("mapper.requestCampaign.selectRequest",param);
 	}
 
 	@Override
-	public void deleteBookmarkCampaign(Integer influencerNum, Integer campaignNum) throws Exception {
+	public void deleteRequestCampaign(Integer influencerNum, Integer campaignNum) throws Exception {
 		Map<String,Integer> param = new HashMap<>();
 		param.put("influencerNum", influencerNum);
 		param.put("campaignNum", campaignNum);
-		sqlSession.delete("mapper.bookmarkCampaign.deleteBookmark",param);
+		sqlSession.delete("mapper.requestCampaign.deleteRequest",param);
 		sqlSession.commit();
+
 	}
 
 }

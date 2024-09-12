@@ -63,6 +63,17 @@ public class CampaignDaoImpl implements CampaignDao {
 		return sqlSession.selectList("mapper.category.selectCategoryList");
 	}
 
+	@Override
+	public void updatecampaignIsRecruit(Integer campaignNum, Integer status) throws Exception {
+		Map<String,Object> map = new HashMap<>();
+		map.put("campaignNum", campaignNum);
+		map.put("status", status);
+		
+		sqlSession.update("mapper.requestCampaign.CampaignIsRecruit", map);
+		sqlSession.commit();
+		
+	}
+
 	
 	
 
