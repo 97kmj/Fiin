@@ -8,21 +8,22 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
-import dao.BookmarkCampaignDao;
-import dao.BookmarkCampaignDaoImpl;
+import dao.BookmarkInfluencerDao;
+import dao.BookmarkInfluencerDaoImpl;
 import dao.InfluencerDao;
 import dao.InfluencerDaoImpl;
+import dto.Campaign;
 import dto.Influencer;
 import util.PageInfo;
 
 public class InfluencerServiceImpl implements InfluencerService {
 
 	private InfluencerDao influencerDao;
-	private BookmarkCampaignDao bookmarkCampaignDao;
+	private BookmarkInfluencerDao bookmarkInfluencerDao;
 	
 	public InfluencerServiceImpl() {
 		influencerDao = new InfluencerDaoImpl();
-		this.bookmarkCampaignDao = new BookmarkCampaignDaoImpl();
+		this.bookmarkInfluencerDao = new BookmarkInfluencerDaoImpl();
 	}
   @Override
 	public void join(Influencer influencer) throws Exception {
@@ -57,18 +58,18 @@ public class InfluencerServiceImpl implements InfluencerService {
 	}
 
 	@Override
-	public Integer checkBookmarkCampaign(Integer InfluencerNum, Integer CampaignNum) throws Exception {
-		return bookmarkCampaignDao.selectBookmarkCampaign(InfluencerNum, CampaignNum);
+	public Integer checkBookmarkInfluencer(Integer InfluencerNum, Integer CampaignNum) throws Exception {
+		return bookmarkInfluencerDao.selectBookmarkInfluencer(InfluencerNum, CampaignNum);
 	}
 
 	@Override
-	public boolean toggleBookmarkCampaign(Integer InfluencerNum, Integer CampaignNum) throws Exception {
-		Integer cbookmarkNum = bookmarkCampaignDao.selectBookmarkCampaign(InfluencerNum, CampaignNum);
+	public boolean toggleBookmarkInfluencer(Integer InfluencerNum, Integer CampaignNum) throws Exception {
+		Integer cbookmarkNum = bookmarkInfluencerDao.selectBookmarkInfluencer(InfluencerNum, CampaignNum);
 		if(cbookmarkNum==null) {
-			bookmarkCampaignDao.insertBookmarkCampaign(InfluencerNum, CampaignNum);
+			bookmarkInfluencerDao.insertBookmarkInfluencer(InfluencerNum, CampaignNum);
 			return true;
 		} else {
-			bookmarkCampaignDao.deleteBookmarkCampaign(InfluencerNum, CampaignNum);
+			bookmarkInfluencerDao.deleteBookmarkInfluencer(InfluencerNum, CampaignNum);
 			return false;
 		}
 	}
@@ -76,8 +77,6 @@ public class InfluencerServiceImpl implements InfluencerService {
 	//상민 - 인플루언서 등록
 	@Override
 	public Influencer influencerRegister(Influencer influencer) throws Exception {
-		// Dto에서 받은 정보들을 dao에 전달
-
 		influencerDao.registerInfluencer(influencer);
 		return influencer;
 	}
@@ -97,7 +96,7 @@ public class InfluencerServiceImpl implements InfluencerService {
 	@Override
 	public List<Map<String,Object>> getInfluencerList(List<String> channels, String keyword, Integer categoryId, PageInfo pageInfo) throws Exception {
 		
-		Integer influencerCnt = influencerDao.selectInfluencerCount();
+		Integer influencerCnt = influencerDao.selectAllInfluencerCount(keyword, channels, categoryId);
 		
 		Integer allPage = (int)Math.ceil((double)influencerCnt/8);
 		Integer startPage = (pageInfo.getCurPage()-1)/8*8+1;
@@ -110,7 +109,7 @@ public class InfluencerServiceImpl implements InfluencerService {
 		
 		Integer row = (pageInfo.getCurPage()-1)*8+1;
 		
-		List<Map<String,Object>> influencerList = influencerDao.selectInfluencerList(row, keyword, channels, categoryId);
+		List<Map<String,Object>> influencerList = influencerDao.selectAllInfluencer(row, keyword, channels, categoryId);
 		return influencerList;
 			
 	}
@@ -149,10 +148,18 @@ public class InfluencerServiceImpl implements InfluencerService {
 		}
 	}
 
-
+	@Override
 	public void influencerModify(Influencer influencer) throws Exception {
 		influencerDao.updateInfluencer(influencer);
 	}
+	
+	
+	//민준 - 캠페인의 카테고리랑 희망채널이 일치하는 인플루언서들의 이메일 목록 뽑아오기
+	@Override
+	public List<String> getEmaliListByCampaign(Campaign campaign) throws Exception {
+		return influencerDao.selectEmaliListByCampaign(campaign);
+	}
+	
 }
 
 

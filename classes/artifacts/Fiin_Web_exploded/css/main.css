@@ -1,0 +1,176 @@
+body {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.banner {
+	width: 95%;
+	background-color: black;
+	padding: 60px 0;
+	margin: 40px 0 100px 0;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	border-radius: 20px;
+}
+
+.banner_text {
+	text-align: center;
+	color: white;
+}
+
+h1 {
+	margin-bottom: 16px;
+	font-size: 40px;
+}
+
+span {
+	color: #4849e8;
+}
+
+.banner_text p {
+	font-size: 14px;
+	margin-bottom: 8px;
+}
+
+.influencer_container {
+	display: flex;
+	align-items: center;
+	margin: 60px 0;
+}
+
+.influencer_item {
+	width: 320px;
+	background-color: white;
+	border-radius: 20px;
+	padding: 20px;
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	cursor: pointer;
+}
+
+.influencer_item img {
+	width: 100%;
+	height: 280px;
+}
+
+.sns_wrap {
+	display: flex;
+	margin: 12px 0;
+}
+
+.sns_wrap p {
+	padding: 0 10px;
+	border-right: 3px solid #e5e5e5;
+}
+
+.sns_wrap p:first-child {
+	padding-left: 0;
+}
+
+.sns_wrap p:last-child {
+	padding-right: 0;
+	border-right: none;
+}
+
+.influencer_item h2 {
+	color: #4849e8;
+}
+
+.influencer_item h3 {
+	margin-top: 16px;
+}
+
+.subcount {
+	margin-top: 12px;
+}
+
+.influencer_item p span {
+	font-weight: bold;
+}
+
+.moreview_btn {
+	border-radius: 99px;
+	color: white;
+	background-color: #4849e8;
+	padding: 18px 30px;
+	font-weight: bold;
+	font-size: 14px;
+}
+
+.campaign {
+	width: 1200px;
+	margin-bottom: 100px;
+	text-align: center;
+}
+
+.campaign .title h2 {
+	font-size: 36px;
+}
+
+.campaign .title p {
+	font-size: 20px;
+	color: #525252;
+	margin-top: 40px;
+	margin-bottom: 100px;
+}
+
+.campaign_container {
+	display: flex;
+	flex-wrap: wrap;
+	/* justify-content: space-between; */
+	gap: 60px 13px;
+	margin-bottom: 100px;
+}
+
+.campaign_item {
+	width: 280px;
+	cursor: pointer;
+}
+
+.campaign_img_wrap {
+	border-radius: 20px;
+	overflow: hidden;
+}
+
+.campaign_img_wrap img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.campaign_text {
+	text-align: left;
+	word-break: keep-all;
+}
+
+.campaign_text .campaign_sns {
+	margin: 16px 0;
+}
+
+.campaign_text h4 {
+	margin: 8px 0 16px 0;
+}
+/* swiper */
+.swiper {
+	width: 100%;
+	overflow-x: hidden;
+}
+
+.swiper-wrapper {
+	transition-timing-function: linear;
+	column-gap: 32px;
+	width: 3500px;
+}
+
+.swiper-slide {
+	transition: transform 0.3s;
+}
+
+.swiper-slide:hover {
+	transform: translateY(20px);
+}

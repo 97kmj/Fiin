@@ -1,6 +1,7 @@
 package service;
 
 
+
 import java.util.List;
 
 import dao.BookmarkCampaignDao;
@@ -9,25 +10,16 @@ import dao.CampaignDao;
 import dao.CampaignDaoImpl;
 import dto.Campaign;
 import dto.Category;
+import java.util.List;
 import util.PageInfo;
 
 public class CampaignServiceImpl implements CampaignService {
-		
 
 	  private BookmarkCampaignDao bookmarkCampaignDao;
 	  private CampaignDao campaignDao;
 	  public CampaignServiceImpl() {
 	    campaignDao = new CampaignDaoImpl();
 	    bookmarkCampaignDao = new BookmarkCampaignDaoImpl();
-	
-	  }
-	  
-	  
-	  
-	  @Override
-	  public Campaign register(Campaign cam) throws Exception {
-		  campaignDao.registerCampaign(cam);
-		  return cam;
 	  }
 	  
 	  @Override
@@ -64,11 +56,8 @@ public class CampaignServiceImpl implements CampaignService {
 
 	@Override
 	public List<Category> categoryList() throws Exception {
-			
 		return campaignDao.selectCategoryList();
 	}
-
-
 
 	@Override
 	public void campaignIsRecruit(Integer campaignNum, Integer status) throws Exception {
@@ -98,16 +87,19 @@ public class CampaignServiceImpl implements CampaignService {
 		return bookmarkCampaignDao.selectBookmarkCampaign(influencerNum, campaignNum);
 	}
 
+  //상민 - 캠페인 찾기
+  @Override
+  public Campaign findCampaignByNum(Integer cam) throws Exception {
+    return campaignDao.selectCampaign(cam);
+  }
 
+  // 상민) 캠페인 등록 시 사용
+  @Override
+  public Campaign campaignRegister(Campaign cam) throws Exception {
+    campaignDao.registerCampaign(cam);
+    return cam;
+  }
 
-
-
-
-
-	 
-
-
-
-
+ 
 
 }

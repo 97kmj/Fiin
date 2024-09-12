@@ -5,11 +5,13 @@
 <mapper namespace="mapper.influencer">
 
 	<!--// 상민 - influencerRegister (인플루언서 등록) -->
-	<update id="updateInfluencerRegister" parameterType="influencer">
+
+	<update id="updateRegistInfluencer" parameterType="influencer">
 		UPDATE influencer
 		set
 		intro_line = #{introLine},
-		profile_image = #{profileImage},
+		profile_image =
+		#{profileImage},
 		youtube = #{youtube},
 		youtube_name = #{youtubeName},
 		youtube_follower = #{youtubeFollower},
@@ -17,19 +19,23 @@
 		instagram = #{instagram},
 		instagram_name = #{instagramName},
 		instagram_follower = #{instagramFollower},
-		instagram_url = #{instagramUrl},
+		instagram_url =
+		#{instagramUrl},
 		blog = #{blog},
 		blog_name = #{blogName},
-		blog_follower = #{blogFollower},
+		blog_follower =
+		#{blogFollower},
 		blog_url = #{blogUrl},
 		category_id = #{categoryId},
-		introduction = #{introduction}
+		introduction = #{introduction},
+		regist_date = #{registDate}
 
 		WHERE influencer_num = #{influencerNum}
-		</update>
+	</update>
 
-	<!--세원-->
-	<select id="selectInfluencerList" parameterType="Integer" resultType="influencer">
+	<!--세원 -->
+	<select id="selectInfluencerList" parameterType="Integer"
+		resultType="influencer">
 		<![CDATA[
 		    select *
 		    from influencer
@@ -37,35 +43,67 @@
 		    limit #{row}, 8
 	    	]]>
 	</select>
-	
+
 	<select id="selectInfluencerCount" resultType="Integer">
 		<![CDATA[
     		select count(*) from influencer
     	]]>
 	</select>
-	
-	<select id="selectAllInfluencer" parameterType="Map" resultType="Map">
-		select i.*,c.category_name from influencer i join category c using(category_id)
+
+	<select id="selectAllInfluencerCount" resultType="Integer">
+		select count(*) from influencer
 		<where>
 			1=1
-			<if test="channels != null and channels.size > 0">
+			<if test="channels != null and channels.size() > 0">
 				and
-				<foreach item="channel" collection="channels" open="(" separator="or" close=")">
+				<foreach item="channel" collection="channels" open="("
+					separator="or" close=")">
 					${channel}= 1
 				</foreach>
 			</if>
 			<if test="categoryId != 0">
 				and category_id = #{categoryId}
 			</if>
-				and	
-				(youtube_name like '%${keyword}%' or instagram_name like '%${keyword}%' or blog_name like '%${keyword}%')
+			and
+			(youtube_name like '%${keyword}%' or instagram_name like '%${keyword}%' or
+			blog_name like '%${keyword}%')
+		</where>
+
+	</select>
+
+	<select id="selectAllInfluencer" parameterType="Map"
+		resultType="Map">
+		select i.*,c.category_name from influencer i join category c
+		using(category_id)
+		<where>
+			1=1
+			<choose>
+				<when test="channels != null and channels.size > 0">
+					and
+					<foreach item="channel" collection="channels" open="("
+						separator="or" close=")">
+						${channel}= 1
+					</foreach>
+				</when>
+
+				<otherwise>
+					and is_regist = 1
+				</otherwise>
+			</choose>
+			<if test="categoryId != 0">
+				and category_id = #{categoryId}
+			</if>
+			and
+			(youtube_name like '%${keyword}%' or instagram_name like '%${keyword}%' or
+			blog_name like '%${keyword}%')
 		</where>
 		order by regist_date DESC limit #{row}, 8
 
 	</select>
 
-	<!--세나-->
-	<select id="selectInfluencer" parameterType="Integer" resultType="influencer">
+	<!--세나 -->
+	<select id="selectInfluencer" parameterType="Integer"
+		resultType="influencer">
 		<![CDATA[
 		    select *
 		    from influencer
@@ -73,7 +111,8 @@
 	    	]]>
 	</select>
 
-	<select id="selectInfluencerByEmail" parameterType="String" resultType="influencer">
+	<select id="selectInfluencerByEmail" parameterType="String"
+		resultType="influencer">
 		<![CDATA[
 			select *
 	    		from influencer
@@ -100,7 +139,8 @@
 		]]>
 	</select>
 
-	<select id="selectInfluencerForFindEmail" parameterType="map" resultType="String">
+	<select id="selectInfluencerForFindEmail" parameterType="map"
+		resultType="String">
 		<![CDATA[
 			select user_email from influencer where name = #{name} and mobile_number = #{mobileNumber}
 		]]>
@@ -111,11 +151,24 @@
 				values (#{userEmail}, #{password}, #{name}, #{nickname}, #{mobileNumber}, #{address}, #{addressDetail})
 		]]>
 	</insert>
-	
-	<select id="selectInfluencerForFindPassword" parameterType="String" resultType="String">
+
+	<select id="selectInfluencerForFindPassword"
+		parameterType="String" resultType="String">
 		<![CDATA[
 			select insert(password, 4, 5, '*****') from influencer where user_email = #{userEmail}
 		]]>
+	</select>
+	
+	
+	
+	<!-- 민준 -->
+	<select id="selectEmaliListByCampaign" parameterType="Map" resultType="String">
+		select user_email from influencer 
+		where category_id = #{categoryId} and   
+		<foreach item="channel" collection="channelList" open="(" separator="or" close=")">
+			${channel} = 1
+		</foreach>
+		limit 0,50
 	</select>
 </mapper>
 

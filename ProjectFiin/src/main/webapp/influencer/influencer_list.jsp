@@ -13,7 +13,7 @@
 	<%@ include file="../include/header.jsp"%>
 	<div class="container">
 		<form id="filterform" action="influencerList" method="get">
-			<input type="hidden" name="page" value="1"/>
+			<input type="hidden" name="page" value="1" id="page"/>
 			<div id="categoryBar">
 				<h2>인플루언서</h2>
 				<div class="categoryWrap">
@@ -23,7 +23,7 @@
 					<input type="radio" id="daily" name="category" value="6"><a href="6">생활용품</a> 
 					<input type="radio" id="sport" name="category" value="3"><a href="3">스포츠</a> 
 					<input type="radio" id="travel" name="category" value="4"><a href="4">여행/숙박</a>
-					<input type="radio" id="goodTaste" name="category" value="5"><a href="5">맛집</a>
+					<input type="radio" id="goodTaste" name="category" value="5"><a href="5">식품</a>
 				</div>
 			</div>
 
@@ -53,48 +53,50 @@
 						등록하기</button>
 				</div>
 			</div>
-			<div class="influencerWrap">
-				<c:forEach items="${influencerList}" var="influencer">
+			<div class="influencerWrap">	
+				<c:forEach items="${influencerList}" var="showinfluencer">
 					<div class="influencer_pick" id="pickNum1">
-						<img
-							src="${pageContext.request.contextPath}/image/influencer_img01.png"
-							class="influencer_img">
+						<c:if test="${showinfluencer.profile_image ne null }">
+						<a href="influencerDetail?num=${showinfluencer.influencer_num }">
+						<img src="image?file=${showinfluencer.profile_image }" class="influencer_img">
+						</a>
+						</c:if>
 						<div>
-						<c:if test="${influencer.youtube ne null }">
+						<c:if test="${showinfluencer.youtube ne null }">
 								<c:out value="유튜브"/>
 						</c:if>
-						<c:if test="${influencer.instagram ne null }">
+						<c:if test="${showinfluencer.instagram ne null }">
 							<c:out value="인스타그램"/>
 						</c:if>
-						<c:if test="${influencer.blog ne null }">
+						<c:if test="${showinfluencer.blog ne null }">
 							<c:out value="블로그"/>
 						</c:if>
 						<br> 
-						 ${influencer.category_name }
+						 ${showinfluencer.category_name }
 						</div>
+						
 						<div id="channelName">
-							<a href="influecerDetail?num=${influencer.influencer_num }"> 
-							<c:if test="${influencer.youtube_name ne null }">
-								${influencer.youtube_name }
+ 							<c:if test="${showinfluencer.youtube_name ne null }">
+								${showinfluencer.youtube_name }
 							</c:if>
-							 <c:if test="${influencer.instagram_name ne null }">
-								${influencer.instagram_name }
+							 <c:if test="${showinfluencer.instagram_name ne null }">
+								${showinfluencer.instagram_name }
 							</c:if> 
-							<c:if test="${influencer.blog_name ne null }">
-								${influencer.blog_name }
+							<c:if test="${showinfluencer.blog_name ne null }">
+								${showinfluencer.blog_name }
 							</c:if>
-							</a>
+
 						</div>
-						<div id="title">${influencer.intro_line }</div>
+						<div id="title">${showinfluencer.intro_line }</div>
 						<div id="subscriber">
-							<c:if test="${influencer.youtube_follower != null }">
-								${influencer.youtube_follower }명
+							<c:if test="${showinfluencer.youtube_follower != null }">
+								${showinfluencer.youtube_follower }명
 							</c:if>
-							<c:if test="${influencer.instagram_follower != null }">
-								${influencer.instagram_follower }명
+							<c:if test="${showinfluencer.instagram_follower != null }">
+								${showinfluencer.instagram_follower }명
 							</c:if>
-							<c:if test="${influecner.blog_follower != null }">
-								${influencer.blog_follower }명
+							<c:if test="${showinfluecner.blog_follower != null }">
+								${showinfluencer.blog_follower }명
 							</c:if>
 						</div>
 					</div>

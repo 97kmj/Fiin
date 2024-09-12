@@ -187,3 +187,6 @@
 .container {
 	width: 1200px;
 }
+.imgtext {
+	display: flex;
+}

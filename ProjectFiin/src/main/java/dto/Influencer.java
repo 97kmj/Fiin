@@ -12,7 +12,7 @@ public class Influencer {
 	private String name;
 	private String nickname;
 	private Integer pointBalance;
-	
+	private String image;
 	private Integer isRegist;
 	private Integer youtube;
 	private String youtubeName;       // 데이터베이스 컬럼: youtube_name
@@ -34,7 +34,7 @@ public class Influencer {
 
 	private Timestamp registDate;
 	private String address;
-  private String addressDetail;
+    private String addressDetail;
 
 
 	//InfluencerRegister 객체(인플루언서 등록 시 사용)
@@ -235,6 +235,15 @@ public class Influencer {
 	public void setAddressDetail(String addressDetail) {
 		this.addressDetail = addressDetail;
 
+	}
+	
+
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
 	}
 
 	public Influencer(Integer influencerNum, String userEmail, String password, String mobileNumber, Timestamp createAt,

@@ -163,41 +163,7 @@
 	margin-bottom: 12px;
 	margin-top: 5px;
 }
-.page {
-    margin:10px auto;
-    text-align:center;
-    width:50%;
-}
-.pagination {
-    list-style:none;
-    display:inline-block;
-    padding:0;
-    margin:10px auto;
 
-}
-.pagination li {
-   	float:left;
-   	
-    text-align:center;
-    padding:0 12px;
-}
-.pagination a {
-    float: left;
-    text-align:center;
-    display:inline- block;
-    font-size:16px;
-    text-decoration:none;
-    
-}
-.pagination a.active {
-    cursor:default; 
-    font-weight:bold;
-    color:#4849e8;
-    text-decoration:underline;
-}
-.pagination a:active {
-    outline:none;
-}
 .num {
 	height:100%
 }
