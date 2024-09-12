@@ -34,11 +34,12 @@ public class InfluencerDetail extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
-		Integer num = Integer.parseInt(request.getParameter("num"));
+		Integer influencerNum = Integer.parseInt(request.getParameter("influencerNum"));
 		
 		try {
+			
 			InfluencerService service = new InfluencerServiceImpl();
-			Influencer influencer = service.influencerDetail(num);
+			Influencer influencer = service.influencerDetail(influencerNum);
 			request.setAttribute("influencerdetail", influencer);
 			request.getRequestDispatcher("influencer/influencer_detail.jsp").forward(request, response);
 		} catch (Exception e) {

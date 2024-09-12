@@ -15,23 +15,30 @@ public class BookmarkInfluencerDaoImpl implements BookmarkInfluencerDao {
 	}
 	
 	@Override
-	public void insertBookmarkInfluencer(Integer InfluencerNum, Integer CampaignNum) throws Exception {
-		
+	public void insertBookmarkInfluencer(Integer advertiserNum, Integer influencerNum) throws Exception {
+		Map<String,Object> param = new HashMap<>();
+		param.put("advertiser_num", advertiserNum);
+		param.put("influencerNum", influencerNum);
+		sqlSession.insert("mapper.bookmarkInfluencer.insertBookmarkInfluencer", param);
+		sqlSession.commit();
 	}
 
 	@Override
-	public Integer selectBookmarkInfluencer(Integer InfluencerNum, Integer CampaignNum) throws Exception {
+	public Integer selectBookmarkInfluencer(Integer advertiserNum, Integer influencerNum) throws Exception {
 		Map<String,Object> param = new HashMap<>();
-		param.put("influencer_num", InfluencerNum);
-		param.put("campaign_num", CampaignNum);
+		param.put("advertiser_num", advertiserNum);
+		param.put("influencer_num", influencerNum);
 		
 		return sqlSession.selectOne("mapper.bookmarkInfluencer.selectBookmarkInfluencer", param);
 	}
 
 	@Override
-	public void deleteBookmarkInfluencer(Integer InfluencerNum, Integer CampaignNum) throws Exception {
-		// TODO Auto-generated method stub
-
+	public void deleteBookmarkInfluencer(Integer advertiserNum, Integer influencerNum) throws Exception {
+		Map<String,Object> param = new HashMap<>();
+		param.put("advertiser_num", advertiserNum);
+		param.put("influencer_num", influencerNum);
+		sqlSession.delete("mapper.bookmarkInfluencer.deleteBookmarkInfluencer", param);
+		sqlSession.commit();
 	}
 
 }

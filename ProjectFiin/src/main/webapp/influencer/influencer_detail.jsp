@@ -14,10 +14,10 @@
 $(function() {
 	$("#bookmark").click(function(){
 		$.ajax({
-			url:'mypage_bookmark_influencer',
+			url:'bookmarkInfluencer',
 			type:'post',
 			dataType:'text',
-			data:{influencer_num:${influencer.influencerNum}},
+			data:{influencerNum:${influencer.influencerNum}},
 			success:function(result) {
 				if(result=='true') {
 					$('#bookmark').attr('src','image?file=bookmark.png');
