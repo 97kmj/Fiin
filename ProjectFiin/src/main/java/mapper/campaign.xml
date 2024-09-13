@@ -55,11 +55,19 @@
 			</if>
 		</where>
 	</select>
+	
 	<update id="CampaignIsRecruit" parameterType="map">
 		<![CDATA[
 			update campaign set is_recruit = #{status} where campaign_num =#{campaignNum}
 		]]>
 	</update>
+	
+	<select id="selectCampaignReceive" parameterType="Integer" resultType="Map">
+		<![CDATA[
+			SELECT cam.*,rec.accept FROM campaign cam LEFT JOIN receive_campaign rec ON cam.campaign_num = rec.campaign_num
+			WHERE rec.influencer_num = #{influencerNum}
+		]]>
+	</select>
 
 	
 	<!--세나-->
