@@ -100,6 +100,12 @@ public class CampaignServiceImpl implements CampaignService {
     return cam;
   }
 
+@Override
+public List<Campaign> getReceiveCampaignList(Integer influencerNum) throws Exception {
+
+	  return campaignDao.selectCampaignListReceive(influencerNum);
+}
+
  
 
 }
