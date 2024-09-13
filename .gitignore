@@ -1,2 +1,7 @@
 .idea
 .gitignore
+
+.idea/
+out/
+
+/.gitignore
