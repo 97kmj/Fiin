@@ -22,7 +22,9 @@ src/main/webapp/WEB-INF/lib/javax.servlet-api-4.0.1.jar
 
 
 # web.xml 파일 무시
+
 webapp/WEB-INF/web.xml
+
 
 
 ### Eclipse ###

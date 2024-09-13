@@ -38,14 +38,6 @@ public class InfluencerDaoImpl implements InfluencerDao {
 		return sqlSession.selectList("mapper.influencer.selectAllInfluencer", map);
     }
 
-	// 상민 - 인플루언서 등록
-	@Override
-	public void registerInfluencer(Influencer influencer) throws Exception {
-		sqlSession.update("mapper.influencer.updateInfluencerRegister", influencer);
-		System.out.println(influencer);
-		sqlSession.commit();
-	}
-
   @Override
   public void insertInfluencer(Influencer influencer) throws Exception {
     sqlSession.insert("mapper.influencer.insertInfluencer", influencer);
@@ -65,6 +57,13 @@ public class InfluencerDaoImpl implements InfluencerDao {
   @Override
   public void updateInfluencer(Influencer influencer) throws Exception {
     sqlSession.update("mapper.influencer.updateInfluencer", influencer);
+    sqlSession.commit();
+  }
+
+  // 상민 - 인플루언서 등록
+  @Override
+  public void registerInfluencer(Influencer influencer) throws Exception {
+    sqlSession.update("mapper.influencer.updateRegistInfluencer", influencer);
     sqlSession.commit();
   }
 
