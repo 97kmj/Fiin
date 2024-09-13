@@ -99,7 +99,7 @@
 										회사명: ${campaign.company_name }
 										상품명: ${campaign.product_name }
 										마감일: ${campaign.ad_end_date }
-										
+										<button type="button" id="requestBtn" style="cursor: pointer">제안</button>
 									</li>
 								</c:forEach>
 								<button type="button" class="closeBtn">닫기</button>
@@ -216,6 +216,17 @@
 		})
 	})
 		})
+</script>
+<script>
+	document.getElementById('requestBtn').addEventListener('click', function(){
+		$.ajax({
+			url: 'requestCampaign',
+			method: 'post',
+			async: true,
+			dataType: 
+		})
+		alert("전송완료")
+	})
 </script>
 
 	<%@ include file="../include/footer.jsp"%>
