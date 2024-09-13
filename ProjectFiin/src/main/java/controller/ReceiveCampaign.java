@@ -9,20 +9,20 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dto.Influencer;
-import service.RequestCampaignService;
-import service.RequestCampaignServiceImpl;
+import service.ReceiveCampaignService;
+import service.ReceiveCampaignServiceImpl;
 
 /**
  * Servlet implementation class Requestcampaign
  */
-@WebServlet("/requestcampaign")
-public class Requestcampaign extends HttpServlet {
+@WebServlet("/receiveCampaign")
+public class ReceiveCampaign extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Requestcampaign() {
+    public ReceiveCampaign() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -44,10 +44,10 @@ public class Requestcampaign extends HttpServlet {
 		Influencer influencer = (Influencer)request.getSession().getAttribute("influencer");
 		Integer influencerNum = influencer.getInfluencerNum();
 		try {
-			RequestCampaignService service = new RequestCampaignServiceImpl();
-			boolean requestCampaign = service.requestCampaign(influencerNum, campaignNum);
-			System.out.println(requestCampaign);
-			response.getWriter().write(String.valueOf(requestCampaign));
+			ReceiveCampaignService service = new ReceiveCampaignServiceImpl();
+			boolean receiveCampaign = service.receiveCampaign(influencerNum, campaignNum);
+			System.out.println(receiveCampaign);
+			response.getWriter().write(String.valueOf(receiveCampaign));
 		}catch(Exception e) {
 			e.printStackTrace();
 		}

@@ -25,7 +25,7 @@
             <div class="filterbtn" id="ingList">모집중</div>
             <div class="filterbtn" id="endList">모집종료</div>
         </div>
-        <h3 style="font-weight:bold">전체 캠페인</h3>
+        <h3 id="campaigntype" style="font-weight:bold">전체 캠페인</h3>
         <div id="campaignwrap" >
         <c:forEach items="${campaignList }" var="campaign">
         	<c:choose>
@@ -36,7 +36,7 @@
         		<div class="campaign invalid" id="${campaign.campaignNum }">
        		</c:otherwise>
         	</c:choose>
-					<div class="img"><img src="${pageContext.request.contextPath}/upload/${campaign.image}" style="width:200px;height:200px"/></div>
+					<div class="img"><img src="image?file=${campaign.image}" style="width:200px;height:200px"/></div>
 	                <div class="name">${campaign.campaignTitle }</div>
 	                <div class="date"><fmt:formatDate value="${campaign.adStartDate }" pattern="yyyy-MM-dd"/> ~ <fmt:formatDate value="${campaign.adEndDate }" pattern="yyyy-MM-dd"/></div>
 	                <button class="email btn">이메일발송</button>
@@ -164,6 +164,7 @@ $(document).ready(function() {
 		$("#ingList").css("border","2px solid #939393");
 		$("#endList").css("border","2px solid #939393");
 		$(".campaign").css("display","flex");
+		$("#campaigntype").text("전체 캠페인");
 	})
 	$("#ingList").on('click',function(){
 		$(this).css("border","2px solid #4849e8")
@@ -171,6 +172,7 @@ $(document).ready(function() {
 		$("#endList").css("border","2px solid #939393");
 		$(".invalid").css("display","none");
 		$(".valid").css("display","flex");
+		$("#campaigntype").text("모집중인 캠페인");
 	})
 	$("#endList").on('click',function(){
 		$(this).css("border","2px solid #4849e8")
@@ -178,6 +180,7 @@ $(document).ready(function() {
 		$("#allList").css("border","2px solid #939393");
 		$(".valid").css("display","none");
 		$(".invalid").css("display","flex");
+		$("#campaigntype").text("모집종료 캠페인");
 	})
 	
 });

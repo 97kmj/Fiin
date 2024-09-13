@@ -96,7 +96,7 @@
                	            	data:{data:JSON.stringify({type:type,num:userNum, changePoint:pointAmount})},
 	                           	success: function(result){
                             		alert(result);
-		                            location.replace("http://localhost:8080/fiin/mypage/pointrecord");
+		                            location.replace("http://localhost:8080/fiin/pointrecord");
 	                           	},
 								error: function (err) {
 	                                console.log(err);
