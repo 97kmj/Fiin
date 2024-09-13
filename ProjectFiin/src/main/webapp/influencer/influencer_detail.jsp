@@ -93,10 +93,13 @@
 						 <div class="modal">
 							<div class="modalPopup">
 								<h3>캠페인 목록</h3>
-								<c:forEach var="campaignList" items="${campaignRequest }">
+								<c:forEach var="campaign" items="${campaignRequest }">
 									<li>
-										${campaignRequest.campaign_title }-${campaignRequest.company_name }
-										-${campaignRequest.product_name }-${campaignRequest.ad_end_date }
+										캠페인명: ${campaign.campaign_title }
+										회사명: ${campaign.company_name }
+										상품명: ${campaign.product_name }
+										마감일: ${campaign.ad_end_date }
+										
 									</li>
 								</c:forEach>
 								<button type="button" class="closeBtn">닫기</button>
