@@ -96,7 +96,7 @@
 							<c:if test="${showinfluencer.instagram_follower != null }">
 							<c:set var="totalFollowers" value="${totalFollowers + showinfluencer.instagram_follower }"/>
 							</c:if>
-							<c:if test="${showinfluecner.blog_follower != null }">
+							<c:if test="${showinfluencer.blog_follower != null }">
 							<c:set var="totalFollowers" value="${totalFollowers + showinfluencer.blog_follower }"/>
 							</c:if>
 							총 팔로워 수 : ${totalFollowers }명

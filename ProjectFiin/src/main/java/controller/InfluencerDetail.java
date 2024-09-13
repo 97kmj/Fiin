@@ -36,20 +36,19 @@ public class InfluencerDetail extends HttpServlet {
 			throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
 		Integer influencerNum = Integer.parseInt(request.getParameter("num"));
+		Integer ibookmarkNum;
 		System.out.println(influencerNum );
 		try {
 			
 			InfluencerService service = new InfluencerServiceImpl();
 			Influencer influencer = service.influencerDetail(influencerNum);
 			Advertiser advertiser = (Advertiser)request.getSession().getAttribute("advertiser");
-			Integer advertiserNum = service.checkBookmarkInfluencer(advertiser.getAdvertiserNum(), influencerNum);
-			
 			
 			request.setAttribute("influencerdetail", influencer);
 			
 			if(advertiser != null) {
-				request.setAttribute("BookmarkInfluencer", String.valueOf(advertiserNum!=null));
-				
+				ibookmarkNum = service.checkBookmarkInfluencer(advertiser.getAdvertiserNum(), influencerNum);
+				request.setAttribute("bookmarkInfluencer", String.valueOf(ibookmarkNum!=null));
 			}
 			request.getRequestDispatcher("influencer/influencer_detail.jsp").forward(request, response);
 			
