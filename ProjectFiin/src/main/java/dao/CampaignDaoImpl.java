@@ -21,8 +21,8 @@ public class CampaignDaoImpl implements CampaignDao {
 
 	//상민 - campaign 등록
 	@Override
-	public void registerCampaign(Campaign cam) throws Exception {
-		sqlSession.insert("mapper.campaign.registerCampaign", cam);
+	public void registerCampaign(Campaign campaign) throws Exception {
+		sqlSession.insert("mapper.campaign.registerCampaign", campaign);
 		sqlSession.commit();
 	}
 

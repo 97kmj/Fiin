@@ -235,23 +235,7 @@ input[type="checkbox"] {
 .radio-label {
   display: inline-block;
   width: 200px;
-  /*border: 2px solid blue;*/
-/*  cursor: pointer;*/
-/*  border-radius: 10px;*/
-/*  margin-right: 10px;*/
 }
-
-/*.radio-input {*/
-/*  display: flex;*/
-/*  flex-direction: column;*/
-/*  align-items: center;*/
-/*  margin-top: 10px;*/
-/*  margin-bottom: 10px;*/
-/*  width: 100%;*/
-/*  height: 40px;*/
-/*  */
-/*}*/
-
 
 #adChannel {
   font-size: 20px;
@@ -261,7 +245,7 @@ input[type="checkbox"] {
   text-align: center;
   align-items: center; /* 가로 중앙 정렬 */
   margin-top: 40px;
-  margin-bottom: 40px;
+  margin-bottom: 20px;
   padding-left: 80px;
 }
 
@@ -276,7 +260,8 @@ input[type="checkbox"] {
   display: flex;
   justify-content: center; /* 항목들을 가로로 중앙 정렬 */
   gap: 50px; /* 항목들 사이의 간격 */
-  margin-left: 30px;
+  margin-left: 50px;
+  margin-top: 30px;
 }
 
 .label {
@@ -366,22 +351,89 @@ form {
   justify-content: center;
   width: 200px;
   margin-left: 50px;
-  /*font-size: 30px;*/
-  /*background-color: yellow;*/
+  font-size: 20px;
+
 }
 
 .form-group1 {
   display: flex;
-  /*flex-direction: column;*/
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+  width: 40%;
+  margin-top: 40px;
+}
+
+
+.form-group2 label {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+  width: 200px;
+  margin-left: 50px;
+}
+
+.form-group2 {
+  display: flex;
   flex-direction: row;
   align-items: center;
   margin-bottom: 20px;
-  /*margin-left: 80px;*/
-  /*margin-right: 0;*/
+  text-align: center;
   width: 40%;
-  margin-right: 0;
-  /*margin-left: 120px;*/
-  /*background-color: greenyellow;*/
+  margin-right: 100px;
+  margin-top: 50px;
+}
+
+.startDate {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+}
+
+.startDate input {
+  height: 50px;
+  border: 1px solid #ccc;
+  font-size: 30px;
+  width: 200px;
+  border-radius: 10px;
+  margin-left: 40px;
+}
+
+.startDate label {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  margin-right: 15px;
+
+}
+
+.endDate {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+}
+
+.endDate input {
+  height: 50px;
+  border: 1px solid #ccc;
+  font-size: 30px;
+  width: 200px;
+  border-radius: 10px;
+}
+
+.endDate label {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  margin-right: 40px;
 }
 
 
@@ -392,7 +444,7 @@ form {
   width: 1050px;
   /*gap: 20px;*/
   margin-left: 10px;
-
+  margin-right: 100px;
 }
 
 
@@ -416,8 +468,12 @@ form {
   /*margin-left: 35px;*/
   /*margin-left: 80px;*/
   height: 50px;
-  width: 200px;
+  width: 300px;
   text-align: center;
+  margin-top: 10px;
+  margin-left: 50px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
 
 }
 
@@ -447,7 +503,7 @@ form {
 /* 클릭 가능한 이미지를 설정합니다. */
 #uploadImage {
   cursor: pointer; /* 클릭 가능한 이미지에 손가락 모양 커서 적용 */
-  margin-bottom: 0px;
+  margin-bottom: 90px;
 }
 
 .containerInfo {
@@ -497,9 +553,11 @@ label {
   height: 150px;
   padding: 10px;
   box-sizing: border-box;
-  resize: vertical;
+  /*resize: vertical;*/
   margin-left: 50px;
   background-color: #F8F3F3;
+  resize: none;
+  font-size: 20px;
 }
 
 .bottom-button {

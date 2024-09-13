@@ -1,9 +1,6 @@
 package service;
 
 
-
-import java.util.List;
-
 import dao.BookmarkCampaignDao;
 import dao.BookmarkCampaignDaoImpl;
 import dao.CampaignDao;
@@ -89,15 +86,15 @@ public class CampaignServiceImpl implements CampaignService {
 
   //상민 - 캠페인 찾기
   @Override
-  public Campaign findCampaignByNum(Integer cam) throws Exception {
+  public Campaign findCampaignByAdNum(Integer cam) throws Exception {
     return campaignDao.selectCampaign(cam);
   }
 
   // 상민) 캠페인 등록 시 사용
   @Override
-  public Campaign campaignRegister(Campaign cam) throws Exception {
-    campaignDao.registerCampaign(cam);
-    return cam;
+  public Campaign campaignRegister(Campaign campaign) throws Exception {
+    campaignDao.registerCampaign(campaign);
+    return campaign;
   }
 
  

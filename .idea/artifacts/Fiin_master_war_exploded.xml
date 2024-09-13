@@ -1,0 +1,18 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="Fiin-master:war exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/Fiin_master_war_exploded</output-path>
+    <root id="root">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="Fiin-master" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="lib" />
+          <element id="dir-copy" path="$PROJECT_DIR$/ProjectFiin/src/main/webapp" />
+        </element>
+      </element>
+      <element id="javaee-facet-resources" facet="Fiin-master/web/Web" />
+      <element id="dir-copy" path="$PROJECT_DIR$/ProjectFiin/src/main/webapp" />
+    </root>
+  </artifact>
+</component>
