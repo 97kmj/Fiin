@@ -76,7 +76,7 @@
 												</c:otherwise>
 											</c:choose>
 											<c:choose>
-												<c:when test="${requestCampaign eq 'true' }">
+												<c:when test="${requestCampaign ne 'true' }">
 													<input type="button"  id="requestcampaign" class="basic_btn" value = "제안하기">
 												</c:when>
 												<c:otherwise>
@@ -226,21 +226,29 @@
 		})
 	})
 	$('#requestcampaign').click(function(){
-		alert("사진")
+		
 		$.ajax({
-			url:'requestCampaign',
+			url:'receiveCampaign',
 			type:'post',
 			data:{
 				campaignNum:${campaign.campaignNum},
-				inpluencer:${influencer.influencerNum}
+				influencer:${influencer.influencerNum}
 			},
 			success:function(result){
 				if(result=='true'){
-					$("#requestcampaign").text('제안하기');
-				}else{}
-					$("#requestcampaign").text('제안완료');
+					alert(result);
+					$("#requestcampaign").attr("value",'제안완료');
+				}else{
+					alert(result);
+					$("#requestcampaign").attr("value",'제안하기');
+				}
+			},
+			error:function(err){
+				console.log(err);
 			}
 		})
+		
+		
 	})
 	
 	

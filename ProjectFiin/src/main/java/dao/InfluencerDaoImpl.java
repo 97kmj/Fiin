@@ -67,7 +67,6 @@ public class InfluencerDaoImpl implements InfluencerDao {
     sqlSession.commit();
   }
 
-
   @Override
   public Integer selectInfluencerCount() throws Exception {
     return sqlSession.selectOne("mapper.influencer.selectInfluencerCount");
