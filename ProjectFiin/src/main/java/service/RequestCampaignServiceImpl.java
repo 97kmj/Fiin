@@ -7,6 +7,7 @@ public class RequestCampaignServiceImpl implements RequestCampaignService {
 	
 	private RequestCampaignDao requestCampaignDao;
 	public RequestCampaignServiceImpl() {
+		
 		requestCampaignDao = new RequestCampaignDaoImpl();					
 	}
 	
@@ -25,5 +26,11 @@ public class RequestCampaignServiceImpl implements RequestCampaignService {
 		}
 		
 	}
+
+	@Override
+	public void insertRequestCampaign(Integer influencerNum, Integer campaignNum) throws Exception {
+		requestCampaignDao.insertRequestCampaign(influencerNum, campaignNum);
+	}
+	
 
 }

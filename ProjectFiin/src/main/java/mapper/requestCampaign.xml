@@ -2,6 +2,12 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  <mapper namespace="mapper.requestCampaign">
-
+	<insert id="insertRequestCampaign" parameterType="Map">
+	<![CDATA[
+		insert into request_campaign (campaign_num, influencer_num) values (#{campaign_num},#{influencer_num})	
+	]]>
+	</insert>
+	
+	
 </mapper>
 

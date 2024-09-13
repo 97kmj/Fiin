@@ -144,8 +144,6 @@
 }
 
 .container {
-	width: 800px;
-	height: 800px;
 	overflow: hidden;
 	position: relative;
 }
@@ -183,10 +181,6 @@
 	top: 2px;
 	left: 220px;
 }
-
-.container {
-	width: 1200px;
-}
 .imgtext {
 	display: flex;
 	flex-direction: column;
@@ -208,9 +202,9 @@
 	top: 0;
 	left: 0;
 	width: 100%;
-	height: 100vh;
+	height: 100%;
 	overflow: hidden;
-	background: rgba(0,0,0,0.5);
+	background: rgba(0,0,0,0.4);
 }
 .modal .modalPopup {
 	position: absolute;

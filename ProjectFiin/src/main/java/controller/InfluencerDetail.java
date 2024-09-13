@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,7 +10,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dto.Advertiser;
+import dto.Campaign;
 import dto.Influencer;
+import service.CampaignService;
+import service.CampaignServiceImpl;
 import service.InfluencerService;
 import service.InfluencerServiceImpl;
 
@@ -37,18 +41,23 @@ public class InfluencerDetail extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		Integer influencerNum = Integer.parseInt(request.getParameter("num"));
 		Integer ibookmarkNum;
-		System.out.println(influencerNum );
+		
+		
 		try {
 			
 			InfluencerService service = new InfluencerServiceImpl();
+			CampaignService cservice = new CampaignServiceImpl();
 			Influencer influencer = service.influencerDetail(influencerNum);
 			Advertiser advertiser = (Advertiser)request.getSession().getAttribute("advertiser");
-			
+			Integer advertiserNum = advertiser.getAdvertiserNum();
+			List<Campaign> campaignRequest = cservice.campaignListForRequest(advertiserNum);
+			System.out.println(campaignRequest.toString());
 			request.setAttribute("influencerdetail", influencer);
 			
 			if(advertiser != null) {
 				ibookmarkNum = service.checkBookmarkInfluencer(advertiser.getAdvertiserNum(), influencerNum);
 				request.setAttribute("bookmarkInfluencer", String.valueOf(ibookmarkNum!=null));
+				request.setAttribute("campaignRequest", campaignRequest);
 			}
 			request.getRequestDispatcher("influencer/influencer_detail.jsp").forward(request, response);
 			

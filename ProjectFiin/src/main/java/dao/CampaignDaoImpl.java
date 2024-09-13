@@ -80,6 +80,11 @@ public class CampaignDaoImpl implements CampaignDao {
 		return sqlSession.selectList("mapper.campaign.selectCampaignReceive",influencerNum);
 	}
 
+	@Override
+	public List<Campaign> selectCampaignListForRequest(Integer advertiserNum) throws Exception {
+		return sqlSession.selectList("mapper.campaign.selectCampaignForRequest",advertiserNum);
+	}
+
 
 
 }

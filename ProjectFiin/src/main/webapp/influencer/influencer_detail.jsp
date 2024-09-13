@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>	
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -87,19 +87,26 @@
 								<img src="image/nonBookmark.png" id="bookmark">
 							</c:otherwise>
 						</c:choose>
-								
-							<input type="button" class="basic_btn" value="제안하기"
-								onclick="location.href='influencer_register.jsp'">
-							<div class="modal">
-								<div class="modalPopup">
-									<h3>캠페인 목록</h3>
-									<p>목록들이 주르르륵</p>
-									<button type="button" class="closeBtn">닫기</button>
-								</div>
+
+						<input type="button" class="basic_btn" value="제안하기"
+							onclick="location.href='influencer_register.jsp'">
+						 <div class="modal">
+							<div class="modalPopup">
+								<h3>캠페인 목록</h3>
+								<c:forEach var="campaignList" items="${campaignRequest }">
+									<li>
+										${campaignRequest.campaign_title }-${campaignRequest.company_name }
+										-${campaignRequest.product_name }-${campaignRequest.ad_end_date }
+									</li>
+								</c:forEach>
+								<button type="button" class="closeBtn">닫기</button>
 							</div>
-							
-							<!-- end 모달팝업 -->
-							<button type="button" class="modalBtn">제안하기</button>
+						</div> 
+
+						<!-- end 모달팝업 -->
+						<button type="button" class="modalBtn">제안하기</button>
+
+
 					</c:when>
 					<c:when test="${type eq 'influencer' }">
 					</c:when>
@@ -120,8 +127,8 @@
 				style="width: 25px; height: 25px; border-radius: 1px;"><b>일정정보</b>
 		</div>
 		<div class="inp_date">
-			캠페인 제안 가능 기간 2024-07-10~2024-08-14<br> 광고기간 2024-08-27 ~
-			2024-10-10
+			캠페인 제안 가능 기간 ${update_start_date }~${update_end_date }<br> 광고기간 ${ad_start_date }~
+			${ad_end_date}
 		</div>
 	</div>
 	<br>
@@ -164,8 +171,8 @@
 			캠패인을 취소하서나 이미 진행중인 경우 고객센터를 통해 문의해주세요.
 		</div>
 	</div>
-	
-	
+
+
 	<script>
 	const modal = document.querySelector('.modal');
 	const modalOpen = document.querySelector('.modalBtn');
@@ -178,7 +185,7 @@
 		modal.style.display = 'none';
 	});
 	</script>
-	
+
 	<script>
 	$(function() {
 	

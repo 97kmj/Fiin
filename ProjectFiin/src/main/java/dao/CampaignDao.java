@@ -19,5 +19,5 @@ public interface CampaignDao {
 	List<Campaign> selectCampaignListForAdvertiser(Integer advertiserNum) throws Exception;
 
 	void updatecampaignIsRecruit(Integer campaignNum,Integer status) throws Exception;
-
+	List<Campaign> selectCampaignListForRequest(Integer advertiserNum)throws Exception;
 }
