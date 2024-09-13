@@ -53,3 +53,5 @@ src/main/java/resource/mybatis-config.xml
 /bin/
 .gitignore
 Fiin-master.iml
+out
+/.gitignore
