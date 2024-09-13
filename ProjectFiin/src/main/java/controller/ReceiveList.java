@@ -43,9 +43,9 @@ public class ReceiveList extends HttpServlet {
 			for(Map<String,Object> receive : receiveList) {
 				String row = "<tr>";
 				if(receive.get("profile_image")==null) {
-					row += "<td><div class=\"imgbox\"><img src=\"https://img.icons8.com/?size=100&id=43942&format=png&color=ffffff\" ></div> "+receive.get("nickname")+"</td>";
+					row += "<td OnClick=\"location.href ='influencerDetail?num=" +receive.get("influencer_num")+"'\"><div class=\"imgbox\"><img src=\"https://img.icons8.com/?size=100&id=43942&format=png&color=ffffff\" ></div> "+receive.get("nickname")+"</td>";
 				} else {
-					row += "<td><div class=\"imgbox\"><img src=\"image?file="+receive.get("profile_image")+"\" ></div> "+receive.get("nickname")+"</td>";
+					row += "<td OnClick=\"location.href ='influencerDetail?num=" +receive.get("influencer_num")+"'\"><div class=\"imgbox\"><img src=\"image?file="+receive.get("profile_image")+"\" ></div> "+receive.get("nickname")+"</td>";
 				}
 				row += "<td>"+receive.get("category_name")+"</td>";
 				row+="<td>";
