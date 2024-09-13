@@ -8,20 +8,27 @@
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/css/reset.css">
 <link rel="stylesheet"
-	href="${pageContext.request.contextPath}/css/influencer_detail.css?ver=1">
+	href="${pageContext.request.contextPath}/css/influencer_detail.css?after">
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script>
 $(function() {
+	
+	/* var num = "${influencer.influencerNum}"; */
+	
+	console.log(${influencerdetail.influencerNum})
 	$("#bookmark").click(function(){
 		$.ajax({
-			url:'mypage_bookmark_influencer',
+			url:'bookmarkInfluencer',
 			type:'post',
+			async:true,
 			dataType:'text',
-			data:{influencer_num:${influencer.influencerNum}},
+			data:{influencerNum:"${influencerdetail.influencerNum}"},
 			success:function(result) {
+				console.log(result)
 				if(result=='true') {
-					$('#bookmark').attr('src','image?file=bookmark.png');
+					$('#bookmark').attr('src','image/bookmark.png');
 				} else {
-					$('#bookmark').attr('src','image?file=nonBookmark.png');
+					$('#bookmark').attr('src','image/nonBookmark.png');
 				}
 			},
 			error:function(err) {
@@ -43,42 +50,43 @@ $(function() {
 
 	<div class="productimg">
 		<div class="img">
-			<img src="image?file=${influencerdetail.profileImage }" style="width: 380px; height: 280px; border-radius: 10px;">
+			<img src="image?file=${influencerdetail.profileImage }"
+				style="width: 380px; height: 280px; border-radius: 10px;">
 		</div>
 		<div class="imgtext">
 			<div class="basic_info">
-				<span><b>${influencerdetail.nickname}</b></span>				
+				<span><b>${influencerdetail.nickname}</b></span>
 			</div>
 			<div class="basic_info">
 				<b>활동 채널</b>
 			</div>
 			<div class="chanimg">
 				<div>
-				<c:if test="${influencerdetail.youtube ne null }">
-					<span class="channel_outline"> &nbsp;
-					<img src="${pageContext.request.contextPath}/img/youtube.png" class="channel">
-					<a class="channel_font">유튜브</a> &nbsp;
-					</span> 
-				</c:if>
-				<c:if test="${influencerdetail.instagram ne null }">
-					<span class="channel_outline"> &nbsp;
-					<img src="${pageContext.request.contextPath}/img/instagram.png" class="channel">
-					<a class="channel_font">인스타그램</a>&nbsp;
-					</span>
-				</c:if>
-				<c:if test="${influencerdetail.blog ne null }">
-					<span class="channel_outline"> &nbsp;
-					<img src="${pageContext.request.contextPath}/img/blog(un).png" class="channel">
-					<a class="channel_font">인스타그램</a>&nbsp;
-					</span>
-				</c:if>
+					<c:if test="${influencerdetail.youtube ne null }">
+						<span class="channel_outline"> &nbsp; <img
+							src="img/youtube.png" class="channel"> <a
+							class="channel_font">유튜브</a> &nbsp;
+						</span>
+					</c:if>
+					<c:if test="${influencerdetail.instagram ne null }">
+						<span class="channel_outline"> &nbsp; <img
+							src="img/instagram.png" class="channel"> <a
+							class="channel_font">인스타그램</a>&nbsp;
+						</span>
+					</c:if>
+					<c:if test="${influencerdetail.blog ne null }">
+						<span class="channel_outline"> &nbsp; <img
+							src="img/blog(un).png" class="channel"> <a
+							class="channel_font">인스타그램</a>&nbsp;
+						</span>
+					</c:if>
 				</div>
 			</div>
 			<br>
 
 			<div>
-				<span class="basic_info"><b>컨텐츠 카테고리 </b>&nbsp;|&nbsp;</span>
-				<a class="subscribers_su" style="font-size: 25px; text-align: left;">${influencerdetail.categoryId}</a>
+				<span class="basic_info"><b>컨텐츠 카테고리 </b>&nbsp;|&nbsp;</span> <a
+					class="subscribers_su" style="font-size: 25px; text-align: left;">${influencerdetail.categoryId}</a>
 			</div>
 			<br>
 			<div class="basic_info">
@@ -92,49 +100,31 @@ $(function() {
 				<c:if test="${influencerdetail.blog ne null }">
 					<span class="subscribers_su">${influencerdetail.blogFollower }</span>
 				</c:if>
+
 			</div>
 			<div class="container">
-					<c:if test="${type eq 'advertiser' }">
+				<c:choose>
+					<c:when test="${type eq 'advertiser' }">
 						<c:choose>
-							<c:when test="${bookmark ne null }">
-								<img src="image?file=bookmark.png" id="bookmark">
-								<input type="button" class="basic_btn" value="신청하기">
+							<c:when test="${bookmarkInfluencer eq 'true' }">
+								<img src="image/bookmark.png" id="bookmark">
+								<input type="button" class="basic_btn" value="제안하기"
+									onclick="location.href='influencer_register.jsp'">
 							</c:when>
 							<c:otherwise>
-								<img src="image?file=nonBookmark.png" id="bookmark">
-								<input type="button" class="basic_btn" value="신청하기">
+								<img src="image/nonBookmark.png" id="bookmark">
+								<input type="button" class="basic_btn" value="제안하기"
+									onclick="location.href='influencer_register.jsp'">
 							</c:otherwise>
 						</c:choose>
-					</c:if>
-					<c:if test="${type eq 'influencer' }">
+					</c:when>
+					<c:when test="${type eq 'influencer' }">
 						<input type="button" class="basic_btn" value="광고주만 제안할 수 있습니다">
-					</c:if>
-					<c:if test="${type eq null }">
+					</c:when>
+					<c:otherwise>
 						<input type="button" class="basic_btn" value="로그인 후 제안하세요">
-					</c:if>
-				</div>
-			<div>
-
-				<%-- <div class="container">
-					<c:if test="${type eq 'advertiser' }">
-						<c:choose>
-							<c:when test="${bookmark ne null }">
-								<img src="image?file=bookmark.png" id="bookmark">
-								<input type="button" class="basic_btn" value="신청하기">
-							</c:when>
-							<c:otherwise>
-								<img src="image?file=nonBookmark.png" id="bookmark">
-								<input type="button" class="basic_btn" value="신청하기">
-							</c:otherwise>
-						</c:choose>
-					</c:if>
-					<c:if test="${type eq 'influencer' }">
-						<input type="button" class="basic_btn" value="광고주만 제안할 수 있습니다">
-					</c:if>
-					<c:if test="${type eq null }">
-						<input type="button" class="basic_btn" value="로그인 후 제안하세요">
-					</c:if>
-				</div> --%>
+					</c:otherwise>
+				</c:choose>
 			</div>
 		</div>
 	</div>

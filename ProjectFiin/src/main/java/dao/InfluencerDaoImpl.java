@@ -1,6 +1,5 @@
 package dao;
 
-
 import dto.Influencer;
 import dto.Campaign;
 import java.util.ArrayList;
@@ -10,33 +9,34 @@ import java.util.Map;
 import org.apache.ibatis.session.SqlSession;
 import util.MybatisSqlSessionFactory;
 
-
 public class InfluencerDaoImpl implements InfluencerDao {
 
-  private SqlSession sqlSession;
+	private SqlSession sqlSession;
 
-  public InfluencerDaoImpl() {
-    sqlSession = MybatisSqlSessionFactory.getSqlSessionFactory().openSession();
-  }
+	public InfluencerDaoImpl() {
+		sqlSession = MybatisSqlSessionFactory.getSqlSessionFactory().openSession();
+	}
 
 	@Override
 	public Integer selectAllInfluencerCount(String keyword, List<String> channels, Integer categoryId)
 			throws Exception {
-		Map<String,Object>map = new HashMap<>();
+		Map<String, Object> map = new HashMap<>();
 		map.put("channels", channels);
 		map.put("categoryId", categoryId);
 		map.put("keyword", keyword);
-		return sqlSession.selectOne("mapper.influencer.selectAllInfluencerCount",map);
+		return sqlSession.selectOne("mapper.influencer.selectAllInfluencerCount", map);
 	}
+
 	@Override
-	public List<Map<String,Object>> selectAllInfluencer(Integer row, String keyword, List<String> channels, Integer categoryId) throws Exception {
-		Map<String,Object>map = new HashMap<>();
+	public List<Map<String, Object>> selectAllInfluencer(Integer row, String keyword, List<String> channels, Integer categoryId) throws Exception {
+		Map<String, Object> map = new HashMap<>();
 		map.put("channels", channels);
-		map.put("row", row-1);
+		map.put("row", row - 1);
 		map.put("categoryId", categoryId);
 		map.put("keyword", keyword);
 		return sqlSession.selectList("mapper.influencer.selectAllInfluencer", map);
-    }
+	}
+
 
   @Override
   public void insertInfluencer(Influencer influencer) throws Exception {
@@ -94,17 +94,17 @@ public class InfluencerDaoImpl implements InfluencerDao {
 
 	
 	//민준 - 캠페인의 카테고리랑 희망채널이 일치하는 인플루언서들의 이메일 목록 뽑아오기
+
 	@Override
 	public List<String> selectEmaliListByCampaign(Campaign campaign) throws Exception {
-		Map<String,Object> param = new HashMap<>();
+		Map<String, Object> param = new HashMap<>();
 		String[] channels = campaign.getChannel().split("#");
 		List<String> channelList = new ArrayList<>();
-		for(String channel : channels) {
+		for (String channel : channels) {
 			channelList.add(channel);
 		}
-		param.put("channelList",channelList);
+		param.put("channelList", channelList);
 		param.put("categoryId", campaign.getCategoryId());
-		return sqlSession.selectList("mapper.influencer.selectEmaliListByCampaign",param);
+		return sqlSession.selectList("mapper.influencer.selectEmaliListByCampaign", param);
 	}
 }
-

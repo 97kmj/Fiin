@@ -6,8 +6,21 @@
 	<!--세원 -->
 	<select id="selectBookmarkInfluencer" parameterType="Map" resultType="Integer">
 		<![CDATA[
-			select c
+			select Ibookmark_num from bookmark_influencer 
+			where advertiser_num = #{advertiser_num} and influencer_num = #{influencer_num} 
 		]]>		
 	</select>
+	
+	<insert id="insertBookmarkInfluencer" parameterType="Map">
+		<![CDATA[
+			insert into bookmark_influencer (advertiser_num, influencer_num) values (#{advertiser_num}, #{influencer_num})		
+		]]>
+	</insert>
+	
+	<delete id="deleteBookmarkInfluencer" parameterType="Map">
+		<![CDATA[
+			delete from bookmark_influencer where advertiser_num = #{advertiser_num} and influencer_num = #{influencer_num}
+		]]>
+	</delete>
 </mapper>    
 
