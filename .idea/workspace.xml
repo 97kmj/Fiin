@@ -10,9 +10,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="98b156ef-a4ff-409d-ab96-3faff1b66259" name="변경" comment="ddd">
-      <change afterPath="$PROJECT_DIR$/ProjectFiin/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ProjectFiin/src/main/java/resource/mybatis-config.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ProjectFiin/src/main/webapp/WEB-INF/webl.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectFiin/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectFiin/.gitignore" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -192,7 +191,7 @@
       <option name="presentableId" value="Default" />
       <updated>1726187317985</updated>
       <workItem from="1726187319032" duration="47000" />
-      <workItem from="1726187368475" duration="810000" />
+      <workItem from="1726187368475" duration="919000" />
     </task>
     <task id="LOCAL-00001" summary="ddd">
       <option name="closed" value="true" />
