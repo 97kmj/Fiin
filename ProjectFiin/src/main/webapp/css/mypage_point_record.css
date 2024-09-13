@@ -48,7 +48,6 @@ tr {
 .page {
     margin:10px auto;
     text-align:center;
-    width:50%;
 }
 .pagination {
     list-style:none;
@@ -59,17 +58,17 @@ tr {
 }
 .pagination li {
    	float:left;
-   	
     text-align:center;
-    padding:0 12px;
+    padding:0 10px;
+    height:20px;
 }
 .pagination a {
     float: left;
     text-align:center;
-    display:inline- block;
     font-size:16px;
     text-decoration:none;
-    
+    display:block;
+    line-height:20px;
 }
 .pagination a.active {
     cursor:default; 
@@ -83,6 +82,8 @@ tr {
 .num {
 	height:100%
 }
-.num:hover,.arrow:hover {
-    background-color:lightgray;
+.arrow {
+	padding:0;
+	height:20px;
+	width:20px;
 }

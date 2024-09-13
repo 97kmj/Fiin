@@ -9,7 +9,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Document</title>
 <link rel="stylesheet"
-	href="${pageContext.request.contextPath}/css/mypage_point_record.css">
+	href="${pageContext.request.contextPath}/css/mypage_point_record.css?after">
 </head>
 <body>
 	<%@ include file="../include/header.jsp"%>
@@ -62,8 +62,7 @@
 						<c:otherwise>
 						</c:otherwise>
 					</c:choose>
-					<c:forEach begin="${pageInfo.startPage }"
-						end="${pageInfo.endPage }" var="i">
+					<c:forEach begin="${pageInfo.startPage }" end="${pageInfo.endPage }" var="i">
 						<c:choose>
 							<c:when test="${i eq pageInfo.curPage }">
 								<li><a href="pointrecord?page=${i }" class="active num">${i }</a></li>

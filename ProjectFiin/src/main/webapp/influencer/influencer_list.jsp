@@ -108,39 +108,44 @@
 			</div>
 		</div>
 	</div>
-	<!-- paging처리 -->
-	<div class="pageDiv" style="text-align: center">
-		<!-- 페이지 이전버튼 생성 -->
-		<c:choose>
-			<c:when test="${pageInfo.curPage>1 }">
-				<a href="#" data-page="{pageInfo.curPage-1}">&lt;</a>
-			</c:when>
-			<c:otherwise>
-				<a>&lt;</a>
-			</c:otherwise>
-		</c:choose>
-		<!-- 페이지 가운데 숫자 버튼 생성 -->
-		<c:forEach begin="${pageInfo.startPage }" end="${pageInfo.endPage }" var="i">
+	<!-- 페이지 처리  -->
+		<div class="pageDiv" style="text-align:center">
+			<ul class='pagination'>
+			
+			<!-- 페이지 이전버튼 생성  -->
+ 			<c:choose>
+				<c:when test="${pageInfo.curPage>1 }">
+				 	<li><a href="#" data-page="${pageInfo.curPage-1 }" class="arrow left">
+				 	<img src="https://img.icons8.com/?size=100&id=x3s0mSWBMJTc&format=png&color=939393" style="weight: 20px; height: 20px">
+				 	</a></li>
+				 </c:when>
+				 <c:otherwise>
+				 </c:otherwise>
+			</c:choose>
+			<!-- 페이지 가운데 숫자 버튼  생성  -->
+			<c:forEach begin="${pageInfo.startPage }" end="${pageInfo.endPage }" var="i">
+				<c:choose>
+					<c:when test="${i eq pageInfo.curPage }">
+						<li><a href="#" class="select num" data-page="${i }">${i }</a></li>
+					</c:when>
+					<c:otherwise>
+						<li><a href="#" class="btn num" data-page="${i }">${i }</a></li>
+					</c:otherwise>
+				</c:choose>
+			</c:forEach>
+			
+			<!-- 페이지 다음버튼 생성  -->
 			<c:choose>
-				<c:when test="${i eq pageInfo.curPage }">
-					<a href="#" class="select" data-page="${i }">${i }</a>
+				<c:when test="${pageInfo.curPage<pageInfo.allPage }">
+					<li><a href="#" data-page="${pageInfo.curPage+1 }" class="arrow right">
+					<img src="https://img.icons8.com/?size=100&id=IGZk6vp3nxFm&format=png&color=939393"	style="weight: 20px; height: 20px">
+					</a></li>
 				</c:when>
 				<c:otherwise>
-					<a href="#" class="btn" data-page="${i }">${i }</a>
 				</c:otherwise>
 			</c:choose>
-		</c:forEach>
-		
-		<!-- 페이지 다음버튼 생성 -->
-		<c:choose>
-			<c:when test="${pageInfo.curPage<pageInfo.allPage }">
-				<a href="#" data-page="${pageInfo.curPage+1 }">&gt;</a>
-			</c:when>
-			<c:otherwise>
-				<a>&gt;</a>
-			</c:otherwise>
-		</c:choose>
-	</div>
+			</ul>
+   		</div>
 	<%@include file="../include/footer.jsp"%>
 </body>
 

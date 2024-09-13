@@ -36,7 +36,7 @@
         		<div class="campaign invalid" id="${campaign.campaignNum }">
        		</c:otherwise>
         	</c:choose>
-					<div class="img"><img src="image?file=${campaign.image}" style="width:200px;height:200px"/></div>
+					<div class="img"><img src="image?file=${campaign.image}" style="width:200px;height:200px" onclick="location.href='campaignDetail?campaignNum=${campaign.campaignNum }'"/></div>
 	                <div class="name">${campaign.campaignTitle }</div>
 	                <div class="date"><fmt:formatDate value="${campaign.adStartDate }" pattern="yyyy-MM-dd"/> ~ <fmt:formatDate value="${campaign.adEndDate }" pattern="yyyy-MM-dd"/></div>
 	                <button class="email btn">이메일발송</button>
@@ -117,7 +117,8 @@ $(document).ready(function() {
 		}) 
 		$(this).addClass("checked");
 		$(this).removeClass("accept");
-		$(this).append("완료");
+		$(this).attr("name","checked");
+		$(this).text("수락완료");
 		
 	})
 	/* 이메일전송 모달 띄우기 */
