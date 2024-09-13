@@ -9,15 +9,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f2a06d27-f9c6-48c4-808e-315f110fcf30" name="변경" comment="dd">
-      <change beforePath="$PROJECT_DIR$/ProjectFiin/src/main/java/controller/CampaignRegister.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectFiin/src/main/java/controller/CampaignRegister.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectFiin/src/main/java/controller/InfluencerRegister.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectFiin/src/main/java/controller/InfluencerRegister.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectFiin/src/main/java/dao/CampaignDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectFiin/src/main/java/dao/CampaignDaoImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectFiin/src/main/java/service/CampaignService.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectFiin/src/main/java/service/CampaignService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectFiin/src/main/java/service/CampaignServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectFiin/src/main/java/service/CampaignServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectFiin/src/main/webapp/WEB-INF/webl.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectFiin/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectFiin/src/main/webapp/campaign/campaign_register.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectFiin/src/main/webapp/campaign/campaign_register.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectFiin/src/main/webapp/css/campaign_register.css" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectFiin/src/main/webapp/css/campaign_register.css" afterDir="false" />
+    <list default="true" id="f2a06d27-f9c6-48c4-808e-315f110fcf30" name="변경" comment="fix : campaign CSS updated.">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -199,7 +193,7 @@
       <option name="presentableId" value="Default" />
       <updated>1726190532325</updated>
       <workItem from="1726190533483" duration="419000" />
-      <workItem from="1726190955836" duration="13787000" />
+      <workItem from="1726190955836" duration="13923000" />
     </task>
     <task id="LOCAL-00001" summary="dd">
       <option name="closed" value="true" />
@@ -209,7 +203,15 @@
       <option name="project" value="LOCAL" />
       <updated>1726190984178</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="fix : campaign CSS updated.">
+      <option name="closed" value="true" />
+      <created>1726209583464</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1726209583464</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -240,6 +242,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="dd" />
-    <option name="LAST_COMMIT_MESSAGE" value="dd" />
+    <MESSAGE value="fix : campaign CSS updated." />
+    <option name="LAST_COMMIT_MESSAGE" value="fix : campaign CSS updated." />
   </component>
 </project>
