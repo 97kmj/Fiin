@@ -8,21 +8,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import dto.Influencer;
-import service.RequestCampaignService;
-import service.RequestCampaignServiceImpl;
+import dto.Advertiser;
 
 /**
- * Servlet implementation class Requestcampaign
+ * Servlet implementation class RequestCampaign
  */
-@WebServlet("/requestcampaign")
-public class Requestcampaign extends HttpServlet {
+@WebServlet("/requestCampaign")
+public class RequestCampaign extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Requestcampaign() {
+    public RequestCampaign() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -40,17 +38,9 @@ public class Requestcampaign extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
-		Integer campaignNum = Integer.parseInt(request.getParameter("campaignNum"));
-		Influencer influencer = (Influencer)request.getSession().getAttribute("influencer");
-		Integer influencerNum = influencer.getInfluencerNum();
-		try {
-			RequestCampaignService service = new RequestCampaignServiceImpl();
-			boolean requestCampaign = service.requestCampaign(influencerNum, campaignNum);
-			System.out.println(requestCampaign);
-			response.getWriter().write(String.valueOf(requestCampaign));
-		}catch(Exception e) {
-			e.printStackTrace();
-		}
+		Advertiser advertiser = (Advertiser)request.getSession().getAttribute("advertiser");
+		Integer advertiserNum = advertiser.getAdvertiserNum();
+		 
 	}
 
 }

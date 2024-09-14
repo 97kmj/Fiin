@@ -7,20 +7,30 @@ public class RequestCampaignServiceImpl implements RequestCampaignService {
 	
 	private RequestCampaignDao requestCampaignDao;
 	public RequestCampaignServiceImpl() {
+		
 		requestCampaignDao = new RequestCampaignDaoImpl();					
 	}
 	
 	@Override
-	public boolean requestCampaign(Integer Influencer, Integer campaignNum) throws Exception {
-		Integer request = requestCampaignDao.selectRequestCampaign(Influencer, campaignNum);
+	public boolean requestCampaign(Integer InfluencerNum, Integer campaignNum) throws Exception {
+		System.out.println(InfluencerNum);
+		System.out.println(campaignNum);
+		Integer request = requestCampaignDao.selectRequestCampaign(InfluencerNum, campaignNum);
+
 		if(request==null) {
-			requestCampaignDao.insertRequestCampaign(Influencer, campaignNum);
+			requestCampaignDao.insertRequestCampaign(InfluencerNum, campaignNum);
 			return true;
 		}else {
-			requestCampaignDao.deleteRequestCampaign(Influencer, campaignNum);
+			requestCampaignDao.deleteRequestCampaign(InfluencerNum, campaignNum);
 			return false;
 		}
 		
 	}
+
+	@Override
+	public void insertRequestCampaign(Integer influencerNum, Integer campaignNum) throws Exception {
+		requestCampaignDao.insertRequestCampaign(influencerNum, campaignNum);
+	}
+	
 
 }

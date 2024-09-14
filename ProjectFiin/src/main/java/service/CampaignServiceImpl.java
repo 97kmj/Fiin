@@ -10,7 +10,7 @@ import dao.CampaignDao;
 import dao.CampaignDaoImpl;
 import dto.Campaign;
 import dto.Category;
-import java.util.List;
+
 import util.PageInfo;
 
 public class CampaignServiceImpl implements CampaignService {
@@ -99,6 +99,17 @@ public class CampaignServiceImpl implements CampaignService {
     campaignDao.registerCampaign(cam);
     return cam;
   }
+
+@Override
+public List<Campaign> getReceiveCampaignList(Integer influencerNum) throws Exception {
+
+	  return campaignDao.selectCampaignListReceive(influencerNum);
+}
+
+@Override
+public List<Campaign> campaignListForRequest(Integer advertiserNum) throws Exception {
+	return campaignDao.selectCampaignListForRequest(advertiserNum);
+}
 
  
 

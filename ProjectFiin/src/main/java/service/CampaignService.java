@@ -18,9 +18,10 @@ public interface CampaignService {
     List<Category> categoryList() throws Exception;
     void campaignIsRecruit(Integer campaignNum,Integer status)throws Exception;
     boolean toggleCampaign(Integer campaignNum, Integer Influencer)throws Exception;
-	  Integer checkBookmark(Integer influencerNum, Integer campaignNum)throws Exception;
-    
+	Integer checkBookmark(Integer influencerNum, Integer campaignNum)throws Exception;
+    List<Campaign> getReceiveCampaignList (Integer influencerNum)throws Exception;
 
+    List<Campaign> campaignListForRequest(Integer advertiserNum)throws Exception;
 
     // 상민) 캠페인 등록 시 사용
     Campaign campaignRegister(Campaign cam) throws Exception;

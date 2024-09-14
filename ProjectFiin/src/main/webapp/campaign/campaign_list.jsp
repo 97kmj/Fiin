@@ -71,7 +71,7 @@
 		</div>
 
 		<!-- 페이지 처리  -->
-		<div class="pageDiv"; style="text-align:center">
+		<div class="pageDiv" style="text-align:center">
 			<!-- 페이지 이전버튼 생성  -->
  			<c:choose>
 				<c:when test="${pageInfo.curPage>1 }">
@@ -103,9 +103,7 @@
 				</c:otherwise>
 			</c:choose>
     	</div>
-    	
-    	
-    	
+   
     </div>
 	<%@include file="../include/footer.jsp" %>
 </body>

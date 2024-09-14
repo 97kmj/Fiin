@@ -22,8 +22,8 @@ public class MailUtil {
 	
 	private static final String HOST = "smtp.gmail.com";
 	private static final String PORT = "465";
-	private static final String MAIL_ID = "kmj0376@gmail.com";
-	private static final String MAIL_PW = "igvtjwjegvkghuvv";
+	private static final String MAIL_ID = System.getenv("MAIL_ID");
+	private static final String MAIL_PW = System.getenv("MAIL_PW");
 	
 	
 	
@@ -50,45 +50,60 @@ public class MailUtil {
 			
 			//메일에 출력할 텍스트
 			StringBuffer sb = new StringBuffer();
-			sb.append("<table align=\"center\" border=\"0\" cellpadding=\"20px\" cellspacing=\"20px\" width=\"600\" style=\"border-collapse: collapse;vertical-align: middle;\">\r\n"
+			sb.append("<center><table align=\"center\" border=\"0\" cellpadding=\"40px\" cellspacing=\"40px\" width=\"800\" style=\"border-collapse: collapse;vertical-align: middle;border-spacing: 10px;\">\r\n"
 					+ "    <tr>\r\n"
-					/*
-					 * + "     <td style=\"text-align: center;\" >\r\n" + "       <img src=""> +
-					 * "     </td>\r\n"
-					 */
-					+ "    </tr>\r\n"
-					+ "    <tr>\r\n"
-					+ "        <td style=\"text-align: center;font-weight:700; font-size:large;padding-top: 10px;padding-bottom: 10px;font-family: '나눔고딕',NanumGothic,'맑은고딕',Malgun Gothic,'돋움',Dotum,Helvetica,'Apple SD Gothic Neo',Sans-serif;\">\r\n"
-					+ "           안녕하세요, 인플루언서 회원님의 활동 채널과 카테고리에 맞는 캠페인을 추천드려요.\r\n"
+					+ "        <td style=\"text-align: center;font-weight:700; font-size:x-large;padding-top: 10px;padding-bottom: 10px;background-color:#4849e8;color:#ffffff;\">\r\n"
+					+ "           Fiin "
 					+ "        </td>\r\n"
 					+ "    </tr>\r\n"
 					+ "    <tr>\r\n"
-					+ "        <td style=\"font-weight: 700;\">캠페인 제목</td>\r\n"
+					+ "        <td style=\"text-align:center;font-weight:700; font-size:x-large; padding-top: 10px;padding-bottom: 10px;\">\r\n"
+					+ "           광고주님께서 인플루언서 회원님의 활동 채널과 카테고리에 맞는 캠페인을 추천드려요.\r\n"
+					+ "        </td>\r\n"
+					+ "    </tr>\r\n"
+					+ "    <tr>\r\n"
+					+ "        <td style=\"text-align:center;padding-left: 20px;font-size:large;\"><img src=\"http://localhost:8080/fiin/image?file="+campaign.getImage()+"\"></td>\r\n"
+					+ "    </tr>\r\n"
+					+ "    <tr>\r\n"
+					+ "    </tr>\r\n"
+					+ "    <tr>\r\n"
+					+ "        <td style=\"font-weight: 700;font-size:large;\">캠페인 제목</td>\r\n"
 					+ "    </tr>\r\n"
 					+ "    <tr>\r\n"
 					+ "        <td style=\"padding-left: 20px;\">"+campaign.getCampaignTitle()+"</td>\r\n"
 					+ "    </tr>\r\n"
-					+ "\r\n"
 					+ "    <tr>\r\n"
-					+ "        <td style=\"font-weight: 700;\">상품명</td>\r\n"
+					+ "    </tr>\r\n"
+					+ "    <tr>\r\n"
+					+ "        <td style=\"font-weight: 700;font-size:large;\">업체명</td>\r\n"
+					+ "    </tr>\r\n"
+					+ "    <tr>\r\n"
+					+ "        <td style=\"padding-left: 20px;\">"+campaign.getCompanyName()+"</td>\r\n"
+					+ "    </tr>\r\n"
+					+ "    <tr>\r\n"
+					+ "    </tr>\r\n"
+					+ "    <tr>\r\n"
+					+ "        <td style=\"font-weight: 700;font-size:large;\">상품명</td>\r\n"
 					+ "    </tr>\r\n"
 					+ "    <tr>\r\n"
 					+ "        <td style=\"padding-left: 20px;\">"+campaign.getProductName()+"</td>\r\n"
 					+ "    </tr>\r\n"
 					+ "    <tr>\r\n"
-					+ "        <td style=\"font-weight: 700;\">요구사항</td>\r\n"
 					+ "    </tr>\r\n"
 					+ "    <tr>\r\n"
-					+ "        <td style=\"padding-left: 20px;\">"+campaign.getRequirement()+"</td>\r\n"
+					+ "        <td style=\"font-weight: 700;font-size:large;\">요구사항</td>\r\n"
 					+ "    </tr>\r\n"
-					+ "   </table>");
+					+ "    <tr>\r\n"
+					+ "        <td style=\"padding-left: 20px;font-size:large;\">"+campaign.getRequirement()+"</td>\r\n"
+					+ "    </tr>\r\n"
+					+ "   </table></center>");
 			String body = sb.toString();
 			
 			Message mimeMessage = new MimeMessage(mailSession);
             mimeMessage.setFrom(new InternetAddress(MAIL_ID,"Fiin"));
             mimeMessage.setRecipients(Message.RecipientType.TO, InternetAddress.parse(receiveEmail,false));
 
-            mimeMessage.setSubject("파인 맞춤 캠페인 알림");
+            mimeMessage.setSubject("파인 맞춤 캠페인 "+campaign.getCampaignTitle());
             
             mimeMessage.setContent(body, "text/html; charset=UTF-8");
 

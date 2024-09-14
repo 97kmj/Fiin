@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,34 +12,6 @@
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/css/influencer_detail.css?after">
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
-<script>
-$(function() {
-	
-	/* var num = "${influencer.influencerNum}"; */
-	
-	console.log(${influencerdetail.influencerNum})
-	$("#bookmark").click(function(){
-		$.ajax({
-			url:'bookmarkInfluencer',
-			type:'post',
-			async:true,
-			dataType:'text',
-			data:{influencerNum:"${influencerdetail.influencerNum}"},
-			success:function(result) {
-				console.log(result)
-				if(result=='true') {
-					$('#bookmark').attr('src','image/bookmark.png');
-				} else {
-					$('#bookmark').attr('src','image/nonBookmark.png');
-				}
-			},
-			error:function(err) {
-				console.log(err);
-			}
-		})
-	})
-})
-</script>
 </head>
 <body>
 	<%@ include file="../include/header.jsp"%>
@@ -108,18 +82,36 @@ $(function() {
 						<c:choose>
 							<c:when test="${bookmarkInfluencer eq 'true' }">
 								<img src="image/bookmark.png" id="bookmark">
-								<input type="button" class="basic_btn" value="제안하기"
-									onclick="location.href='influencer_register.jsp'">
 							</c:when>
 							<c:otherwise>
 								<img src="image/nonBookmark.png" id="bookmark">
-								<input type="button" class="basic_btn" value="제안하기"
-									onclick="location.href='influencer_register.jsp'">
 							</c:otherwise>
 						</c:choose>
+
+						<input type="button" class="basic_btn" value="제안하기"
+							onclick="location.href='influencer_register.jsp'">
+						 <div class="modal">
+							<div class="modalPopup">
+								<h3>캠페인 목록</h3>
+								<c:forEach var="campaign" items="${campaignRequest }">
+									<li>
+										캠페인명: ${campaign.campaign_title }
+										회사명: ${campaign.company_name }
+										상품명: ${campaign.product_name }
+										마감일: ${campaign.ad_end_date }
+										<button type="button" id="requestBtn" style="cursor: pointer">제안</button>
+									</li>
+								</c:forEach>
+								<button type="button" class="closeBtn">닫기</button>
+							</div>
+						</div> 
+
+						<!-- end 모달팝업 -->
+						<button type="button" class="modalBtn">제안하기</button>
+
+
 					</c:when>
 					<c:when test="${type eq 'influencer' }">
-						<input type="button" class="basic_btn" value="광고주만 제안할 수 있습니다">
 					</c:when>
 					<c:otherwise>
 						<input type="button" class="basic_btn" value="로그인 후 제안하세요">
@@ -138,8 +130,8 @@ $(function() {
 				style="width: 25px; height: 25px; border-radius: 1px;"><b>일정정보</b>
 		</div>
 		<div class="inp_date">
-			캠페인 제안 가능 기간 2024-07-10~2024-08-14<br> 광고기간 2024-08-27 ~
-			2024-10-10
+			캠페인 제안 가능 기간 ${update_start_date }~${update_end_date }<br> 광고기간 ${ad_start_date }~
+			${ad_end_date}
 		</div>
 	</div>
 	<br>
@@ -182,6 +174,60 @@ $(function() {
 			캠패인을 취소하서나 이미 진행중인 경우 고객센터를 통해 문의해주세요.
 		</div>
 	</div>
+
+
+	<script>
+	const modal = document.querySelector('.modal');
+	const modalOpen = document.querySelector('.modalBtn');
+	const modalClose = document.querySelector('.closeBtn');
+	
+	modalOpen.addEventListener('click', function(){
+		modal.style.display = 'block';
+	});
+	modalClose.addEventListener('click', function(){
+		modal.style.display = 'none';
+	});
+	</script>
+
+	<script>
+	$(function() {
+	
+	/* var num = "${influencer.influencerNum}"; */
+	
+	console.log(${influencerdetail.influencerNum})
+	$("#bookmark").click(function(){
+		$.ajax({
+			url:'bookmarkInfluencer',
+			type:'post',
+			async:true,
+			dataType:'text',
+			data:{influencerNum:"${influencerdetail.influencerNum}"},
+			success:function(result) {
+				console.log(result)
+				if(result=='true') {
+					$('#bookmark').attr('src','image/bookmark.png');
+				} else {
+					$('#bookmark').attr('src','image/nonBookmark.png');
+				}
+			},
+			error:function(err) {
+				console.log(err);
+			}
+		})
+	})
+		})
+</script>
+<script>
+	document.getElementById('requestBtn').addEventListener('click', function(){
+		$.ajax({
+			url: 'requestCampaign',
+			method: 'post',
+			async: true,
+			dataType: 
+		})
+		alert("전송완료")
+	})
+</script>
 
 	<%@ include file="../include/footer.jsp"%>
 </body>
