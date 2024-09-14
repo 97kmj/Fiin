@@ -26,11 +26,11 @@ public interface InfluencerService {
 
   //상민 - 인플루언서 찾기
 	Influencer findInfluencerByNum(Integer influencerNum) throws Exception;
-  Influencer influencerRegister(Influencer influencer) throws Exception;
+	Influencer influencerRegister(Influencer influencer) throws Exception;
   
   void influencerModify(Influencer influencer) throws Exception;
-
-
+  List<Influencer> influencerBookmarkForMypage(Integer advertiserNum) throws Exception;
+  
 	
 	//민준 - 캠페인의 카테고리랑 희망채널이 일치하는 인플루언서들의 이메일 목록 뽑아오기 
 	List<String> getEmaliListByCampaign(Campaign campaign) throws Exception;

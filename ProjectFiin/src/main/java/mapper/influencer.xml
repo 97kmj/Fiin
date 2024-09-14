@@ -100,7 +100,12 @@
 		order by regist_date DESC limit #{row}, 8
 
 	</select>
-
+	
+	<select id="selectInfluencerForBookmark" parameterType="Integer" resultType="Influencer">
+		select i.* from influencer i join bookmark_influencer b 
+		using(influencer_num) where advertiser_num = #{advertiserNum}
+	</select>
+	
 	<!--세나 -->
 	<select id="selectInfluencer" parameterType="Integer"
 		resultType="influencer">

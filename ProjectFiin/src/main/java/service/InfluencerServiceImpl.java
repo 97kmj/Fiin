@@ -159,6 +159,10 @@ public class InfluencerServiceImpl implements InfluencerService {
 	public List<String> getEmaliListByCampaign(Campaign campaign) throws Exception {
 		return influencerDao.selectEmaliListByCampaign(campaign);
 	}
+	@Override
+	public List<Influencer> influencerBookmarkForMypage(Integer advertiserNum) throws Exception {
+		return influencerDao.bookmarkInfluecerForMypage(advertiserNum);
+	}
 	
 }
 
