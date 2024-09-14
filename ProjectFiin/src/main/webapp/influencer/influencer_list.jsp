@@ -58,7 +58,6 @@
 					<div class="influencer_pick" id="pickNum1" OnClick="location.href='influencerDetail?num=' + ${showinfluencer.influencer_num}">
 						<c:if test="${showinfluencer.profile_image ne null }">
 						<img src="image?file=${showinfluencer.profile_image }" class="influencer_img">
-						<!-- </a> -->
 						</c:if>
 						<div>
 						<c:if test="${showinfluencer.youtube ne null }">
