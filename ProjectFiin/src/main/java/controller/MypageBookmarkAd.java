@@ -42,7 +42,7 @@ public class MypageBookmarkAd extends HttpServlet {
 			
 			Advertiser advertiser = (Advertiser)request.getSession().getAttribute("advertiser");
 			Integer advertiserNum = advertiser.getAdvertiserNum();
-
+			
 			System.out.println(advertiserNum);
 			List<Influencer> bookmarkList = service.influencerBookmarkForMypage(advertiserNum);
 			

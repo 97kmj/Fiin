@@ -101,9 +101,11 @@
 
 	</select>
 	
-	<select id="selectInfluencerForBookmark" parameterType="Integer" resultType="Influencer">
-		select i.* from influencer i join bookmark_influencer b 
-		using(influencer_num) where advertiser_num = #{advertiserNum}
+	<select id="selectInfluencerForBookmark" parameterType="Integer" resultType="Map">
+		select i.*, c.category_name from influencer i
+		join bookmark_influencer b using(influencer_num) 
+		join category c using(category_id)
+		where b.advertiser_num = #{advertiserNum}
 	</select>
 	
 	<!--세나 -->

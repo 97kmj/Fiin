@@ -24,9 +24,9 @@
 				<div class="bookmark_list">
 					<c:forEach var="ibookmarkList" items="${bookmarkList }">
 						<div class="bookmark_pick" id="pickNum1"
-							onclick="location.href='influencer_detail.jsp'">
-							<c:if test="${ibookmarkList.profileImage ne null  }">
-								<img src="image?file=${ibookmarkList.profileImage }"
+							OnClick="location.href='influencerDetail?num=' + ${ibookmarkList.influencer_num}">
+							<c:if test="${ibookmarkList.profile_image ne null  }">
+								<img src="image?file=${ibookmarkList.profile_image }"
 									style="width: 200px; height: 270px; border-radius: 20px">
 							</c:if>
 							<div>
@@ -39,33 +39,34 @@
 								<c:if test="${ibookmarkList.blog ne null }">
 									<c:out value="블로그" />
 								</c:if>
-								<br> ${ibookmarkList.categoryId }
+								<br>
+								 ${ibookmarkList.category_name }
 							</div>
 							<div id="channel_name">
-								<c:if test="${ibookmarkList.youtubeName ne null }">
-								${ibookmarkList.youtubeName }
+								<c:if test="${ibookmarkList.youtube_name ne null }">
+								${ibookmarkList.youtube_name }
 							</c:if>
-								<c:if test="${ibookmarkList.instagramName ne null }">
-								${ibookmarkList.instagramName }
+								<c:if test="${ibookmarkList.instagram_name ne null }">
+								${ibookmarkList.instagram_name }
 							</c:if>
-								<c:if test="${ibookmarkList.blogName ne null }">
-								${ibookmarkList.blogName }
+								<c:if test="${ibookmarkList.blog_name ne null }">
+								${ibookmarkList.blog_name }
 							</c:if>
 							</div>
-							<div id="introduce">${ibookmarkList.introLine }</div>
+							<div id="introduce">${ibookmarkList.intro_line }</div>
 							<div>
 								<c:set var="totalFollowers" value="0" />
-								<c:if test="${ibookmarkList.youtubeFollower != null }">
+								<c:if test="${ibookmarkList.youtube_follower != null }">
 									<c:set var="totalFollowers"
-										value="${totalFollowers + ibookmarkList.youtubeFollower }" />
+										value="${totalFollowers + ibookmarkList.youtube_follower }" />
 								</c:if>
-								<c:if test="${ibookmarkList.instagramFollower != null }">
+								<c:if test="${ibookmarkList.instagram_follower != null }">
 									<c:set var="totalFollowers"
-										value="${totalFollowers + ibookmarkList.instagramFollower }" />
+										value="${totalFollowers + ibookmarkList.instagram_follower }" />
 								</c:if>
-								<c:if test="${ibookmarkList.blogFollower != null }">
+								<c:if test="${ibookmarkList.blog_follower != null }">
 									<c:set var="totalFollowers"
-										value="${totalFollowers + ibookmarkList.blogFollower }" />
+										value="${totalFollowers + ibookmarkList.blog_follower }" />
 								</c:if>
 								총 팔로워 수 : ${totalFollowers }명
 							</div>
