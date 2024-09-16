@@ -111,6 +111,11 @@ public List<Campaign> campaignListForRequest(Integer advertiserNum) throws Excep
 	return campaignDao.selectCampaignListForRequest(advertiserNum);
 }
 
+@Override
+public List<Campaign> campaignBookmarkForMypage(Integer influencerNum) throws Exception {
+	return campaignDao.bookmarkCampaignForMypage(influencerNum);
+}
+
  
 
 }

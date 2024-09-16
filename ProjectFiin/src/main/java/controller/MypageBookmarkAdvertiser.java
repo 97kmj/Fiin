@@ -17,14 +17,14 @@ import service.InfluencerServiceImpl;
 /**
  * Servlet implementation class MypageBookmarkAd
  */
-@WebServlet("/mypageBookmarkAd")
-public class MypageBookmarkAd extends HttpServlet {
+@WebServlet("/mypageBookmarkAdvertiser")
+public class MypageBookmarkAdvertiser extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MypageBookmarkAd() {
+    public MypageBookmarkAdvertiser() {
         super();
         // TODO Auto-generated constructor stub
     }

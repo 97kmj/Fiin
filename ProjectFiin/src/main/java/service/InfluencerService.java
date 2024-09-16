@@ -30,7 +30,7 @@ public interface InfluencerService {
   
   void influencerModify(Influencer influencer) throws Exception;
   List<Influencer> influencerBookmarkForMypage(Integer advertiserNum) throws Exception;
-  
+
 	
 	//민준 - 캠페인의 카테고리랑 희망채널이 일치하는 인플루언서들의 이메일 목록 뽑아오기 
 	List<String> getEmaliListByCampaign(Campaign campaign) throws Exception;

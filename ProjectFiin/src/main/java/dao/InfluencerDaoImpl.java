@@ -113,4 +113,5 @@ public class InfluencerDaoImpl implements InfluencerDao {
 		return sqlSession.selectList("mapper.influencer.selectInfluencerForBookmark",advertiserNum);
 	}
 
+
 }

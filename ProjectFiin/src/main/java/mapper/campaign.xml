@@ -90,6 +90,13 @@
 		order by update_start_date desc 		
 	</select>
 	
+	<select id="selectCampaignForBookmark" parameterType="Integer" resultType="Map">
+		select c.*,g.category_name from campaign c 
+		join bookmark_campaign b using(campaign_num)
+		join category g using(category_id)
+		where influencer_num = #{influencerNum}
+	</select>
+	
 </mapper>	
 
 
