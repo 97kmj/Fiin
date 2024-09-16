@@ -18,6 +18,7 @@
 			<div class=bookmark_wrap>
 				<h3>북마크한 캠페인</h3>
 				<div class="bookmark_list">
+				<c:forEach var="cbookmark" items="${cbookmarkList }">
 					<div class="bookmark_pick" id="pickNum1"
 						onclick="location.href='campaign_detail.jsp'">
 						<img src="${pageContext.request.contextPath}/image/campaign.png"
@@ -27,47 +28,7 @@
 						<div id="introduce">직장인의 데일리룩 올리는 블로거</div>
 						<div>구독자 수 8,000명</div>
 					</div>
-					<div class="bookmark_pick" id="pickNum2"
-						onclick="location.href='influencer_detail.jsp'">
-						<img src="${pageContext.request.contextPath}/image/campaign.png"
-							style="width: 200px; height: 270px; border-radius: 20px; margin-bottom: 10px">
-						<div>뷰티|패션</div>
-						<div id="channel_name">채널명</div>
-						<div id="introduce">직장인의 데일리룩 올리는 블로거</div>
-						<div>구독자 수 8,000명</div>
-					</div>
-					<div class="bookmark_pick" id="pickNum3">
-						<img src="${pageContext.request.contextPath}image/campaign.png"
-							style="width: 200px; height: 270px; border-radius: 20px; margin-bottom: 10px">
-						<div>뷰티|패션</div>
-						<div id="channel_name">채널명</div>
-						<div id="introduce">직장인의 데일리룩 올리는 블로거</div>
-						<div>구독자 수 8,000명</div>
-					</div>
-					<div class="bookmark_pick" id="pickNum4">
-						<img src="${pageContext.request.contextPath}image/campaign.png"
-							style="width: 200px; height: 270px; border-radius: 20px; margin-bottom: 10px">
-						<div>뷰티|패션</div>
-						<div id="channel_name">채널명</div>
-						<div id="introduce">직장인의 데일리룩 올리는 블로거</div>
-						<div>구독자 수 8,000명</div>
-					</div>
-					<div class="bookmark_pick" id="pickNum5">
-						<img src="${pageContext.request.contextPath}/image/campaign.png"
-							style="width: 200px; height: 270px; border-radius: 20px; margin-bottom: 10px">
-						<div>뷰티|패션</div>
-						<div id="channel_name">채널명</div>
-						<div id="introduce">직장인의 데일리룩 올리는 블로거</div>
-						<div>구독자 수 8,000명</div>
-					</div>
-					<div class="bookmark_pick" id="pickNum6">
-						<img src="${pageContext.request.contextPath}/image/campaign.png"
-							style="width: 200px; height: 270px; border-radius: 20px; margin-bottom: 10px">
-						<div>뷰티|패션</div>
-						<div id="channel_name">채널명</div>
-						<div id="introduce">직장인의 데일리룩 올리는 블로거</div>
-						<div>구독자 수 8,000명</div>
-					</div>
+					</c:forEach>
 				</div>
 			</div>
 		</div>

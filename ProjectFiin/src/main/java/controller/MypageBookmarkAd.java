@@ -44,11 +44,11 @@ public class MypageBookmarkAd extends HttpServlet {
 			Integer advertiserNum = advertiser.getAdvertiserNum();
 			
 			System.out.println(advertiserNum);
-			List<Influencer> bookmarkList = service.influencerBookmarkForMypage(advertiserNum);
+			List<Influencer> ibookmarkList = service.influencerBookmarkForMypage(advertiserNum);
 			
-			System.out.println("Bookmark List Size: " + bookmarkList.size());
+			System.out.println("Bookmark List Size: " + ibookmarkList.size());
 
-			request.setAttribute("bookmarkList", bookmarkList);
+			request.setAttribute("ibookmarkList", ibookmarkList);
 			request.getRequestDispatcher("mypage/mypage_bookmark_advertiser.jsp").forward(request, response);			
 		} catch(Exception e) {
 			e.printStackTrace();

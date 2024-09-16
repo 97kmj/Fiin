@@ -22,51 +22,51 @@
 			<div class=bookmark_wrap>
 				<h3>북마크한 인플루언서</h3>
 				<div class="bookmark_list">
-					<c:forEach var="ibookmarkList" items="${bookmarkList }">
+					<c:forEach var="ibookmark" items="${ibookmarkList }">
 						<div class="bookmark_pick" id="pickNum1"
-							OnClick="location.href='influencerDetail?num=' + ${ibookmarkList.influencer_num}">
-							<c:if test="${ibookmarkList.profile_image ne null  }">
-								<img src="image?file=${ibookmarkList.profile_image }"
+							OnClick="location.href='influencerDetail?num=' + ${ibookmark.influencer_num}">
+							<c:if test="${ibookmark.profile_image ne null  }">
+								<img src="image?file=${ibookmark.profile_image }"
 									style="width: 200px; height: 270px; border-radius: 20px">
 							</c:if>
 							<div>
-								<c:if test="${ibookmarkList.youtube ne null }">
+								<c:if test="${ibookmark.youtube ne null }">
 									<c:out value="유튜브" />
 								</c:if>
-								<c:if test="${ibookmarkList.instagram ne null }">
+								<c:if test="${ibookmark.instagram ne null }">
 									<c:out value="인스타그램" />
 								</c:if>
-								<c:if test="${ibookmarkList.blog ne null }">
+								<c:if test="${ibookmark.blog ne null }">
 									<c:out value="블로그" />
 								</c:if>
 								<br>
-								 ${ibookmarkList.category_name }
+								 ${ibookmark.category_name }
 							</div>
 							<div id="channel_name">
-								<c:if test="${ibookmarkList.youtube_name ne null }">
-								${ibookmarkList.youtube_name }
+								<c:if test="${ibookmark.youtube_name ne null }">
+								${ibookmark.youtube_name }
 							</c:if>
-								<c:if test="${ibookmarkList.instagram_name ne null }">
-								${ibookmarkList.instagram_name }
+								<c:if test="${ibookmark.instagram_name ne null }">
+								${ibookmark.instagram_name }
 							</c:if>
-								<c:if test="${ibookmarkList.blog_name ne null }">
-								${ibookmarkList.blog_name }
+								<c:if test="${ibookmark.blog_name ne null }">
+								${ibookmark.blog_name }
 							</c:if>
 							</div>
-							<div id="introduce">${ibookmarkList.intro_line }</div>
+							<div id="introduce">${ibookmark.intro_line }</div>
 							<div>
 								<c:set var="totalFollowers" value="0" />
-								<c:if test="${ibookmarkList.youtube_follower != null }">
+								<c:if test="${ibookmark.youtube_follower != null }">
 									<c:set var="totalFollowers"
-										value="${totalFollowers + ibookmarkList.youtube_follower }" />
+										value="${totalFollowers + ibookmark.youtube_follower }" />
 								</c:if>
-								<c:if test="${ibookmarkList.instagram_follower != null }">
+								<c:if test="${ibookmark.instagram_follower != null }">
 									<c:set var="totalFollowers"
-										value="${totalFollowers + ibookmarkList.instagram_follower }" />
+										value="${totalFollowers + ibookmark.instagram_follower }" />
 								</c:if>
-								<c:if test="${ibookmarkList.blog_follower != null }">
+								<c:if test="${ibookmark.blog_follower != null }">
 									<c:set var="totalFollowers"
-										value="${totalFollowers + ibookmarkList.blog_follower }" />
+										value="${totalFollowers + ibookmark.blog_follower }" />
 								</c:if>
 								총 팔로워 수 : ${totalFollowers }명
 							</div>
