@@ -49,6 +49,12 @@
     		select count(*) from influencer
     	]]>
 	</select>
+	
+	<select id="selectInfluencerDetail" parameterType="Integer" resultType="Map">
+		select i.*, c.category_name from influencer i join category c
+		using(category_id)
+		where influencer_num = #{influencerNum}
+	</select>
 
 	<select id="selectAllInfluencerCount" resultType="Integer">
 		select count(*) from influencer

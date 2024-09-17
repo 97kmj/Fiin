@@ -2,6 +2,7 @@ package controller;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,7 +12,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import dto.Advertiser;
 import dto.Campaign;
-import dto.Influencer;
 import service.CampaignService;
 import service.CampaignServiceImpl;
 import service.InfluencerService;
@@ -47,7 +47,7 @@ public class InfluencerDetail extends HttpServlet {
 			
 			InfluencerService service = new InfluencerServiceImpl();
 			CampaignService cservice = new CampaignServiceImpl();
-			Influencer influencer = service.influencerDetail(influencerNum);
+			Map<String, Object> influencer = service.influencerDetail(influencerNum);
 			Advertiser advertiser = (Advertiser)request.getSession().getAttribute("advertiser");
 			Integer advertiserNum = advertiser.getAdvertiserNum();
 			List<Campaign> campaignRequest = cservice.campaignListForRequest(advertiserNum);

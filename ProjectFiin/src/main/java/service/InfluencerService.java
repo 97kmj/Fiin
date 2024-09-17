@@ -14,7 +14,7 @@ public interface InfluencerService {
 	void join(Influencer influencer) throws Exception;
 	Influencer login(String userEmail, String password) throws Exception;
 	boolean checkDoubleEmail(String userEmail) throws Exception;
-	Influencer influencerDetail(Integer influencerNum) throws Exception;
+	Map<String, Object> influencerDetail(Integer influencerNum) throws Exception;
 	Integer checkBookmarkInfluencer(Integer advertiserNum, Integer influencerNum) throws Exception;
 	boolean toggleBookmarkInfluencer(Integer advertiserNum, Integer influencerNum) throws Exception;
 	List<Influencer> influencerListForMain() throws Exception;

@@ -113,5 +113,10 @@ public class InfluencerDaoImpl implements InfluencerDao {
 		return sqlSession.selectList("mapper.influencer.selectInfluencerForBookmark",advertiserNum);
 	}
 
+	@Override
+	public Map<String, Object> selectInfluencerDetail(Integer influencerNum) throws Exception {
+		return sqlSession.selectOne("mapper.influencer.selectInfluencerDetail", influencerNum);
+	}
+
 
 }
