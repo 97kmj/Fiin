@@ -40,11 +40,15 @@ public class RequestCampaign extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		Advertiser advertiser = (Advertiser)request.getSession().getAttribute("advertiser");
 		Integer advertiserNum = advertiser.getAdvertiserNum();
-		Integer campaignNum = Integer.parseInt(request.getParameter("campaignNum"));
-		
+		Integer requestCampaignNum = Integer.parseInt(request.getParameter("campaignNum"));
+		Integer requestInfluencerNum = Integer.parseInt(request.getParameter("influencerNum"));
 		try {
-			
-			
+			request.setAttribute("influencerNum", requestInfluencerNum);
+			request.setAttribute("advertiserNum", advertiserNum);
+			request.setAttribute("requestCampaignNum", requestCampaignNum);
+			System.out.println(requestInfluencerNum);
+			System.out.println(advertiserNum);
+			System.out.println(requestCampaignNum);
 		} catch(Exception e) {
 			e.printStackTrace();
 		}

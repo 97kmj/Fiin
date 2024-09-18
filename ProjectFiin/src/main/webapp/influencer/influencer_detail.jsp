@@ -100,7 +100,7 @@
 										회사명: ${campaign.company_name }<br>
 										상품명: ${campaign.product_name }<br>
 										마감일: <fmt:formatDate value="${campaign.ad_end_date }" pattern="yyyy-MM-dd" />
-										<button type="button" id="requestBtn" style="cursor: pointer">제안</button>
+										<button type="button" class="requestBtn" data-campaign-num="${campaign.campaign_num}" data-influencer-num="${influencerdetail.influencer_num }" style="cursor: pointer">제안</button>
 									</li>
 								</c:forEach>
 								<button type="button" class="closeBtn">닫기</button>
@@ -231,21 +231,31 @@
 		})
 </script>
 <script>
-	document.getElementById('requestBtn').addEventListener('click', function(){
+$(function() {
+	$('.requestBtn').click(function(){
+		
+		var requestCampaignNum = $(this).data('campaign-num')
+		var requestInfluencerNum = $(this).data('influencer-num')
+		console.log(requestCampaignNum)
+		console.log(requestInfluencerNum)
 		$.ajax({
-			url: 'requestCampaign',
-			method: 'post',
-			async: true,
-			dataType: 'text',
-			data: {campaign_num : campaignNum},
-			success: function(result) {
-				alert("전송 성공")
+			url:'requestCampaign',
+			type:'post',
+			async:true,
+			dataType:'text',
+			data:{
+				campaignNum:requestCampaignNum,
+				influencerNum:requestInfluencerNum
 			},
-			error: function(error) {
-				alert("전송 실패")
+			success:function(result){
+				alert("캠페인 제안을 완료했습니다")
+			},
+			error:function(err){
+				console.log(err);
 			}
 		})
 	})
+})
 </script>
 
 	<%@ include file="../include/footer.jsp"%>
