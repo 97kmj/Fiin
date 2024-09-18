@@ -3,11 +3,19 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  <mapper namespace="mapper.requestCampaign">
 	<insert id="insertRequestCampaign" parameterType="Map">
-	<![CDATA[
-		insert into request_campaign (campaign_num, influencer_num) values (#{campaign_num},#{influencer_num})	
-	]]>
+		insert into request_campaign (campaign_num, influencer_num) 
+		values (#{campaignNum}, #{influencerNum})	
 	</insert>
 	
+	<select id="selectRequestCampaign" parameterType="Map" resultType="Integer">
+		select influencer_num, campaign_num from request_campaign 
+		where campaign_num = #{campaignNum} and influencer_num = #{influencerNum}	
+	</select>
+	
+	<delete id="deleteRequestCampaign" parameterType="Map">
+		delete from request_campaign 
+		where campaign_num = #{campaignNum} and influencer_num = #{influencerNum}
+	</delete>
 	
 </mapper>
 

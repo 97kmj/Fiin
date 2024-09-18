@@ -248,7 +248,7 @@ $(function() {
 				influencerNum:requestInfluencerNum
 			},
 			success:function(result){
-				alert("캠페인 제안을 완료했습니다")
+				alert(result)
 			},
 			error:function(err){
 				console.log(err);
