@@ -10,8 +10,35 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f2a06d27-f9c6-48c4-808e-315f110fcf30" name="변경" comment="fix : campaign CSS updated.">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/3a323a71-67ed-4ff3-98bb-050934bc13e6.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/3a323a71-67ed-4ff3-98bb-050934bc13e6.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectFiin/src/main/java/controller/InfluencerRegister.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectFiin/src/main/java/controller/InfluencerRegister.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectFiin/src/main/java/dao/InfluencerDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectFiin/src/main/java/dao/InfluencerDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectFiin/src/main/java/dao/InfluencerDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectFiin/src/main/java/dao/InfluencerDaoImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectFiin/src/main/java/dto/Influencer.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectFiin/src/main/java/dto/Influencer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectFiin/src/main/java/mapper/influencer.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectFiin/src/main/java/mapper/influencer.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectFiin/src/main/java/service/InfluencerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectFiin/src/main/java/service/InfluencerService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectFiin/src/main/java/service/InfluencerServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectFiin/src/main/java/service/InfluencerServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectFiin/src/main/webapp/css/influencer_register.css" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectFiin/src/main/webapp/css/influencer_register.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectFiin/src/main/webapp/influencer/influencer_register.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectFiin/src/main/webapp/influencer/influencer_register.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Fiin_master_war_exploded/WEB-INF/classes/controller/InfluencerRegister.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/Fiin_master_war_exploded/WEB-INF/classes/controller/InfluencerRegister.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Fiin_master_war_exploded/WEB-INF/classes/dao/InfluencerDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/Fiin_master_war_exploded/WEB-INF/classes/dao/InfluencerDao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Fiin_master_war_exploded/WEB-INF/classes/dao/InfluencerDaoImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/Fiin_master_war_exploded/WEB-INF/classes/dao/InfluencerDaoImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Fiin_master_war_exploded/WEB-INF/classes/dto/Influencer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/Fiin_master_war_exploded/WEB-INF/classes/dto/Influencer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Fiin_master_war_exploded/WEB-INF/classes/mapper/influencer.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/Fiin_master_war_exploded/WEB-INF/classes/mapper/influencer.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Fiin_master_war_exploded/WEB-INF/classes/service/InfluencerService.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/Fiin_master_war_exploded/WEB-INF/classes/service/InfluencerService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Fiin_master_war_exploded/WEB-INF/classes/service/InfluencerServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/Fiin_master_war_exploded/WEB-INF/classes/service/InfluencerServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Fiin_master_war_exploded/WEB-INF/lib/css/influencer_register.css" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/Fiin_master_war_exploded/WEB-INF/lib/css/influencer_register.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Fiin_master_war_exploded/WEB-INF/lib/influencer/influencer_register.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/Fiin_master_war_exploded/WEB-INF/lib/influencer/influencer_register.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Fiin_master_war_exploded/css/influencer_register.css" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/Fiin_master_war_exploded/css/influencer_register.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Fiin_master_war_exploded/influencer/influencer_register.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/Fiin_master_war_exploded/influencer/influencer_register.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Fiin-master/controller/InfluencerRegister.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Fiin-master/controller/InfluencerRegister.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Fiin-master/dao/InfluencerDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Fiin-master/dao/InfluencerDao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Fiin-master/dao/InfluencerDaoImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Fiin-master/dao/InfluencerDaoImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Fiin-master/dto/Influencer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Fiin-master/dto/Influencer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Fiin-master/mapper/influencer.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Fiin-master/mapper/influencer.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Fiin-master/service/InfluencerService.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Fiin-master/service/InfluencerService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Fiin-master/service/InfluencerServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Fiin-master/service/InfluencerServiceImpl.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,29 +89,42 @@
     <option name="showMembers" value="true" />
     <option name="showVisibilityIcons" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "Tomcat 서버.Tomcat 9.0.93.executor": "Run",
-    "git-widget-placeholder": "develop-sm",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/Users/santino/Desktop/Fiin-master",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "프로젝트",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "advanced.settings"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;Tomcat 서버.Tomcat 9.0.93.executor&quot;: &quot;Run&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;develop-sm&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/santino/Desktop/Fiin-master&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;프로젝트&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;advanced.settings&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "mariadb"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mariadb&quot;
     ]
   }
-}]]></component>
+}</component>
+  <component name="RunAnythingCache">
+    <myKeys>
+      <visibility group="Gradle 작업" flag="true" />
+      <visibility group="Grunt" flag="true" />
+      <visibility group="Gulp" flag="true" />
+      <visibility group="HTTP 요청" flag="true" />
+      <visibility group="Maven Goal" flag="true" />
+      <visibility group="npm" flag="true" />
+      <visibility group="yarn" flag="true" />
+      <visibility group="실행 구성" flag="true" />
+      <visibility group="최근 프로젝트" flag="true" />
+    </myKeys>
+  </component>
   <component name="RunManager">
     <configuration name="Tomcat 9.0.93" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.93" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
       <option name="OPEN_IN_BROWSER_URL" value="http://localhost:8080/fiin" />
@@ -193,7 +233,9 @@
       <option name="presentableId" value="Default" />
       <updated>1726190532325</updated>
       <workItem from="1726190533483" duration="419000" />
-      <workItem from="1726190955836" duration="13988000" />
+      <workItem from="1726190955836" duration="27634000" />
+      <workItem from="1726558733565" duration="51566000" />
+      <workItem from="1726679765441" duration="1800000" />
     </task>
     <task id="LOCAL-00001" summary="dd">
       <option name="closed" value="true" />
@@ -219,7 +261,15 @@
       <option name="project" value="LOCAL" />
       <updated>1726209701465</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="fix : campaign CSS updated.">
+      <option name="closed" value="true" />
+      <created>1726209759062</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1726209759062</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
