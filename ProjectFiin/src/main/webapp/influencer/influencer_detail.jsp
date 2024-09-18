@@ -41,55 +41,46 @@
 							src="img/youtube.png" class="channel"> <a
 							class="channel_font">유튜브</a> &nbsp;
 						</span>
+						<span class="subscribers_su">${influencerdetail.youtube_follower }명</span>
+						<br>
 					</c:if>
 					<c:if test="${influencerdetail.instagram ne null }">
 						<span class="channel_outline"> &nbsp; <img
 							src="img/instagram.png" class="channel"> <a
 							class="channel_font">인스타그램</a>&nbsp;
 						</span>
+						<span class="subscribers_su">${influencerdetail.instagram_follower }명</span>
+						<br>
 					</c:if>
 					<c:if test="${influencerdetail.blog ne null }">
 						<span class="channel_outline"> &nbsp; <img
 							src="img/blog(un).png" class="channel"> <a
 							class="channel_font">인스타그램</a>&nbsp;
 						</span>
+						<span class="subscribers_su">${influencerdetail.blog_follower }명</span>
 					</c:if>
 				</div>
 			</div>
 			<br>
 
 			<div>
-				<span class="basic_info"><b>컨텐츠 카테고리 </b>&nbsp;|&nbsp;</span> <a
-					class="subscribers_su" style="font-size: 25px; text-align: left;">${influencerdetail.category_name}</a>
+				<span class="basic_info"><b>컨텐츠 카테고리 </b>&nbsp;|&nbsp;</span>
+				<a style="font-size: 25px; text-align: left;">${influencerdetail.category_name}</a>
 			</div>
 			<br>
-			<div class="basic_info">
-				<span class="subscribers_su"><b>구독자 수</b></span>&nbsp;&nbsp;|&nbsp;&nbsp;
-				<c:if test="${influencerdetail.youtube ne null }">
-					<span class="subscribers_su">${influencerdetail.youtube_follower }</span>
-				</c:if>
-				<c:if test="${influencerdetail.instagram ne null }">
-					<span class="subscribers_su">${influencerdetail.instagram_follower }</span>
-				</c:if>
-				<c:if test="${influencerdetail.blog ne null }">
-					<span class="subscribers_su">${influencerdetail.blog_follower }</span>
-				</c:if>
-
-			</div>
+			
 			<div class="container">
 				<c:choose>
 					<c:when test="${type eq 'advertiser' }">
 						<c:choose>
 							<c:when test="${bookmarkInfluencer eq 'true' }">
-								<img src="image/bookmark.png" id="bookmark">
+								<img src="image/bookmark.png" id="bookmark" style="width:50px; height:50px">
 							</c:when>
 							<c:otherwise>
-								<img src="image/nonBookmark.png" id="bookmark">
+								<img src="image/nonBookmark.png" id="bookmark" style="width:50px; height:50px">
 							</c:otherwise>
 						</c:choose>
 
-						<input type="button" class="basic_btn" value="제안하기"
-							onclick="location.href='influencer_register.jsp'">
 						 <div class="modal">
 							<div class="modalPopup">
 								<h3>캠페인 목록</h3>
@@ -100,7 +91,7 @@
 										회사명: ${campaign.company_name }<br>
 										상품명: ${campaign.product_name }<br>
 										마감일: <fmt:formatDate value="${campaign.ad_end_date }" pattern="yyyy-MM-dd" />
-										<button type="button" class="requestBtn" data-campaign-num="${campaign.campaign_num}" data-influencer-num="${influencerdetail.influencer_num }" style="cursor: pointer">제안</button>
+										<button type="button" class="requestBtn" data-campaign-num="${campaign.campaign_num}" data-influencer-num="${influencerdetail.influencer_num }">제안</button>
 									</li>
 								</c:forEach>
 								<button type="button" class="closeBtn">닫기</button>
