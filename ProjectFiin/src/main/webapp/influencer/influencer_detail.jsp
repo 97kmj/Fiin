@@ -41,7 +41,9 @@
 							src="img/youtube.png" class="channel"> <a
 							class="channel_font">유튜브</a> &nbsp;
 						</span>
-						<span class="subscribers_su">${influencerdetail.youtube_follower }명</span>
+						<span class="subscribers_su">
+						<fmt:formatNumber value="${influencerdetail.youtube_follower }" type="number" pattern="#,###"/>명
+						</span>
 						<br>
 					</c:if>
 					<c:if test="${influencerdetail.instagram ne null }">
@@ -49,7 +51,9 @@
 							src="img/instagram.png" class="channel"> <a
 							class="channel_font">인스타그램</a>&nbsp;
 						</span>
-						<span class="subscribers_su">${influencerdetail.instagram_follower }명</span>
+						<span class="subscribers_su">
+						<fmt:formatNumber value="${influencerdetail.instagram_follower }" type="number" pattern="#,###"/>명
+						</span>
 						<br>
 					</c:if>
 					<c:if test="${influencerdetail.blog ne null }">
@@ -57,7 +61,9 @@
 							src="img/blog(un).png" class="channel"> <a
 							class="channel_font">인스타그램</a>&nbsp;
 						</span>
-						<span class="subscribers_su">${influencerdetail.blog_follower }명</span>
+						<span class="subscribers_su">
+						<fmt:formatNumber value="${influencerdetail.blog_follower }" type="number" pattern="#,###"/>명
+						</span>
 					</c:if>
 				</div>
 			</div>
