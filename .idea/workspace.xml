@@ -11,9 +11,6 @@
   <component name="ChangeListManager">
     <list default="true" id="f2a06d27-f9c6-48c4-808e-315f110fcf30" name="변경" comment="fix : influencerRegister updated.">
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Fiin_master_war_exploded/WEB-INF/classes/resource/mybatis-config.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/Fiin_master_war_exploded/WEB-INF/classes/resource/mybatis-config.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Fiin-master/resource/mybatis-config.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Fiin-master/resource/mybatis-config.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -216,7 +213,7 @@
       <workItem from="1726190955836" duration="27634000" />
       <workItem from="1726558733565" duration="51566000" />
       <workItem from="1726679765441" duration="18484000" />
-      <workItem from="1726706444334" duration="689000" />
+      <workItem from="1726706444334" duration="736000" />
     </task>
     <task id="LOCAL-00001" summary="dd">
       <option name="closed" value="true" />
@@ -282,7 +279,15 @@
       <option name="project" value="LOCAL" />
       <updated>1726706868227</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="fix : influencerRegister updated.">
+      <option name="closed" value="true" />
+      <created>1726707155963</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1726707155963</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
