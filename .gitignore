@@ -11,6 +11,7 @@ target/
 ../out
 ~Desktop/Fiin-master/.idea
 
+/.idea
 .idea
 .idea/
 .idea/modules.xml
@@ -54,4 +55,7 @@ src/main/java/resource/mybatis-config.xml
 .gitignore
 Fiin-master.iml
 out
-/.gitignore
+
+/Fiin-master.iml
+/out
+

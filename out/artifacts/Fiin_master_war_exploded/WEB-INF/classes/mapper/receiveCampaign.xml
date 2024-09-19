@@ -19,5 +19,13 @@
 			where apply_num=#{applyNum}
 		]]>
 	</update>
-	
+
+<!--	//상민 - 요청받은 인플루언서 (광고주 입장)-->
+		<select id="requestedInfluencer" parameterType="map">
+			SELECT *
+			FROM receive_campaign
+			WHERE campaign_num = #{campaignNum}
+				AND influencer_num = #{influencerNum}
+		</select>
+
 </mapper>

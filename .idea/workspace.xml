@@ -10,47 +10,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f2a06d27-f9c6-48c4-808e-315f110fcf30" name="변경" comment="fix : influencerRegister updated.">
-      <change afterPath="$PROJECT_DIR$/ProjectFiin/src/main/java/controller/mypageRequestedInfluencer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/lib.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/lib.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Fiin-master.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Fiin-master.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectFiin/src/main/java/controller/CampaignRegister.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectFiin/src/main/java/controller/CampaignRegister.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectFiin/src/main/java/dao/CampaignDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectFiin/src/main/java/dao/CampaignDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectFiin/src/main/java/dao/CampaignDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectFiin/src/main/java/dao/CampaignDaoImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectFiin/src/main/java/dao/ReceiveCampaignDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectFiin/src/main/java/dao/ReceiveCampaignDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectFiin/src/main/java/dao/ReceiveCampaignDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectFiin/src/main/java/dao/ReceiveCampaignDaoImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectFiin/src/main/java/mapper/campaign.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectFiin/src/main/java/mapper/campaign.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectFiin/src/main/java/mapper/influencer.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectFiin/src/main/java/mapper/influencer.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectFiin/src/main/java/mapper/receiveCampaign.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectFiin/src/main/java/mapper/receiveCampaign.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectFiin/src/main/java/service/CampaignService.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectFiin/src/main/java/service/CampaignService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectFiin/src/main/java/service/CampaignServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectFiin/src/main/java/service/CampaignServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectFiin/src/main/java/service/ReceiveCampaignService.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectFiin/src/main/java/service/ReceiveCampaignService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectFiin/src/main/java/service/ReceiveCampaignServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectFiin/src/main/java/service/ReceiveCampaignServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectFiin/src/main/webapp/campaign/campaign_register.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectFiin/src/main/webapp/campaign/campaign_register.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectFiin/src/main/webapp/css/campaign_register.css" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectFiin/src/main/webapp/css/campaign_register.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectFiin/src/main/webapp/mypage/mypage_advertiser_requestedInfluencer.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectFiin/src/main/webapp/mypage/mypage_advertiser_requestedInfluencer.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectFiin/src/main/webapp/mypage/mypage_influencer_SNS.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectFiin/src/main/webapp/mypage/mypage_influencer_SNS.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Fiin_master_war_exploded/WEB-INF/classes/controller/CampaignRegister.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/Fiin_master_war_exploded/WEB-INF/classes/controller/CampaignRegister.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Fiin_master_war_exploded/WEB-INF/classes/dao/CampaignDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/Fiin_master_war_exploded/WEB-INF/classes/dao/CampaignDao.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Fiin_master_war_exploded/WEB-INF/classes/dao/CampaignDaoImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/Fiin_master_war_exploded/WEB-INF/classes/dao/CampaignDaoImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Fiin_master_war_exploded/WEB-INF/classes/mapper/campaign.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/Fiin_master_war_exploded/WEB-INF/classes/mapper/campaign.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Fiin_master_war_exploded/WEB-INF/classes/mapper/influencer.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/Fiin_master_war_exploded/WEB-INF/classes/mapper/influencer.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Fiin_master_war_exploded/WEB-INF/classes/service/CampaignServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/Fiin_master_war_exploded/WEB-INF/classes/service/CampaignServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Fiin_master_war_exploded/WEB-INF/lib/campaign/campaign_register.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/Fiin_master_war_exploded/WEB-INF/lib/campaign/campaign_register.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Fiin_master_war_exploded/WEB-INF/lib/css/campaign_register.css" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/Fiin_master_war_exploded/WEB-INF/lib/css/campaign_register.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Fiin_master_war_exploded/campaign/campaign_register.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/Fiin_master_war_exploded/campaign/campaign_register.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Fiin_master_war_exploded/css/campaign_register.css" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/Fiin_master_war_exploded/css/campaign_register.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Fiin-master/controller/CampaignRegister.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Fiin-master/controller/CampaignRegister.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Fiin-master/dao/CampaignDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Fiin-master/dao/CampaignDao.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Fiin-master/dao/CampaignDaoImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Fiin-master/dao/CampaignDaoImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Fiin-master/dao/ReceiveCampaignDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Fiin-master/dao/ReceiveCampaignDao.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Fiin-master/dao/ReceiveCampaignDaoImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Fiin-master/dao/ReceiveCampaignDaoImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Fiin-master/mapper/campaign.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Fiin-master/mapper/campaign.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Fiin-master/mapper/influencer.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Fiin-master/mapper/influencer.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Fiin-master/mapper/receiveCampaign.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Fiin-master/mapper/receiveCampaign.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Fiin-master/service/CampaignServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Fiin-master/service/CampaignServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Fiin-master/service/ReceiveCampaignService.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Fiin-master/service/ReceiveCampaignService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Fiin-master/service/ReceiveCampaignServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Fiin-master/service/ReceiveCampaignServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectFiin/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectFiin/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectFiin/src/main/java/resource/mybatis-config.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectFiin/src/main/java/resource/mybatis-config.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Fiin_master_war_exploded/WEB-INF/classes/dao/ReceiveCampaignDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/Fiin_master_war_exploded/WEB-INF/classes/dao/ReceiveCampaignDao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Fiin_master_war_exploded/WEB-INF/classes/dao/ReceiveCampaignDaoImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/Fiin_master_war_exploded/WEB-INF/classes/dao/ReceiveCampaignDaoImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Fiin_master_war_exploded/WEB-INF/classes/mapper/receiveCampaign.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/Fiin_master_war_exploded/WEB-INF/classes/mapper/receiveCampaign.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Fiin_master_war_exploded/WEB-INF/classes/service/ReceiveCampaignService.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/Fiin_master_war_exploded/WEB-INF/classes/service/ReceiveCampaignService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Fiin_master_war_exploded/WEB-INF/classes/service/ReceiveCampaignServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/Fiin_master_war_exploded/WEB-INF/classes/service/ReceiveCampaignServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Fiin_master_war_exploded/WEB-INF/lib/mypage/mypage_advertiser_requestedInfluencer.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/Fiin_master_war_exploded/WEB-INF/lib/mypage/mypage_advertiser_requestedInfluencer.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Fiin_master_war_exploded/WEB-INF/lib/mypage/mypage_influencer_SNS.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/Fiin_master_war_exploded/WEB-INF/lib/mypage/mypage_influencer_SNS.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Fiin_master_war_exploded/mypage/mypage_advertiser_requestedInfluencer.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/Fiin_master_war_exploded/mypage/mypage_advertiser_requestedInfluencer.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Fiin_master_war_exploded/mypage/mypage_influencer_SNS.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/Fiin_master_war_exploded/mypage/mypage_influencer_SNS.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -101,29 +73,29 @@
     <option name="showMembers" value="true" />
     <option name="showVisibilityIcons" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "Tomcat 서버.Tomcat 9.0.93.executor": "Run",
-    "git-widget-placeholder": "develop-sm",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/Users/santino/Desktop/Fiin-master",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "라이브러리",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "advanced.settings"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;Tomcat 서버.Tomcat 9.0.93.executor&quot;: &quot;Run&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;develop-sm&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/santino/Desktop/Fiin-master&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;라이브러리&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;advanced.settings&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "mariadb"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mariadb&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="controller" />
@@ -252,7 +224,8 @@
       <workItem from="1726190533483" duration="419000" />
       <workItem from="1726190955836" duration="27634000" />
       <workItem from="1726558733565" duration="51566000" />
-      <workItem from="1726679765441" duration="17383000" />
+      <workItem from="1726679765441" duration="18484000" />
+      <workItem from="1726706444334" duration="211000" />
     </task>
     <task id="LOCAL-00001" summary="dd">
       <option name="closed" value="true" />
@@ -294,7 +267,15 @@
       <option name="project" value="LOCAL" />
       <updated>1726681645676</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="fix : influencerRegister updated.">
+      <option name="closed" value="true" />
+      <created>1726706224121</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1726706224121</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
