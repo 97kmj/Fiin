@@ -242,6 +242,9 @@
 	padding: 30px;
 	border-radius: 10px;
 	background: #ffffff;
+	width: 1000px;
+	height: 500px;
+	overflow: auto;
 }
 .modal .modalPopup .closeBtn {
 	display: block;
@@ -251,11 +254,24 @@
 	cursor: pointer;
 	transition: box-shadow 0.2s;
 }
+
 .requestBtn {
 	cursor: pointer;
-	width: 40px;
-	height: 20px;
+	width: 50px;
+	height: 30px;
 	border-radius: 3px;
 	background-color: #4849e8;
 	color: white;
+}
+.modal table {
+	width: 900px;
+}
+.modal th, td {
+	margin: 10px;
+	padding: 10px;
+}
+.outBtn {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
 }

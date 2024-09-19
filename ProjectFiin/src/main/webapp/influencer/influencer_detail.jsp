@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
@@ -91,18 +90,34 @@
 
 						 <div class="modal">
 							<div class="modalPopup">
-								<h3>캠페인 목록</h3>
-								<c:forEach var="campaign" items="${campaignRequest }">
-									<li>
-										<br>
-										캠페인명: ${campaign.campaign_title }<br>
-										회사명: ${campaign.company_name }<br>
-										상품명: ${campaign.product_name }<br>
-										마감일: <fmt:formatDate value="${campaign.ad_end_date }" pattern="yyyy-MM-dd" />
-										<button type="button" class="requestBtn" data-campaign-num="${campaign.campaign_num}" data-influencer-num="${influencerdetail.influencer_num }">제안</button>
-									</li>
-								</c:forEach>
-								<button type="button" class="closeBtn">닫기</button>
+							<div class="outBtn">
+								<h2 style="margin:20px">캠페인 목록</h2>
+								<span>
+									<button type="button" class="closeBtn">닫기</button>
+								</span>
+							</div>	
+								<table>
+									<thead>
+									<tr align="center">
+										<th>캠페인명</th>
+										<th>회사명</th>
+										<th>상품명</th>
+										<th>마감일</th>
+										<th>제안</th>
+									</tr>
+									</thead>
+									<tbody>
+										<c:forEach var="list" items="${campaignRequest }">
+											<tr align="center">
+												<td>${list.campaign_title }</td>
+												<td>${list.company_name }</td>
+												<td>${list.product_name }</td>
+												<td><fmt:formatDate value="${list.ad_end_date }" pattern="yyyy-MM-dd" /></td>
+												<td><button type="button" class="requestBtn" data-campaign-num="${list.campaign_num}" data-influencer-num="${influencerdetail.influencer_num }">제안</button></td>
+											</tr>
+										</c:forEach>
+									</tbody>
+								</table>
 							</div>
 						</div> 
 
