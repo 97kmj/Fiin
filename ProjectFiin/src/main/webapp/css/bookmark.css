@@ -20,7 +20,7 @@
 	flex-direction: row;
 	flex-wrap: wrap;
 	justify-content: space-between;
-	overflow-y: scroll;
+	overflow-y: auto;
 	height: 100vh;
 	margin-top: 40px;
 }
@@ -35,8 +35,8 @@
 }
 #channel_name {
 	font-weight: bold;
-	margin-top: 20px;
-	margin-bottom: 20px;
+	margin-top: 5px;
+	margin-bottom: 10px;
 }
 #introduce {
 	font-weight: bold;

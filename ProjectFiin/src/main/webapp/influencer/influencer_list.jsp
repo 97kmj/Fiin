@@ -34,9 +34,9 @@
 			<div class="channelBar">
 				<h2>채널</h2>
 				<div class="channelButton">
-					<label><input type="checkbox" name="channel" value="instagram"> <span>인스타그램</span></label> 
-					<label><input type="checkbox" name="channel" value="blog"><span>블로그</span></label>
-					<label><input type="checkbox" name="channel" value="youtube"><span>유튜브</span></label>
+					<label id="check"><input type="checkbox" name="channel" value="instagram"><span>인스타그램</span></label> 
+					<label id="check"><input type="checkbox" name="channel" value="blog"><span>블로그</span></label>
+					<label id="check"><input type="checkbox" name="channel" value="youtube"><span>유튜브</span></label>
 				</div>
 			</div>
 		</form>
