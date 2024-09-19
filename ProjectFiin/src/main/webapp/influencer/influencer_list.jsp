@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -57,8 +59,8 @@
 				<c:forEach items="${influencerList}" var="showinfluencer">
 					<div class="influencer_pick" id="pickNum1" OnClick="location.href='influencerDetail?num=' + ${showinfluencer.influencer_num}">
 						<c:if test="${showinfluencer.profile_image ne null }">
-						<img src="image?file=${showinfluencer.profile_image }" class="influencer_img"> --%>
-						<!-- </a> -->
+
+						<img src="image?file=${showinfluencer.profile_image }" class="influencer_img">
 						</c:if>
 						<div>
 						<c:if test="${showinfluencer.youtube ne null }">
@@ -100,10 +102,10 @@
 							<c:if test="${showinfluencer.instagram_follower != null }">
 							<c:set var="totalFollowers" value="${totalFollowers + showinfluencer.instagram_follower }"/>
 							</c:if>
-							<c:if test="${showinfluecner.blog_follower != null }">
+							<c:if test="${showinfluencer.blog_follower != null }">
 							<c:set var="totalFollowers" value="${totalFollowers + showinfluencer.blog_follower }"/>
 							</c:if>
-							총 팔로워 수 : ${totalFollowers }명
+							총 팔로워 수 : <fmt:formatNumber value="${totalFollowers }" type="number" pattern="#,###"/>명
 						
 						
 						</div>

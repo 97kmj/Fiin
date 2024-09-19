@@ -11,7 +11,7 @@ import dao.CampaignDao;
 import dao.CampaignDaoImpl;
 import dto.Campaign;
 import dto.Category;
-import java.util.List;
+
 import util.PageInfo;
 
 public class CampaignServiceImpl implements CampaignService {
@@ -110,9 +110,15 @@ public List<Campaign> getReceiveCampaignList(Integer influencerNum) throws Excep
 }
 
 @Override
-public List<Map<String,Object>> getRequestCampaignList(Integer influencerNum) throws Exception {
+public List<Campaign> campaignListForRequest(Integer advertiserNum) throws Exception {
+	return campaignDao.selectCampaignListForRequest(advertiserNum);
+}
 
-	return campaignDao.selectCampaignListRequest(influencerNum);
+public List<Campaign> campaignBookmarkForMypage(Integer influencerNum) throws Exception {
+	return campaignDao.bookmarkCampaignForMypage(influencerNum);
+
+public List<Map<String,Object>> getRequestCampaignList(Integer influencerNum) throws Exception {
+  return campaignDao.selectCampaignListRequest(influencerNum);
 }
 
  

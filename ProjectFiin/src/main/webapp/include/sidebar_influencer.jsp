@@ -44,7 +44,7 @@
             <li><a href="mypageInfluencerInfo"><img class="icons" src="https://img.icons8.com/?size=100&id=zxB19VPoVLjK&format=png&color=000000">프로필 관리</a></li>
             <li><a href="pointrecord"><img class="icons" src="https://img.icons8.com/?size=100&id=xDnuaxgjAmJP&format=png&color=000000">포인트 관리</a></li>
             <li><a href="influencerRegister"><img class="icons" src="https://img.icons8.com/?size=100&id=DpOQ6G5p47f0&format=png&color=000000">나의 SNS관리</a></li>
-            <li><a href="/fiin/mypage/influencer/bookmark"><img class="icons" src="https://img.icons8.com/?size=100&id=RvKp6z6EcIsB&format=png&color=000000">북마크 관리</a></li>
+            <li><a href="mypageBookmarkInfluencer"><img class="icons" src="https://img.icons8.com/?size=100&id=RvKp6z6EcIsB&format=png&color=000000">북마크 관리</a></li>
             </ul>
         </div>
     </div>

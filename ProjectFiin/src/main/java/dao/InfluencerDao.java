@@ -17,6 +17,10 @@ public interface InfluencerDao {
 	List<Map<String,Object>> selectAllInfluencer(Integer row, String keyword, List<String> channels, Integer categoryId) throws Exception;
 	Integer selectInfluencerCount() throws Exception;
 	List<Influencer> selectInfluencerListForMain() throws Exception;
+
+	List<Influencer> bookmarkInfluecerForMypage(Integer advertiserNum) throws Exception;
+	Map<String, Object> selectInfluencerDetail(Integer influencerNum) throws Exception;
+
 	String selectInfluencerEmail(String name, String mobileNumber) throws Exception;
 	String selectInfluencerPassword(String userEmail) throws Exception;
 

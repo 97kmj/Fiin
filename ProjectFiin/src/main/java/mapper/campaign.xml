@@ -88,5 +88,21 @@
 	<select id="selectCampaignByAdNum" parameterType="integer" resultType="campaign">
 		select * from campaign where advertiser_num = #{advertiserNum} order by update_start_date desc 
 	</select>
+	
+		<!-- 세원 -->
+	<select id="selectCampaignForRequest" parameterType="integer" resultType="Map">
+		select company_name, campaign_title, product_name, ad_end_date, campaign_num  from campaign where advertiser_num = #{advertiser_num}
+		order by update_start_date desc 		
+	</select>
+	
+	<select id="selectCampaignForBookmark" parameterType="Integer" resultType="Map">
+		select c.*,g.category_name from campaign c 
+		join bookmark_campaign b using(campaign_num)
+		join category g using(category_id)
+		where influencer_num = #{influencerNum}
+	</select>
+	
 </mapper>	
+
+
 

@@ -51,8 +51,8 @@ public class InfluencerServiceImpl implements InfluencerService {
 	}
 
 	@Override
-	public Influencer influencerDetail(Integer influencerNum) throws Exception {
-		Influencer influencer = influencerDao.selectInfluencer(influencerNum);
+	public Map<String, Object> influencerDetail(Integer influencerNum) throws Exception {
+		Map<String, Object> influencer = influencerDao.selectInfluencerDetail(influencerNum);
 		if(influencer == null) throw new Exception("인플루언서를 찾지 못했습니다.");
 		return influencer;
 	}
@@ -158,6 +158,10 @@ public class InfluencerServiceImpl implements InfluencerService {
 	@Override
 	public List<String> getEmaliListByCampaign(Campaign campaign) throws Exception {
 		return influencerDao.selectEmaliListByCampaign(campaign);
+	}
+	@Override
+	public List<Influencer> influencerBookmarkForMypage(Integer advertiserNum) throws Exception {
+		return influencerDao.bookmarkInfluecerForMypage(advertiserNum);
 	}
 	
 }
