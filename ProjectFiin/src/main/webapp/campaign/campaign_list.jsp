@@ -136,6 +136,7 @@
 	channelChecks.forEach(function(item) {
 		if(channels.includes(item.value)) {
 			item.checked = true;
+			item.parentElement.style.borderColor = '#4849e8';
 		}
 	})
 
@@ -144,6 +145,7 @@
 	categoryList.forEach(function(item) {
 		if(item.value == category) {
 			item.checked = true;
+			
 		}
 	})
 	

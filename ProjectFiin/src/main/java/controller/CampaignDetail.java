@@ -53,7 +53,7 @@ public class CampaignDetail extends HttpServlet {
 			
 			
 			if(type==null) { //비로그인
-				
+			
 			} else if (type.equals("influencer")) { //인플루언서 로그인 
 
 				Influencer influencer = (Influencer)request.getSession().getAttribute("influencer");
