@@ -28,13 +28,6 @@ public interface InfluencerService {
 	//상민 - 인플루언서 등록
 	Influencer influencerRegister(Influencer influencer) throws Exception;
 
-	//상민 - 인플루언서 수정
-	Influencer influencerEdit(Influencer influencer) throws Exception;
-
-	//상민 - 인플루언서 찾기
-	Influencer findInfluencerByNum(Integer influencerNum) throws Exception;
-
-  
   void influencerModify(Influencer influencer) throws Exception;
   List<Influencer> influencerBookmarkForMypage(Integer advertiserNum) throws Exception;
 

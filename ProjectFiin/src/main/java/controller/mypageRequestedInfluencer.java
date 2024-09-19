@@ -37,17 +37,19 @@ public class mypageRequestedInfluencer extends HttpServlet {
       //1.캠페인과 매칭되는 인플루언서 찾아야 함
       // 등록된 캠페인 정보 가져오기
     CampaignService campService = new CampaignServiceImpl();
-      Campaign campaign = (Campaign) req.getSession().getAttribute("campaign");
-      Integer campaignNum = campaign.getCampaignNum();
+//      Campaign campaign = (Campaign) req.getSession().getAttribute("campaign");
+//      Integer campaignNum = campaign.getCampaignNum();
+//
+//      Influencer influencer = (Influencer) req.getSession().getAttribute("influencer");
+//      Integer influencerNum = influencer.getInfluencerNum();
 
-      Influencer influencer = (Influencer) req.getSession().getAttribute("influencer");
-      Integer influencerNum = influencer.getInfluencerNum();
+      Integer advertiserNum = advertiser.getAdvertiserNum();
 
-      RequestCampaignService service = new RequestCampaignServiceImpl();
-      service.requestCampaign(campaignNum, influencerNum);
-
-      req.setAttribute("receiveCampaign",service.requestCampaign(influencerNum, campaignNum));
-      req.getRequestDispatcher("/mypage/mypage_advertiser_requestedInfluencer.jsp").forward(req, resp);
+//      RequestCampaignService service = new RequestCampaignServiceImpl();
+//      service.requestCampaign(advertiserNum);
+//
+//      req.setAttribute("receiveCampaign",service.requestCampaign(influencerNum, campaignNum));
+//      req.getRequestDispatcher("/mypage/mypage_advertiser_requestedInfluencer.jsp").forward(req, resp);
     } catch (Exception e) {
       e.printStackTrace();
       req.setAttribute("err", e.getMessage());

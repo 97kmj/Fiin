@@ -8,14 +8,9 @@ import dto.Influencer;
 
 
 public interface InfluencerDao {
-	//상민 - 인플루언서 수정하기
-	void updateRegisteredInfluencer(Influencer influencer) throws Exception;
 
 	//상민 - 인플루언서 등록하기
 	void registerInfluencer(Influencer influencer) throws Exception;
-
-  // 상민 - 인플루언서 등록 시, 포인트 차감
-  Influencer usePointsByInfluencer(Influencer influencer, int usedPoint) throws Exception;
 
   void insertInfluencer(Influencer influencer) throws Exception;
 	Influencer selectInfluencer(Integer influencerNum) throws Exception;

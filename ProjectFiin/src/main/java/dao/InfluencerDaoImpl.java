@@ -44,28 +44,6 @@ public class InfluencerDaoImpl implements InfluencerDao {
 		sqlSession.commit();
 	}
 
-  // 상민 - 인플루언서 수정
-  @Override
-  public void updateRegisteredInfluencer(Influencer influencer) throws Exception {
-    sqlSession.update("mapper.influencer.updateInfluencerInfo", influencer);
-    sqlSession.commit();
-  }
-
-  // 상민 - 인플루언서 등록 시, 포인트 차감
-  @Override
-  public Influencer usePointsByInfluencer(Influencer influencer, int usedPoint) throws Exception {
-
-    // Mapper에 전달할 파라미터를 맵으로 설정
-    Map<String, Object> params = new HashMap<>();
-    params.put("influencerNum", influencer.getInfluencerNum());
-    params.put("usedPoint", usedPoint);
-
-    sqlSession.update("mapper.influencer.usePointsByInfluencer", params);
-    sqlSession.commit();
-    return influencer;
-  }
-
-
   @Override
   public void insertInfluencer(Influencer influencer) throws Exception {
 	  sqlSession.insert("mapper.influencer.insertInfluencer", influencer);

@@ -68,7 +68,6 @@
                 </div>
             </div>
 
-
             <%--            --활동채널~채널URL // 유튜브--%>
             <div class="main_second_line">
 
@@ -230,9 +229,6 @@
                 </div>
             </div>
 
-            <%--</form>--%>
-
-
             <div class="requirement">
                 <div class="requirement-label">소개글 작성</div>
                 <label>
@@ -245,43 +241,23 @@
 
             <div class="bottom-button">
 
-                <button type="submit" class="registerBtn" value="등록" onclick="showModal(event)">
-                    등록하기
-                </button>
-                <button type="button" class="backBtn" value="뒤로가기" onclick="goToMain()">뒤로 가기
-                </button>
+                <button class="registerBtn" value="등록">등록하기</button>
+                <button class="backBtn" value="뒤로가기">뒤로 가기</button>
             </div>
-
-            <!-- HTML 모달 코드 -->
-            <%-- JSP에서 Influencer 객체 가져오기 --%>
-            <%
-                Influencer influencer = (Influencer) request.getSession()
-                        .getAttribute("influencer");
-                if (influencer == null) {
-                    throw new ServletException("Influencer 객체가 세션에 없습니다.");
-                }
-                Boolean showModal = (Boolean) request.getAttribute("showModal");
-                if (showModal == null) {
-                    showModal = false;
-                }
-            %>
-
-            <p>showModal 값: <%= showModal %>
-            </p>
-
-            <div id="pointModal" class="modal" style="display: none;">
-                <div class="modal_body">
-                    <div id="modalContent"></div>
-                    <h3>포인트가 부족합니다. </br> 포인트 충전 페이지로 이동하시겠습니까?</h3>
-                    <div class="modal_button">
-                        <button class="confirmBtn" onclick="confirmAction()">확인</button>
-                        <button class="cancelBtn" onclick="closeModal()">취소</button>
-                    </div>
-                </div>
-            </div>
-
 
         </form>
+
+        <div id="pointModal" class="modal" style="display: none;">
+            <div class="modal_body">
+                <div id="modalContent"></div>
+                <h3>포인트 충전 페이지로 이동하시겠습니까?</h3>
+                <div class="modal_button">
+                    <button class="confirmBtn">확인</button>
+                    <button class="cancelBtn">취소</button>
+                </div>
+            </div>
+        </div>
+
     </div>
 </div>
 
@@ -404,55 +380,40 @@
   }
 </script>
 
+<script>
+  <%--      // 모달에서 "확인" 버튼 클릭 시 /payment 페이지로 이동--%>
+  document.querySelector(".confirmBtn").addEventListener("click", function () {
+    window.location.href = "/fiin/payment"; // 결제 페이지로 이동
+  });
+
+  <%--      // 모달에서 "취소" 버튼 클릭 시 모달 닫기--%>
+  document.querySelector(".cancelBtn").addEventListener("click", function () {
+    document.getElementById("pointModal").style.display = "none"; // 모달 닫기
+  });
+
+  <%--      // 뒤로가기 버튼 클릭 시 메인 화면으로 이동--%>
+  document.querySelector(".backBtn").addEventListener("click", function (e) {
+    e.preventDefault()
+    window.location.href = "/fiin/main"; // 메인 페이지로 이동
+  });
+
+</script>
 
 <script>
 
-    document.addEventListener("DOMContentLoaded", function () {
-
-      // 등록 버튼 클릭 시 서버에 AJAX 요청
-      document.querySelector(".registerBtn").addEventListener("click", function (event) {
-        event.preventDefault(); // 기본 동작 방지
-
-    // AJAX 요청을 통해 서버에 데이터 전송
-    fetch('/fiin/influencerRegister', {
-      method: 'POST',
-      body: new FormData(document.querySelector('form')) // form 데이터 전송
-    })
-    .then(response => response.json()) // 응답을 JSON으로 변환
-    .then(data => {
-      console.log('Response Data:', data); // 서버 응답 확인
-      if (data.status === 'success') {
-        // 성공 시 모달을 닫고 페이지 이동
-        alert(data.message); // 성공 메시지 표시
-        window.location.href = "/fiin/influencerList"; // 페이지 이동
-      } else if (data.status === 'error') {
-        // 포인트 부족 또는 에러 발생 시 모달 표시
-        document.getElementById("pointModal").style.display = "block";
-        document.getElementById("modalContent").innerText = data.message; // 에러 메시지 설정
-      }
-    })
-    .catch(error => {
-      console.error('Error:', error);
-    });
-  });
-
-      // 모달에서 "확인" 버튼 클릭 시 /payment 페이지로 이동
-      document.querySelector(".confirmBtn").addEventListener("click", function () {
-        window.location.href = "/fiin/payment"; // 결제 페이지로 이동
-      });
-
-      // 모달에서 "취소" 버튼 클릭 시 모달 닫기
-      document.querySelector(".cancelBtn").addEventListener("click", function () {
-        document.getElementById("pointModal").style.display = "none"; // 모달 닫기
-      });
-
-      // 뒤로가기 버튼 클릭 시 메인 화면으로 이동
-      document.querySelector(".backBtn").addEventListener("click", function () {
-        window.location.href = "/fiin/main"; // 메인 페이지로 이동
-      });
-    });
+  //등록하기 버튼 클릭 시, 모달창 띄우기(포인트 부족) or 등록하기(포인트 충분)
+  $(".registerBtn").click(function (e) {
+    let isRegist = "${influencer.isRegist}";
+    let point = '${influencer.pointBalance}';
+    if ((isRegist == null || +isRegist == 0) && ( point == null || +point < 500)) {
+      // 모달 창 표시
+      e.preventDefault(); // 기본 동작 방지
+      document.getElementById("pointModal").style.display = "block";
+    }
+  })
 
 </script>
+
 
 </body>
 </html>
