@@ -139,7 +139,7 @@
 		]]>
 	</select>
 
-	<select id="selectInfluencerForFindEmail" parameterType="map"
+	<select id="selectInfluencerEmail" parameterType="Map"
 		resultType="String">
 		<![CDATA[
 			select user_email from influencer where name = #{name} and mobile_number = #{mobileNumber}
@@ -152,7 +152,7 @@
 		]]>
 	</insert>
 
-	<select id="selectInfluencerForFindPassword"
+	<select id="selectInfluencerPassword"
 		parameterType="String" resultType="String">
 		<![CDATA[
 			select insert(password, 4, 5, '*****') from influencer where user_email = #{userEmail}

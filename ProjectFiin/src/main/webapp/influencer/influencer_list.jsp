@@ -57,18 +57,22 @@
 				<c:forEach items="${influencerList}" var="showinfluencer">
 					<div class="influencer_pick" id="pickNum1" OnClick="location.href='influencerDetail?num=' + ${showinfluencer.influencer_num}">
 						<c:if test="${showinfluencer.profile_image ne null }">
-						<img src="image?file=${showinfluencer.profile_image }" class="influencer_img">
+						<img src="image?file=${showinfluencer.profile_image }" class="influencer_img"> --%>
 						<!-- </a> -->
 						</c:if>
 						<div>
 						<c:if test="${showinfluencer.youtube ne null }">
-								<c:out value="유튜브"/>
+							<%-- <c:out value="유튜브"/> --%>
+							<img src="https://img.icons8.com/?size=25&id=19318&format=png&color=000000">
 						</c:if>
 						<c:if test="${showinfluencer.instagram ne null }">
-							<c:out value="인스타그램"/>
+							<%-- <c:out value="인스타그램"/> --%>
+							<img src="https://img.icons8.com/?size=25&id=Xy10Jcu1L2Su&format=png&color=000000">
+				
 						</c:if>
 						<c:if test="${showinfluencer.blog ne null }">
-							<c:out value="블로그"/>
+							<%-- <c:out value="블로그"/> --%>
+							<img src="${pageContext.request.contextPath}/image/naver.png" style="width: 25px; height: 25px;"/>
 						</c:if>
 						<br> 
 						 ${showinfluencer.category_name }

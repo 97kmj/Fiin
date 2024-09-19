@@ -61,7 +61,7 @@
 	                    </div>
 	                    <h2>${influencer.nickname}</h2>
 	                    <h3>${influencer.introLine}</h3>
-	                    <p class="subcount">총 구독자 수
+	                    <p class="subcount">총 팔로워 수
 	                    	<span><fmt:formatNumber value="${influencer.instagramFollower + influencer.blogFollower + influencer.youtubeFollower}"/>명</span>
 	                    </p>
                 	</li>
