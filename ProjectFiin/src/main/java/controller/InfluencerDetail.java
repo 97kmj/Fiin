@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import dto.Advertiser;
 import dto.Influencer;
 import service.InfluencerService;
 import service.InfluencerServiceImpl;
@@ -34,20 +35,31 @@ public class InfluencerDetail extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
-		Integer num = Integer.parseInt(request.getParameter("num"));
-		
+		Integer influencerNum = Integer.parseInt(request.getParameter("num"));
+		System.out.println(influencerNum );
 		try {
+			
 			InfluencerService service = new InfluencerServiceImpl();
-			Influencer influencer = service.influencerDetail(num);
+			Influencer influencer = service.influencerDetail(influencerNum);
+			Advertiser advertiser = (Advertiser)request.getSession().getAttribute("advertiser");
+			Integer advertiserNum = service.checkBookmarkInfluencer(advertiser.getAdvertiserNum(), influencerNum);
+			
+			
 			request.setAttribute("influencerdetail", influencer);
+			
+			if(advertiser != null) {
+				request.setAttribute("BookmarkInfluencer", String.valueOf(advertiserNum!=null));
+				
+			}
 			request.getRequestDispatcher("influencer/influencer_detail.jsp").forward(request, response);
-		} catch (Exception e) {
+			
+		} catch (Exception e) { 
 			e.printStackTrace();
 			request.setAttribute("err", e.getMessage());
 			request.getRequestDispatcher("err.jsp");
 		}
 	}
-
+ 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)

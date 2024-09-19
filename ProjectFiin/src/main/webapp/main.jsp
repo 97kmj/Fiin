@@ -46,7 +46,7 @@
             <div class="swiper">
               <ul class="influencer_container swiper-wrapper">
               	<c:forEach items="${influencerList}" var="influencer">
-                	<li class="influencer_item swiper-slide" OnClick="location.href ='influencerDetail?influencerNum=' + ${influencer.influencerNum}">
+                	<li class="influencer_item swiper-slide" OnClick="location.href ='influencerDetail?num=' + ${influencer.influencerNum}">
 	                    <img src="${pageContext.request.contextPath}/image/influencer_img01.png" alt="인플루언서이미지01" />
 	                    <div class="sns_wrap">
 	                      <c:if test="${influencer.youtubeUrl ne null}">

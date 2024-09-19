@@ -58,18 +58,18 @@ public class InfluencerServiceImpl implements InfluencerService {
 	}
 
 	@Override
-	public Integer checkBookmarkInfluencer(Integer InfluencerNum, Integer CampaignNum) throws Exception {
-		return bookmarkInfluencerDao.selectBookmarkInfluencer(InfluencerNum, CampaignNum);
+	public Integer checkBookmarkInfluencer(Integer advertiserNum, Integer influencerNum) throws Exception {
+		return bookmarkInfluencerDao.selectBookmarkInfluencer(advertiserNum, influencerNum);
 	}
 
 	@Override
-	public boolean toggleBookmarkInfluencer(Integer InfluencerNum, Integer CampaignNum) throws Exception {
-		Integer cbookmarkNum = bookmarkInfluencerDao.selectBookmarkInfluencer(InfluencerNum, CampaignNum);
-		if(cbookmarkNum==null) {
-			bookmarkInfluencerDao.insertBookmarkInfluencer(InfluencerNum, CampaignNum);
+	public boolean toggleBookmarkInfluencer(Integer advertiserNum, Integer influencerNum) throws Exception {
+		Integer ibookmarkNum = bookmarkInfluencerDao.selectBookmarkInfluencer(advertiserNum, influencerNum);
+		if(ibookmarkNum==null) {
+			bookmarkInfluencerDao.insertBookmarkInfluencer(advertiserNum, influencerNum);
 			return true;
 		} else {
-			bookmarkInfluencerDao.deleteBookmarkInfluencer(InfluencerNum, CampaignNum);
+			bookmarkInfluencerDao.deleteBookmarkInfluencer(advertiserNum, influencerNum);
 			return false;
 		}
 	}

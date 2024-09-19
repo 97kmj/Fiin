@@ -11,13 +11,16 @@ public class RequestCampaignServiceImpl implements RequestCampaignService {
 	}
 	
 	@Override
-	public boolean requestCampaign(Integer Influencer, Integer campaignNum) throws Exception {
-		Integer request = requestCampaignDao.selectRequestCampaign(Influencer, campaignNum);
+	public boolean requestCampaign(Integer InfluencerNum, Integer campaignNum) throws Exception {
+		System.out.println(InfluencerNum);
+		System.out.println(campaignNum);
+		Integer request = requestCampaignDao.selectRequestCampaign(InfluencerNum, campaignNum);
+
 		if(request==null) {
-			requestCampaignDao.insertRequestCampaign(Influencer, campaignNum);
+			requestCampaignDao.insertRequestCampaign(InfluencerNum, campaignNum);
 			return true;
 		}else {
-			requestCampaignDao.deleteRequestCampaign(Influencer, campaignNum);
+			requestCampaignDao.deleteRequestCampaign(InfluencerNum, campaignNum);
 			return false;
 		}
 		
