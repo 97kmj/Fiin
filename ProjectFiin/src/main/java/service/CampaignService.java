@@ -23,5 +23,4 @@ public interface CampaignService {
     // 상민) 캠페인 등록 시 사용
     Campaign campaignRegister(Campaign cam) throws Exception;
 
-
 }

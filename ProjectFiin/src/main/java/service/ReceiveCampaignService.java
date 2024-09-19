@@ -8,4 +8,6 @@ import dto.Influencer;
 public interface ReceiveCampaignService {
 	List<Map<String,Object>> getReceiveList(Integer campaginNum) throws Exception;
 	void acceptInfluencer(Integer applyNum) throws Exception;
+
+  void requestCampaign(Integer campaignNum, Integer influencerNum);
 }

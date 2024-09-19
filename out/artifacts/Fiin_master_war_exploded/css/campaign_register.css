@@ -394,12 +394,18 @@ form {
 }
 
 .startDate input {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+
   height: 50px;
   border: 1px solid #ccc;
-  font-size: 30px;
+  font-size: 20px;
   width: 200px;
   border-radius: 10px;
   margin-left: 40px;
+  cursor: pointer;
 }
 
 .startDate label {
@@ -421,11 +427,17 @@ form {
 }
 
 .endDate input {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+
   height: 50px;
   border: 1px solid #ccc;
-  font-size: 30px;
+  font-size: 20px;
   width: 200px;
   border-radius: 10px;
+  cursor: pointer;
 }
 
 .endDate label {
@@ -586,4 +598,90 @@ label {
 .bottom-button button:hover {
   background-color: burlywood; /* 버튼 호버 시 배경색 */
   color: black;
+}
+
+
+/*//modal창 설정*/
+.modal {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+
+  top: 0;
+  left: 0;
+  border-radius: 8px; /* 모서리 둥글기 설정 */
+
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+
+.modal_body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  text-align: center;
+  /*position: absolute;*/
+  position: fixed;
+
+
+  top: 50%; /* 화면의 수직 중앙 */
+  left: 50%; /* 화면의 수평 중앙 */
+  width: 600px;
+  height: 400px;
+  padding: 40px;
+
+  background-color: rgb(255, 255, 255);
+  border-radius: 10px;
+  box-shadow: 0 2px 3px 0 rgba(34, 36, 38, 0.15);
+
+  /*//모듈창열었을때 위치설정 가운데로*/
+  transform: translate(-50%,-50%);
+}
+
+.modal_button {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  text-align: center;
+  align-content: center;
+  margin-top: 50px;
+  gap:20px;
+}
+
+/*//모달 버튼*/
+
+.confirmBtn {
+  width: 100px;
+  height: 50px;
+  cursor: pointer;
+  border-radius: 10px;
+  font-weight: bold;
+}
+
+.cancelBtn {
+  width: 100px;
+  height: 50px;
+  cursor: pointer;
+  border-radius: 10px;
+  font-weight: bold;
+}
+
+
+.confirmBtn:hover {
+  width: 100px;
+  height: 50px;
+  background-color: #4849E8;
+  border-radius: 10px;
+}
+
+.cancelBtn:hover {
+  width: 100px;
+  height: 50px;
+  background-color: #F95757; /* 취소 버튼은 다른 색상으로 지정 가능 */
+  border-radius: 10px;
 }

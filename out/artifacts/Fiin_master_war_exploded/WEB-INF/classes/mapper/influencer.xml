@@ -33,7 +33,7 @@
 		WHERE influencer_num = #{influencerNum}
 	</update>
 
-	<!--// 상민 - influencerRegister (인플루언서 수정하기) -->
+	<!--// 상민 - updateRegister (인플루언서 수정하기) -->
 	<update id="updateInfluencerInfo" parameterType="influencer">
 		UPDATE influencer
 		set

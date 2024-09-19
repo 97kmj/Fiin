@@ -8,4 +8,6 @@ import dto.ReceiveCampaign;
 public interface ReceiveCampaignDao {
 	List<Map<String,Object>> selectReceiveCampaignList(Integer campaignNum) throws Exception;
 	void updateReceiveCampaignAccept(Integer applyNum) throws Exception;
+
+  void requestedInfluencer(Integer campaignNum, Integer influencerNum);
 }

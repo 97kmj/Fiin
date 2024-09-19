@@ -9,15 +9,57 @@
 
 <mapper namespace="mapper.campaign">
 
-<!-- 상민 - campaignRegister(캠페인 등록)-->
-	<insert id="registerCampaign" parameterType="campaign" >
-		<![CDATA[
-	   		INSERT INTO campaign (company_name, company_url, campaign_title, product_name, requirement,
-	                     CHANNEL, image, category_id)
-	    	VALUES (#{companyName}, #{companyUrl}, #{campaignTitle}, #{productName}, #{requirement},
-	           			#{channel}, #{image}, #{categoryId})
-	    ]]>
-	</insert>
+	<!--// 상민 - campaignRegister (캠페인 등록하기) -->
+	<update id="registerCampaign" parameterType="campaign">
+		UPDATE campaign
+		set
+			company_name = #{companyName},
+			company_url = #{companyUrl},
+			campaign_title = #{campaignTitle},
+			product_name = #{productName},
+			update_start_date = #{updateStartDate},
+			update_end_date = #{updateEndDate},
+			channel = #{channel},
+			ad_start_date = #{adStartDate},
+			ad_end_date = #{adEndDate},
+			image = #{image},
+			category_id = #{categoryId},
+			requirement = #{requirement}
+
+		WHERE advertiser_num = #{advertiserNum}
+	</update>
+
+<!--	상민 - updateCampaign (캠페인 수정하기) updateStart,End Date제외 -->
+	<update id="updateCampaignInfo" parameterType="campaign">
+		UPDATE campaign
+		set
+			company_name = #{companyName},
+			company_url = #{companyUrl},
+			campaign_title = #{campaignTitle},
+			product_name = #{productName},
+			channel = #{channel},
+			ad_start_date = #{adStartDate},
+			ad_end_date = #{adEndDate},
+			image = #{image},
+			category_id = #{categoryId},
+			requirement = #{requirement}
+
+		WHERE advertiser_num = #{advertiserNum}
+	</update>
+
+	<!--상민 - 캠페인 등록 시, 포인트 차감 -->
+	<update id="usePointsByCampaign" parameterType="map">
+		UPDATE point_record
+		SET
+			change_point = change_point - #{usedPoint},
+			detail = '광고주 등록',
+			update_at = NOW()
+		WHERE advertiser_num = #{advertiserNum}
+	</update>
+
+
+
+
 
 	<!--준영-->
 	<select id="selectCampaign" parameterType="Integer" resultType="campaign">											

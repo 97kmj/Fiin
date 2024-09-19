@@ -90,13 +90,14 @@ public class CampaignServiceImpl implements CampaignService {
     return campaignDao.selectCampaign(cam);
   }
 
-  // 상민) 캠페인 등록 시 사용
+  // 상민 - 캠페인 등록 시 사용
   @Override
   public Campaign campaignRegister(Campaign campaign) throws Exception {
+		//캠페인 정보 저장
     campaignDao.registerCampaign(campaign);
+
+		//광고주 포인트 기록,차감
+		campaignDao.usePointsByCampaign(campaign, campaign.getCampaignNum());
     return campaign;
   }
-
- 
-
 }
