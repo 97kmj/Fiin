@@ -1,6 +1,7 @@
 package service;
 
 import java.util.List;
+import java.util.Map;
 
 import dto.Campaign;
 import dto.Category;
@@ -20,6 +21,7 @@ public interface CampaignService {
     boolean toggleCampaign(Integer campaignNum, Integer Influencer)throws Exception;
 	Integer checkBookmark(Integer influencerNum, Integer campaignNum)throws Exception;
     List<Campaign> getReceiveCampaignList (Integer influencerNum)throws Exception;
+    List<Map<String,Object>> getRequestCampaignList (Integer influencerNum)throws Exception;
 
     List<Campaign> campaignListForRequest(Integer advertiserNum)throws Exception;
     List<Campaign> campaignBookmarkForMypage(Integer influencerNum) throws Exception;

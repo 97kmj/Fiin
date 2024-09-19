@@ -40,5 +40,10 @@ public class RequestCampaignDaoImpl implements RequestCampaignDao {
 		sqlSession.delete("mapper.requestCampaign.deleteRequestCampaign", param);
 		sqlSession.commit();
 	}
+	@Override
+	public void updateRequestCampaignAccept(Integer requestNum) throws Exception {
+		sqlSession.update("mapper.requestCampaign.updateRequestCampaignAccept",requestNum);
+		sqlSession.commit();
+	}
 
 }

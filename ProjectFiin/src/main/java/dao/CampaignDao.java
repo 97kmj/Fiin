@@ -1,6 +1,7 @@
 package dao;
 
 import java.util.List;
+import java.util.Map;
 
 import dto.Campaign;
 import dto.Category;
@@ -13,7 +14,7 @@ public interface CampaignDao {
 	List<Campaign> selectCampaignList(Integer row, List<String> channel, Integer categoryId) throws Exception;
 	List<Category> selectCategoryList() throws Exception;
 	List<Campaign> selectCampaignListReceive(Integer influencer)throws Exception;
-	
+	List<Map<String,Object>> selectCampaignListRequest(Integer influencer)throws Exception;
 	
 	List<Campaign> selectCampaignListForMain() throws Exception;
 	List<Campaign> selectCampaignListForAdvertiser(Integer advertiserNum) throws Exception;

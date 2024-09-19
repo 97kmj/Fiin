@@ -79,17 +79,17 @@ public class InfluencerDaoImpl implements InfluencerDao {
   }
 
   @Override
-  public Influencer selectInfluencerForFindEmail(String name, String mobileNumber)
+  public String selectInfluencerEmail(String name, String mobileNumber)
       throws Exception {
     Map<String, String> param = new HashMap<>();
     param.put("name", name);
     param.put("mobileNumber", mobileNumber);
-    return sqlSession.selectOne("mapper.influencer.selectInfluencerForFindEmail", param);
+    return sqlSession.selectOne("mapper.influencer.selectInfluencerEmail", param);
   }
 
   @Override
-  public String selectInfluencerForFindPassword(String userEmail) throws Exception {
-    return sqlSession.selectOne("mapper.influencer.selectInfluencerForFindPassword", userEmail);
+  public String selectInfluencerPassword(String userEmail) throws Exception {
+    return sqlSession.selectOne("mapper.influencer.selectInfluencerPassword", userEmail);
   }
 
 	

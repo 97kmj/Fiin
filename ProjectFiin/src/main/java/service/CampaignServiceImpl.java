@@ -3,6 +3,7 @@ package service;
 
 
 import java.util.List;
+import java.util.Map;
 
 import dao.BookmarkCampaignDao;
 import dao.BookmarkCampaignDaoImpl;
@@ -61,7 +62,9 @@ public class CampaignServiceImpl implements CampaignService {
 
 	@Override
 	public void campaignIsRecruit(Integer campaignNum, Integer status) throws Exception {
+		
 		campaignDao.updatecampaignIsRecruit(campaignNum,status);
+	
 	}
 
 
@@ -111,9 +114,11 @@ public List<Campaign> campaignListForRequest(Integer advertiserNum) throws Excep
 	return campaignDao.selectCampaignListForRequest(advertiserNum);
 }
 
-@Override
 public List<Campaign> campaignBookmarkForMypage(Integer influencerNum) throws Exception {
 	return campaignDao.bookmarkCampaignForMypage(influencerNum);
+
+public List<Map<String,Object>> getRequestCampaignList(Integer influencerNum) throws Exception {
+  return campaignDao.selectCampaignListRequest(influencerNum);
 }
 
  

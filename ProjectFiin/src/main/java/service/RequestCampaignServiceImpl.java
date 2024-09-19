@@ -26,4 +26,9 @@ public class RequestCampaignServiceImpl implements RequestCampaignService {
 		
 	}
 
+	@Override
+	public void acceptCampaign(Integer requestNum) throws Exception {
+		requestCampaignDao.updateRequestCampaignAccept(requestNum);
+	}
+
 }

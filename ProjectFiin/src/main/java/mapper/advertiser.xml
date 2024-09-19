@@ -36,13 +36,13 @@
 		]]>
 	</select>
 	
-	<select id="selectAdvertiserForFindEmail" parameterType="map" resultType="advertiser">
+	<select id="selectAdvertiserEmail" parameterType="Map" resultType="String">
 		<![CDATA[
 			select user_email from advertiser where name = #{name} and mobile_number = #{mobileNumber}
 		]]>
 	</select>
 	
-	<select id="selectAdvertiserForFindPassword" parameterType="String" resultType="String">
+	<select id="selectAdvertiserPassword" parameterType="String" resultType="String">
 		<![CDATA[
 			select insert(password, 4, 5, '*****') from advertiser where user_email = #{userEmail}
 		]]>
