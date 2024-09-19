@@ -77,7 +77,20 @@ public class InfluencerServiceImpl implements InfluencerService {
 	//상민 - 인플루언서 등록
 	@Override
 	public Influencer influencerRegister(Influencer influencer) throws Exception {
+		//인플루언서 정보 저장
+		System.out.println("influencer service = " + influencer);
 		influencerDao.registerInfluencer(influencer);
+
+		//인플루언서 포인트 기록, 차감
+		influencerDao.usePointsByInfluencer(influencer, influencer.getInfluencerNum());
+		return influencer;
+	}
+
+	//상민 - 인플루언서 수정
+	@Override
+	public Influencer influencerEdit(Influencer influencer) throws Exception {
+		System.out.println("influencer service = " + influencer);
+		influencerDao.updateRegisteredInfluencer(influencer);
 		return influencer;
 	}
 

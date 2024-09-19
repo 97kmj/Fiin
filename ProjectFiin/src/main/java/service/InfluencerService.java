@@ -11,6 +11,7 @@ import dto.Influencer;
 import util.PageInfo;
 
 public interface InfluencerService {
+
 	void join(Influencer influencer) throws Exception;
 	Influencer login(String userEmail, String password) throws Exception;
 	boolean checkDoubleEmail(String userEmail) throws Exception;
@@ -24,9 +25,15 @@ public interface InfluencerService {
   
 	void imageView(HttpServletRequest request, OutputStream out, String file) throws Exception;
 
-  //상민 - 인플루언서 찾기
-	Influencer findInfluencerByNum(Integer influencerNum) throws Exception;
+	//상민 - 인플루언서 등록
 	Influencer influencerRegister(Influencer influencer) throws Exception;
+
+	//상민 - 인플루언서 수정
+	Influencer influencerEdit(Influencer influencer) throws Exception;
+
+	//상민 - 인플루언서 찾기
+	Influencer findInfluencerByNum(Integer influencerNum) throws Exception;
+
   
   void influencerModify(Influencer influencer) throws Exception;
   List<Influencer> influencerBookmarkForMypage(Integer advertiserNum) throws Exception;

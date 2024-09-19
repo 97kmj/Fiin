@@ -41,7 +41,7 @@ public class Influencer {
   public Influencer(Integer influencerNum, String profileImage, String youtubeName,
       Integer youtubeFollower, String youtubeUrl, String instagramName, Integer instagramFollower,
       String instagramUrl, String blogName,
-      Integer blogFollower, String blogUrl, Integer categoryId, String introduction) {
+      Integer blogFollower, String blogUrl, Integer categoryId, String introduction, Integer isRegist, Timestamp registDate) {
     this.influencerNum = influencerNum;
     this.profileImage = profileImage;
     this.youtubeName = youtubeName;
@@ -55,6 +55,8 @@ public class Influencer {
     this.blogUrl = blogUrl;
     this.categoryId = categoryId;
     this.introduction = introduction;
+		this.isRegist = isRegist;
+		this.registDate = registDate;
   }
 
 	public Integer getInfluencerNum() {

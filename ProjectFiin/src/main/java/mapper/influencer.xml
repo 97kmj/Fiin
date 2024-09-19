@@ -4,9 +4,8 @@
 
 <mapper namespace="mapper.influencer">
 
-	<!--// 상민 - influencerRegister (인플루언서 등록) -->
-
-	<update id="updateRegistInfluencer" parameterType="influencer">
+	<!--// 상민 - influencerRegister (인플루언서 등록하기) -->
+	<update id="registerInfluencerInfo" parameterType="influencer">
 		UPDATE influencer
 		set
 		intro_line = #{introLine},
@@ -28,10 +27,49 @@
 		blog_url = #{blogUrl},
 		category_id = #{categoryId},
 		introduction = #{introduction},
-		regist_date = #{registDate}
+		regist_date = #{registDate},
+		is_regist = #{isRegist}
 
 		WHERE influencer_num = #{influencerNum}
 	</update>
+
+	<!--// 상민 - updateRegister (인플루언서 수정하기) -->
+	<update id="updateInfluencerInfo" parameterType="influencer">
+		UPDATE influencer
+		set
+			intro_line = #{introLine},
+			profile_image =
+				#{profileImage},
+			youtube = #{youtube},
+			youtube_name = #{youtubeName},
+			youtube_follower = #{youtubeFollower},
+			youtube_url = #{youtubeUrl},
+			instagram = #{instagram},
+			instagram_name = #{instagramName},
+			instagram_follower = #{instagramFollower},
+			instagram_url =
+				#{instagramUrl},
+			blog = #{blog},
+			blog_name = #{blogName},
+			blog_follower =
+				#{blogFollower},
+			blog_url = #{blogUrl},
+			category_id = #{categoryId},
+			introduction = #{introduction}
+
+		WHERE influencer_num = #{influencerNum}
+	</update>
+
+<!--상민 - 인플루언서 등록 시, 포인트 차감 -->
+	<update id="usePointsByInfluencer" parameterType="map">
+		UPDATE point_record
+		SET
+		change_point = change_point - #{usedPoint},
+		detail = '인플루언서 등록',
+		update_at = NOW()
+		WHERE influencer_num = #{influencerNum}
+	</update>
+
 
 	<!--세원 -->
 	<select id="selectInfluencerList" parameterType="Integer"
