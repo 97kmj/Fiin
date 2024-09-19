@@ -87,6 +87,12 @@
     		select count(*) from influencer
     	]]>
 	</select>
+	
+	<select id="selectInfluencerDetail" parameterType="Integer" resultType="Map">
+		select i.*, c.category_name from influencer i join category c
+		using(category_id)
+		where influencer_num = #{influencerNum}
+	</select>
 
 	<select id="selectAllInfluencerCount" resultType="Integer">
 		select count(*) from influencer
@@ -138,7 +144,14 @@
 		order by regist_date DESC limit #{row}, 8
 
 	</select>
-
+	
+	<select id="selectInfluencerForBookmark" parameterType="Integer" resultType="Map">
+		select i.*, c.category_name from influencer i
+		join bookmark_influencer b using(influencer_num) 
+		join category c using(category_id)
+		where b.advertiser_num = #{advertiserNum}
+	</select>
+	
 	<!--세나 -->
 	<select id="selectInfluencer" parameterType="Integer"
 		resultType="influencer">
@@ -177,7 +190,7 @@
 		]]>
 	</select>
 
-	<select id="selectInfluencerForFindEmail" parameterType="map"
+	<select id="selectInfluencerEmail" parameterType="Map"
 		resultType="String">
 		<![CDATA[
 			select user_email from influencer where name = #{name} and mobile_number = #{mobileNumber}
@@ -190,7 +203,7 @@
 		]]>
 	</insert>
 
-	<select id="selectInfluencerForFindPassword"
+	<select id="selectInfluencerPassword"
 		parameterType="String" resultType="String">
 		<![CDATA[
 			select insert(password, 4, 5, '*****') from influencer where user_email = #{userEmail}

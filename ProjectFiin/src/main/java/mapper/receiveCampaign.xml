@@ -19,7 +19,14 @@
 			where apply_num=#{applyNum}
 		]]>
 	</update>
-	
+<!--	//상민 - 요청받은 인플루언서 (광고주 입장)-->
+		<select id="requestedInfluencer" parameterType="map">
+			SELECT *
+			FROM receive_campaign
+			WHERE campaign_num = #{campaignNum}
+				AND influencer_num = #{influencerNum}
+		</select>
+
 		<!-- 준영 -->
 	<select id="selectReceiveCampaign" parameterType="Map" resultType="Integer">
 		select apply_num from receive_campaign where campaign_num =#{campaignNum} and influencer_num =#{influencerNum}
@@ -35,6 +42,4 @@
 			delete from receive_campaign where campaign_num =#{campaignNum} and influencer_num =#{influencerNum} 
 		]]>	
 	</delete>
-	
-	
 </mapper>

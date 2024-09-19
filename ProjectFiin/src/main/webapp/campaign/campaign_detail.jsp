@@ -63,10 +63,10 @@
 					</c:when>
 					<c:otherwise>
 						<div class= "container">
-							<c:choose>
-								<c:when test='${campaign.isRecruit eq "1" }'>
-									 <c:choose>
-										<c:when test='${type eq "influencer"}'>
+							 <c:choose>
+								<c:when test='${type eq "influencer"}'>
+									<c:choose>
+										<c:when test='${campaign.isRecruit eq "1" }'>
 											<c:choose>
 												<c:when test="${bookmarkCampaign eq 'false' }">
 													<img src="image/book.png" class="bookmark" id="book">
@@ -85,12 +85,12 @@
 											</c:choose>
 										</c:when>
 										<c:otherwise>
-											<input type="button"  class="basic_btn" value = "인플루언서만 제안가능합니다.">
+											<input type="button"  class="basic_btn" value = "모집완료된 제품입니다.">
 										</c:otherwise>
 									</c:choose>
 								</c:when>
 								<c:otherwise>
-									<input type="button"  class="basic_btn" value = "모집완료된 제품입니다.">
+									<input type="button"  class="basic_btn" value = "인플루언서만 제안가능합니다.">
 								</c:otherwise>
 							</c:choose>
 						</div>
@@ -178,7 +178,7 @@
 		// checked 변수, 캠페인 no 저장
 		var isChecked = $(this).is(':checked');
 		console.log(isChecked);
-		var campaignNum = "${campaign.campaignNum}"
+		var campaignNum = "${campaign.campaignNum}";
 		console.log(campaignNum);
 		$.ajax({
 			url:'campaignDetail',
@@ -211,7 +211,7 @@
 				type:'post',
 				async:true,
 				dataType:'text',
-				data:{campaignNum:${campaign.campaignNum}},
+				data:{campaignNum:'${campaign.campaignNum}'},
 				success:function(result){
 					if(result=='true') {
 						$('#book').attr('src','image/bookchecked.png');
@@ -232,11 +232,10 @@
 			type:'post',
 			data:{
 				campaignNum:${campaign.campaignNum},
-				influencer:${influencer.influencerNum}
+				influencer:'${influencer.influencerNum}'
 			},
 			success:function(result){
-				if(result=='true'){
-					alert(result);
+				if(result=='false'){
 					$("#requestcampaign").attr("value",'제안완료');
 				}else{
 					alert(result);

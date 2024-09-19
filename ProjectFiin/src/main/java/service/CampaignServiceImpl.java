@@ -1,8 +1,8 @@
 package service;
 
 
-
 import java.util.List;
+import java.util.Map;
 
 import dao.BookmarkCampaignDao;
 import dao.BookmarkCampaignDaoImpl;
@@ -10,7 +10,7 @@ import dao.CampaignDao;
 import dao.CampaignDaoImpl;
 import dto.Campaign;
 import dto.Category;
-import java.util.List;
+
 import util.PageInfo;
 
 public class CampaignServiceImpl implements CampaignService {
@@ -61,7 +61,9 @@ public class CampaignServiceImpl implements CampaignService {
 
 	@Override
 	public void campaignIsRecruit(Integer campaignNum, Integer status) throws Exception {
+		
 		campaignDao.updatecampaignIsRecruit(campaignNum,status);
+	
 	}
 
 
@@ -89,23 +91,36 @@ public class CampaignServiceImpl implements CampaignService {
 
   //상민 - 캠페인 찾기
   @Override
-  public Campaign findCampaignByNum(Integer cam) throws Exception {
+  public Campaign findCampaignByAdNum(Integer cam) throws Exception {
     return campaignDao.selectCampaign(cam);
   }
 
-  // 상민) 캠페인 등록 시 사용
+  // 상민 - 캠페인 등록 시 사용
   @Override
-  public Campaign campaignRegister(Campaign cam) throws Exception {
-    campaignDao.registerCampaign(cam);
-    return cam;
+  public Campaign campaignRegister(Campaign campaign) throws Exception {
+		//캠페인 정보 저장
+    campaignDao.registerCampaign(campaign);
+  		//광고주 포인트 기록,차감
+		campaignDao.usePointsByCampaign(campaign, campaign.getCampaignNum());
+    return campaign;
   }
 
 @Override
 public List<Campaign> getReceiveCampaignList(Integer influencerNum) throws Exception {
-
 	  return campaignDao.selectCampaignListReceive(influencerNum);
 }
 
- 
+@Override
+public List<Campaign> campaignListForRequest(Integer advertiserNum) throws Exception {
+	return campaignDao.selectCampaignListForRequest(advertiserNum);
+}
+
+public List<Campaign> campaignBookmarkForMypage(Integer influencerNum) throws Exception {
+	return campaignDao.bookmarkCampaignForMypage(influencerNum);
+}
+public List<Map<String,Object>> getRequestCampaignList(Integer influencerNum) throws Exception {
+  return campaignDao.selectCampaignListRequest(influencerNum);
+}
+
 
 }

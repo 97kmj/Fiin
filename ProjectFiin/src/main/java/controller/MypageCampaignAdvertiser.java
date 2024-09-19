@@ -58,7 +58,7 @@ public class MypageCampaignAdvertiser extends HttpServlet {
 			List<Campaign> campaignList = service.campaignListForAdvertiser(advertiserNum);
 			System.out.println(campaignList);
 			request.setAttribute("pageInfo", pageInfo);
-			request.setAttribute("campaignListReceive", campaignList);
+			request.setAttribute("campaignList", campaignList);
 			
 			request.getRequestDispatcher("/mypage/mypage_campaign_advertiser.jsp").forward(request, response);
 

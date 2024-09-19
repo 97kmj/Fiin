@@ -19,11 +19,32 @@ public class CampaignDaoImpl implements CampaignDao {
 		sqlSession = MybatisSqlSessionFactory.getSqlSessionFactory().openSession();
 	}
 
-	//상민 - campaign 등록
+	//상민 - 캠페인 등록
 	@Override
-	public void registerCampaign(Campaign cam) throws Exception {
-		sqlSession.insert("mapper.campaign.registerCampaign", cam);
+	public void registerCampaign(Campaign campaign) throws Exception {
+		sqlSession.update("mapper.campaign.registerCampaign", campaign);
 		sqlSession.commit();
+	}
+
+	// 상민 - 캠페인 수정
+	@Override
+	public void updateRegisteredCampaign(Campaign campaign) throws Exception {
+		sqlSession.update("mapper.campaign.updateCampaignInfo", campaign);
+		sqlSession.commit();
+	}
+
+	// 상민 - 인플루언서 등록 시, 포인트 차감
+	@Override
+	public Campaign usePointsByCampaign(Campaign campaign, int usedPoint) throws Exception {
+
+		// Mapper에 전달할 파라미터를 맵으로 설정
+		Map<String, Object> params = new HashMap<>();
+		params.put("advertiserNum", campaign.getAdvertiserNum());
+		params.put("usedPoint", usedPoint);
+
+		sqlSession.update("mapper.campaign.usePointsByAdvertiser", params);
+		sqlSession.commit();
+		return campaign;
 	}
 
 	@Override
@@ -68,18 +89,33 @@ public class CampaignDaoImpl implements CampaignDao {
 		Map<String,Object> map = new HashMap<>();
 		map.put("campaignNum", campaignNum);
 		map.put("status", status);
-		
-		sqlSession.update("mapper.requestCampaign.CampaignIsRecruit", map);
+		sqlSession.update("mapper.campaign.CampaignIsRecruit", map);
 		sqlSession.commit();
 		
 	}
+
 
 	@Override
 	public List<Campaign> selectCampaignListReceive(Integer influencerNum) throws Exception {
 
 		return sqlSession.selectList("mapper.campaign.selectCampaignReceive",influencerNum);
 	}
+	
+	
+	@Override
+	public List<Map<String,Object>> selectCampaignListRequest(Integer influencerNum) throws Exception {
 
+		return sqlSession.selectList("mapper.campaign.selectCampaignRequest",influencerNum);
+	}
 
+	@Override
+	public List<Campaign> selectCampaignListForRequest(Integer advertiserNum) throws Exception {
+		return sqlSession.selectList("mapper.campaign.selectCampaignForRequest",advertiserNum);
+	}
+
+	@Override
+	public List<Campaign> bookmarkCampaignForMypage(Integer influencerNum) throws Exception {
+		return sqlSession.selectList("mapper.campaign.selectCampaignForBookmark",influencerNum);
+	}
 
 }

@@ -40,6 +40,7 @@ public class CampaignDetail extends HttpServlet {
 			Integer campaignNum = Integer.parseInt(request.getParameter("campaignNum"));
 			String type = (String)request.getSession().getAttribute("type");
 			
+			
 		try {
 			
 			CampaignService service = new CampaignServiceImpl();
@@ -90,11 +91,13 @@ public class CampaignDetail extends HttpServlet {
 		
 		Integer campaignNum = Integer.parseInt(request.getParameter("campaignNum"));
 		Integer status = Integer.parseInt(request.getParameter("status"));
+
 		
 		try {
 			CampaignService service = new CampaignServiceImpl();
 			service.campaignIsRecruit(campaignNum,status);
 			Campaign campaign = service.detail(campaignNum);
+			
 			request.setAttribute("campaign", campaign);
 			response.setCharacterEncoding("utf-8");
 			response.getWriter().write("성공");

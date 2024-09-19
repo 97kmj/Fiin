@@ -35,7 +35,35 @@ public class InfluencerDaoImpl implements InfluencerDao {
 		map.put("categoryId", categoryId);
 		map.put("keyword", keyword);
 		return sqlSession.selectList("mapper.influencer.selectAllInfluencer", map);
+  }
+
+	// 상민 - 인플루언서 등록
+	@Override
+	public void registerInfluencer(Influencer influencer) throws Exception {
+		sqlSession.update("mapper.influencer.registerInfluencerInfo", influencer);
+		sqlSession.commit();
 	}
+
+  // 상민 - 인플루언서 수정
+  @Override
+  public void updateRegisteredInfluencer(Influencer influencer) throws Exception {
+    sqlSession.update("mapper.influencer.updateInfluencerInfo", influencer);
+    sqlSession.commit();
+  }
+
+  // 상민 - 인플루언서 등록 시, 포인트 차감
+  @Override
+  public Influencer usePointsByInfluencer(Influencer influencer, int usedPoint) throws Exception {
+
+    // Mapper에 전달할 파라미터를 맵으로 설정
+    Map<String, Object> params = new HashMap<>();
+    params.put("influencerNum", influencer.getInfluencerNum());
+    params.put("usedPoint", usedPoint);
+
+    sqlSession.update("mapper.influencer.usePointsByInfluencer", params);
+    sqlSession.commit();
+    return influencer;
+  }
 
 
   @Override
@@ -59,14 +87,6 @@ public class InfluencerDaoImpl implements InfluencerDao {
     sqlSession.update("mapper.influencer.updateInfluencer", influencer);
     sqlSession.commit();
   }
-
-  // 상민 - 인플루언서 등록
-  @Override
-  public void registerInfluencer(Influencer influencer) throws Exception {
-    sqlSession.update("mapper.influencer.updateRegistInfluencer", influencer);
-    sqlSession.commit();
-  }
-
   @Override
   public Integer selectInfluencerCount() throws Exception {
     return sqlSession.selectOne("mapper.influencer.selectInfluencerCount");
@@ -79,17 +99,17 @@ public class InfluencerDaoImpl implements InfluencerDao {
   }
 
   @Override
-  public Influencer selectInfluencerForFindEmail(String name, String mobileNumber)
+  public String selectInfluencerEmail(String name, String mobileNumber)
       throws Exception {
     Map<String, String> param = new HashMap<>();
     param.put("name", name);
     param.put("mobileNumber", mobileNumber);
-    return sqlSession.selectOne("mapper.influencer.selectInfluencerForFindEmail", param);
+    return sqlSession.selectOne("mapper.influencer.selectInfluencerEmail", param);
   }
 
   @Override
-  public String selectInfluencerForFindPassword(String userEmail) throws Exception {
-    return sqlSession.selectOne("mapper.influencer.selectInfluencerForFindPassword", userEmail);
+  public String selectInfluencerPassword(String userEmail) throws Exception {
+    return sqlSession.selectOne("mapper.influencer.selectInfluencerPassword", userEmail);
   }
 
 	
@@ -107,4 +127,16 @@ public class InfluencerDaoImpl implements InfluencerDao {
 		param.put("categoryId", campaign.getCategoryId());
 		return sqlSession.selectList("mapper.influencer.selectEmaliListByCampaign", param);
 	}
+
+	@Override
+	public List<Influencer> bookmarkInfluecerForMypage(Integer advertiserNum) throws Exception {
+		return sqlSession.selectList("mapper.influencer.selectInfluencerForBookmark",advertiserNum);
+	}
+
+	@Override
+	public Map<String, Object> selectInfluencerDetail(Integer influencerNum) throws Exception {
+		return sqlSession.selectOne("mapper.influencer.selectInfluencerDetail", influencerNum);
+	}
+
+
 }

@@ -34,14 +34,14 @@ public class AdvertiserServiceImpl implements AdvertiserService {
 
 	@Override
 	public String advertiserEmail(String name, String mobileNumber) throws Exception {
-		Advertiser advertiser = advertiserDao.selectAdvertiserForFindEmail(name, mobileNumber);
-		if (advertiser == null) throw new Exception("이메일 찾기 오류");
-		return advertiser.getUserEmail();
+		String userEmail = advertiserDao.selectAdvertiserEmail(name, mobileNumber);
+		if (userEmail == null) throw new Exception("이메일 찾기 오류");
+		return userEmail;
 	}
 
 	@Override
 	public String advertiserPassword(String userEmail) throws Exception {
-		String password = advertiserDao.selectAdvertiserForFindPassword(userEmail);
+		String password = advertiserDao.selectAdvertiserPassword(userEmail);
 		if (password == null) throw new Exception("비밀번호 찾기 오류");
 		return password;
 	}
