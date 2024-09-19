@@ -110,13 +110,15 @@
 	display: flex;
 	height: 38px;
 }
-
+.topBar {
+	display: flex;
+}
 .allBar {
 	display: flex;
 	width: 100%;
 	justify-content: space-between;
 	align-items: center;
-	margin-top: 50px;
+	margin-top: 140px;
 }
 .search_btn_wrap {
 	display: flex;

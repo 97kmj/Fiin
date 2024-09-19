@@ -36,35 +36,38 @@
 			</div>
 			<div class="chanimg">
 				<div>
+					<div class="channelLine">
 					<c:if test="${influencerdetail.youtube ne null }">
-						<span class="channel_outline"> &nbsp; <img
-							src="img/youtube.png" class="channel"> <a
-							class="channel_font">유튜브</a> &nbsp;
+						<span class="channel_outline"> 
+						<img src="https://img.icons8.com/?size=60&id=19318&format=png&color=000000">
 						</span>
 						<span class="subscribers_su">
 						<fmt:formatNumber value="${influencerdetail.youtube_follower }" type="number" pattern="#,###"/>명
 						</span>
 						<br>
 					</c:if>
+					</div>
+					<div class="channelLine">
 					<c:if test="${influencerdetail.instagram ne null }">
-						<span class="channel_outline"> &nbsp; <img
-							src="img/instagram.png" class="channel"> <a
-							class="channel_font">인스타그램</a>&nbsp;
+						<span class="channel_outline">
+						<img src="https://img.icons8.com/?size=60&id=Xy10Jcu1L2Su&format=png&color=000000">
 						</span>
 						<span class="subscribers_su">
 						<fmt:formatNumber value="${influencerdetail.instagram_follower }" type="number" pattern="#,###"/>명
 						</span>
 						<br>
 					</c:if>
+					</div>
+					<div class="channelLine">
 					<c:if test="${influencerdetail.blog ne null }">
-						<span class="channel_outline"> &nbsp; <img
-							src="img/blog(un).png" class="channel"> <a
-							class="channel_font">인스타그램</a>&nbsp;
+						<span class="channel_outline">
+						<img src="${pageContext.request.contextPath}/image/naver.png" style="width: 60px; height: 60px;"/>
 						</span>
 						<span class="subscribers_su">
 						<fmt:formatNumber value="${influencerdetail.blog_follower }" type="number" pattern="#,###"/>명
 						</span>
 					</c:if>
+					</div>
 				</div>
 			</div>
 			<br>
@@ -128,7 +131,10 @@
 				style="width: 25px; height: 25px; border-radius: 1px;"><b>일정정보</b>
 		</div>
 		<div class="inp_date">
-			캠페인 제안 가능 기간 ${influencerdetail.update_start_date }~${influencerdetail.update_end_date }
+		캠페인 제안 가능 기간
+		 <fmt:formatDate value="${influencerdetail.regist_date }" pattern="yyyy-MM-dd" />
+			~ 
+			<fmt:formatDate value="${influencerdetail.regist_date}" pattern="yyyy-MM-dd" var="month"/>
 		</div>
 	</div>
 	<br>

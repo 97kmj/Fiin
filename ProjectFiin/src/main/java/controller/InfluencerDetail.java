@@ -49,12 +49,13 @@ public class InfluencerDetail extends HttpServlet {
 			CampaignService cservice = new CampaignServiceImpl();
 			Map<String, Object> influencer = service.influencerDetail(influencerNum);
 			Advertiser advertiser = (Advertiser)request.getSession().getAttribute("advertiser");
-			Integer advertiserNum = advertiser.getAdvertiserNum();
-			List<Campaign> campaignRequest = cservice.campaignListForRequest(advertiserNum);
-			System.out.println(campaignRequest.toString());
 			request.setAttribute("influencerdetail", influencer);
 			
 			if(advertiser != null) {
+				Integer advertiserNum = advertiser.getAdvertiserNum();
+				List<Campaign> campaignRequest = cservice.campaignListForRequest(advertiserNum);
+				System.out.println(campaignRequest.toString());
+				
 				ibookmarkNum = service.checkBookmarkInfluencer(advertiser.getAdvertiserNum(), influencerNum);
 				request.setAttribute("bookmarkInfluencer", String.valueOf(ibookmarkNum!=null));
 				request.setAttribute("campaignRequest", campaignRequest);
