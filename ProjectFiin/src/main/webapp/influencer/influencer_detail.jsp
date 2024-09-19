@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@	page import="java.util.Date" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
@@ -93,7 +94,7 @@
 							<div class="outBtn">
 								<h2 style="margin:20px">캠페인 목록</h2>
 								<span>
-									<button type="button" class="closeBtn">닫기</button>
+									<button type="button" class="closeBtn" style="margin-top: 10px">닫기</button>
 								</span>
 							</div>	
 								<table>
@@ -145,15 +146,27 @@
 				style="width: 25px; height: 25px; border-radius: 1px;"><b>일정정보</b>
 		</div>
 		<div class="inp_date">
-		캠페인 제안 가능 기간 &nbsp;
-		 <fmt:formatDate value="${influencerdetail.regist_date }" pattern="yyyy-MM-dd" />
-			~ 
-			<fmt:formatDate value="${influencerdetail.regist_date}" pattern="yyyy-MM-dd"/>
-
+         <fmt:parseDate value="${influencerdetail.regist_date }" var="regist_date" pattern="yyyy-MM-dd"></fmt:parseDate>
+         
+         <%
+             // regist_date 값을 Long 타입으로 가져와서 Date 객체로 변환
+             java.util.Date registDate = (java.util.Date) pageContext.getAttribute("regist_date");
+             long timeInMillis = registDate.getTime() + (1000L * 60 * 60 * 24 * 30); // 30일 후의 시간 계산
+             Date newDate = new Date(timeInMillis);
+             
+             // 변환된 날짜를 포맷하여 출력
+             java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy-MM-dd");
+             String endDate = sdf.format(newDate);
+             pageContext.setAttribute("endDate", endDate);
+         %>
+         캠페인 제안 가능 기간 
+         <span style="margin-left: 16px;">
+            <fmt:formatDate value="${influencerdetail.regist_date}" pattern="yyyy-MM-dd"/> ~ ${endDate}
+         </span>
+      </div>
 		
 		
 		</div>
-	</div>
 	<br>
 	<br>
 	<div class="middletext">
