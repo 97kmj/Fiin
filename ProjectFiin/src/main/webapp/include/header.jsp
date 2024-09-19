@@ -10,19 +10,6 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/header.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.6.0.min.js"></script>
-<script>
-	$(document).ready(function() {
-		$(".alarm").on("click", function() {
-			$('.modal_wrap').toggle();
-			$('.modal_content').toggle();
-		});
-		
-		$('#modal_close_btn').click(function(){
-			$('.modal_wrap').css('display', 'none');
-			$('.modal_content').css('display', 'none');
-		});
-	});
-</script>
 </head>
 <body>
     <header>
@@ -71,10 +58,6 @@
 				<div class="navbar_login">
 					<c:choose>
 						<c:when test="${advertiser eq null}">
-							<div class="alarm">
-								<img src="https://img.icons8.com/?size=25&id=sgNKOWg0RbsC&format=png&color=000000"/>
-								<div class="alram_num">10</div>
-							</div>
 							<div class="login_info" OnClick="location.href ='mypageCampaignInfluencer'">
 								<div class="login_img">
 				            		<img src="https://img.icons8.com/?size=100&id=43942&format=png&color=ffffff">
@@ -83,14 +66,7 @@
 	            			</div>
 						</c:when>
 						<c:otherwise>
-							<div class="alarm">
-								<img src="https://img.icons8.com/?size=25&id=sgNKOWg0RbsC&format=png&color=000000"/>
-								<div class="alram_num">10</div>
-							</div>
 							<div class="login_info" OnClick="location.href ='mypageCampaignAdvertiser'">
-								<div class="login_img">
-				            		<img src="https://img.icons8.com/?size=100&id=43942&format=png&color=ffffff">
-				            	</div>
 						        <p id="userName">${advertiser.name}</p>
 					        </div>     
 						</c:otherwise>
@@ -103,32 +79,6 @@
 	            </div>
 			</c:otherwise>
 		</c:choose>
-		
-		<!-- 알림 모달 -->
-        <div class="modal_wrap">
-        	<div class="modal_content">
-        		<div class="title_wrap">
-		          <p>알림</p>
-		          <img id ="modal_close_btn" src="${pageContext.request.contextPath}/image/closeIcon.svg" alt="닫기아이콘" />
-        		</div>
-		        <ul class="alarm_wrap">
-		        	<li class="alarm_item">
-		        		<img src="https://img.icons8.com/?size=20&id=59817&format=png&color=000000" />
-		        		<div class="alarm_text_wrap">
-							<p>[24-8] "제주 히든클리프 호텔_체험형"에 선정되었습니다.</p>
-		        			<p>3시간 전</p>
-		        		</div>
-		        	</li>
-		        	<li class="alarm_item">
-		        		<img src="https://img.icons8.com/?size=20&id=59817&format=png&color=000000" />
-		        		<div class="alarm_text_wrap">
-		        			<p>5,000포인트 충전이 완료되었습니다.</p>
-		        			<p>3시간 전</p>
-		        		</div>
-		        	</li>
-		        </ul>
-        	</div>
-      	</div>
       </header>
 </body>
 </html>

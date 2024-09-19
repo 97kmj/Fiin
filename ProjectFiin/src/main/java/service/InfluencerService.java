@@ -11,10 +11,11 @@ import dto.Influencer;
 import util.PageInfo;
 
 public interface InfluencerService {
+
 	void join(Influencer influencer) throws Exception;
 	Influencer login(String userEmail, String password) throws Exception;
 	boolean checkDoubleEmail(String userEmail) throws Exception;
-	Influencer influencerDetail(Integer influencerNum) throws Exception;
+	Map<String, Object> influencerDetail(Integer influencerNum) throws Exception;
 	Integer checkBookmarkInfluencer(Integer advertiserNum, Integer influencerNum) throws Exception;
 	boolean toggleBookmarkInfluencer(Integer advertiserNum, Integer influencerNum) throws Exception;
 	List<Influencer> influencerListForMain() throws Exception;
@@ -24,12 +25,18 @@ public interface InfluencerService {
   
 	void imageView(HttpServletRequest request, OutputStream out, String file) throws Exception;
 
-  //상민 - 인플루언서 찾기
+	//상민 - 인플루언서 등록
+	Influencer influencerRegister(Influencer influencer) throws Exception;
+
+	//상민 - 인플루언서 수정
+	Influencer influencerEdit(Influencer influencer) throws Exception;
+
+	//상민 - 인플루언서 찾기
 	Influencer findInfluencerByNum(Integer influencerNum) throws Exception;
-  Influencer influencerRegister(Influencer influencer) throws Exception;
+
   
   void influencerModify(Influencer influencer) throws Exception;
-
+  List<Influencer> influencerBookmarkForMypage(Integer advertiserNum) throws Exception;
 
 	
 	//민준 - 캠페인의 카테고리랑 희망채널이 일치하는 인플루언서들의 이메일 목록 뽑아오기 

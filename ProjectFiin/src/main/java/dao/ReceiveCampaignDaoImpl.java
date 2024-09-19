@@ -6,7 +6,6 @@ import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 
-import dto.ReceiveCampaign;
 import util.MybatisSqlSessionFactory;
 
 public class ReceiveCampaignDaoImpl implements ReceiveCampaignDao {
@@ -29,6 +28,13 @@ public class ReceiveCampaignDaoImpl implements ReceiveCampaignDao {
 	}
 
 	@Override
+
+  public void requestedInfluencer(Integer campaignNum, Integer influencerNum){
+		Map<String, Object> params = new HashMap<String, Object>();
+		params.put("campaignNum", campaignNum);
+		params.put("influencerNum", influencerNum);
+		sqlSession.selectList("mapper.receiveCampaign.requestedInfluencer", params);
+
 	public void insertReceiveCampaign(Integer influencerNum, Integer campaignNum) throws Exception {
 		Map<String,Integer> param = new HashMap<>();
 		param.put("influencerNum", influencerNum);
@@ -53,6 +59,5 @@ public class ReceiveCampaignDaoImpl implements ReceiveCampaignDao {
 		param.put("campaignNum", campaignNum);
 		sqlSession.delete("mapper.receiveCampaign.deleteReceiveCampaign",param);
 		sqlSession.commit();
-
 	}
 }

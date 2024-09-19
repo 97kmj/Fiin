@@ -1,12 +1,9 @@
 .productimg {
-	display: grid;
-	grid-template-columns: 1fr 2fr;
-	grid-gap: 10px;
+	display: flex;
 	border: 1px solid white;
 	margin: auto;
 	padding: 30px;
 	width: 1200px;
-	height: 350px;
 	border-radius: 10px;
 	background-color: white;
 	box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 64px 0px;
@@ -43,7 +40,11 @@
 	box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 64px 0px;
 	font-size: 15px;
 }
-
+.subscribers_su {
+	margin-left: 90px;
+	font-size: 25px;
+	padding: 10px;
+}
 .basic_info2 {
 	width: 1200px;
 	margin-bottom: 80px;
@@ -107,18 +108,17 @@
 
 .basic_info {
 	font-size: 25px;
-	margin-left: 90px;
+	margin-left: 210px;
 	font-size: 25px;
 	text-align: left;
 	padding: 10px;
 }
 
 .chanimg {
-	margin-left: 60px;
+	margin-left: 180px;
 	width: 1150px;
-	height: 50px;
 	padding: 0px 0px 0px 40px;
-	display: inline-block;
+	display: flex;
 }
 
 .channel {
@@ -141,11 +141,15 @@
 	width: 120px;
 	height: 35px;
 	text-align: center;
+	margin-bottom: 10px;
 }
 
 .container {
+	display: flex;
 	overflow: hidden;
 	position: relative;
+	margin-top: 30px;
+	margin-left: 250px;
 }
 
 .bookmark {
@@ -189,16 +193,19 @@
  /* 제안하기 모달창 */
 .modalBtn {
 	display: block;
-	margin: 40px auto;
 	padding: 10px 20px;
-	background-color: royalblue;
+	background-color: #4849e8;
 	border: none;
 	border-radius: 10px;
 	cursor: pointer;
+	width: 230px;
+	height: 50px;
+	color: white;
+	margin-left: 30px;
 }
 .modal {
 	display: none;
-	position: absolute;
+	position: fixed;
 	top: 0;
 	left: 0;
 	width: 100%;
@@ -211,7 +218,7 @@
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
-	padding: 20px;
+	padding: 30px;
 	border-radius: 10px;
 	background: #ffffff;
 }
@@ -222,4 +229,12 @@
 	border-radius: 10px;
 	cursor: pointer;
 	transition: box-shadow 0.2s;
+}
+.requestBtn {
+	cursor: pointer;
+	width: 40px;
+	height: 20px;
+	border-radius: 3px;
+	background-color: #4849e8;
+	color: white;
 }

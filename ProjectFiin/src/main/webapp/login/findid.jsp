@@ -117,7 +117,7 @@
               name="name"
             />
           </label>
-   		  <label for="password" class="input_label">
+   		  <label for="mobileNumber" class="input_label">
             휴대폰번호<span>*</span> <span class="br_style"><br /></span>
             <input
               type="text"

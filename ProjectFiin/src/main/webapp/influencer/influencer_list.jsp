@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -57,18 +59,22 @@
 				<c:forEach items="${influencerList}" var="showinfluencer">
 					<div class="influencer_pick" id="pickNum1" OnClick="location.href='influencerDetail?num=' + ${showinfluencer.influencer_num}">
 						<c:if test="${showinfluencer.profile_image ne null }">
+
 						<img src="image?file=${showinfluencer.profile_image }" class="influencer_img">
-						<!-- </a> -->
 						</c:if>
 						<div>
 						<c:if test="${showinfluencer.youtube ne null }">
-								<c:out value="유튜브"/>
+							<%-- <c:out value="유튜브"/> --%>
+							<img src="https://img.icons8.com/?size=25&id=19318&format=png&color=000000">
 						</c:if>
 						<c:if test="${showinfluencer.instagram ne null }">
-							<c:out value="인스타그램"/>
+							<%-- <c:out value="인스타그램"/> --%>
+							<img src="https://img.icons8.com/?size=25&id=Xy10Jcu1L2Su&format=png&color=000000">
+				
 						</c:if>
 						<c:if test="${showinfluencer.blog ne null }">
-							<c:out value="블로그"/>
+							<%-- <c:out value="블로그"/> --%>
+							<img src="${pageContext.request.contextPath}/image/naver.png" style="width: 25px; height: 25px;"/>
 						</c:if>
 						<br> 
 						 ${showinfluencer.category_name }
@@ -99,7 +105,7 @@
 							<c:if test="${showinfluencer.blog_follower != null }">
 							<c:set var="totalFollowers" value="${totalFollowers + showinfluencer.blog_follower }"/>
 							</c:if>
-							총 팔로워 수 : ${totalFollowers }명
+							총 팔로워 수 : <fmt:formatNumber value="${totalFollowers }" type="number" pattern="#,###"/>명
 						
 						
 						</div>
@@ -108,39 +114,44 @@
 			</div>
 		</div>
 	</div>
-	<!-- paging처리 -->
-	<div class="pageDiv" style="text-align: center">
-		<!-- 페이지 이전버튼 생성 -->
-		<c:choose>
-			<c:when test="${pageInfo.curPage>1 }">
-				<a href="#" data-page="{pageInfo.curPage-1}">&lt;</a>
-			</c:when>
-			<c:otherwise>
-				<a>&lt;</a>
-			</c:otherwise>
-		</c:choose>
-		<!-- 페이지 가운데 숫자 버튼 생성 -->
-		<c:forEach begin="${pageInfo.startPage }" end="${pageInfo.endPage }" var="i">
+	<!-- 페이지 처리  -->
+		<div class="pageDiv" style="text-align:center">
+			<ul class='pagination'>
+			
+			<!-- 페이지 이전버튼 생성  -->
+ 			<c:choose>
+				<c:when test="${pageInfo.curPage>1 }">
+				 	<li><a href="#" data-page="${pageInfo.curPage-1 }" class="arrow left">
+				 	<img src="https://img.icons8.com/?size=100&id=x3s0mSWBMJTc&format=png&color=939393" style="weight: 20px; height: 20px">
+				 	</a></li>
+				 </c:when>
+				 <c:otherwise>
+				 </c:otherwise>
+			</c:choose>
+			<!-- 페이지 가운데 숫자 버튼  생성  -->
+			<c:forEach begin="${pageInfo.startPage }" end="${pageInfo.endPage }" var="i">
+				<c:choose>
+					<c:when test="${i eq pageInfo.curPage }">
+						<li><a href="#" class="select num" data-page="${i }">${i }</a></li>
+					</c:when>
+					<c:otherwise>
+						<li><a href="#" class="btn num" data-page="${i }">${i }</a></li>
+					</c:otherwise>
+				</c:choose>
+			</c:forEach>
+			
+			<!-- 페이지 다음버튼 생성  -->
 			<c:choose>
-				<c:when test="${i eq pageInfo.curPage }">
-					<a href="#" class="select" data-page="${i }">${i }</a>
+				<c:when test="${pageInfo.curPage<pageInfo.allPage }">
+					<li><a href="#" data-page="${pageInfo.curPage+1 }" class="arrow right">
+					<img src="https://img.icons8.com/?size=100&id=IGZk6vp3nxFm&format=png&color=939393"	style="weight: 20px; height: 20px">
+					</a></li>
 				</c:when>
 				<c:otherwise>
-					<a href="#" class="btn" data-page="${i }">${i }</a>
 				</c:otherwise>
 			</c:choose>
-		</c:forEach>
-		
-		<!-- 페이지 다음버튼 생성 -->
-		<c:choose>
-			<c:when test="${pageInfo.curPage<pageInfo.allPage }">
-				<a href="#" data-page="${pageInfo.curPage+1 }">&gt;</a>
-			</c:when>
-			<c:otherwise>
-				<a>&gt;</a>
-			</c:otherwise>
-		</c:choose>
-	</div>
+			</ul>
+   		</div>
 	<%@include file="../include/footer.jsp"%>
 </body>
 

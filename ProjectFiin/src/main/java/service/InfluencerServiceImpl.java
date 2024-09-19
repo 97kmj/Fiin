@@ -51,8 +51,8 @@ public class InfluencerServiceImpl implements InfluencerService {
 	}
 
 	@Override
-	public Influencer influencerDetail(Integer influencerNum) throws Exception {
-		Influencer influencer = influencerDao.selectInfluencer(influencerNum);
+	public Map<String, Object> influencerDetail(Integer influencerNum) throws Exception {
+		Map<String, Object> influencer = influencerDao.selectInfluencerDetail(influencerNum);
 		if(influencer == null) throw new Exception("인플루언서를 찾지 못했습니다.");
 		return influencer;
 	}
@@ -77,7 +77,20 @@ public class InfluencerServiceImpl implements InfluencerService {
 	//상민 - 인플루언서 등록
 	@Override
 	public Influencer influencerRegister(Influencer influencer) throws Exception {
+		//인플루언서 정보 저장
+		System.out.println("influencer service = " + influencer);
 		influencerDao.registerInfluencer(influencer);
+
+		//인플루언서 포인트 기록, 차감
+		influencerDao.usePointsByInfluencer(influencer, influencer.getInfluencerNum());
+		return influencer;
+	}
+
+	//상민 - 인플루언서 수정
+	@Override
+	public Influencer influencerEdit(Influencer influencer) throws Exception {
+		System.out.println("influencer service = " + influencer);
+		influencerDao.updateRegisteredInfluencer(influencer);
 		return influencer;
 	}
 
@@ -116,13 +129,13 @@ public class InfluencerServiceImpl implements InfluencerService {
 
   @Override
 	public String influencerFindEmail(String name, String mobileNumber) throws Exception {
-		Influencer influencer = influencerDao.selectInfluencerForFindEmail(name, mobileNumber);
-		if (influencer == null) throw new Exception("이메일 찾기 오류");
-		return influencer.getUserEmail();
+		String userEmail = influencerDao.selectInfluencerEmail(name, mobileNumber);
+		if (userEmail == null) throw new Exception("이메일 찾기 오류");
+		return userEmail;
   }
 	@Override
 	public String influencerFindPassword(String userEmail) throws Exception {
-		String password = influencerDao.selectInfluencerForFindPassword(userEmail);
+		String password = influencerDao.selectInfluencerPassword(userEmail);
 		if (password == null) throw new Exception("비밀번호 찾기 오류");
 		return password;
 	}
@@ -158,6 +171,10 @@ public class InfluencerServiceImpl implements InfluencerService {
 	@Override
 	public List<String> getEmaliListByCampaign(Campaign campaign) throws Exception {
 		return influencerDao.selectEmaliListByCampaign(campaign);
+	}
+	@Override
+	public List<Influencer> influencerBookmarkForMypage(Integer advertiserNum) throws Exception {
+		return influencerDao.bookmarkInfluecerForMypage(advertiserNum);
 	}
 	
 }

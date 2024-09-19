@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
 
 <!DOCTYPE html>
@@ -47,19 +48,18 @@
 					<span>유튜브</span>
 				</label>
 			</div>
+			<button id="registerButton" >캠페인 등록하기</button>
 		</div>
 		</form>
 		
-		<div class="allBar">
-			<h2></h2>
-			<button id="registerButton" onclick="location.href='campaign/campaign_register.jsp'">캠페인 등록하기</button>
-		</div>
+		
+			
+		
 		<div class="campaignWrap" style="justify-content:left">
 	 		<c:forEach items="${campaignList }" var="campaign">
-	 			<div class="campaign_pick" id="pickNum1"
-				onclick="location.href='campaignDetail?campaignNum=${campaign.campaignNum }'">
+	 			<div class="campaign_pick" onclick="location.href='campaignDetail?campaignNum=${campaign.campaignNum }'">
 					<img src="image?file=${campaign.image}" class="campaign_img">
-					<div>${campaign.channel } | ${categoryList.get(campaign.categoryId-1).category_name }</div>
+					<div> ${campaign.channel } | ${categoryList.get(campaign.categoryId-1).category_name }</div>
 					<div id="channelName">${campaign.companyName }</div>
 					<div id="title">${campaign.productName }</div>
 					<div>
@@ -72,23 +72,26 @@
 
 		<!-- 페이지 처리  -->
 		<div class="pageDiv" style="text-align:center">
+			<ul class='pagination'>
+			
 			<!-- 페이지 이전버튼 생성  -->
  			<c:choose>
 				<c:when test="${pageInfo.curPage>1 }">
-				 	<a href="#" data-page="{pageInfo.curPage-1 }">&lt;</a>
+				 	<li><a href="#" data-page="${pageInfo.curPage-1 }" class="arrow left">
+				 	<img src="https://img.icons8.com/?size=100&id=x3s0mSWBMJTc&format=png&color=939393" style="weight: 20px; height: 20px">
+				 	</a></li>
 				 </c:when>
 				 <c:otherwise>
-				 	<a>&lt;</a>
 				 </c:otherwise>
 			</c:choose>
 			<!-- 페이지 가운데 숫자 버튼  생성  -->
 			<c:forEach begin="${pageInfo.startPage }" end="${pageInfo.endPage }" var="i">
 				<c:choose>
 					<c:when test="${i eq pageInfo.curPage }">
-						<a href="#" class="select" data-page="${i }">${i }</a>
+						<li><a href="#" class="select num" data-page="${i }">${i }</a></li>
 					</c:when>
 					<c:otherwise>
-						<a href="#" class="btn" data-page="${i }">${i }</a>
+						<li><a href="#" class="btn num" data-page="${i }">${i }</a></li>
 					</c:otherwise>
 				</c:choose>
 			</c:forEach>
@@ -96,13 +99,15 @@
 			<!-- 페이지 다음버튼 생성  -->
 			<c:choose>
 				<c:when test="${pageInfo.curPage<pageInfo.allPage }">
-					<a href="#" data-page="${pageInfo.curPage+1 }">&gt;</a>
+					<li><a href="#" data-page="${pageInfo.curPage+1 }" class="arrow right">
+					<img src="https://img.icons8.com/?size=100&id=IGZk6vp3nxFm&format=png&color=939393"	style="weight: 20px; height: 20px">
+					</a></li>
 				</c:when>
 				<c:otherwise>
-					<a>&gt;</a>
 				</c:otherwise>
 			</c:choose>
-    	</div>
+			</ul>
+   		</div>
    
     </div>
 	<%@include file="../include/footer.jsp" %>
@@ -142,6 +147,10 @@
 		}
 	})
 	
+	$("#registerButton").click(function(e){
+		e.preventDefault();
+		location.href='campaignRegister';
+	})
 </script>
 
 
