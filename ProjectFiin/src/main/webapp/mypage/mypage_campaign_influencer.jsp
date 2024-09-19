@@ -13,7 +13,11 @@
 	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
 	
 	<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
-
+	<style>
+		.selBtn {
+			border: 2px solid rgb(72,73,232);
+		}
+	</style>
 </head>
 <body>
 <%@ include file="../include/header.jsp" %>
@@ -23,32 +27,39 @@
     <div id="main">
         <h2>나의 요청 현황</h2>
         <div id="filter">
-            <div class="filterbtn" id="receiveCampain" style="border: 2px solid rgb(72,73,232);">신청한 캠페인</div>
-            <div class="filterbtn" id="requestCampain" style="border: 2px solid rgb(147,147,147);">요청받은 캠페인</div>
+            <a href="mypageCampaignInfluencer?btnType=receive" class="filterbtn <c:if test='${btnType eq "receive"}'>selBtn</c:if>" >신청한 캠페인</a>
+            <a href="mypageCampaignInfluencer?btnType=request" class="filterbtn <c:if test='${btnType eq "request"}'>selBtn</c:if>" >요청받은 캠페인</a>
         </div>
         <div id="mainwrap">
 	        <h3>신청한 캠페인</h3>
 	        <div id="campaignwrap">
-	        	<c:forEach items="${campaignListReceive }" var="campaignListReceive">
-		            <div class="campaign" id="campaignNum1">
-		                <div class="img" onclick="location.href='campaignDetail?campaignNum=${campaignListReceive.campaign_num }'">
-		                	<img src="image?file=${campaignListReceive.image}" style="width:220px;height:205px" class="campaign_img">
+	        	<c:forEach items="${campaignListAccept }" var="campaignListAccept">
+		            <div class="campaign" >
+		                <div class="img" onclick="location.href='campaignDetail?campaignNum=${campaignListAccept.campaign_num }'">
+		                	<img src="image?file=${campaignListAccept.image}" style="width:220px;height:205px" class="campaign_img">
 		                </div>
-		                <div class="channel">${campaignListReceive.channel }</div>
-		                <div class="compuny_name">${categoryList.get(campaignListReceive.category_id-1).category_name }</div>
+		                <div class="channel">${campaignListAccept.channel }</div>
+		                <div class="compuny_name">${categoryList.get(campaignListAccept.category_id-1).category_name }</div>
 		              
-		                <div class="name">${campaignListReceive.company_name }</div>
+		                <div class="name">${campaignListAccept.company_name }</div>
 		                <div class="date">
-		                	<fmt:formatDate value="${campaignListReceive.ad_start_date}" pattern="yyyy-MM-dd" /> ~ <fmt:formatDate value="${campaignListReceive.ad_end_date}"
+		                	<fmt:formatDate value="${campaignListAccept.ad_start_date}" pattern="yyyy-MM-dd" /> ~ <fmt:formatDate value="${campaignListAccept.ad_end_date}"
 							pattern="yyyy-MM-dd" />
 						</div>
 		                <div class="result_total">
 		                	<c:choose>
-		                		<c:when test="${campaignListReceive.accept eq false}">
-		                			<div class="check">대기중</div>
+		                		<c:when test="${campaignListAccept.accept eq false}">
+		                			<c:choose>
+			                			<c:when test="${btnType eq 'request'}">
+			                				<div class="check" id="ckecked" value="${campaignListAccept.request_num }">수락하기</div>
+			                			</c:when>
+			                			<c:otherwise>
+			                				<div class="check">대기중</div>
+			                			</c:otherwise>
+		                			</c:choose>
 		               			</c:when>
 		               			<c:otherwise>
-		               				<div class="check">수락</div>
+		               				<div class="check">수락완료</div>
 		               			</c:otherwise>
 		               		</c:choose>
 		               </div>
@@ -65,21 +76,25 @@
 
 <script>
 $(document).ready(function() {
-	//신청리스트,요청리스트 필터링 버튼
-	$("#receiveCampaign").on('click',function(){
-		$(this).css("border","2px solid #4849e8");
-		$("#requestCampaign").css("border","2px solid #939393");
+	$("#ckecked").on('click',function(){
+		var requestNum = $(this).attr("value");
 		alert("1")
+		$.ajax({
+			url:"mypageCampaignInfluencer",
+			type:"POST",
+			async:true,
+			data:{requestNum:requestNum },
 		
+			success:function(result){
+				$("#ckecked").text('수락완료');
+				alert("?")
+			},
+			error:function(err){
+				console.log(err);
+			}
+				
+		})
 	})
-	$("#requestCampaign").on('click',function(){
-		$(this).css("border","2px solid #4849e8");
-		$("#receiveCampaign").css("border","2px solid #939393");
-		alert("2")
-	})
-	
-    
-
 })  
 </script>
 </html>

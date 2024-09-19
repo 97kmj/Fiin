@@ -27,5 +27,10 @@ public class RequestCampaignDaoImpl implements RequestCampaignDao {
 
 
 	}
+	@Override
+	public void updateRequestCampaignAccept(Integer requestNum) throws Exception {
+		sqlSession.update("mapper.requestCampaign.updateRequestCampaignAccept",requestNum);
+		sqlSession.commit();
+	}
 
 }

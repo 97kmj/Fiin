@@ -68,7 +68,12 @@
 			WHERE rec.influencer_num = #{influencerNum}
 		]]>
 	</select>
-
+	<select id="selectCampaignRequest" parameterType="Integer" resultType="Map">
+		<![CDATA[
+			SELECT cam.*,req.accept,req.request_num FROM campaign cam LEFT JOIN request_campaign req ON cam.campaign_num = req.campaign_num
+			WHERE req.influencer_num = #{influencerNum}
+		]]>
+	</select>
 	
 	<!--세나-->
 	<select id="selectCampaignListForMain" resultType="campaign">
