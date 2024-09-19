@@ -37,16 +37,16 @@ public class AdvertiserDaoImpl implements AdvertiserDao {
 	}
 
 	@Override
-	public Advertiser selectAdvertiserForFindEmail(String name, String mobileNumber) throws Exception {
+	public String selectAdvertiserEmail(String name, String mobileNumber) throws Exception {
 		Map<String, String> param = new HashMap<>();
 		param.put("name", name);
 		param.put("mobileNumber", mobileNumber);
-		return sqlsession.selectOne("mapper.advertiser.selectAdvertiserForFindEmail", param);
+		return sqlsession.selectOne("mapper.advertiser.selectAdvertiserEmail", param);
 	}
 
 	@Override
-	public String selectAdvertiserForFindPassword(String userEmail) throws Exception {
-		return sqlsession.selectOne("mapper.advertiser.selectAdvertiserForFindPassword", userEmail);
+	public String selectAdvertiserPassword(String userEmail) throws Exception {
+		return sqlsession.selectOne("mapper.advertiser.selectAdvertiserPassword", userEmail);
 	}
 
 }

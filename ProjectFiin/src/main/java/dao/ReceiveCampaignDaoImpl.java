@@ -28,10 +28,36 @@ public class ReceiveCampaignDaoImpl implements ReceiveCampaignDao {
 	}
 
 	@Override
-	public void requestedInfluencer(Integer campaignNum, Integer influencerNum){
+
+  public void requestedInfluencer(Integer campaignNum, Integer influencerNum){
 		Map<String, Object> params = new HashMap<String, Object>();
 		params.put("campaignNum", campaignNum);
 		params.put("influencerNum", influencerNum);
 		sqlSession.selectList("mapper.receiveCampaign.requestedInfluencer", params);
+
+	public void insertReceiveCampaign(Integer influencerNum, Integer campaignNum) throws Exception {
+		Map<String,Integer> param = new HashMap<>();
+		param.put("influencerNum", influencerNum);
+		param.put("campaignNum", campaignNum);
+		sqlSession.insert("mapper.receiveCampaign.insertReceiveCampaign",param);
+		sqlSession.commit();
+		
+	}
+
+	@Override
+	public Integer selectReceiveCampaign(Integer influencerNum, Integer campaignNum) throws Exception {
+		Map<String,Integer> param = new HashMap<>();
+		param.put("influencerNum", influencerNum);
+		param.put("campaignNum", campaignNum);
+		return sqlSession.selectOne("mapper.receiveCampaign.selectReceiveCampaign",param);
+	}
+
+	@Override
+	public void deleteReceiveCampaign(Integer influencerNum, Integer campaignNum) throws Exception {
+		Map<String,Integer> param = new HashMap<>();
+		param.put("influencerNum", influencerNum);
+		param.put("campaignNum", campaignNum);
+		sqlSession.delete("mapper.receiveCampaign.deleteReceiveCampaign",param);
+		sqlSession.commit();
 	}
 }

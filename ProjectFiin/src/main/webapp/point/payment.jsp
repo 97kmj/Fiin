@@ -55,7 +55,7 @@
     	document.getElementById("submitbtn").onclick = function(e){
     		if(userNum == '') {
     			alert("로그인 후 이용가능합니다.");
-    			location.replace("http://localhost:8080/fiin/login");
+    			location.href="login";
     		} else {
 	    		requestPay();
     		}
@@ -96,7 +96,7 @@
                	            	data:{data:JSON.stringify({type:type,num:userNum, changePoint:pointAmount})},
 	                           	success: function(result){
                             		alert(result);
-		                            location.replace("http://localhost:8080/fiin/mypage/pointrecord");
+		                            location.href="pointrecord";
 	                           	},
 								error: function (err) {
 	                                console.log(err);

@@ -51,25 +51,25 @@ public class InfluencerServiceImpl implements InfluencerService {
 	}
 
 	@Override
-	public Influencer influencerDetail(Integer influencerNum) throws Exception {
-		Influencer influencer = influencerDao.selectInfluencer(influencerNum);
+	public Map<String, Object> influencerDetail(Integer influencerNum) throws Exception {
+		Map<String, Object> influencer = influencerDao.selectInfluencerDetail(influencerNum);
 		if(influencer == null) throw new Exception("인플루언서를 찾지 못했습니다.");
 		return influencer;
 	}
 
 	@Override
-	public Integer checkBookmarkInfluencer(Integer InfluencerNum, Integer CampaignNum) throws Exception {
-		return bookmarkInfluencerDao.selectBookmarkInfluencer(InfluencerNum, CampaignNum);
+	public Integer checkBookmarkInfluencer(Integer advertiserNum, Integer influencerNum) throws Exception {
+		return bookmarkInfluencerDao.selectBookmarkInfluencer(advertiserNum, influencerNum);
 	}
 
 	@Override
-	public boolean toggleBookmarkInfluencer(Integer InfluencerNum, Integer CampaignNum) throws Exception {
-		Integer cbookmarkNum = bookmarkInfluencerDao.selectBookmarkInfluencer(InfluencerNum, CampaignNum);
-		if(cbookmarkNum==null) {
-			bookmarkInfluencerDao.insertBookmarkInfluencer(InfluencerNum, CampaignNum);
+	public boolean toggleBookmarkInfluencer(Integer advertiserNum, Integer influencerNum) throws Exception {
+		Integer ibookmarkNum = bookmarkInfluencerDao.selectBookmarkInfluencer(advertiserNum, influencerNum);
+		if(ibookmarkNum==null) {
+			bookmarkInfluencerDao.insertBookmarkInfluencer(advertiserNum, influencerNum);
 			return true;
 		} else {
-			bookmarkInfluencerDao.deleteBookmarkInfluencer(InfluencerNum, CampaignNum);
+			bookmarkInfluencerDao.deleteBookmarkInfluencer(advertiserNum, influencerNum);
 			return false;
 		}
 	}
@@ -129,13 +129,13 @@ public class InfluencerServiceImpl implements InfluencerService {
 
   @Override
 	public String influencerFindEmail(String name, String mobileNumber) throws Exception {
-		Influencer influencer = influencerDao.selectInfluencerForFindEmail(name, mobileNumber);
-		if (influencer == null) throw new Exception("이메일 찾기 오류");
-		return influencer.getUserEmail();
+		String userEmail = influencerDao.selectInfluencerEmail(name, mobileNumber);
+		if (userEmail == null) throw new Exception("이메일 찾기 오류");
+		return userEmail;
   }
 	@Override
 	public String influencerFindPassword(String userEmail) throws Exception {
-		String password = influencerDao.selectInfluencerForFindPassword(userEmail);
+		String password = influencerDao.selectInfluencerPassword(userEmail);
 		if (password == null) throw new Exception("비밀번호 찾기 오류");
 		return password;
 	}
@@ -171,6 +171,10 @@ public class InfluencerServiceImpl implements InfluencerService {
 	@Override
 	public List<String> getEmaliListByCampaign(Campaign campaign) throws Exception {
 		return influencerDao.selectEmaliListByCampaign(campaign);
+	}
+	@Override
+	public List<Influencer> influencerBookmarkForMypage(Integer advertiserNum) throws Exception {
+		return influencerDao.bookmarkInfluecerForMypage(advertiserNum);
 	}
 	
 }

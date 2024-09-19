@@ -89,10 +89,33 @@ public class CampaignDaoImpl implements CampaignDao {
 		Map<String,Object> map = new HashMap<>();
 		map.put("campaignNum", campaignNum);
 		map.put("status", status);
-		
-		sqlSession.update("mapper.requestCampaign.CampaignIsRecruit", map);
+		sqlSession.update("mapper.campaign.CampaignIsRecruit", map);
 		sqlSession.commit();
 		
+	}
+
+
+	@Override
+	public List<Campaign> selectCampaignListReceive(Integer influencerNum) throws Exception {
+
+		return sqlSession.selectList("mapper.campaign.selectCampaignReceive",influencerNum);
+	}
+	
+	
+	@Override
+	public List<Map<String,Object>> selectCampaignListRequest(Integer influencerNum) throws Exception {
+
+		return sqlSession.selectList("mapper.campaign.selectCampaignRequest",influencerNum);
+	}
+
+	@Override
+	public List<Campaign> selectCampaignListForRequest(Integer advertiserNum) throws Exception {
+		return sqlSession.selectList("mapper.campaign.selectCampaignForRequest",advertiserNum);
+	}
+
+	@Override
+	public List<Campaign> bookmarkCampaignForMypage(Integer influencerNum) throws Exception {
+		return sqlSession.selectList("mapper.campaign.selectCampaignForBookmark",influencerNum);
 	}
 
 }

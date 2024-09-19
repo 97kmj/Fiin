@@ -1,6 +1,8 @@
 package controller;
 
 import java.io.IOException;
+import java.util.List;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -8,7 +10,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import dto.Influencer;
+import dto.Advertiser;
+import dto.Campaign;
+import service.CampaignService;
+import service.CampaignServiceImpl;
 import service.InfluencerService;
 import service.InfluencerServiceImpl;
 
@@ -34,20 +39,35 @@ public class InfluencerDetail extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
-		Integer num = Integer.parseInt(request.getParameter("num"));
+		Integer influencerNum = Integer.parseInt(request.getParameter("num"));
+		Integer ibookmarkNum;
+		
 		
 		try {
+			
 			InfluencerService service = new InfluencerServiceImpl();
-			Influencer influencer = service.influencerDetail(num);
+			CampaignService cservice = new CampaignServiceImpl();
+			Map<String, Object> influencer = service.influencerDetail(influencerNum);
+			Advertiser advertiser = (Advertiser)request.getSession().getAttribute("advertiser");
+			Integer advertiserNum = advertiser.getAdvertiserNum();
+			List<Campaign> campaignRequest = cservice.campaignListForRequest(advertiserNum);
+			System.out.println(campaignRequest.toString());
 			request.setAttribute("influencerdetail", influencer);
+			
+			if(advertiser != null) {
+				ibookmarkNum = service.checkBookmarkInfluencer(advertiser.getAdvertiserNum(), influencerNum);
+				request.setAttribute("bookmarkInfluencer", String.valueOf(ibookmarkNum!=null));
+				request.setAttribute("campaignRequest", campaignRequest);
+			}
 			request.getRequestDispatcher("influencer/influencer_detail.jsp").forward(request, response);
-		} catch (Exception e) {
+			
+		} catch (Exception e) { 
 			e.printStackTrace();
 			request.setAttribute("err", e.getMessage());
 			request.getRequestDispatcher("err.jsp");
 		}
 	}
-
+ 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)

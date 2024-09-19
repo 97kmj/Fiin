@@ -8,18 +8,20 @@ import org.apache.ibatis.session.SqlSession;
 import util.MybatisSqlSessionFactory;
 
 public class RequestCampaignDaoImpl implements RequestCampaignDao {
+	
 	private SqlSession sqlSession;
+	
 	public RequestCampaignDaoImpl() {
 		sqlSession = MybatisSqlSessionFactory.getSqlSessionFactory().openSession();
 	}
+	
 	@Override
 	public void insertRequestCampaign(Integer influencerNum, Integer campaignNum) throws Exception {
 		Map<String,Integer> param = new HashMap<>();
 		param.put("influencerNum", influencerNum);
 		param.put("campaignNum", campaignNum);
-		sqlSession.insert("mapper.requestCampaign.insertRequest",param);
+		sqlSession.insert("mapper.requestCampaign.insertRequestCampaign", param);
 		sqlSession.commit();
-
 	}
 
 	@Override
@@ -27,7 +29,7 @@ public class RequestCampaignDaoImpl implements RequestCampaignDao {
 		Map<String,Integer> param = new HashMap<>();
 		param.put("influencerNum", influencerNum);
 		param.put("campaignNum", campaignNum);
-		return sqlSession.selectOne("mapper.requestCampaign.selectRequest",param);
+		return sqlSession.selectOne("mapper.requestCampaign.selectRequestCampaign",param);
 	}
 
 	@Override
@@ -35,9 +37,13 @@ public class RequestCampaignDaoImpl implements RequestCampaignDao {
 		Map<String,Integer> param = new HashMap<>();
 		param.put("influencerNum", influencerNum);
 		param.put("campaignNum", campaignNum);
-		sqlSession.delete("mapper.requestCampaign.deleteRequest",param);
+		sqlSession.delete("mapper.requestCampaign.deleteRequestCampaign", param);
 		sqlSession.commit();
-
+	}
+	@Override
+	public void updateRequestCampaignAccept(Integer requestNum) throws Exception {
+		sqlSession.update("mapper.requestCampaign.updateRequestCampaignAccept",requestNum);
+		sqlSession.commit();
 	}
 
 }

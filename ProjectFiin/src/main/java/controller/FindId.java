@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import dto.Influencer;
 import service.AdvertiserService;
 import service.AdvertiserServiceImpl;
 import service.InfluencerService;
