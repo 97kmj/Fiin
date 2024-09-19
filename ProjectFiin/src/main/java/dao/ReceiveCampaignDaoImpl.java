@@ -34,6 +34,7 @@ public class ReceiveCampaignDaoImpl implements ReceiveCampaignDao {
 		params.put("campaignNum", campaignNum);
 		params.put("influencerNum", influencerNum);
 		sqlSession.selectList("mapper.receiveCampaign.requestedInfluencer", params);
+	}
 
 	public void insertReceiveCampaign(Integer influencerNum, Integer campaignNum) throws Exception {
 		Map<String,Integer> param = new HashMap<>();
