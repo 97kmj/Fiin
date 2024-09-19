@@ -223,7 +223,11 @@
 			url: 'requestCampaign',
 			method: 'post',
 			async: true,
-			dataType: 
+			dataType: "",
+			data: {
+				
+			},
+			success: 
 		})
 		alert("전송완료")
 	})
