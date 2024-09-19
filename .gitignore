@@ -1,9 +1,14 @@
-
-#/.idea
+.idea
 /.idea
+out
 /out
 /.gitignore
+.gitignore
 /Fiin-master.iml
+Fiin-master.iml
+
+
+
 
 #/build/
 #target/
