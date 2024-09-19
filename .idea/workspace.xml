@@ -12,17 +12,6 @@
     <list default="true" id="f2a06d27-f9c6-48c4-808e-315f110fcf30" name="변경" comment="fix : influencerRegister updated.">
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectFiin/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectFiin/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectFiin/src/main/java/resource/mybatis-config.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectFiin/src/main/java/resource/mybatis-config.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Fiin_master_war_exploded/WEB-INF/classes/dao/ReceiveCampaignDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/Fiin_master_war_exploded/WEB-INF/classes/dao/ReceiveCampaignDao.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Fiin_master_war_exploded/WEB-INF/classes/dao/ReceiveCampaignDaoImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/Fiin_master_war_exploded/WEB-INF/classes/dao/ReceiveCampaignDaoImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Fiin_master_war_exploded/WEB-INF/classes/mapper/receiveCampaign.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/Fiin_master_war_exploded/WEB-INF/classes/mapper/receiveCampaign.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Fiin_master_war_exploded/WEB-INF/classes/service/ReceiveCampaignService.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/Fiin_master_war_exploded/WEB-INF/classes/service/ReceiveCampaignService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Fiin_master_war_exploded/WEB-INF/classes/service/ReceiveCampaignServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/Fiin_master_war_exploded/WEB-INF/classes/service/ReceiveCampaignServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Fiin_master_war_exploded/WEB-INF/lib/mypage/mypage_advertiser_requestedInfluencer.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/Fiin_master_war_exploded/WEB-INF/lib/mypage/mypage_advertiser_requestedInfluencer.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Fiin_master_war_exploded/WEB-INF/lib/mypage/mypage_influencer_SNS.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/Fiin_master_war_exploded/WEB-INF/lib/mypage/mypage_influencer_SNS.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Fiin_master_war_exploded/mypage/mypage_advertiser_requestedInfluencer.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/Fiin_master_war_exploded/mypage/mypage_advertiser_requestedInfluencer.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Fiin_master_war_exploded/mypage/mypage_influencer_SNS.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/Fiin_master_war_exploded/mypage/mypage_influencer_SNS.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -225,7 +214,7 @@
       <workItem from="1726190955836" duration="27634000" />
       <workItem from="1726558733565" duration="51566000" />
       <workItem from="1726679765441" duration="18484000" />
-      <workItem from="1726706444334" duration="211000" />
+      <workItem from="1726706444334" duration="415000" />
     </task>
     <task id="LOCAL-00001" summary="dd">
       <option name="closed" value="true" />
@@ -275,7 +264,15 @@
       <option name="project" value="LOCAL" />
       <updated>1726706224121</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="fix : influencerRegister updated.">
+      <option name="closed" value="true" />
+      <created>1726706702720</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1726706702720</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
