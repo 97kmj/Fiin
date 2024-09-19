@@ -1,6 +1,7 @@
 package dao;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
@@ -46,4 +47,9 @@ public class RequestCampaignDaoImpl implements RequestCampaignDao {
 		sqlSession.commit();
 	}
 
+	
+	@Override
+	public List<Map<String, Object>> selectRequestCampaignList(Integer advertiserNum) throws Exception {
+		return sqlSession.selectList("mapper.requestCampaign.selectRequestCampaignList", advertiserNum);
+	}
 }

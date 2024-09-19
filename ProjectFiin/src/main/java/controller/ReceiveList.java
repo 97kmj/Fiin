@@ -60,7 +60,7 @@ public class ReceiveList extends HttpServlet {
 				}
 				row+="</td>";
 				System.out.println(receive);
-				if((Integer)receive.get("accept")==0) {
+				if((boolean)receive.get("accept") ==false) {
 					 row+="<td><button name=\"accept\" class=\"accept\" value=\"" + receive.get("apply_num")+"\">수락하기</button></td>";
 				} else {
 					 row+="<td><button name=\"checked\" class=\"checked\" value=\"" + receive.get("apply_num")+"\">수락완료</button></td>";
