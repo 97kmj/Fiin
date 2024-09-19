@@ -130,10 +130,13 @@
 				style="width: 25px; height: 25px; border-radius: 1px;"><b>일정정보</b>
 		</div>
 		<div class="inp_date">
-		캠페인 제안 가능 기간
+		캠페인 제안 가능 기간 &nbsp;
 		 <fmt:formatDate value="${influencerdetail.regist_date }" pattern="yyyy-MM-dd" />
 			~ 
-			<fmt:formatDate value="${influencerdetail.regist_date}" pattern="yyyy-MM-dd" var="month"/>
+			<fmt:formatDate value="${influencerdetail.regist_date}" pattern="yyyy-MM-dd"/>
+
+		
+		
 		</div>
 	</div>
 	<br>
