@@ -83,7 +83,7 @@
 	border-radius: 10px;
 	background-color: #4849e8;
 	color: white;
-	margin-left: 30px;
+	margin-left: auto;
 }
 .channelBar h2 {
 	width: 100px;
@@ -137,7 +137,7 @@
 	object-fit: cover;
 	margin-bottom: 8px;
 }
-.page {
+.pageDiv {
     margin:10px auto;
     text-align:center;
     width:50%;
@@ -151,19 +151,19 @@
 }
 .pagination li {
    	float:left;
-   	
     text-align:center;
-    padding:0 12px;
+    padding:0 10px;
+    height:20px;
 }
 .pagination a {
     float: left;
     text-align:center;
-    display:inline- block;
     font-size:16px;
     text-decoration:none;
-    
+    display:block;
+    line-height:20px;
 }
-.pagination a.active {
+.pagination a.select {
     cursor:default; 
     font-weight:bold;
     color:#4849e8;
@@ -175,6 +175,8 @@
 .num {
 	height:100%
 }
-.num:hover,.arrow:hover {
-    background-color:lightgray;
+.arrow {
+	padding:0;
+	height:20px;
+	width:20px;
 }
