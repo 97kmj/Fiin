@@ -18,14 +18,13 @@
 	<br>
 
 	<div class="campaignaddress">
-		<div>홈 >캠페인>비거너리어쩌구저쩌구 주소</div>
+		<div>홈 >인플루언서>상세페이지</div>
 	</div>
 	<br>
 
 	<div class="productimg">
 		<div class="img">
-			<img src="image?file=${influencerdetail.profile_image }"
-				style="width: 380px; height: 280px; border-radius: 10px;">
+			<img src="image?file=${influencerdetail.profile_image }" style="width: 380px; height: 280px; border-radius: 10px">
 		</div>
 		<div class="imgtext">
 			<div class="basic_info">
@@ -127,7 +126,7 @@
 
 	<div>
 		<div class="middletext">
-			<img src="${pageContext.request.contextPath}/img/watch.png"
+			<img src="${pageContext.request.contextPath}/image/watch.png"
 				style="width: 25px; height: 25px; border-radius: 1px;"><b>일정정보</b>
 		</div>
 		<div class="inp_date">
@@ -140,7 +139,7 @@
 	<br>
 	<br>
 	<div class="middletext">
-		<img src="${pageContext.request.contextPath}/img/information.png"
+		<img src="${pageContext.request.contextPath}/image/information.png"
 			style="width: 25px; height: 25px; border-radius: 1px;"><b>기본정보</b>
 	</div>
 
@@ -149,16 +148,25 @@
 		<div style="font-size: 25px; padding: 10px 40px;">
 			<b>채널명</b>
 		</div>
-		<div class="channel_style">
-		<c:if test="${influencerdetail.youtube ne null }">
-			${influencerdetail.youtube_name }
-		</c:if>
-		<c:if test="${influencerdetail.instagram ne null }">
-			${influencerdetail.instagram_name }
-		</c:if>
-		<c:if test="${influencerdetail.blog ne null }">
-			${influencerdetail.blog_name }
-		</c:if>
+		<div class="channel_name">
+		<div id="channelVar">
+			<c:if test="${influencerdetail.youtube ne null }">
+				<span id="channelImg"><img src="https://img.icons8.com/?size=60&id=19318&format=png&color=000000"></span>
+				<span id="channelNa">${influencerdetail.youtube_name }</span>
+			</c:if>
+		</div>
+		<div id="channelVar">	
+			<c:if test="${influencerdetail.instagram ne null }">
+				<span id="channelImg"><img src="https://img.icons8.com/?size=60&id=Xy10Jcu1L2Su&format=png&color=000000"></span>
+				<span id="channelNa">${influencerdetail.instagram_name }</span>
+			</c:if>
+		</div>
+		<div id="channelVar">
+			<c:if test="${influencerdetail.blog ne null }">
+				<span id="channelImg"><img src="${pageContext.request.contextPath}/image/naver.png" style="width: 60px; height: 60px;"/></span>
+				<span id="channelNa">${influencerdetail.blog_name }</span>
+			</c:if>
+		</div>
 		</div>
 		<br>
 		<div style="font-size: 25px; padding: 0px 40px 10px 40px;">
@@ -166,23 +174,29 @@
 		</div>
 		<div class="con_middle">
 			<div class="Introduction" style="word-break: normal;">
-				<br>${influencerdetail.introduction }
+				${influencerdetail.introduction }
 		</div>
-		<div style="font-size: 25px; padding: 10px 40px;">
+		<div style="font-size: 25px; padding: 10px" >
 			<b>채널 URL</b>
 		</div>
-		<div class="channel_style">
-		<c:if test="${influencerdetail.youtube ne null }">
-			${influencerdetail.youtube_url } <br>
-		</c:if>
-		<c:if test="${influencerdetail.instagram ne null }">
-			${influencerdetail.instagram_url } <br>
-		</c:if>
-		<c:if test="${influencerdetail.blog ne null }">
-			${influencerdetail.blog_url }
-		</c:if>
+		<div class="channel_url">
+			<div id="url">
+			<c:if test="${influencerdetail.youtube ne null }">
+				${influencerdetail.youtube_url } <br>
+			</c:if>
+			</div >
+			<div id="url">
+			<c:if test="${influencerdetail.instagram ne null }">
+				${influencerdetail.instagram_url } <br>
+			</c:if>
+			</div>
+			<div id="url">
+			<c:if test="${influencerdetail.blog ne null }">
+				${influencerdetail.blog_url }
+			</c:if>
+			</div>
 		</div>
-		<div style="font-size: 25px; padding: 10px 40px;">
+		<div style="font-size: 25px; padding: 10px; margin-top: 20px">
 			<b>콘텐츠 활용 안내</b>
 		</div>
 		<div class="content">

@@ -49,9 +49,7 @@
 						<button type="button" id="searchButton">검색</button>
 						</form>
 					</div>
-					<button id="registerButton"
-						onclick="location.href='influencer_register.jsp'">인플루언서
-						등록하기</button>
+						<button id="registerButton" onclick="location.href='influencerRegister'">인플루언서 등록하기</button>
 					</div>
 				</div>
 			</div>
@@ -85,7 +83,8 @@
 						</div>
 						
 						<div id="channelName">
- 							<c:if test="${showinfluencer.youtube_name ne null }">
+						${showinfluencer.nickname }
+<%--  							<c:if test="${showinfluencer.youtube_name ne null }">
 								${showinfluencer.youtube_name }
 							</c:if>
 							 <c:if test="${showinfluencer.instagram_name ne null }">
@@ -93,13 +92,13 @@
 							</c:if> 
 							<c:if test="${showinfluencer.blog_name ne null }">
 								${showinfluencer.blog_name }
-							</c:if>
+							</c:if> --%>
 
 						</div>
 						<div id="title">${showinfluencer.intro_line }</div>
 						<div id="subscriber">
 		
-							<c:set var = "totalFollowers" value="0"/>
+<%-- 							<c:set var = "totalFollowers" value="0"/>
 							<c:if test="${showinfluencer.youtube_follower != null }">
 							<c:set var="totalFollowers" value="${totalFollowers + showinfluencer.youtube_follower }"/>
 							</c:if>
@@ -109,7 +108,7 @@
 							<c:if test="${showinfluencer.blog_follower != null }">
 							<c:set var="totalFollowers" value="${totalFollowers + showinfluencer.blog_follower }"/>
 							</c:if>
-							총 팔로워 수 : <fmt:formatNumber value="${totalFollowers }" type="number" pattern="#,###"/>명
+							총 팔로워 수 : <fmt:formatNumber value="${totalFollowers }" type="number" pattern="#,###"/>명 --%>
 						
 						
 						</div>

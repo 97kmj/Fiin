@@ -152,12 +152,12 @@
 	height: 100%;
 	object-fit: cover;
 	margin-bottom: 8px;
+	border-radius: 10px;
 }
 	
 #channelName {
 	font-weight: bold;
-	margin-top: 12px;
-	margin-bottom: 5px;
+	margin-top: 3px;
 }
 
 #title {
