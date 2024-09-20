@@ -25,7 +25,7 @@
             <div class="side_profile_img" >
            	<c:choose>
             	<c:when test="${influencer.profileImage eq null }">
-            		<img src="https://img.icons8.com/?size=100&id=43942&format=png&color=ffffff" >
+            		<img src="https://img.icons8.com/?size=100&id=43942&format=png&color=ffffff" style="background-color: #4849e8;" >
             	</c:when>
             	<c:otherwise>
 	            	<img src='image?file=${influencer.profileImage}'>
