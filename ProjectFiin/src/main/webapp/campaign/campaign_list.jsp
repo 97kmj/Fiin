@@ -70,7 +70,7 @@
 			</c:forEach> 
 		</div>
 
-		<!-- 페이지 처리  -->
+		<!-- 페이 처리  -->
 		<div class="pageDiv" style="text-align:center">
 			<ul class='pagination'>
 			
