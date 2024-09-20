@@ -28,6 +28,7 @@ h1 {
 
 span {
 	color: #4849e8;
+	font-weight: bold;
 }
 
 .banner_text p {
@@ -88,10 +89,6 @@ span {
 
 .subcount {
 	margin-top: 12px;
-}
-
-.influencer_item p span {
-	font-weight: bold;
 }
 
 .moreview_btn {
