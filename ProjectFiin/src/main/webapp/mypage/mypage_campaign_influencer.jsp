@@ -37,7 +37,7 @@
 	        	<c:forEach items="${campaignListAccept }" var="campaignListAccept">
 		            <div class="campaign" >
 		                <div class="img" onclick="location.href='campaignDetail?campaignNum=${campaignListAccept.campaign_num }'">
-		                	<img src="image?file=${campaignListAccept.image}" style="width:220px;height:205px" class="campaign_img">
+		                	<img src="image?file=${campaignListAccept.image}" style="width:230px; height:230px; object-fit:cover"class="campaign_img">
 		                </div>
 		                <div class="channel">${campaignListAccept.channel }</div>
 		                <div class="compuny_name">${categoryList.get(campaignListAccept.category_id-1).category_name }</div>

@@ -1,3 +1,4 @@
+
 <%@page import="java.text.DecimalFormat"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -85,7 +86,9 @@
 	                <img src="image?file=${campaign.image}" alt="캠페인이미지" />
 	              </div>
 	              <div class="campaign_text">
-	              	<div class="sns_wrap">
+	              	<div class="campaign_sns">
+	              		<div class="campaign_channel">
+	              		<p class="campaign_text_title">광고채널</p>
 		                <c:forEach items="${campaign.channel.split('#')}" var="channel">
 		                	<c:if test="${channel.equals('blog')}">
 		                		<img src="${pageContext.request.contextPath}/image/naver.png" style="width: 25px; height: 25px;"/>
@@ -97,14 +100,42 @@
 		                    	<img src="https://img.icons8.com/?size=25&id=19318&format=png&color=000000">
 		                    </c:if>           	
 		                </c:forEach>
+		                </div>
+		                <c:if test="${campaign.categoryId eq '1'}">
+		                	<div class="category">뷰티</div>	
+		                </c:if>
+		                <c:if test="${campaign.categoryId eq '2'}">
+		                	<div class="category">패션</div>
+		                </c:if>
+		                <c:if test="${campaign.categoryId eq '3'}">
+		                	<div class="category">스포츠</div>	
+		                </c:if>
+		                <c:if test="${campaign.categoryId eq '4'}">
+		                	<div class="category">여행/숙박</div>	
+		                </c:if>
+		                <c:if test="${campaign.categoryId eq '5'}">		                	<span>식품</span>	
+		                	<div class="category">식품</div>
+		                </c:if>
+		                <c:if test="${campaign.categoryId eq '6'}">
+		                	<div class="category">생활용품</div>	
+		                </c:if>
+		                
 	                </div>
-	                <h3>${campaign.companyName}</h3>
-	                <h4>${campaign.campaignTitle}</h4>
-	                <p>광고기간</p>
-	                <p>
-	                	<fmt:formatDate value="${campaign.updateStartDate}" pattern="yyyy-MM-dd"/> ~ 
-	                	<fmt:formatDate value="${campaign.updateEndDate}" pattern="yyyy-MM-dd"/>
-	                </p>
+	                <div class="campaign_date_wrap">
+	                	<p class="campaign_text_title">광고상품</p>
+	                	<p>${campaign.productName}</p>
+	                </div>
+	                <div class="campaign_date_wrap">
+	                	<p class="campaign_text_title">캠페인명</p>
+	                	<p class="campaign_title">${campaign.campaignTitle}</p>
+	                </div>
+	              	<div class="campaign_date_wrap">
+	                	<p class="campaign_text_title">광고기간</p>
+	                	<p>
+		                	<fmt:formatDate value="${campaign.updateStartDate}" pattern="yyyy-MM-dd"/> ~ 
+		                	<fmt:formatDate value="${campaign.updateEndDate}" pattern="yyyy-MM-dd"/>
+	                	</p>
+	                </div>
 	              </div>
 	          </li>
           </c:forEach>       
