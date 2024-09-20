@@ -103,7 +103,7 @@
 .allBar >button {
 	cursor: pointer;
 }
-.campaignWrap {
+#campaignWrap {
 	display: flex;
 	flex-wrap: wrap;
     width: 100%;
@@ -117,6 +117,8 @@
 	width: 23%;
 	padding: 5px;
 	margin: 2px;
+	border:1px solid  #e5e5e5;
+	border-radius:10px;
 	margin-bottom: 15px;
 	margin-top: 15px;
 	cursor: pointer;
@@ -136,6 +138,7 @@
 	height: 100%;
 	object-fit: cover;
 	margin-bottom: 8px;
+	border-radius:10px;
 }
 .pageDiv {
     margin:10px auto;

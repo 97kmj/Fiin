@@ -15,7 +15,8 @@
 	<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
 	<style>
 		.selBtn {
-			border: 2px solid rgb(72,73,232);
+			border: 2px solid #4849E8;
+			 color:#4849E8;
 		}
 	</style>
 </head>
@@ -32,7 +33,7 @@
         </div>
         <div id="mainwrap">
 	        <h3>신청한 캠페인</h3>
-	        <div id="campaignwrap">
+	        <div id="campaignwrap" >
 	        	<c:forEach items="${campaignListAccept }" var="campaignListAccept">
 		            <div class="campaign" >
 		                <div class="img" onclick="location.href='campaignDetail?campaignNum=${campaignListAccept.campaign_num }'">
@@ -42,6 +43,7 @@
 		                <div class="compuny_name">${categoryList.get(campaignListAccept.category_id-1).category_name }</div>
 		              
 		                <div class="name">${campaignListAccept.company_name }</div>
+		                <div class="campaigndate">광고기간</div>
 		                <div class="date">
 		                	<fmt:formatDate value="${campaignListAccept.ad_start_date}" pattern="yyyy-MM-dd" /> ~ <fmt:formatDate value="${campaignListAccept.ad_end_date}"
 							pattern="yyyy-MM-dd" />
@@ -51,15 +53,22 @@
 		                		<c:when test="${campaignListAccept.accept eq false}">
 		                			<c:choose>
 			                			<c:when test="${btnType eq 'request'}">
-			                				<div class="check" id="ckecked" value="${campaignListAccept.request_num }">수락하기</div>
+			                				<div class="check" value="${campaignListAccept.request_num }">수락하기</div>
 			                			</c:when>
 			                			<c:otherwise>
-			                				<div class="check">대기중</div>
+			                				<div class="checkreceive">대기중</div>
 			                			</c:otherwise>
 		                			</c:choose>
 		               			</c:when>
 		               			<c:otherwise>
-		               				<div class="check">수락완료</div>
+		               				<c:choose>
+		               					<c:when test="${btnType eq 'request'}">
+		               						<div class="check">수락완료</div>
+		               					</c:when>
+		               					<c:otherwise>
+		               						<div class="checkreceive">수락완료</div>
+		               					</c:otherwise>
+		               				</c:choose>
 		               			</c:otherwise>
 		               		</c:choose>
 		               </div>

@@ -29,6 +29,8 @@
 }
 
 .inp_date {
+	display: flex;
+	align-items: center;
 	width: 1200px;
 	height: 70px;
 	margin: auto;
@@ -36,14 +38,15 @@
 	border-radius: 10px;
 	background-color: white;
 	line-height: 35px;
-	padding: 0px 0px 0px 40px;
+	padding: 0px 0px 0px 30px;
 	box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 64px 0px;
-	font-size: 15px;
+	font-size: 20px;
 }
 .subscribers_su {
 	margin-left: 90px;
 	font-size: 25px;
 	padding: 10px;
+	font-weight: bold;
 }
 .basic_info2 {
 	width: 1200px;
@@ -54,17 +57,37 @@
 	background-color: white;
 	box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 64px 0px;
 }
-
-.channel_style {
-	width: 1120px;
-	height: 40px;
-	margin: auto;
-	border: 1px solid gray;
-	border-radius: 10px;
-	background-color: white;
-	line-height: 40px;
-	padding: 0px 0px 0px 40px;
-	font-size: 15px;
+.channel_name {
+	display: flex;
+	flex-direction: column;
+	margin-left: 40px;
+	margin-right: 40px;
+}
+#channelVar {
+	display: flex;
+	align-items: center;
+	margin-bottom: 15px;
+	background-color: #FAFAFA;
+	border-radius: 20px;
+}
+#channelImg {
+	padding: 10px;
+}
+#channelNa {
+	font-size: 20px;
+	margin-left: 80px;
+}
+.channel_url {
+	display: flex;
+	flex-direction: column;
+	padding: 10px;
+	background-color: #FAFAFA;
+	font-size: 18px;
+	margin-right: 40px;
+	border-radius: 20px;
+}
+#url {
+	margin: 10px;
 }
 
 .prodbut {
@@ -83,21 +106,20 @@
 	background-color: #FAFAFA;
 	border: 0px solid gray;
 	border-radius: 20px;
-	padding: 10px 10px 0px 10px;
+	padding: 20px 20px;
 	text-align: left;
-	word-break: normal;
+	font-size: 20px;
 }
 
 .content {
 	width: 1120px;
-	height: 60px;
-	margin: auto;
 	background-color: #FAFAFA;
 	border: 0px solid gray;
-	border-radius: 10px;
-	line-height: 30px;
-	padding: 0px 0px 0px 20px;
-	font-size: 15px;
+	border-radius: 20px;
+	padding: 20px 20px;
+	margin-bottom: 40px;
+	margin-top: 10px;
+	font-size: 18px;
 }
 
 .con_middle {
@@ -127,6 +149,10 @@
 	position: relative;
 	top: 4px;
 }
+.channelLine {
+	display: flex;
+	
+}
 
 .channel_font {
 	font-size: 15px;
@@ -135,13 +161,8 @@
 }
 
 .channel_outline {
-	border: 1px solid gray;
-	border-radius: 10px;
 	display: inline-block;
-	width: 120px;
-	height: 35px;
 	text-align: center;
-	margin-bottom: 10px;
 }
 
 .container {
@@ -221,6 +242,9 @@
 	padding: 30px;
 	border-radius: 10px;
 	background: #ffffff;
+	width: 1000px;
+	height: 500px;
+	overflow: auto;
 }
 .modal .modalPopup .closeBtn {
 	display: block;
@@ -230,11 +254,24 @@
 	cursor: pointer;
 	transition: box-shadow 0.2s;
 }
+
 .requestBtn {
 	cursor: pointer;
-	width: 40px;
-	height: 20px;
-	border-radius: 3px;
+	width: 50px;
+	height: 30px;
+	border-radius: 10px;
 	background-color: #4849e8;
 	color: white;
+}
+.modal table {
+	width: 900px;
+}
+.modal th, td {
+	margin: 10px;
+	padding: 10px;
+}
+.outBtn {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
 }

@@ -9,11 +9,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import dto.Advertiser;
 import dto.Campaign;
 import service.CampaignService;
 import service.CampaignServiceImpl;
 import service.InfluencerService;
 import service.InfluencerServiceImpl;
+import service.PointService;
+import service.PointServiceImpl;
 import util.MailUtil;
 
 /**
@@ -36,10 +39,14 @@ public class SendEmail extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
-		Integer campaignNum = Integer.parseInt(request.getParameter("campaignNum"))	;
+		Integer campaignNum = Integer.parseInt(request.getParameter("campaignNum"));
+		String type = (String)request.getSession().getAttribute("type");
+		Advertiser advertiser = (Advertiser)request.getSession().getAttribute("advertiser");
+		Integer advertiserNum = advertiser.getAdvertiserNum();
 		try {
 			CampaignService cService = new CampaignServiceImpl();
 			InfluencerService iService = new InfluencerServiceImpl();
+			PointService pService = new PointServiceImpl();
 			Campaign campaign = cService.detail(campaignNum);
 			List<String> receiveEmailList = iService.getEmaliListByCampaign(campaign);
 			System.out.println(receiveEmailList);
@@ -47,10 +54,21 @@ public class SendEmail extends HttpServlet {
 			for(String receiveEmail : receiveEmailList) {
 				receiveEmails += receiveEmail+",";
 			}
-			MailUtil.sendMail(receiveEmails, campaign);
+			if(advertiser.getPointBalance()>=300) {
+				MailUtil.sendMail(receiveEmails, campaign);
+				pService.updatePointBalance(type, advertiserNum, -300);
+				pService.insertPointRecord(type, advertiserNum,-300, "이메일 발송");
+				Integer pointBalance = pService.getPointBalance(type, advertiserNum);
+				advertiser.setPointBalance(pointBalance);
+				request.getSession().setAttribute("advertiser", advertiser);
+				response.setCharacterEncoding("utf-8");
+				response.getWriter().write("success");
+			} else {
+				response.setCharacterEncoding("utf-8");
+				response.getWriter().write("fail");
+			}
+			
 				
-			response.setCharacterEncoding("utf-8");
-			response.getWriter().write("메일 보내기 완료");
 		} catch (Exception e) {
 			e.printStackTrace();
 			

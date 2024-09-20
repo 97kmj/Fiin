@@ -31,45 +31,21 @@
 							</c:if>
 							<div>
 								<c:if test="${ibookmark.youtube ne null }">
-									<c:out value="유튜브" />
+									<img src="https://img.icons8.com/?size=25&id=19318&format=png&color=000000">
 								</c:if>
 								<c:if test="${ibookmark.instagram ne null }">
-									<c:out value="인스타그램" />
+									<img src="https://img.icons8.com/?size=25&id=Xy10Jcu1L2Su&format=png&color=000000">
 								</c:if>
 								<c:if test="${ibookmark.blog ne null }">
-									<c:out value="블로그" />
+									<img src="${pageContext.request.contextPath}/image/naver.png" style="width: 25px; height: 25px;"/>
 								</c:if>
 								<br>
 								 ${ibookmark.category_name }
 							</div>
 							<div id="channel_name">
-								<c:if test="${ibookmark.youtube_name ne null }">
-								${ibookmark.youtube_name }
-							</c:if>
-								<c:if test="${ibookmark.instagram_name ne null }">
-								${ibookmark.instagram_name }
-							</c:if>
-								<c:if test="${ibookmark.blog_name ne null }">
-								${ibookmark.blog_name }
-							</c:if>
+								${ibookmark.nickname }
 							</div>
 							<div id="introduce">${ibookmark.intro_line }</div>
-							<div>
-								<c:set var="totalFollowers" value="0" />
-								<c:if test="${ibookmark.youtube_follower != null }">
-									<c:set var="totalFollowers"
-										value="${totalFollowers + ibookmark.youtube_follower }" />
-								</c:if>
-								<c:if test="${ibookmark.instagram_follower != null }">
-									<c:set var="totalFollowers"
-										value="${totalFollowers + ibookmark.instagram_follower }" />
-								</c:if>
-								<c:if test="${ibookmark.blog_follower != null }">
-									<c:set var="totalFollowers"
-										value="${totalFollowers + ibookmark.blog_follower }" />
-								</c:if>
-								총 팔로워 수 : ${totalFollowers }명
-							</div>
 						</div>
 					</c:forEach>
 				</div>

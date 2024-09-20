@@ -67,13 +67,45 @@
 	<!--준영-->
 	<select id="selectCampaign" parameterType="Integer" resultType="campaign">											
 		<![CDATA[
-		 	select * from campaign where campaign_num = #{campaignNum}
+		 	select 
+			 	campaign_num,
+				advertiser_num,
+				category_id,
+				company_name,
+				company_url,
+				campaign_title,
+				product_name,
+				update_start_date,
+				update_end_date,
+				ad_start_date,
+				ad_end_date,
+				requirement,
+				REPLACE(CHANNEL, '#', ' ') as CHANNEL,
+				image,
+				is_recruit 
+		 	from campaign where campaign_num = #{campaignNum}
 		 	
 		]]>
 	</select>
 	
 	<select id="selectAllCampaign" parameterType="Map" resultType="campaign">
-		select * from campaign 
+		select 
+			campaign_num,
+			advertiser_num,
+			category_id,
+			company_name,
+			company_url,
+			campaign_title,
+			product_name,
+			update_start_date,
+			update_end_date,
+			ad_start_date,
+			ad_end_date,
+			requirement,
+			REPLACE(CHANNEL, '#', ' ')as CHANNEL,
+			image,
+			is_recruit
+		 from campaign 
 			<where>
 				<if test="channel != null and channel.size()>0">
 					<foreach collection="channel" item="item" separator="or" open="(" close=")">

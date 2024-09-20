@@ -40,32 +40,23 @@ public class CampaignDetail extends HttpServlet {
 			Integer campaignNum = Integer.parseInt(request.getParameter("campaignNum"));
 			String type = (String)request.getSession().getAttribute("type");
 			
-			
 		try {
-			
 			CampaignService service = new CampaignServiceImpl();
 			ReceiveCampaignService reservice= new ReceiveCampaignServiceImpl();
-
 			List<Category> categoryList;
 			categoryList = service.categoryList();
-			
 			Campaign campaign = service.detail(campaignNum);
-			
-			
 			if(type==null) { //비로그인
-				
+			
 			} else if (type.equals("influencer")) { //인플루언서 로그인 
-
 				Influencer influencer = (Influencer)request.getSession().getAttribute("influencer");
 				Integer influencerNum = influencer.getInfluencerNum();
 				Integer cbookmarkNum = service.checkBookmark(influencerNum,campaignNum);
 
-				boolean requestCampaign = reservice.receiveCampaign(influencerNum,campaignNum);
+				boolean requestCampaign = reservice.receiveStatus(influencerNum,campaignNum);
 				request.setAttribute("requestCampaign", requestCampaign);
 				//북마커
 				request.setAttribute("bookmarkCampaign", String.valueOf(cbookmarkNum!=null));
-				
-				
 			} else {  //광고주 로그인
 				
 			}
