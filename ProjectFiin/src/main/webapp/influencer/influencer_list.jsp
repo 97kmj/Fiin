@@ -14,7 +14,8 @@
 <body>
 	<%@ include file="../include/header.jsp"%>
 	<div class="container">
-		<form id="filterform" action="influencerList" method="get">
+	<div class="topBar">
+		<form id="filterform" action="influencerList" method="get" style="width: 680px">
 			<input type="hidden" name="page" value="1" id="page"/>
 			<div id="categoryBar">
 				<h2>인플루언서</h2>
@@ -33,28 +34,38 @@
 			<div class="channelBar">
 				<h2>채널</h2>
 				<div class="channelButton">
-					<label><input type="checkbox" name="channel" value="instagram"> <span>인스타그램</span></label> 
-					<label><input type="checkbox" name="channel" value="blog"><span>블로그</span></label>
-					<label><input type="checkbox" name="channel" value="youtube"><span>유튜브</span></label>
+					<label>
+						<input type="checkbox" name="channel" value="instagram">
+						<span>인스타그램</span>
+					</label> 
+					<label>
+						<input type="checkbox" name="channel" value="blog">
+						<span>블로그</span>
+					</label>
+					<label>
+						<input type="checkbox" name="channel" value="youtube">
+						<span>유튜브</span>
+					</label>
 				</div>
 			</div>
 		</form>
-		<div class="contents_wrap">
-
-			<div class="allBar">
-				<h2>전체</h2>
-				<div class="search_btn_wrap">
-					<div class="search">
+			<div>
+				<div class="allBar">
+					<div class="search_btn_wrap">
+						<div class="search">
 						<form id="searchForm" action="influencerList" method="get">
 						<input type="text" name="keyword" id="keyword" placeholder="채널명 및 인플루언서를 검색해주세요">
 						<button type="button" id="searchButton">검색</button>
 						</form>
 					</div>
-					<button id="registerButton"
-						onclick="location.href='influencer_register.jsp'">인플루언서
-						등록하기</button>
+						<button id="registerButton" onclick="location.href='influencerRegister'">인플루언서 등록하기</button>
+					</div>
 				</div>
 			</div>
+		
+		</div>
+		<div class="contents_wrap">
+
 			<div class="influencerWrap" >	
 				<c:forEach items="${influencerList}" var="showinfluencer">
 					<div class="influencer_pick" id="pickNum1" OnClick="location.href='influencerDetail?num=' + ${showinfluencer.influencer_num}">
@@ -81,7 +92,8 @@
 						</div>
 						
 						<div id="channelName">
- 							<c:if test="${showinfluencer.youtube_name ne null }">
+						${showinfluencer.nickname }
+<%--  							<c:if test="${showinfluencer.youtube_name ne null }">
 								${showinfluencer.youtube_name }
 							</c:if>
 							 <c:if test="${showinfluencer.instagram_name ne null }">
@@ -89,13 +101,13 @@
 							</c:if> 
 							<c:if test="${showinfluencer.blog_name ne null }">
 								${showinfluencer.blog_name }
-							</c:if>
+							</c:if> --%>
 
 						</div>
 						<div id="title">${showinfluencer.intro_line }</div>
 						<div id="subscriber">
 		
-							<c:set var = "totalFollowers" value="0"/>
+<%-- 							<c:set var = "totalFollowers" value="0"/>
 							<c:if test="${showinfluencer.youtube_follower != null }">
 							<c:set var="totalFollowers" value="${totalFollowers + showinfluencer.youtube_follower }"/>
 							</c:if>
@@ -105,7 +117,7 @@
 							<c:if test="${showinfluencer.blog_follower != null }">
 							<c:set var="totalFollowers" value="${totalFollowers + showinfluencer.blog_follower }"/>
 							</c:if>
-							총 팔로워 수 : <fmt:formatNumber value="${totalFollowers }" type="number" pattern="#,###"/>명
+							총 팔로워 수 : <fmt:formatNumber value="${totalFollowers }" type="number" pattern="#,###"/>명 --%>
 						
 						
 						</div>
@@ -194,6 +206,8 @@
 		$("#searchForm").submit();
 	})
 
+	
+	
 </script>
 
 </html>

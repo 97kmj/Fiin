@@ -65,6 +65,7 @@ public class Payment extends HttpServlet {
 			Integer changePoint = Integer.parseInt((String)jsonObj.get("changePoint"));
 			Integer userNum = Integer.parseInt((String)jsonObj.get("num"));
 			String detail = "포인트 충전";
+			
 			service.insertPointRecord(type, userNum, changePoint, detail); 
 			service.updatePointBalance(type, userNum,changePoint);
 			

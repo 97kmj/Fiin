@@ -23,7 +23,7 @@
             <ul>
 	            <li><a href="mypageCampaignAdvertiser"><img class="icons" src="https://img.icons8.com/?size=100&id=6YVjhQYEKHAS&format=png&color=000000">캠페인 관리</a></li>
 	            <li><a href="mypageAdvertiserInfo"><img class="icons" src="https://img.icons8.com/?size=100&id=zxB19VPoVLjK&format=png&color=000000">프로필 관리</a></li>
-	            <li><a href="/fiin/mypage/advertiser/reqInfluencer"><img class="icons" src="https://img.icons8.com/?size=100&id=YzsadpdsoN8e&format=png&color=000000">요청한 인플루언서 관리</a></li>
+	            <li><a href="requestInfluencer"><img class="icons" src="https://img.icons8.com/?size=100&id=YzsadpdsoN8e&format=png&color=000000">요청한 인플루언서 관리</a></li>
 	            <li><a href="pointrecord"><img class="icons" src="https://img.icons8.com/?size=100&id=xDnuaxgjAmJP&format=png&color=000000">포인트 관리</a></li>
 	            <li><a href="mypageBookmarkAdvertiser"><img class="icons" src="https://img.icons8.com/?size=100&id=RvKp6z6EcIsB&format=png&color=000000">북마크 관리</a></li>
             </ul>

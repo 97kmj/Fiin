@@ -1,5 +1,8 @@
 package service;
 
+import java.util.List;
+import java.util.Map;
+
 import dao.RequestCampaignDao;
 import dao.RequestCampaignDaoImpl;
 
@@ -31,4 +34,8 @@ public class RequestCampaignServiceImpl implements RequestCampaignService {
 		requestCampaignDao.updateRequestCampaignAccept(requestNum);
 	}
 
+	@Override
+	public List<Map<String,Object>> getRequestInfluencerList(Integer advertiserNum) throws Exception {
+		return requestCampaignDao.selectRequestCampaignList(advertiserNum);
+	}
 }

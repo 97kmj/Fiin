@@ -52,7 +52,6 @@
     background-color: white; /* 체크된 상태의 배경색 */
     color: #4849e8; /* 체크된 상태의 글자색 */
 }
-
 .channelBar {
 	display: flex;
     align-items: center;
