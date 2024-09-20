@@ -111,6 +111,10 @@
 .profile_img > img:hover {
 	cursor:pointer;
 }
+.category img:hover {
+	cursor:pointer;
+}
+
 .campaign_name {
   display:flex;
   flex-direction: column;

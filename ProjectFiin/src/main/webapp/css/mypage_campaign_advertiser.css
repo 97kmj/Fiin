@@ -141,6 +141,12 @@
     border-collapse: collapse;
 }
 
+.modal table td > img {
+	vertical-align:middle;
+}
+.modal table td img:hover {
+	cursor:pointer;
+}
 .modal tr:nth-child(even) td {
   background: #eaeaed;
 }
