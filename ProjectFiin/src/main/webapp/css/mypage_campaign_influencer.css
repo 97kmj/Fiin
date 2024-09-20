@@ -106,9 +106,13 @@
 .campaign >.compuny_name{
 	padding:5px 0px 0px 0px; 
 }
+.campaign >.campaigndate{
+	padding:5px 0px 0px 0px; 
+}
+
 
 .campaign >.date{
-	padding:5px 0px; 
+	padding: 0px 0px 5px 0px;
 }
 .btn {
     border:2px solid black;
@@ -150,7 +154,7 @@
 }
 .result_total{
 	display : flex;
-	margin : 10px;
+/* 	margin : 10px; */
 }
 
 .receive{
@@ -179,3 +183,14 @@
 	
 }
 
+.checkreceive{
+	line-height:35px;
+	width : 90px;
+	height :35px;
+	font-size : 20px;
+	background-color: white;
+	border-radius:20px;
+    text-align:center;
+    color:#4849e8;
+	
+}

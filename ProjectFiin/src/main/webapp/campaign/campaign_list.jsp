@@ -55,13 +55,14 @@
 		
 			
 		
-		<div class="campaignWrap" style="justify-content:left">
+		<div id="campaignWrap">
 	 		<c:forEach items="${campaignList }" var="campaign">
 	 			<div class="campaign_pick" onclick="location.href='campaignDetail?campaignNum=${campaign.campaignNum }'">
 					<img src="image?file=${campaign.image}" class="campaign_img">
 					<div> ${campaign.channel } | ${categoryList.get(campaign.categoryId-1).category_name }</div>
 					<div id="channelName">${campaign.companyName }</div>
 					<div id="title">${campaign.productName }</div>
+					<div id= "campaigndate">광고기간</div>
 					<div>
 						<fmt:formatDate value="${campaign.adStartDate}" pattern="yyyy-MM-dd" /> ~ <fmt:formatDate value="${campaign.adEndDate}"
 									pattern="yyyy-MM-dd" />

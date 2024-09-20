@@ -14,7 +14,6 @@
 </head>
 <body>
 <%@ include file="../include/header.jsp" %>
-	<br>
 	<div class="all_container ">
 	<div class="campaignaddress">
 		<div>홈 > 캠페인> ${campaign.productName }</div>
@@ -82,7 +81,7 @@
 													<input type="button"  id="requestcampaign" class="basic_btn" value = "신청하기">
 												</c:when>
 												<c:otherwise>
-													<input type="button"  id="requestcampaign" class="basic_btn" value = "신청완료">
+													<input type="button"  id="requestcampaign" class="basic_btn" value = "신청취소">
 												</c:otherwise>
 											</c:choose>
 										</c:when>
@@ -106,8 +105,8 @@
 			<br>
 			<div class="middletext"><img src="image/watch.png" class="middle_text_img"><b>일정정보</b></div>
 			<div class="date_information">
-				인플루언서모집기간 <fmt:formatDate value="${campaign.updateStartDate }" pattern="yyyy-MM-dd" />~<fmt:formatDate value="${campaign.updateStartDate }"  pattern="yyyy-MM-dd" /><br>
-				광고기간 <fmt:formatDate value="${campaign.adStartDate }" pattern="yyyy-MM-dd" />~<fmt:formatDate value="${campaign.adEndDate }" pattern="yyyy-MM-dd" />
+				인플루언서모집기간 : <fmt:formatDate value="${campaign.updateStartDate }" pattern="yyyy-MM-dd" />~<fmt:formatDate value="${campaign.updateStartDate }"  pattern="yyyy-MM-dd" /><br>
+				광고기간 : <fmt:formatDate value="${campaign.adStartDate }" pattern="yyyy-MM-dd" />~<fmt:formatDate value="${campaign.adEndDate }" pattern="yyyy-MM-dd" />
 			</div>
 		</div>
 		<br>
@@ -127,17 +126,17 @@
 				    <c:choose>
 				        <c:when test="${item == 'Blog'}">
 				            <span class="channel_outline">
-				                &nbsp;<img src="image/블로그.png" class="channel" /><a class="channel_font">블로그</a>&nbsp;
+				                &nbsp;<img src="image/blog_logo.png" class="channel" /><a class="channel_font">블로그</a>&nbsp;
 				            </span>
 				        </c:when>
 				        <c:when test="${item == 'Instagram'}">
 				            <span class="channel_outline">
-				                &nbsp;<img src="image/인스타.png" class="channel" /><a class="channel_font">인스타</a>&nbsp;
+				                &nbsp;<img src="image/instagram_logo.png" class="channel" /><a class="channel_font">인스타</a>&nbsp;
 				            </span>
 				        </c:when>
 				        <c:when test="${item == 'YouTube'}">
 				            <span class="channel_outline">
-				                &nbsp;<img src="image/유튜브.png" class="channel" /><a class="channel_font">유튜브</a>&nbsp;
+				                &nbsp;<img src="image/youtube_logo.png" class="channel" /><a class="channel_font">유튜브</a>&nbsp;
 				            </span>
 				        </c:when>
 				    </c:choose>					
@@ -229,7 +228,7 @@
 			},
 			success:function(result){
 				if(result=='false'){
-					$("#requestcampaign").attr("value",'신청완료');
+					$("#requestcampaign").attr("value",'신청취소');
 				}else{
 					$("#requestcampaign").attr("value",'신청하기');
 				}

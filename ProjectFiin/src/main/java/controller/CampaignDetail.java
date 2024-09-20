@@ -60,7 +60,7 @@ public class CampaignDetail extends HttpServlet {
 				Integer influencerNum = influencer.getInfluencerNum();
 				Integer cbookmarkNum = service.checkBookmark(influencerNum,campaignNum);
 
-				boolean requestCampaign = reservice.receiveCampaign(influencerNum,campaignNum);
+				boolean requestCampaign = reservice.receiveStatus(influencerNum,campaignNum);
 				request.setAttribute("requestCampaign", requestCampaign);
 				//북마커
 				request.setAttribute("bookmarkCampaign", String.valueOf(cbookmarkNum!=null));
