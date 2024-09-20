@@ -100,6 +100,7 @@
 	                </div>
 	                <h3>${campaign.companyName}</h3>
 	                <h4>${campaign.campaignTitle}</h4>
+	                <p>광고기간</p>
 	                <p>
 	                	<fmt:formatDate value="${campaign.updateStartDate}" pattern="yyyy-MM-dd"/> ~ 
 	                	<fmt:formatDate value="${campaign.updateEndDate}" pattern="yyyy-MM-dd"/>
