@@ -208,18 +208,6 @@
 
 	
 	
-	
-        $(document).ready(function() {
-            // 체크박스의 상태가 변경될 때
-            $('.channelButton input[type="checkbox"]').change(function() {
-                var label = $(this).parent(); // 체크박스의 부모인 label을 선택
-                if ($(this).is(':checked')) {
-                    label.css('border-color', '#4849e8'); // 체크된 상태의 label 테두리 색상
-                } else {
-                    label.css('border-color', '#a3a3a3'); // 기본 테두리 색상
-                }
-            });
-        });
 </script>
 
 </html>
