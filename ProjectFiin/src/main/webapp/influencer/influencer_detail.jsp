@@ -145,28 +145,13 @@
 			<img src="${pageContext.request.contextPath}/image/watch.png"
 				style="width: 25px; height: 25px; border-radius: 1px;"><b>일정정보</b>
 		</div>
-		<div class="inp_date">
-         <fmt:parseDate value="${influencerdetail.regist_date }" var="regist_date" pattern="yyyy-MM-dd"></fmt:parseDate>
-         
-         <%
-             // regist_date 값을 Long 타입으로 가져와서 Date 객체로 변환
-             java.util.Date registDate = (java.util.Date) pageContext.getAttribute("regist_date");
-             long timeInMillis = registDate.getTime() + (1000L * 60 * 60 * 24 * 30); // 30일 후의 시간 계산
-             Date newDate = new Date(timeInMillis);
-             
-             // 변환된 날짜를 포맷하여 출력
-             java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy-MM-dd");
-             String endDate = sdf.format(newDate);
-             pageContext.setAttribute("endDate", endDate);
-         %>
-         캠페인 제안 가능 기간 
-         <span style="margin-left: 16px;">
-            <fmt:formatDate value="${influencerdetail.regist_date}" pattern="yyyy-MM-dd"/> ~ ${endDate}
-         </span>
-      </div>
+      	<div class="inp_date">
+         캠페인 제안 가능 기간 &nbsp;   
+         <fmt:formatDate value="${influencerdetail.regist_date}" pattern="yyyy-MM-dd"/> 
+         ~ <span id="regist_end_date" style=""></span>
+     	 </div>
 		
-		
-		</div>
+	</div>
 	<br>
 	<br>
 	<div class="middletext">
@@ -236,6 +221,18 @@
 		</div>
 	</div>
 </div>
+
+	<script>
+	   var start_date = new Date("${influencerdetail.regist_date}")
+	   var end_date = new Date(start_date.setDate(start_date.getDate()+30))
+	   var year = end_date.getFullYear();
+	   var month = String(end_date.getMonth() + 1).padStart(2, '0');
+	   var day = String(end_date.getDate()).padStart(2, '0');
+	   $("#regist_end_date").text(year + "-"+ month + "-" + day);
+	
+	</script>
+
+
 
 	<script>
 	const modal = document.querySelector('.modal');

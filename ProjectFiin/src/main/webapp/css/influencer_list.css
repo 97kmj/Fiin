@@ -146,6 +146,8 @@
 	margin-bottom: 15px;
 	margin-top: 15px;
 	cursor: pointer;
+	border: 1px solid lightgray;
+	border-radius: 10px;
 }
 .influencer_img {
 	width: 100%;
