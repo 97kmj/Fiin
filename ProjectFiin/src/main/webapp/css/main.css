@@ -132,6 +132,8 @@ span {
 .campaign_img_wrap {
 	border-radius: 20px;
 	overflow: hidden;
+	width: 100%;
+    aspect-ratio: 1 / 1;
 }
 
 .campaign_img_wrap img {
