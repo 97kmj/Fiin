@@ -29,16 +29,27 @@ public class ReceiveCampaignServiceImpl implements ReceiveCampaignService {
 	public void requestCampaign(Integer campaignNum, Integer influencerNum){
 		receiveCampaignDao.requestedInfluencer(campaignNum, influencerNum);
 	}
-	public boolean receiveCampaign(Integer Influencer, Integer campaignNum) throws Exception {
-		System.out.println(Influencer);
-		System.out.println(campaignNum);
-		Integer request = receiveCampaignDao.selectReceiveCampaign(Influencer, campaignNum);
-		if(request==null) {
-			receiveCampaignDao.insertReceiveCampaign(Influencer, campaignNum);
+	
+	@Override
+	public void receiveCampaign(Integer influencer, Integer campaignNum) throws Exception {
+
+		Integer receive = receiveCampaignDao.selectReceiveCampaign(influencer, campaignNum);
+		if(receive==null) {
+			receiveCampaignDao.insertReceiveCampaign(influencer, campaignNum);
+			
+		}else {
+			receiveCampaignDao.deleteReceiveCampaign(influencer, campaignNum);
+			
+		}
+	}
+	
+	public boolean receiveStatus(Integer influencerNum, Integer campaignNum) throws Exception{
+
+		Integer receive = receiveCampaignDao.selectReceiveCampaign(influencerNum, campaignNum);
+		if(receive==null) {
 			return true;
 		}else {
-			receiveCampaignDao.deleteReceiveCampaign(Influencer, campaignNum);
 			return false;
 		}
 	}
-}
+} 

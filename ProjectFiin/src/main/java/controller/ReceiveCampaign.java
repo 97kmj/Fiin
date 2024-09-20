@@ -45,9 +45,9 @@ public class ReceiveCampaign extends HttpServlet {
 		Integer influencerNum = influencer.getInfluencerNum();
 		try {
 			ReceiveCampaignService service = new ReceiveCampaignServiceImpl();
-			boolean receiveCampaign = service.receiveCampaign(influencerNum, campaignNum);
-			System.out.println(receiveCampaign);
-			response.getWriter().write(String.valueOf(receiveCampaign));
+			service.receiveCampaign(influencerNum, campaignNum);
+			boolean receiveStatus = service.receiveStatus(influencerNum, campaignNum);
+			response.getWriter().write(String.valueOf(receiveStatus));
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
