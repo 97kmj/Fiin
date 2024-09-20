@@ -77,19 +77,12 @@
 	font-size: 20px;
 	margin-left: 80px;
 }
-.channel_url {
-	display: flex;
-	flex-direction: column;
-	padding: 10px;
-	background-color: #FAFAFA;
-	font-size: 18px;
-	margin-right: 40px;
-	border-radius: 20px;
+#channelUrl {
+	font-size: 20px;
+	margin-left: auto;
+	display: block;
+	margin-right: 200px;
 }
-#url {
-	margin: 10px;
-}
-
 .prodbut {
 	font-size: 15px;
 	width: 80px;
@@ -265,10 +258,13 @@
 }
 .modal table {
 	width: 900px;
+	margin-bottom: 40px;
+	margin-left: 20px;
 }
 .modal th, td {
 	margin: 10px;
 	padding: 10px;
+	border: 1px solid lightgray;
 }
 .outBtn {
 	display: flex;
