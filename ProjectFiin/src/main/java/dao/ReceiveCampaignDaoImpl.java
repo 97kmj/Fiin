@@ -35,6 +35,8 @@ public class ReceiveCampaignDaoImpl implements ReceiveCampaignDao {
 		sqlSession.selectList("mapper.receiveCampaign.requestedInfluencer", params);
 	}
 
+	@Override
+
 	public void insertReceiveCampaign(Integer influencerNum, Integer campaignNum) throws Exception {
 		Map<String,Integer> param = new HashMap<>();
 		param.put("influencerNum", influencerNum);

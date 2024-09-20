@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@	page import="java.util.Date" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
@@ -18,14 +18,13 @@
 	<br>
 
 	<div class="campaignaddress">
-		<div>홈 >캠페인>비거너리어쩌구저쩌구 주소</div>
+		<div>홈 >인플루언서>상세페이지</div>
 	</div>
 	<br>
 
 	<div class="productimg">
 		<div class="img">
-			<img src="image?file=${influencerdetail.profile_image }"
-				style="width: 380px; height: 280px; border-radius: 10px;">
+			<img src="image?file=${influencerdetail.profile_image }" style="width: 380px; height: 280px; border-radius: 10px">
 		</div>
 		<div class="imgtext">
 			<div class="basic_info">
@@ -36,35 +35,38 @@
 			</div>
 			<div class="chanimg">
 				<div>
+					<div class="channelLine">
 					<c:if test="${influencerdetail.youtube ne null }">
-						<span class="channel_outline"> &nbsp; <img
-							src="img/youtube.png" class="channel"> <a
-							class="channel_font">유튜브</a> &nbsp;
+						<span class="channel_outline"> 
+						<img src="https://img.icons8.com/?size=60&id=19318&format=png&color=000000">
 						</span>
 						<span class="subscribers_su">
 						<fmt:formatNumber value="${influencerdetail.youtube_follower }" type="number" pattern="#,###"/>명
 						</span>
 						<br>
 					</c:if>
+					</div>
+					<div class="channelLine">
 					<c:if test="${influencerdetail.instagram ne null }">
-						<span class="channel_outline"> &nbsp; <img
-							src="img/instagram.png" class="channel"> <a
-							class="channel_font">인스타그램</a>&nbsp;
+						<span class="channel_outline">
+						<img src="https://img.icons8.com/?size=60&id=Xy10Jcu1L2Su&format=png&color=000000">
 						</span>
 						<span class="subscribers_su">
 						<fmt:formatNumber value="${influencerdetail.instagram_follower }" type="number" pattern="#,###"/>명
 						</span>
 						<br>
 					</c:if>
+					</div>
+					<div class="channelLine">
 					<c:if test="${influencerdetail.blog ne null }">
-						<span class="channel_outline"> &nbsp; <img
-							src="img/blog(un).png" class="channel"> <a
-							class="channel_font">인스타그램</a>&nbsp;
+						<span class="channel_outline">
+						<img src="${pageContext.request.contextPath}/image/naver.png" style="width: 60px; height: 60px;"/>
 						</span>
 						<span class="subscribers_su">
 						<fmt:formatNumber value="${influencerdetail.blog_follower }" type="number" pattern="#,###"/>명
 						</span>
 					</c:if>
+					</div>
 				</div>
 			</div>
 			<br>
@@ -89,18 +91,34 @@
 
 						 <div class="modal">
 							<div class="modalPopup">
-								<h3>캠페인 목록</h3>
-								<c:forEach var="campaign" items="${campaignRequest }">
-									<li>
-										<br>
-										캠페인명: ${campaign.campaign_title }<br>
-										회사명: ${campaign.company_name }<br>
-										상품명: ${campaign.product_name }<br>
-										마감일: <fmt:formatDate value="${campaign.ad_end_date }" pattern="yyyy-MM-dd" />
-										<button type="button" class="requestBtn" data-campaign-num="${campaign.campaign_num}" data-influencer-num="${influencerdetail.influencer_num }">제안</button>
-									</li>
-								</c:forEach>
-								<button type="button" class="closeBtn">닫기</button>
+							<div class="outBtn">
+								<h2 style="margin:20px">캠페인 목록</h2>
+								<span>
+									<button type="button" class="closeBtn" style="margin-top: 10px">닫기</button>
+								</span>
+							</div>	
+								<table>
+									<thead>
+									<tr align="center">
+										<th>캠페인명</th>
+										<th>회사명</th>
+										<th>상품명</th>
+										<th>마감일</th>
+										<th>제안</th>
+									</tr>
+									</thead>
+									<tbody>
+										<c:forEach var="list" items="${campaignRequest }">
+											<tr align="center">
+												<td>${list.campaign_title }</td>
+												<td>${list.company_name }</td>
+												<td>${list.product_name }</td>
+												<td><fmt:formatDate value="${list.ad_end_date }" pattern="yyyy-MM-dd" /></td>
+												<td><button type="button" class="requestBtn" data-campaign-num="${list.campaign_num}" data-influencer-num="${influencerdetail.influencer_num }">제안</button></td>
+											</tr>
+										</c:forEach>
+									</tbody>
+								</table>
 							</div>
 						</div> 
 
@@ -124,17 +142,20 @@
 
 	<div>
 		<div class="middletext">
-			<img src="${pageContext.request.contextPath}/img/watch.png"
+			<img src="${pageContext.request.contextPath}/image/watch.png"
 				style="width: 25px; height: 25px; border-radius: 1px;"><b>일정정보</b>
 		</div>
-		<div class="inp_date">
-			캠페인 제안 가능 기간 ${influencerdetail.update_start_date }~${influencerdetail.update_end_date }
-		</div>
+      	<div class="inp_date">
+         캠페인 제안 가능 기간 &nbsp;   
+         <fmt:formatDate value="${influencerdetail.regist_date}" pattern="yyyy-MM-dd"/> 
+         ~ <span id="regist_end_date" style=""></span>
+     	 </div>
+		
 	</div>
 	<br>
 	<br>
 	<div class="middletext">
-		<img src="${pageContext.request.contextPath}/img/information.png"
+		<img src="${pageContext.request.contextPath}/image/information.png"
 			style="width: 25px; height: 25px; border-radius: 1px;"><b>기본정보</b>
 	</div>
 
@@ -143,16 +164,25 @@
 		<div style="font-size: 25px; padding: 10px 40px;">
 			<b>채널명</b>
 		</div>
-		<div class="channel_style">
-		<c:if test="${influencerdetail.youtube ne null }">
-			${influencerdetail.youtube_name }
-		</c:if>
-		<c:if test="${influencerdetail.instagram ne null }">
-			${influencerdetail.instagram_name }
-		</c:if>
-		<c:if test="${influencerdetail.blog ne null }">
-			${influencerdetail.blog_name }
-		</c:if>
+		<div class="channel_name">
+		<div id="channelVar">
+			<c:if test="${influencerdetail.youtube ne null }">
+				<span id="channelImg"><img src="https://img.icons8.com/?size=60&id=19318&format=png&color=000000"></span>
+				<span id="channelNa">${influencerdetail.youtube_name }</span>
+			</c:if>
+		</div>
+		<div id="channelVar">	
+			<c:if test="${influencerdetail.instagram ne null }">
+				<span id="channelImg"><img src="https://img.icons8.com/?size=60&id=Xy10Jcu1L2Su&format=png&color=000000"></span>
+				<span id="channelNa">${influencerdetail.instagram_name }</span>
+			</c:if>
+		</div>
+		<div id="channelVar">
+			<c:if test="${influencerdetail.blog ne null }">
+				<span id="channelImg"><img src="${pageContext.request.contextPath}/image/naver.png" style="width: 60px; height: 60px;"/></span>
+				<span id="channelNa">${influencerdetail.blog_name }</span>
+			</c:if>
+		</div>
 		</div>
 		<br>
 		<div style="font-size: 25px; padding: 0px 40px 10px 40px;">
@@ -160,23 +190,29 @@
 		</div>
 		<div class="con_middle">
 			<div class="Introduction" style="word-break: normal;">
-				<br>${influencerdetail.introduction }
+				${influencerdetail.introduction }
 		</div>
-		<div style="font-size: 25px; padding: 10px 40px;">
+		<div style="font-size: 25px; padding: 10px" >
 			<b>채널 URL</b>
 		</div>
-		<div class="channel_style">
-		<c:if test="${influencerdetail.youtube ne null }">
-			${influencerdetail.youtube_url } <br>
-		</c:if>
-		<c:if test="${influencerdetail.instagram ne null }">
-			${influencerdetail.instagram_url } <br>
-		</c:if>
-		<c:if test="${influencerdetail.blog ne null }">
-			${influencerdetail.blog_url }
-		</c:if>
+		<div class="channel_url">
+			<div id="url">
+			<c:if test="${influencerdetail.youtube ne null }">
+				${influencerdetail.youtube_url } <br>
+			</c:if>
+			</div >
+			<div id="url">
+			<c:if test="${influencerdetail.instagram ne null }">
+				${influencerdetail.instagram_url } <br>
+			</c:if>
+			</div>
+			<div id="url">
+			<c:if test="${influencerdetail.blog ne null }">
+				${influencerdetail.blog_url }
+			</c:if>
+			</div>
 		</div>
-		<div style="font-size: 25px; padding: 10px 40px;">
+		<div style="font-size: 25px; padding: 10px; margin-top: 20px">
 			<b>콘텐츠 활용 안내</b>
 		</div>
 		<div class="content">
@@ -185,6 +221,18 @@
 		</div>
 	</div>
 </div>
+
+	<script>
+	   var start_date = new Date("${influencerdetail.regist_date}")
+	   var end_date = new Date(start_date.setDate(start_date.getDate()+30))
+	   var year = end_date.getFullYear();
+	   var month = String(end_date.getMonth() + 1).padStart(2, '0');
+	   var day = String(end_date.getDate()).padStart(2, '0');
+	   $("#regist_end_date").text(year + "-"+ month + "-" + day);
+	
+	</script>
+
+
 
 	<script>
 	const modal = document.querySelector('.modal');
