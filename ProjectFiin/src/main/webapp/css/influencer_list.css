@@ -62,6 +62,9 @@
 	background-color: white; /* 체크된 상태의 배경색 */
 	color: #4849e8; /* 체크된 상태의 글자색 */
 }
+.channelButton label:has(input[type="checkbox"]:checked) {
+	border: 2px solid #4849e8;
+}
 
 .channelBar {
 	display: flex;
