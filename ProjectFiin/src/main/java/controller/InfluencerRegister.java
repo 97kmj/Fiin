@@ -8,7 +8,6 @@ import dto.Influencer;
 import java.io.IOException;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
-import java.util.Optional;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -30,12 +29,8 @@ public class InfluencerRegister extends HttpServlet {
       if (influencer == null) {
         throw new Exception("로그인 처리 필요");
       }
-      InfluencerService service = new InfluencerServiceImpl();
 
-      request.setAttribute("influencer",
-          service.findInfluencerByNum(influencer.getInfluencerNum()));
-      request.getRequestDispatcher("/influencer/influencer_register.jsp")
-          .forward(request, response);
+      request.getRequestDispatcher("/influencer/influencer_register.jsp").forward(request, response);
 
     } catch (Exception e) {
       e.printStackTrace();
@@ -62,8 +57,10 @@ public class InfluencerRegister extends HttpServlet {
       }
       String introLine = multi.getParameter("introLine");
       influencer.setIntroLine(introLine);
-      String profileImage = multi.getFilesystemName("profileImage");
-      influencer.setProfileImage(profileImage);
+      if(multi.getFile("profileImage") != null && multi.getFile("profileImage").exists()) {
+        String profileImage = multi.getOriginalFileName("profileImage");
+        influencer.setProfileImage(profileImage);
+      }
 
       String youtube = multi.getParameter("youtube");
       String instagram = multi.getParameter("instagram");
@@ -119,67 +116,22 @@ public class InfluencerRegister extends HttpServlet {
       influencer.setCategoryId(category);
       influencer.setIntroduction(introduction);
 
-      //포인트 Null인 경우 or 아닌 경우
-      // Optional의 값이 존재하는 경우에만 처리
-      Optional<String> pointOptional = Optional.ofNullable(multi.getParameter("point_balance"));
-      pointOptional.ifPresentOrElse(
-          point -> influencer.setPointBalance(Integer.parseInt(point)),
-          () -> influencer.setPointBalance(0)); // null이거나 빈 문자열이면 0으로 설정
-      System.out.println("pointBalance = " + pointOptional);
-      System.out.println("influencer.getPointBlanace() = " + influencer.getPointBalance());
-
-
-      Boolean showModal = (Boolean) request.getAttribute("showModal");
-      if (showModal == null) showModal = false;
-
-      //인플루언서의 regist_date가 없을 경우 "등록하기", 있을 경우 "수정하기"로 진행
       InfluencerService service = new InfluencerServiceImpl();
 
-
       // 인플루언서 최초 등록 여부 체크
-      if (influencer.getIsRegist() == null) {
+      if (influencer.getIsRegist() == null || influencer.getIsRegist() == 0) {
         influencer.setIsRegist(1);
         influencer.setRegistDate(Timestamp.valueOf(LocalDateTime.now()));
-
-        // 포인트가 null이면 0으로 처리
-        Integer pointBalance = influencer.getPointBalance() != null ? influencer.getPointBalance() : 0;
-
-        if (pointBalance >= 500) {
-          // 포인트가 500 이상일 경우 차감
-          influencer.setPointBalance(pointBalance - 500);
-          service.influencerRegister(influencer);
-
-          // 성공 메시지와 상태 전송
-          response.setContentType("application/json");
-          response.setCharacterEncoding("UTF-8");
-          response.getWriter().write("{\"status\":\"success\", \"message\":\"등록 완료\", \"remainingPoints\":" + influencer.getPointBalance() + "}");
-
-        } else {
-          // 포인트 부족 시 실패 메시지 전송
-          response.setContentType("application/json");
-          response.setCharacterEncoding("UTF-8");
-          response.getWriter().write("{\"status\":\"error\", \"message\":\"포인트가 부족합니다.\"}");
-          return;
-        }
-
-      } else {
-        // 인플루언서가 이미 등록되어 있는 경우 수정 처리
-        service.influencerEdit(influencer);
-
-        // 성공 메시지와 상태 전송
-        response.setContentType("application/json");
-        response.setCharacterEncoding("UTF-8");
-        response.getWriter().write("{\"status\":\"success\", \"message\":\"수정 완료\"}");
+        influencer.setPointBalance(influencer.getPointBalance() - 500);
       }
+      service.influencerRegister(influencer);
 
-      // 세션에 influencer 객체 저장
-      request.getSession().setAttribute("influencer", influencer);
+      response.sendRedirect("influencerList");
 
     } catch (Exception e) {
       e.printStackTrace();
-      response.setContentType("application/json");
-      response.setCharacterEncoding("UTF-8");
-      response.getWriter().write("{\"status\":\"error\", \"message\":\"" + e.getMessage() + "\"}");
+      request.setAttribute("err", e.getMessage());
+      request.getRequestDispatcher("err.jsp").forward(request, response);
     }
   }
 }

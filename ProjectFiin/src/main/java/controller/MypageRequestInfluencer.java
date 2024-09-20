@@ -1,5 +1,6 @@
 package controller;
 
+
 import java.io.IOException;
 import java.util.List;
 import java.util.Map;
@@ -10,18 +11,21 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+
 import dto.Advertiser;
 import dto.Category;
+
 import service.CampaignService;
 import service.CampaignServiceImpl;
 import service.RequestCampaignService;
 import service.RequestCampaignServiceImpl;
 
 @WebServlet("/requestInfluencer")
+
 public class MypageRequestInfluencer extends HttpServlet {
 
-  private static final long serialVersionUID = 1L;
 
+  private static final long serialVersionUID = 1L;
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

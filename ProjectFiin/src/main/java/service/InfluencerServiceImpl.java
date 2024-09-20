@@ -1,5 +1,7 @@
 package service;
 
+import dao.PointRecordDao;
+import dao.PointRecordDaoImpl;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.OutputStream;
@@ -20,10 +22,12 @@ public class InfluencerServiceImpl implements InfluencerService {
 
 	private InfluencerDao influencerDao;
 	private BookmarkInfluencerDao bookmarkInfluencerDao;
+	private PointRecordDao pointRecordDao;
 	
 	public InfluencerServiceImpl() {
 		influencerDao = new InfluencerDaoImpl();
 		this.bookmarkInfluencerDao = new BookmarkInfluencerDaoImpl();
+		this.pointRecordDao = new PointRecordDaoImpl();
 	}
   @Override
 	public void join(Influencer influencer) throws Exception {
@@ -82,22 +86,8 @@ public class InfluencerServiceImpl implements InfluencerService {
 		influencerDao.registerInfluencer(influencer);
 
 		//인플루언서 포인트 기록, 차감
-		influencerDao.usePointsByInfluencer(influencer, influencer.getInfluencerNum());
+		pointRecordDao.insertPointRecord("influencer", influencer.getInfluencerNum(), -500, "인플루언서 등록");
 		return influencer;
-	}
-
-	//상민 - 인플루언서 수정
-	@Override
-	public Influencer influencerEdit(Influencer influencer) throws Exception {
-		System.out.println("influencer service = " + influencer);
-		influencerDao.updateRegisteredInfluencer(influencer);
-		return influencer;
-	}
-
-	//상민 - 인플루언서 찾기
-	@Override
-	public Influencer findInfluencerByNum(Integer influencerNum) throws Exception {
-		return influencerDao.selectInfluencer(influencerNum);
 	}
 
 	@Override
