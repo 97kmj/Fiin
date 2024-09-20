@@ -66,18 +66,15 @@ public class CampaignRegister extends HttpServlet {
       //캠페인 인스턴스 객체 만들고, 거기다가 form에서 가져온 값들 넣어서, service에 전달하기
       Campaign campaign = new Campaign();
 
-      // !! 업로드 기간 가져오기
+      // 업로드 기간 가져오기
       String uploadPeriodValue = multi.getParameter("uploadPeriod");
-
-      int uploadPeriod = Integer.parseInt(uploadPeriodValue);
-      System.out.println("uploadPeriodValue = " + uploadPeriodValue );
-      System.out.println("uploadPeriod = " + uploadPeriod );
+      int addUploadPeriod = Integer.parseInt(uploadPeriodValue);
 
       // 현재 날짜를 업로드 시작 날짜로 설정
       LocalDate updateStartDateLocalDate = LocalDate.now();
 
       // 업로드 종료 날짜는 시작일에 uploadPeriod를 더한 날짜
-      LocalDate updateEndDateLocalDate = updateStartDateLocalDate.plusDays(uploadPeriod);
+      LocalDate updateEndDateLocalDate = updateStartDateLocalDate.plusDays(addUploadPeriod);
 
       Timestamp updateStartDate = Timestamp.valueOf(updateStartDateLocalDate.atStartOfDay());
       Timestamp updateEndDate = Timestamp.valueOf(updateEndDateLocalDate.atStartOfDay());

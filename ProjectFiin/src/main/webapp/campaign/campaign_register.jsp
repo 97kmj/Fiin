@@ -44,23 +44,23 @@
             <div class="campaignField">
                 <div class="form-group">
                     <label for="companyName">업체명</label>
-                    <input type="text" id="companyName" name="companyName">
+                    <input type="text" id="companyName" name="companyName" required>
                 </div>
                 <div class="form-group">
                     <label for="companyUrl">업체 URL</label>
-                    <input type="text" id="companyUrl" name="companyUrl">
+                    <input type="text" id="companyUrl" name="companyUrl" required>
                 </div>
                 <div class="form-group">
                     <label for="campaignName">캠페인 이름</label>
-                    <input type="text" id="campaignName" name="campaignTitle">
+                    <input type="text" id="campaignName" name="campaignTitle" required>
                 </div>
                 <div class="form-group">
                     <label for="productName">상품명</label>
-                    <input type="text" id="productName" name="productName">
+                    <input type="text" id="productName" name="productName" required>
                 </div>
             </div>
             <input type="file" id="fileInput" name="image" accept="image/*"
-                   style="display: none;"/>
+                   style="display: none;" required/>
             <img id="uploadImage"
                  src="${pageContext.request.contextPath}/image/upload.png"
                  alt="Upload Image" style="cursor: pointer"/>
@@ -69,7 +69,7 @@
         <div class="form-group-group">
             <div class="form-group1">
                 <label for="uploadPeriod">업로드 기간</label>
-                <select id="uploadPeriod" name="uploadPeriod">
+                <select id="uploadPeriod" name="uploadPeriod" required>
                     <option value="7">1주일 500 point</option>
                     <option value="14">2주일 1000 point</option>
                     <option value="21">3주일 1500 point</option>
@@ -81,13 +81,13 @@
                 <div class="startDate">
                     <label for="StartDate">광고 시작일</label>
                     <input type="text" id="StartDate" name="startDate"
-                           value="${campaign.adStartDate}">
+                           value="${campaign.adStartDate}" required>
                     <input type="hidden" id="startDateInput" name="adStartDate"> <!-- 숨겨진 input -->
                 </div>
 
                 <div class="endDate">
                     <label for="EndDate">광고 종료일</label>
-                    <input type="text" id="EndDate" name="endDate" value="${campaign.adEndDate}">
+                    <input type="text" id="EndDate" name="endDate" value="${campaign.adEndDate}" required>
                     <input type="hidden" id="endDateInput" name="adEndDate"> <!-- 숨겨진 input -->
                 </div>
             </div>
@@ -104,21 +104,19 @@
             <div class="first3">
                 <div class="category">
                     <input type="radio" id="beauty" name="category" value="1" style="display:none;">
-<%--                           <c:if test="${campaign.categoryId==1}">checked</c:if>>--%>
                     <label for="beauty">
                     </label>
 
                 </div>
                 <div class="category">
-                    <input type="radio" id="fashion" name="category" value="2" style="display:none;">
-<%--                           <c:if test="${campaign.categoryId==2}">checked</c:if>>--%>
+                    <input type="radio" id="fashion" name="category" value="2"
+                           style="display:none;">
                     <label for="fashion">
                     </label>
                 </div>
 
                 <div class="category">
                     <input type="radio" id="sport" name="category" value="3" style="display:none;">
-<%--                           <c:if test="${campaign.categoryId==3}">checked</c:if>>--%>
                     <label for="sport">
                     </label>
                 </div>
@@ -127,21 +125,18 @@
             <div class="second3">
                 <div class="category">
                     <input type="radio" id="travel" name="category" value="4" style="display:none;">
-<%--                           <c:if test="${campaign.categoryId==4}">checked</c:if>>--%>
                     <label for="travel">
                     </label>
                 </div>
 
                 <div class="category">
                     <input type="radio" id="food" name="category" value="5" style="display:none;">
-<%--                           <c:if test="${campaign.categoryId==5}">checked</c:if>>--%>
                     <label for="food">
                     </label>
                 </div>
 
                 <div class="category">
                     <input type="radio" id="life" name="category" value="6" style="display:none;">
-<%--                           <c:if test="${campaign.categoryId==6}">checked</c:if>>--%>
                     <label for="life">
                     </label>
                 </div>
@@ -152,14 +147,13 @@
             <div class="requirement-label">요구 사항</div>
             <label>
                 <textarea class="requirement-field" name="requirement"
-                          placeholder="여기에 요구 사항을 작성하세요...">
-<%--                    ${campaign.requirement}--%>
+                          placeholder="여기에 요구 사항을 작성하세요..." required>
                 </textarea>
             </label>
         </div>
 
         <div class="bottom-button">
-            <button class="registerBtn" value="등록">등록하기</button>
+            <button class="registerBtn" value="등록" onclick="validateForm(e)">등록하기</button>
             <button class="backBtn" value="뒤로가기">뒤로가기</button>
         </div>
     </form>
@@ -311,6 +305,55 @@
   })
 
 </script>
+
+<%--<script>--%>
+<%--  // required 필드값 미입력된 경우 알림창--%>
+<%--  function validateForm(e) {--%>
+
+<%--    e.preventDefault()--%>
+<%--    const companyName = document.getElementById('companyName').value.trim();--%>
+<%--    const companyUrl = document.getElementById('companyUrl').value.trim();--%>
+<%--    const campaignTitle = document.getElementById('campaignName').value.trim();--%>
+<%--    const productName = document.getElementById('productName').value.trim();--%>
+
+<%--    if (!companyName) {--%>
+<%--      alert("업체명을 입력하세요.");--%>
+<%--      return false;--%>
+<%--    }--%>
+<%--    if (!companyUrl) {--%>
+<%--      alert("업체 URL을 입력하세요.");--%>
+<%--      return false;--%>
+<%--    }--%>
+<%--    if (!campaignTitle) {--%>
+<%--      alert("캠페인 이름을 입력하세요.");--%>
+<%--      return false;--%>
+<%--    }--%>
+<%--    if (!productName) {--%>
+<%--      alert("상품명을 입력하세요.");--%>
+<%--      return false;--%>
+<%--    }--%>
+<%--    if (!fileInput) {--%>
+<%--      alert("상품명을 입력하세요.");--%>
+<%--      return false;--%>
+<%--    }--%>
+<%--    if (!uploadPeriod) {--%>
+<%--      alert("상품명을 입력하세요.");--%>
+<%--      return false;--%>
+<%--    }--%>
+<%--    if (!StartDate) {--%>
+<%--      alert("상품명을 입력하세요.");--%>
+<%--      return false;--%>
+<%--    }--%>
+<%--    if (!EndDate) {--%>
+<%--      alert("상품명을 입력하세요.");--%>
+<%--      return false;--%>
+<%--    }--%>
+
+<%--    // 모든 필드가 채워졌다면 폼을 제출합니다.--%>
+<%--    // document.querySelector('form').submit();--%>
+<%--  }--%>
+<%--</script>--%>
+
 
 </body>
 </html>

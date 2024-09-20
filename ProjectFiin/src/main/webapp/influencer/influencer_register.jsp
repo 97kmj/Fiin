@@ -38,7 +38,7 @@
                         <label for="short_introduction">한 줄 소개</label>
 
                         <input type="text" id="short_introduction" name="introLine"
-                               value="${influencer.introLine}">
+                               value="${influencer.introLine}" required>
 
                     </div>
                 </div>
@@ -47,7 +47,8 @@
                     <c:choose>
                         <c:when test="${influencer.profileImage==null}">
                             <input type="file" id="fileInput" name="profileImage"
-                                   style="display: none;" value="${influencer.profileImage}"/>
+                                   style="display: none;" value="${influencer.profileImage}"
+                                   required/>
                             <img id="uploadImage"
                                  src="${pageContext.request.contextPath}/image/upload.png"
                                  alt="Upload Image"
@@ -57,7 +58,7 @@
                         <c:otherwise>
                             <input type="file" id="fileInput" name="profileImage"
                                    style="display: none;" onchange="readURL(this)"
-                                   value="${influencer.profileImage}"/>
+                                   value="${influencer.profileImage}" required/>
                             <img id="uploadImage"
                                  src="${pageContext.request.contextPath}/image?file=${influencer.profileImage}"
                                  alt="Upload Image"
@@ -75,7 +76,6 @@
 
                     <input type="checkbox" id="youtube_checkbox" name="youtube" value="youtube"
                            style="display:none;"
-
                            <c:if test="${influencer.youtube==1}">checked</c:if>>
                     <label for="youtube_checkbox">
                     </label>
@@ -234,7 +234,7 @@
                 <label>
 
                     <textarea class="requirement-field" name="introduction"
-                              placeholder="소개글을 작성 해주세요.">${influencer.introduction}</textarea>
+                              placeholder="소개글을 작성 해주세요." required>${influencer.introduction}</textarea>
 
                 </label>
             </div>
@@ -405,7 +405,7 @@
   $(".registerBtn").click(function (e) {
     let isRegist = "${influencer.isRegist}";
     let point = '${influencer.pointBalance}';
-    if ((isRegist == null || +isRegist == 0) && ( point == null || +point < 500)) {
+    if ((isRegist == null || +isRegist == 0) && (point == null || +point < 500)) {
       // 모달 창 표시
       e.preventDefault(); // 기본 동작 방지
       document.getElementById("pointModal").style.display = "block";
