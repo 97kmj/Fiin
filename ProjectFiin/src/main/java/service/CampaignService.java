@@ -31,4 +31,7 @@ public interface CampaignService {
     // 상민) 캠페인 등록 시 사용
     Campaign campaignRegister(Campaign cam) throws Exception;
 
+    
+    //민준 캠페인 모든정보 가져올떄 사용
+    Campaign campaignDetail(Integer campaignNum) throws Exception;
 }

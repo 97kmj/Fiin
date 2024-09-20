@@ -130,5 +130,9 @@ public class CampaignServiceImpl implements CampaignService {
     return campaignDao.selectCampaignListRequest(influencerNum);
   }
 
+  //민준 - 캠페인 모든 정보 가져올때 사용 
+  public Campaign campaignDetail(Integer campaignNum) throws Exception {
+	    return campaignDao.selectCampaignByCampaignNum(campaignNum);
+  }
 
 }

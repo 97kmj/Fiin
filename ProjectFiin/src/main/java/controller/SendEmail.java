@@ -43,18 +43,19 @@ public class SendEmail extends HttpServlet {
 		String type = (String)request.getSession().getAttribute("type");
 		Advertiser advertiser = (Advertiser)request.getSession().getAttribute("advertiser");
 		Integer advertiserNum = advertiser.getAdvertiserNum();
+		Integer curPointBalance = advertiser.getPointBalance();
 		try {
 			CampaignService cService = new CampaignServiceImpl();
 			InfluencerService iService = new InfluencerServiceImpl();
 			PointService pService = new PointServiceImpl();
-			Campaign campaign = cService.detail(campaignNum);
+			Campaign campaign = cService.campaignDetail(campaignNum);
 			List<String> receiveEmailList = iService.getEmaliListByCampaign(campaign);
 			System.out.println(receiveEmailList);
 			String receiveEmails = "";
 			for(String receiveEmail : receiveEmailList) {
 				receiveEmails += receiveEmail+",";
 			}
-			if(advertiser.getPointBalance()>=300) {
+			if(curPointBalance >= 300) {
 				MailUtil.sendMail(receiveEmails, campaign);
 				pService.updatePointBalance(type, advertiserNum, -300);
 				pService.insertPointRecord(type, advertiserNum,-300, "이메일 발송");
