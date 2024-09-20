@@ -6,6 +6,7 @@
 
 	<!--// 상민 - influencerRegister (인플루언서 등록하기) -->
 	<update id="registerInfluencerInfo" parameterType="influencer">
+
 		UPDATE influencer
 		set
 		intro_line = #{introLine},

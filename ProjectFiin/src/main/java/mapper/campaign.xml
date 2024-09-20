@@ -2,15 +2,47 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-
-<!--// Mapper: dto와 sql문 이어주는 역할 -->
-<!--	# // campaign ( ) 부분은 db와 매핑 되는 값-->
-<!--	# // value (#{}...) 부분은 dto와 매핑되는 값-->
-
 <mapper namespace="mapper.campaign">
 
-	<!--// 상민 - campaignRegister (캠페인 등록하기) -->
-	<update id="registerCampaign" parameterType="campaign">
+	<!--	// 상민 - campaignRegister (캠페인 등록하기) -->
+	<insert id="registerCampaign" parameterType="campaign">
+			<![CDATA[
+		INSERT INTO campaign (
+			company_name,
+			company_url,
+			campaign_title,
+			product_name,
+			update_start_date,
+			update_end_date,
+			channel,
+			ad_start_date,
+			ad_end_date,
+			image,
+			category_id,
+			requirement,
+			advertiser_num
+		) VALUES (
+							 #{companyName},
+							 #{companyUrl},
+							 #{campaignTitle},
+							 #{productName},
+							 #{updateStartDate},
+							 #{updateEndDate},
+							 #{channel},
+							 #{adStartDate},
+							 #{adEndDate},
+							 #{image},
+							 #{categoryId},
+							 #{requirement},
+							 #{advertiserNum}
+						 )
+		]]>
+	</insert>
+
+
+
+<!--	// 상민 - campaignUpdate (캠페인 수정하기) -->
+	<update id="updateCampaign" parameterType="campaign">
 		UPDATE campaign
 		set
 			company_name = #{companyName},
@@ -20,44 +52,15 @@
 			update_start_date = #{updateStartDate},
 			update_end_date = #{updateEndDate},
 			channel = #{channel},
-			ad_start_date = #{adStartDate},
-			ad_end_date = #{adEndDate},
+# 			ad_start_date = #{adStartDate},
+# 			ad_end_date = #{adEndDate},
 			image = #{image},
 			category_id = #{categoryId},
-			requirement = #{requirement}
+			requirement = #{requirement},
+		  advertiser_num = #{advertiserNum}
 
-		WHERE advertiser_num = #{advertiserNum}
+		WHERE campaign_num = #{campaignNum}
 	</update>
-
-<!--	상민 - updateCampaign (캠페인 수정하기) updateStart,End Date제외 -->
-	<update id="updateCampaignInfo" parameterType="campaign">
-		UPDATE campaign
-		set
-			company_name = #{companyName},
-			company_url = #{companyUrl},
-			campaign_title = #{campaignTitle},
-			product_name = #{productName},
-			channel = #{channel},
-			ad_start_date = #{adStartDate},
-			ad_end_date = #{adEndDate},
-			image = #{image},
-			category_id = #{categoryId},
-			requirement = #{requirement}
-
-		WHERE advertiser_num = #{advertiserNum}
-	</update>
-
-	<!--상민 - 캠페인 등록 시, 포인트 차감 -->
-	<update id="usePointsByCampaign" parameterType="map">
-		UPDATE point_record
-		SET
-			change_point = change_point - #{usedPoint},
-			detail = '광고주 등록',
-			update_at = NOW()
-		WHERE advertiser_num = #{advertiserNum}
-	</update>
-
-
 
 
 
@@ -85,7 +88,7 @@
 	</select>
 	
 	<select id="selectCampaignCount" parameterType="Map" resultType="integer">
-		select Count(*) from Campaign
+		select Count(*) from campaign
 		<where>
 			<if test="channel != null and channel.size()>0">
 				<foreach collection="channel" item="item" separator="or" open="(" close=")">

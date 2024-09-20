@@ -9,8 +9,6 @@ import util.PageInfo;
 
 
 public interface CampaignService {
-    Campaign findCampaignByAdNum(Integer cam) throws Exception;
-
     List<Campaign> campaignListForMain()throws Exception;
     List<Campaign> campaignListForAdvertiser(Integer advertiserNum) throws Exception;
 
@@ -21,6 +19,10 @@ public interface CampaignService {
     boolean toggleCampaign(Integer campaignNum, Integer Influencer)throws Exception;
 
 	  Integer checkBookmark(Integer influencerNum, Integer campaignNum)throws Exception;
+
+    // 상민 - 캠페인 수정 시 사용
+    Campaign campaignUpdate(Campaign campaign) throws Exception;
+
     List<Campaign> getReceiveCampaignList (Integer influencerNum)throws Exception;
     List<Map<String,Object>> getRequestCampaignList (Integer influencerNum)throws Exception;
 
