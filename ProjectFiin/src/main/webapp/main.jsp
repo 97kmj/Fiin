@@ -47,7 +47,7 @@
               <ul class="influencer_container swiper-wrapper">
               	<c:forEach items="${influencerList}" var="influencer">
                 	<li class="influencer_item swiper-slide" OnClick="location.href ='influencerDetail?num=' + ${influencer.influencerNum}">
-	                    <img src="image?file=${influencer.profileImage}" alt="인플루언서 이미지"/>
+	                    <img src="image?file=${influencer.profileImage}" alt="인플루언서 이미지" class="profile_img" />
 	                    <div class="sns_wrap">
 	                      <c:if test="${influencer.youtubeUrl ne null}">
 	                      	<p>유튜브</p>
@@ -88,13 +88,16 @@
 	              	<div class="sns_wrap">
 		                <c:forEach items="${campaign.channel.split('#')}" var="channel">
 		                	<c:if test="${channel.equals('blog')}">
-		                		<p>블로그</p>
+		                		<!-- <p>블로그</p> -->
+		                		<img src="${pageContext.request.contextPath}/image/naver.png" style="width: 25px; height: 25px;"/>
 		                	</c:if>
-		                    <c:if test="${channel.equals('insta')}">
-		                    	<p>인스타그램</p>
+		                    <c:if test="${channel.equals('instagram')}">
+		                    	<!-- <p>인스타그램</p> -->
+		                    	<img src="https://img.icons8.com/?size=25&id=Xy10Jcu1L2Su&format=png&color=000000">
 		                    </c:if>
 		                    <c:if test="${channel.equals('youtube')}">
-		                    	<p>유튜브</p>
+		                    	<!-- <p>유튜브</p> -->
+		                    	<img src="https://img.icons8.com/?size=25&id=19318&format=png&color=000000">
 		                    </c:if>           	
 		                </c:forEach>
 	                </div>
