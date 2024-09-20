@@ -61,7 +61,7 @@
 	<select id="selectAllInfluencerCount" resultType="Integer">
 		select count(*) from influencer
 		<where>
-			1=1
+			 is_regist = 1
 			<if test="channels != null and channels.size() > 0">
 				and
 				<foreach item="channel" collection="channels" open="("
@@ -84,20 +84,17 @@
 		select i.*,c.category_name from influencer i join category c
 		using(category_id)
 		<where>
-			1=1
-			<choose>
-				<when test="channels != null and channels.size > 0">
+			 is_regist = 1
+			
+				<if test="channels != null and channels.size > 0">
 					and
 					<foreach item="channel" collection="channels" open="("
 						separator="or" close=")">
 						${channel}= 1
 					</foreach>
-				</when>
+				</if>
 
-				<otherwise>
-					and is_regist = 1
-				</otherwise>
-			</choose>
+			
 			<if test="categoryId != 0">
 				and category_id = #{categoryId}
 			</if>
