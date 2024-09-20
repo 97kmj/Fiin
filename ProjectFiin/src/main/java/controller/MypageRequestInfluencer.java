@@ -14,7 +14,7 @@ import service.CampaignServiceImpl;
 import service.RequestCampaignService;
 import service.RequestCampaignServiceImpl;
 
-@WebServlet("/requestedInfluencer")
+@WebServlet("/requestInfluencer")
 public class mypageRequestedInfluencer extends HttpServlet {
 
   private static final long serialVersionUID = 1L;
