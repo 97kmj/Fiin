@@ -39,14 +39,28 @@
 .campaign {
     display:flex;
     flex-direction:column;
-    padding:10px;
     margin-top:20px;
     width:33%;
     height:390px;
     align-items:center;
-    border:1px solid  #e5e5e5;
     border-radius:10px;
     margin:1px;
+    
+}
+
+.card{
+   display:flex;
+   flex-direction:column;
+   margin-top:5px;
+   padding-top:20px;
+   padding-bottom:5px;
+   padding-right:5px;
+   padding-left:5px;
+   width:90%;
+   align-items:center;
+   border:1px solid  #e5e5e5;
+   border-radius:10px;
+   margin:1px;
 }
 .campaign > div {
 	margin:4px auto;
@@ -127,6 +141,12 @@
     border-collapse: collapse;
 }
 
+.modal table td > img {
+	vertical-align:middle;
+}
+.modal table td img:hover {
+	cursor:pointer;
+}
 .modal tr:nth-child(even) td {
   background: #eaeaed;
 }
@@ -145,7 +165,7 @@
 	text-align:center;
 }
 
-.invalid{
+.invalid > .card{
 	background-color:lightgray;
 }
 .accept {

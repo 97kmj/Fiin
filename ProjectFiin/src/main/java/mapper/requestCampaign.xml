@@ -24,5 +24,13 @@
 			where request_num=#{requestNum}
 		]]>
 	</update>
+	
+	<select id="selectRequestCampaignList" parameterType="Integer" resultType="Map">
+		select i.* ,r.request_num,r.accept, c.campaign_title,c.campaign_num
+		from campaign c JOIN request_campaign r
+		ON r.campaign_num = c.campaign_num
+		JOIN influencer i ON r.influencer_num = i.influencer_num
+		where c.advertiser_num = #{advertiserNum};
+	</select>
 </mapper>
 

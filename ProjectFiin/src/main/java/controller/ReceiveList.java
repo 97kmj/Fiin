@@ -49,18 +49,20 @@ public class ReceiveList extends HttpServlet {
 				}
 				row += "<td>"+receive.get("category_name")+"</td>";
 				row+="<td>";
+				
 				if(receive.get("youtube")!=null && (boolean)receive.get("youtube")==true) {
-					row += " 유튜브 ";
+					row += " <img src=\"https://img.icons8.com/?size=40&id=19318&format=png&color=000000\" onClick=\"window.open('"+receive.get("youtube_url")+"')\"/> ";
 				}
 				if(receive.get("instagram")!=null && (boolean)receive.get("instagram")==true) {
-					row += " 인스타그램 ";
+					row += " <img src=\"https://img.icons8.com/?size=40&id=Xy10Jcu1L2Su&format=png&color=000000\" onClick=\"window.open('"+receive.get("instagram_url")+"')\"/> ";
 				}
 				if(receive.get("blog")!=null && (boolean)receive.get("blog")==true) {
-					row += " 블로그 ";
+					row += " <img src=\"image/naver.png\"\r\n"
+							+ "				 * style=\"width: 40px; height: 40px;\" onClick=\"window.open('"+receive.get("blog_url")+"')\"/> ";
 				}
 				row+="</td>";
 				System.out.println(receive);
-				if((Integer)receive.get("accept")==0) {
+				if((boolean)receive.get("accept") ==false) {
 					 row+="<td><button name=\"accept\" class=\"accept\" value=\"" + receive.get("apply_num")+"\">수락하기</button></td>";
 				} else {
 					 row+="<td><button name=\"checked\" class=\"checked\" value=\"" + receive.get("apply_num")+"\">수락완료</button></td>";

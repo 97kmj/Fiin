@@ -40,7 +40,7 @@
 						<td class="td1">${pointRecord.changePoint > 0 ? '충전':'사용' }</td>
 						<td class="td2">${pointRecord.detail }</td>
 						<td class="td3">
-							<div>${pointRecord.changePoint > 0 ? '+':'-' }<fmt:formatNumber	value="${pointRecord.changePoint}" />P
+							<div>${pointRecord.changePoint > 0 ? '+':'' }<fmt:formatNumber	value="${pointRecord.changePoint}" />P
 							</div>
 							<div>
 								<fmt:formatDate value="${pointRecord.updateAt}"
