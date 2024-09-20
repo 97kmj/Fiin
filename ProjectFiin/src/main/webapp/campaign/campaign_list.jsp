@@ -55,7 +55,7 @@
 		
 			
 		
-		<div id="campaignWrap">
+		<div id="campaignWrap" style="justify-content: left;">
 	 		<c:forEach items="${campaignList }" var="campaign">
 	 			<div class="campaign_pick" onclick="location.href='campaignDetail?campaignNum=${campaign.campaignNum }'">
 					<img src="image?file=${campaign.image}" class="campaign_img">

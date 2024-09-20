@@ -105,7 +105,7 @@
 			<br>
 			<div class="middletext"><img src="image/watch.png" class="middle_text_img"><b>일정정보</b></div>
 			<div class="date_information">
-				인플루언서모집기간 : <fmt:formatDate value="${campaign.updateStartDate }" pattern="yyyy-MM-dd" />~<fmt:formatDate value="${campaign.updateStartDate }"  pattern="yyyy-MM-dd" /><br>
+				인플루언서모집기간 : <fmt:formatDate value="${campaign.updateStartDate }" pattern="yyyy-MM-dd" />~<fmt:formatDate value="${campaign.updateEndDate }"  pattern="yyyy-MM-dd" /><br>
 				광고기간 : <fmt:formatDate value="${campaign.adStartDate }" pattern="yyyy-MM-dd" />~<fmt:formatDate value="${campaign.adEndDate }" pattern="yyyy-MM-dd" />
 			</div>
 		</div>
@@ -124,17 +124,17 @@
 			<div class="chanimg" >
 				<c:forTokens items="${campaign.channel}" delims="# " var="item">
 				    <c:choose>
-				        <c:when test="${item == 'Blog'}">
+				        <c:when test="${item == '블로그'}">
 				            <span class="channel_outline">
 				                &nbsp;<img src="image/blog_logo.png" class="channel" /><a class="channel_font">블로그</a>&nbsp;
 				            </span>
 				        </c:when>
-				        <c:when test="${item == 'Instagram'}">
+				        <c:when test="${item == '인스타그램'}">
 				            <span class="channel_outline">
 				                &nbsp;<img src="image/instagram_logo.png" class="channel" /><a class="channel_font">인스타</a>&nbsp;
 				            </span>
 				        </c:when>
-				        <c:when test="${item == 'YouTube'}">
+				        <c:when test="${item == '유튜브'}">
 				            <span class="channel_outline">
 				                &nbsp;<img src="image/youtube_logo.png" class="channel" /><a class="channel_font">유튜브</a>&nbsp;
 				            </span>
