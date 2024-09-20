@@ -80,7 +80,7 @@
 				ad_start_date,
 				ad_end_date,
 				requirement,
-				REPLACE(CHANNEL, '#', ' ') as CHANNEL,
+			    replace(replace(replace(replace(LOWER(channel), '#', ' '), 'youtube', '유튜브'), 'instagram', '인스타그램'), 'blog', '블로그') as CHANNEL,
 				image,
 				is_recruit 
 		 	from campaign where campaign_num = #{campaignNum}
@@ -102,7 +102,7 @@
 			ad_start_date,
 			ad_end_date,
 			requirement,
-			REPLACE(CHANNEL, '#', ' ')as CHANNEL,
+			replace(replace(replace(replace(LOWER(channel), '#', ' '), 'youtube', '유튜브'), 'instagram', '인스타그램'), 'blog', '블로그') as CHANNEL,
 			image,
 			is_recruit
 		 from campaign 
