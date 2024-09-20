@@ -30,18 +30,20 @@
         <c:forEach items="${campaignList }" var="campaign">
         	<c:choose>
        		<c:when test="${campaign.isRecruit eq 1}">
-        		<div class="campaign valid" id="${campaign.campaignNum }">
+        		<div class="campaign valid">
        		</c:when>
        		<c:otherwise>
-        		<div class="campaign invalid" id="${campaign.campaignNum }">
+        		<div class="campaign invalid">
        		</c:otherwise>
         	</c:choose>
-					<div class="img"><img src="image?file=${campaign.image}" style="width:200px;height:200px" onclick="location.href='campaignDetail?campaignNum=${campaign.campaignNum }'"/></div>
-	                <div class="name">${campaign.campaignTitle }</div>
-	                <div class="date"><fmt:formatDate value="${campaign.adStartDate }" pattern="yyyy-MM-dd"/> ~ <fmt:formatDate value="${campaign.adEndDate }" pattern="yyyy-MM-dd"/></div>
-	                <button class="email btn">이메일발송</button>
-	                <button class="apply btn">신청 목록</button>      
-      	     	</div> 
+        			<div class="card" id="${campaign.campaignNum }">
+						<div class="img"><img src="image?file=${campaign.image}" style="width:200px;height:200px" onclick="location.href='campaignDetail?campaignNum=${campaign.campaignNum }'"/></div>
+		                <div class="name">${campaign.campaignTitle }</div>
+		                <div class="date"><fmt:formatDate value="${campaign.adStartDate }" pattern="yyyy-MM-dd"/> ~ <fmt:formatDate value="${campaign.adEndDate }" pattern="yyyy-MM-dd"/></div>
+		                <button class="email btn">이메일발송</button>
+		                <button class="apply btn">신청 목록</button>      
+      	     		</div>
+     	     	</div> 
         </c:forEach>
           
         </div>
@@ -66,7 +68,7 @@
 	<button class="closebtn"><img src="https://img.icons8.com/?size=100&id=J3PhU48KWI9A&format=png&color=000000" style="width:20px;height:20px"></button><br>
 		<h2 style="text-align:center;color:#4849e8;">이메일 발송기능이란?</h2>
 		<p>상품 카테고리와 희망광고채널이 일치하는 인플루언서에게 캠페인을 알리는 이메일을 보내줍니다.<br> 더 많은 인플루언서에게 자사 제품을 홍보 요청해보세요.</p>
-		<p> &#8251;해당되는 모든 인플루언서들에게 이메일을 발송합니다.</p>
+		<p> &#8251;해당되는 모든 인플루언서들에게 이메일을 발송합니다.(300포인트 차감)</p>
 		<input type="button" name="sendEmail" value="이메일 발송" class="btn sendbtn" >
 	</div>
 </div>
@@ -139,13 +141,18 @@ $(document).ready(function() {
            	async:true,
            	data:{campaignNum:campaignNum},
            	success: function(result){
-           		
+				if(result=="success") {
+					alert("메일 전송 완료");
+					location.href="pointrecord";
+				} else {
+					alert("포인트 잔액이 부족합니다.");
+					location.href="payment";
+				}
 			},
 			error: function (err) {
                 alert(err);
             }
 		}) 
-		alert("메일 전송 완료");
 		$(".sendemail").removeClass('show-modal');
 	})
 	
@@ -161,24 +168,24 @@ $(document).ready(function() {
 	
 	/* 전체,모집중,모집종료 필터링 버튼 */
 	$("#allList").on('click',function(){
-		$(this).css("border","2px solid #4849e8");
-		$("#ingList").css("border","2px solid #939393");
-		$("#endList").css("border","2px solid #939393");
+		$(this).css({"border":"2px solid #4849e8","color":"#4849e8"});
+		$("#ingList").css({"border":"2px solid #939393","color":"#939393"});
+		$("#endList").css({"border":"2px solid #939393","color":"#939393"});
 		$(".campaign").css("display","flex");
 		$("#campaigntype").text("전체 캠페인");
 	})
 	$("#ingList").on('click',function(){
-		$(this).css("border","2px solid #4849e8")
-		$("#allList").css("border","2px solid #939393");
-		$("#endList").css("border","2px solid #939393");
+		$(this).css({"border":"2px solid #4849e8","color":"#4849e8"})
+		$("#allList").css({"border":"2px solid #939393","color":"#939393"});
+		$("#endList").css({"border":"2px solid #939393","color":"#939393"});
 		$(".invalid").css("display","none");
 		$(".valid").css("display","flex");
 		$("#campaigntype").text("모집중인 캠페인");
 	})
 	$("#endList").on('click',function(){
-		$(this).css("border","2px solid #4849e8")
-		$("#ingList").css("border","2px solid #939393");
-		$("#allList").css("border","2px solid #939393");
+		$(this).css({"border":"2px solid #4849e8","color":"#4849e8"})
+		$("#ingList").css({"border":"2px solid #939393","color":"#939393"});
+		$("#allList").css({"border":"2px solid #939393","color":"#939393"});
 		$(".valid").css("display","none");
 		$(".invalid").css("display","flex");
 		$("#campaigntype").text("모집종료 캠페인");

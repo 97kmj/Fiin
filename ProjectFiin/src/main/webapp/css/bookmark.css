@@ -23,6 +23,7 @@
 	overflow-y: auto;
 	height: 100vh;
 	margin-top: 40px;
+	gap: 20px 15px;
 }
 .bookmark_wrap {
 	margin-bottom: 40px;
@@ -30,7 +31,7 @@
 }
 
 .bookmark_pick {
-	width: 220px;
+	width: 32%;
 	cursor: pointer;
 }
 #channel_name {
@@ -41,4 +42,8 @@
 #introduce {
 	font-weight: bold;
 	margin-bottom: 15px;
+	overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    word-break: break-all;
 }

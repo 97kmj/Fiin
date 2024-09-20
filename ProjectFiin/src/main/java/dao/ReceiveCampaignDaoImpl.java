@@ -27,7 +27,6 @@ public class ReceiveCampaignDaoImpl implements ReceiveCampaignDao {
 		sqlSession.commit();
 	}
 
-
 	@Override
 	public void requestedInfluencer(Integer campaignNum, Integer influencerNum){
 		Map<String, Object> params = new HashMap<String, Object>();
@@ -35,7 +34,9 @@ public class ReceiveCampaignDaoImpl implements ReceiveCampaignDao {
 		params.put("influencerNum", influencerNum);
 		sqlSession.selectList("mapper.receiveCampaign.requestedInfluencer", params);
 	}
+
 	@Override
+
 	public void insertReceiveCampaign(Integer influencerNum, Integer campaignNum) throws Exception {
 		Map<String,Integer> param = new HashMap<>();
 		param.put("influencerNum", influencerNum);

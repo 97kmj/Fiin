@@ -60,7 +60,14 @@
 						<c:when test="${advertiser eq null}">
 							<div class="login_info" OnClick="location.href ='mypageCampaignInfluencer'">
 								<div class="login_img">
-				            		<img src="https://img.icons8.com/?size=100&id=43942&format=png&color=ffffff">
+								<c:choose>
+									<c:when test="${influencer.profileImage ne null}">
+										<img src="image?file=${influencer.profileImage}" alt="프로필 이미지"/>
+									</c:when>
+									<c:otherwise>
+										<img src="https://img.icons8.com/?size=100&id=43942&format=png&color=ffffff" style="background-color: #4849e8;">
+									</c:otherwise>
+								</c:choose>
 				            	</div>
 						        <p id="userName">${influencer.name}</p>        
 	            			</div>
