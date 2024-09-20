@@ -37,9 +37,8 @@ public class ReceiveCampaignServiceImpl implements ReceiveCampaignService {
 		if(receive==null) {
 			receiveCampaignDao.insertReceiveCampaign(influencer, campaignNum);
 			
-		}else {
+		} else {
 			receiveCampaignDao.deleteReceiveCampaign(influencer, campaignNum);
-			
 		}
 	}
 	
