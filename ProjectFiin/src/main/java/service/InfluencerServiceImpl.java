@@ -112,9 +112,12 @@ public class InfluencerServiceImpl implements InfluencerService {
 		
 		Integer row = (pageInfo.getCurPage()-1)*8+1;
 		
+		
+		
 		List<Map<String,Object>> influencerList = influencerDao.selectAllInfluencer(row, keyword, channels, categoryId);
 		return influencerList;
-			
+		
+		
 	}
 
   @Override
@@ -166,7 +169,7 @@ public class InfluencerServiceImpl implements InfluencerService {
 	public List<Influencer> influencerBookmarkForMypage(Integer advertiserNum) throws Exception {
 		return influencerDao.bookmarkInfluecerForMypage(advertiserNum);
 	}
-	
+
 }
 
 

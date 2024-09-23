@@ -42,6 +42,7 @@ public class InfluencerList extends HttpServlet {
 		String[] channels = request.getParameterValues("channel");
 		String keyword = request.getParameter("keyword");
 
+		
 		List<String> channelList = new ArrayList<>();
 
 		
@@ -73,10 +74,9 @@ public class InfluencerList extends HttpServlet {
 			pageInfo.setCurPage(page);
 			
 			List<Map<String, Object>> influencerList;
-
-
+			
+			
 			influencerList = service.getInfluencerList(channelList, keyword, category, pageInfo);
-
 			
 			request.setAttribute("influencerList", influencerList);
 			request.setAttribute("pageInfo", pageInfo);

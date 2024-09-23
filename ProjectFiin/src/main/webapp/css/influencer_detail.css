@@ -256,6 +256,13 @@
 	background-color: #4849e8;
 	color: white;
 }
+.non_requestBtn {
+	width: 50px;
+	height: 30px;
+	border-radius: 10px;
+	background-color: gray;
+	color: white;
+}
 .modal table {
 	width: 900px;
 	margin-bottom: 40px;

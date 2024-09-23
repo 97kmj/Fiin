@@ -114,7 +114,18 @@
 												<td>${list.company_name }</td>
 												<td>${list.product_name }</td>
 												<td><fmt:formatDate value="${list.ad_end_date }" pattern="yyyy-MM-dd" /></td>
-												<td><button type="button" class="requestBtn" data-campaign-num="${list.campaign_num}" data-influencer-num="${influencerdetail.influencer_num }">제안</button></td>
+												
+												<td>
+												<c:choose>
+													<c:when test="${influencerdetail.requestcheck eq true}">
+														<button type="button" class="requestBtn" data-campaign-num="${list.campaign_num}" data-influencer-num="${influencerdetail.influencer_num }">제안</button>
+													</c:when>
+													<c:otherwise>
+														<button type="button" class="non_requestBtn" data-campaign-num="${list.campaign_num}" data-influencer-num="${influencerdetail.influencer_num }">제안완료</button>
+													</c:otherwise>
+												</c:choose>
+												</td>
+												
 											</tr>
 										</c:forEach>
 									</tbody>
