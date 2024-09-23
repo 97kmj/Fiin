@@ -20,15 +20,12 @@ public interface CampaignService {
 
 	  Integer checkBookmark(Integer influencerNum, Integer campaignNum)throws Exception;
 
-    // 상민 - 캠페인 수정 시 사용
-    Campaign campaignUpdate(Campaign campaign) throws Exception;
-
     List<Campaign> getReceiveCampaignList (Integer influencerNum)throws Exception;
     List<Map<String,Object>> getRequestCampaignList (Integer influencerNum)throws Exception;
 
     List<Campaign> campaignListForRequest(Integer advertiserNum)throws Exception;
     List<Campaign> campaignBookmarkForMypage(Integer influencerNum) throws Exception;
     // 상민) 캠페인 등록 시 사용
-    Campaign campaignRegister(Campaign cam) throws Exception;
+    Campaign campaignRegister(Campaign cam, int addUploadPeriod) throws Exception;
 
 }

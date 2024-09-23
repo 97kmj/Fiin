@@ -39,31 +39,6 @@
 		]]>
 	</insert>
 
-
-
-<!--	// 상민 - campaignUpdate (캠페인 수정하기) -->
-	<update id="updateCampaign" parameterType="campaign">
-		UPDATE campaign
-		set
-			company_name = #{companyName},
-			company_url = #{companyUrl},
-			campaign_title = #{campaignTitle},
-			product_name = #{productName},
-			update_start_date = #{updateStartDate},
-			update_end_date = #{updateEndDate},
-			channel = #{channel},
-# 			ad_start_date = #{adStartDate},
-# 			ad_end_date = #{adEndDate},
-			image = #{image},
-			category_id = #{categoryId},
-			requirement = #{requirement},
-		  advertiser_num = #{advertiserNum}
-
-		WHERE campaign_num = #{campaignNum}
-	</update>
-
-
-
 	<!--준영-->
 	<select id="selectCampaign" parameterType="Integer" resultType="campaign">											
 		<![CDATA[

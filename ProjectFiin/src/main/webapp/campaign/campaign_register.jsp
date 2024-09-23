@@ -44,32 +44,35 @@
             <div class="campaignField">
                 <div class="form-group">
                     <label for="companyName">업체명</label>
-                    <input type="text" id="companyName" name="companyName" required>
+                    <input type="text" id="companyName" name="companyName">
                 </div>
                 <div class="form-group">
                     <label for="companyUrl">업체 URL</label>
-                    <input type="text" id="companyUrl" name="companyUrl" required>
+                    <input type="text" id="companyUrl" name="companyUrl">
                 </div>
                 <div class="form-group">
                     <label for="campaignName">캠페인 이름</label>
-                    <input type="text" id="campaignName" name="campaignTitle" required>
+                    <input type="text" id="campaignName" name="campaignTitle">
                 </div>
                 <div class="form-group">
                     <label for="productName">상품명</label>
-                    <input type="text" id="productName" name="productName" required>
+                    <input type="text" id="productName" name="productName">
                 </div>
             </div>
-            <input type="file" id="fileInput" name="image" accept="image/*"
-                   style="display: none;" required/>
+
+            <div class="imgForm" onclick="document.getElementById('fileInput').click();">
+                <input type="file" id="fileInput" name="image" style="display: none;">
             <img id="uploadImage"
-                 src="${pageContext.request.contextPath}/image/upload.png"
-                 alt="Upload Image" style="cursor: pointer"/>
+                src="${pageContext.request.contextPath}/image/upload.png"
+                alt="Upload Image" style="cursor: pointer"/>
+            </div>
+
         </div>
 
         <div class="form-group-group">
             <div class="form-group1">
                 <label for="uploadPeriod">업로드 기간</label>
-                <select id="uploadPeriod" name="uploadPeriod" required>
+                <select id="uploadPeriod" name="uploadPeriod">
                     <option value="7">1주일 500 point</option>
                     <option value="14">2주일 1000 point</option>
                     <option value="21">3주일 1500 point</option>
@@ -81,13 +84,13 @@
                 <div class="startDate">
                     <label for="StartDate">광고 시작일</label>
                     <input type="text" id="StartDate" name="startDate"
-                           value="${campaign.adStartDate}" required>
+                           value="${campaign.adStartDate}">
                     <input type="hidden" id="startDateInput" name="adStartDate"> <!-- 숨겨진 input -->
                 </div>
 
                 <div class="endDate">
                     <label for="EndDate">광고 종료일</label>
-                    <input type="text" id="EndDate" name="endDate" value="${campaign.adEndDate}" required>
+                    <input type="text" id="EndDate" name="endDate" value="${campaign.adEndDate}">
                     <input type="hidden" id="endDateInput" name="adEndDate"> <!-- 숨겨진 input -->
                 </div>
             </div>
@@ -147,13 +150,12 @@
             <div class="requirement-label">요구 사항</div>
             <label>
                 <textarea class="requirement-field" name="requirement"
-                          placeholder="여기에 요구 사항을 작성하세요..." required>
-                </textarea>
+                          placeholder="여기에 요구 사항을 작성하세요..."></textarea>
             </label>
         </div>
 
         <div class="bottom-button">
-            <button class="registerBtn" value="등록" onclick="validateForm(e)">등록하기</button>
+            <button class="registerBtn" value="등록">등록하기</button>
             <button class="backBtn" value="뒤로가기">뒤로가기</button>
         </div>
     </form>
@@ -170,32 +172,32 @@
         </div>
     </div>
 
-
 </div>
 
 <%@ include file="../include/footer.jsp" %>
 
 
-<script>
-  //이미지 클릭 시, "찾기"로 이동
-  document.getElementById('uploadImage').addEventListener('click', function () {
-    document.getElementById('fileInput').click();
-  });
-</script>
+<%--<script>--%>
+<%--  //이미지 클릭 시, "찾기"로 이동--%>
+<%--  document.getElementById('uploadImage').addEventListener('click', function () {--%>
+<%--    document.getElementById('fileInput').click();--%>
+<%--  });--%>
+<%--</script>--%>
 
 <script>
-  const file = document.getElementById("fileInput");
+  const fileInput = document.getElementById("fileInput");
   const preview = document.getElementById("uploadImage");
 
-  //파일 선택 시 미리보기 업데이트
-  file.addEventListener("change", () => {
+  // 파일 선택 시 미리보기 업데이트
+  fileInput.addEventListener("change", () => {
     const reader = new FileReader();
     reader.onload = () => {
-      preview.src = reader.result;
+      preview.src = reader.result; // 미리보기 이미지 업데이트
     };
+
     // 선택된 파일이 존재하는 경우만 읽기
-    if (file.files && file.files[0]) {
-      reader.readAsDataURL(file.files[0]);
+    if (fileInput.files && fileInput.files[0]) {
+      reader.readAsDataURL(fileInput.files[0]);
     }
   });
 </script>
@@ -222,8 +224,8 @@
 
 <script>
   $(function () {
-    // StartDate datepicker 설정
-    $("#StartDate").datepicker({
+    // StartDate와 EndDate의 공통 설정을 한 번에 적용
+    $("#StartDate, #EndDate").datepicker({
       dateFormat: 'yy-mm-dd',
       showOtherMonths: true,
       showMonthAfterYear: true,
@@ -233,41 +235,31 @@
       buttonText: "선택",
       yearSuffix: "년",
       monthNamesShort: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'],
-      monthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
       dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'],
       dayNames: ['일요일', '월요일', '화요일', '수요일', '목요일', '금요일', '토요일'],
       minDate: "-1M",
-      maxDate: "+1M",
-      onSelect: function (dateText) {
-        // 선택한 날짜를 보여줄 input에 설정
-        $('#StartDate').val(dateText);
-        // 실제 전송할 값을 설정
-        $('#startDateInput').val(dateText + " 00:00:00"); // 숨겨진 input에 시간 추가
-      }
+      maxDate: "+1M"
     });
 
-    // EndDate datepicker 설정
-    $("#EndDate").datepicker({
-      dateFormat: 'yy-mm-dd',
-      showOtherMonths: true,
-      showMonthAfterYear: true,
-      changeYear: true,
-      changeMonth: true,
-      buttonImageOnly: true,
-      buttonText: "선택",
-      yearSuffix: "년",
-      monthNamesShort: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'],
-      monthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
-      dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'],
-      dayNames: ['일요일', '월요일', '화요일', '수요일', '목요일', '금요일', '토요일'],
-      minDate: "-1M",
-      maxDate: "+1M",
-      onSelect: function (dateText) {
-        // 선택한 날짜를 보여줄 input에 설정
-        $('#EndDate').val(dateText);
-        // 실제 전송할 값을 설정
-        $('#endDateInput').val(dateText + " 23:59:59"); // 숨겨진 input에 시간 추가
-      }
+    // StartDate에서 날짜를 선택할 때 EndDate의 달력 자동 표시
+    $("#StartDate").on("change", function () {
+      // 200ms 지연 후 EndDate 달력을 표시
+      setTimeout(function () {
+        $("#EndDate").focus();  // EndDate로 포커스 이동
+        $("#EndDate").datepicker("show");  // EndDate의 달력 표시
+      }, 200);  // 지연 시간 조정 가능
+    });
+
+    // StartDate에 날짜 선택 시, 숨겨진 input에 시간 포함하여 설정
+    $("#StartDate").on("change", function () {
+      let dateText = $(this).val();
+      $('#startDateInput').val(dateText + " 00:00:00");  // 숨겨진 input에 시간 추가
+    });
+
+    // EndDate에 날짜 선택 시, 숨겨진 input에 시간 포함하여 설정
+    $("#EndDate").on("change", function () {
+      let dateText = $(this).val();
+      $('#endDateInput').val(dateText + " 23:59:59");  // 숨겨진 input에 시간 추가
     });
   });
 </script>
@@ -293,67 +285,126 @@
 </script>
 
 <script>
-
-  //등록하기 버튼 클릭 시, 모달창 띄우기(포인트 부족) or 등록하기(포인트 충분)
+  //등록하기 버튼 클릭 시, 업로드 기간에 따라서 포인트 차감(부족 시, 알림창 띄우기)
   $(".registerBtn").click(function (e) {
     let point = '${advertiser.pointBalance}';
-    if (point == null || +point < 500) {
-      // 모달 창 표시
+    let uploadPeriodSelect = document.getElementById('uploadPeriod')
+    let uploadPeriodValue = uploadPeriodSelect.value;
+
+    if (uploadPeriodValue == 7 && (point == null || +point < 500)) {
+      e.preventDefault(); // 기본 동작 방지
+      document.getElementById("pointModal").style.display = "block";
+    } else if (uploadPeriodValue == 14 && (point == null || +point < 1000)) {
+      e.preventDefault(); // 기본 동작 방지
+      document.getElementById("pointModal").style.display = "block";
+    } else if (uploadPeriodValue == 21 && (point == null || +point < 1500)) {
+      e.preventDefault(); // 기본 동작 방지
+      document.getElementById("pointModal").style.display = "block";
+    } else if (uploadPeriodValue == 28 && (point == null || +point < 1800)) {
       e.preventDefault(); // 기본 동작 방지
       document.getElementById("pointModal").style.display = "block";
     }
-  })
-
+  });
 </script>
 
-<%--<script>--%>
-<%--  // required 필드값 미입력된 경우 알림창--%>
-<%--  function validateForm(e) {--%>
+<script>
+  document.querySelector('form').addEventListener('submit', function (event) {
 
-<%--    e.preventDefault()--%>
-<%--    const companyName = document.getElementById('companyName').value.trim();--%>
-<%--    const companyUrl = document.getElementById('companyUrl').value.trim();--%>
-<%--    const campaignTitle = document.getElementById('campaignName').value.trim();--%>
-<%--    const productName = document.getElementById('productName').value.trim();--%>
+    // 채널 최소 1개 선택
+    let youtubeCheckbox = document.getElementById('youtube_checkbox').checked;
+    let instagramCheckbox = document.getElementById('instagram_checkbox').checked;
+    let blogCheckbox = document.getElementById('blog_checkbox').checked;
 
-<%--    if (!companyName) {--%>
-<%--      alert("업체명을 입력하세요.");--%>
-<%--      return false;--%>
-<%--    }--%>
-<%--    if (!companyUrl) {--%>
-<%--      alert("업체 URL을 입력하세요.");--%>
-<%--      return false;--%>
-<%--    }--%>
-<%--    if (!campaignTitle) {--%>
-<%--      alert("캠페인 이름을 입력하세요.");--%>
-<%--      return false;--%>
-<%--    }--%>
-<%--    if (!productName) {--%>
-<%--      alert("상품명을 입력하세요.");--%>
-<%--      return false;--%>
-<%--    }--%>
-<%--    if (!fileInput) {--%>
-<%--      alert("상품명을 입력하세요.");--%>
-<%--      return false;--%>
-<%--    }--%>
-<%--    if (!uploadPeriod) {--%>
-<%--      alert("상품명을 입력하세요.");--%>
-<%--      return false;--%>
-<%--    }--%>
-<%--    if (!StartDate) {--%>
-<%--      alert("상품명을 입력하세요.");--%>
-<%--      return false;--%>
-<%--    }--%>
-<%--    if (!EndDate) {--%>
-<%--      alert("상품명을 입력하세요.");--%>
-<%--      return false;--%>
-<%--    }--%>
+    if (!youtubeCheckbox && !instagramCheckbox && !blogCheckbox) {
+      event.preventDefault();
+      alert('최소 하나의 광고 채널을 선택해주세요!');
+      return;
+    }
 
-<%--    // 모든 필드가 채워졌다면 폼을 제출합니다.--%>
-<%--    // document.querySelector('form').submit();--%>
-<%--  }--%>
-<%--</script>--%>
+    // 업체명
+    let companyName = document.getElementById('companyName').value;
+    if (companyName.trim() === '') {
+      event.preventDefault();
+      alert('업체명을 입력해주세요!');
+      return;
+    }
 
+    // 업체 URL
+    let companyUrl = document.getElementById('companyUrl').value;
+    if (companyUrl.trim() === '') {
+      event.preventDefault();
+      alert('업체 URL을 입력해주세요!');
+      return;
+    }
+
+    // 캠페인 이름
+    let campaignName = document.getElementById('campaignName').value;
+    if (campaignName.trim() === '') {
+      event.preventDefault();
+      alert('캠페인 이름을 입력해주세요!');
+      return;
+    }
+
+    // 상품명
+    let productName = document.getElementById('productName').value;
+    if (productName.trim() === '') {
+      event.preventDefault();
+      alert('상품명을 입력해주세요!');
+      return;
+    }
+
+    // 프로필 이미지
+    let profileImage = document.getElementById('fileInput').value;
+    if (profileImage.trim() === '') {
+      event.preventDefault();
+      alert('프로필 이미지를 선택해주세요!');
+      return;
+    }
+
+
+
+    // 업로드 기간
+    let uploadPeriod = document.getElementById('uploadPeriod').value;
+    if (uploadPeriod.trim() === '') {
+      event.preventDefault();
+      alert('업로드 기간을 선택해주세요!');
+      return;
+    }
+
+    // 광고 시작일
+    let startDate = document.getElementById('StartDate').value;
+    if (startDate.trim() === '') {
+      event.preventDefault();
+      alert('광고 시작일을 입력해주세요!');
+      return;
+    }
+
+    // 광고 종료일
+    let endDate = document.getElementById('EndDate').value;
+    if (endDate.trim() === '') {
+      event.preventDefault();
+      alert('광고 종료일을 입력해주세요!');
+      return;
+    }
+
+    // 카테고리 선택
+    let categoryChecked = document.querySelector('input[name="category"]:checked');
+    if (!categoryChecked) {
+      event.preventDefault();
+      alert('카테고리를 선택해주세요!');
+      return;
+    }
+
+    // 요구 사항
+    let requirement = document.querySelector('textarea[name="requirement"]').value;
+    if (requirement.trim() === '') {
+      event.preventDefault();
+      alert('요구 사항을 입력해주세요!');
+      return;
+    }
+
+  });
+</script>
 
 </body>
 </html>
