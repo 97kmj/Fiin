@@ -141,6 +141,7 @@
 }
 
 .influencer_pick {
+	height: 400px;
 	display: flex;
 	flex-direction: column;
 	width: 23%;

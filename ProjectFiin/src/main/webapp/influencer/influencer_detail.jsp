@@ -114,18 +114,18 @@
 												<td>${list.company_name }</td>
 												<td>${list.product_name }</td>
 												<td><fmt:formatDate value="${list.ad_end_date }" pattern="yyyy-MM-dd" /></td>
-												
 												<td>
 												<c:choose>
-													<c:when test="${influencerdetail.requestcheck eq true}">
-														<button type="button" class="requestBtn" data-campaign-num="${list.campaign_num}" data-influencer-num="${influencerdetail.influencer_num }">제안</button>
+													<c:when test="${requestCampaign eq true }">
+														<button type="button" class="requestBtn" data-campaign-num="${list.campaign_num}" data-influencer-num="${influencerdetail.influencer_num }">제안</button>		
 													</c:when>
 													<c:otherwise>
-														<button type="button" class="non_requestBtn" data-campaign-num="${list.campaign_num}" data-influencer-num="${influencerdetail.influencer_num }">제안완료</button>
+														<button type="button" class="nonRequestBtn" data-campaign-num="${list.campaign_num}" data-influencer-num="${influencerdetail.influencer_num }">완료</button>
 													</c:otherwise>
 												</c:choose>
-												</td>
 												
+				
+												</td>
 											</tr>
 										</c:forEach>
 									</tbody>
@@ -271,8 +271,10 @@
 </script>
 <script>
 $(function() {
+	
 	$('.requestBtn').click(function(){
 		
+		var $button = $(this)
 		var requestCampaignNum = $(this).data('campaign-num')
 		var requestInfluencerNum = $(this).data('influencer-num')
 		console.log(requestCampaignNum)
@@ -288,6 +290,24 @@ $(function() {
 			},
 			success:function(result){
 				alert(result)
+				if(result=='캠페인 요청이 성공적으로 처리되었습니다.') {
+					$button.css({
+					'cursor': 'pointer',
+					'width': '50px',
+					'height': '30px',
+					'borderRadius': '10px',
+					'backgroundColor': '#4849e8',
+					'color': 'white'
+					})  
+				} else {
+					$button.css({
+					'width': '50px',
+					'height': '30px',
+					'borderRadius': '10px',
+					'backgroundColor': 'gray',
+					'color': 'white'
+					})
+				}
 			},
 			error:function(err){
 				console.log(err);
