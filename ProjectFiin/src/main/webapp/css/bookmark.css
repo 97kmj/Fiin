@@ -21,7 +21,6 @@
 	flex-direction: row;
 	flex-wrap: wrap;
 	overflow-y: auto;
-	height: 100vh;
 	margin-top: 40px;
 	gap: 20px 15px;
 	height: 800px;

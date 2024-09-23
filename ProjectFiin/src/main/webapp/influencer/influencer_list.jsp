@@ -80,8 +80,11 @@
 		</c:choose>
 		</div>
 		<div class="contents_wrap">
-
-			<div class="influencerWrap" >	
+		
+			<div class="influencerWrap" >
+				<c:if test="${empty influencerList}">
+					<div class="emptyList">인플루언서 목록이 없습니다.</div>
+				</c:if>
 				<c:forEach items="${influencerList}" var="showinfluencer">
 					<div class="influencer_pick" id="pickNum1" OnClick="location.href='influencerDetail?num=' + ${showinfluencer.influencer_num}">
 						<c:if test="${showinfluencer.profile_image ne null }">

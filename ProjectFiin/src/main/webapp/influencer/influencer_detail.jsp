@@ -115,16 +115,16 @@
 												<td>${list.product_name }</td>
 												<td><fmt:formatDate value="${list.ad_end_date }" pattern="yyyy-MM-dd" /></td>
 												<td>
-												<c:choose>
-													<c:when test="${requestCampaign eq true }">
-														<button type="button" class="requestBtn" data-campaign-num="${list.campaign_num}" data-influencer-num="${influencerdetail.influencer_num }">제안</button>		
-													</c:when>
-													<c:otherwise>
-														<button type="button" class="nonRequestBtn" data-campaign-num="${list.campaign_num}" data-influencer-num="${influencerdetail.influencer_num }">완료</button>
-													</c:otherwise>
-												</c:choose>
+													 <button type="button" class="requestBtn" data-campaign-num="${list.campaign_num}" data-influencer-num="${influencerdetail.influencer_num }">제안</button>																		
 												
-				
+													 <%-- <c:choose>
+														<c:when test="${requestScope.requestCampaign == true }">
+															<button type="button" class="requestBtn" data-campaign-num="${list.campaign_num}" data-influencer-num="${influencerdetail.influencer_num }">제안</button>																		
+														</c:when>
+														<c:otherwise>
+															<button class="nonRequestBtn">완료</button>		
+														</c:otherwise>
+													</c:choose>	  --%>										
 												</td>
 											</tr>
 										</c:forEach>
@@ -271,7 +271,7 @@
 </script>
 <script>
 $(function() {
-	
+
 	$('.requestBtn').click(function(){
 		
 		var $button = $(this)
@@ -292,13 +292,14 @@ $(function() {
 				alert(result)
 				if(result=='캠페인 요청이 성공적으로 처리되었습니다.') {
 					$button.css({
-					'cursor': 'pointer',
-					'width': '50px',
-					'height': '30px',
-					'borderRadius': '10px',
-					'backgroundColor': '#4849e8',
-					'color': 'white'
-					})  
+						'width': '50px',
+						'height': '30px',
+						'borderRadius': '10px',
+						'backgroundColor': 'gray',
+						'color': 'white'
+					})
+
+                  
 				} else {
 					$button.css({
 					'width': '50px',
