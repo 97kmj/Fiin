@@ -224,7 +224,9 @@ body {
 .accept:hover {
   cursor: pointer;
 }
-
+.img > img:hover {
+  cursor: pointer;
+}
 .checked {
   border: 2px solid #4849E8;
   border-radius: 10px;
