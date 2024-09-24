@@ -27,7 +27,7 @@
 							OnClick="location.href='influencerDetail?num=' + ${ibookmark.influencer_num}">
 							<c:if test="${ibookmark.profile_image ne null  }">
 								<img src="image?file=${ibookmark.profile_image }"
-									style="width: 200px; height: 270px; border-radius: 20px">
+									style="width: 200px; height: 270px; border-radius: 20px; margin-bottom: 10px; object-fit: fill">
 							</c:if>
 							<div>
 								<c:if test="${ibookmark.youtube ne null }">
