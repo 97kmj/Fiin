@@ -9,9 +9,6 @@ html {
     width: 100%;
 }
 
-body {
-    height: 100%;
-}
 
 #container {
     display: flex;
