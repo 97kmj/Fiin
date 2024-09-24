@@ -25,14 +25,24 @@
 <div id="container">
 	<%@ include file="../include/sidebar_influencer.jsp" %>
 	
-    <div id="main">
+    <div id="${campaignListAccept ne null ?'main':'main2'}">
+
         <h2>나의 요청 현황</h2>
         <div id="filter">
             <a href="mypageCampaignInfluencer?btnType=receive" class="filterbtn <c:if test='${btnType eq "receive"}'>selBtn</c:if>" >신청한 캠페인</a>
             <a href="mypageCampaignInfluencer?btnType=request" class="filterbtn <c:if test='${btnType eq "request"}'>selBtn</c:if>" >요청받은 캠페인</a>
         </div>
-        <div id="mainwrap">
+
+        <div id="mainwrap" >
 	        <h3>신청한 캠페인</h3>
+	        <c:if test="${empty campaignListAccept }">
+	        	<c:if test='${btnType eq "receive"}'>
+        			<div class="emptyCampaignListAccept">현재 신청한 캠페인이 없습니다.</div>
+        		</c:if>
+        		<c:if test='${btnType eq "request"}'>
+        			<div class="emptyCampaignListAccept">현재 요청받은 캠페인이 없습니다.</div>
+        		</c:if>
+       		</c:if>
 	        <div id="campaignwrap" >
 	        	<c:forEach items="${campaignListAccept }" var="campaignListAccept">
 		            <div class="campaign" >

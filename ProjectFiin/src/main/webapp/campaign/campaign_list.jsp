@@ -56,8 +56,11 @@
 		
 		
 			
-		
-		<div id="campaignWrap" style="justify-content: left;">
+
+		<div id="campaignWrap" class="${campaignList ne null ?'':'empty'}" style="justify-content: left;">
+			<c:if test="${empty campaignList }">
+				<div class="emptyCampaignList"> 현재 캠페인이 없습니다.</div>
+			</c:if>
 	 		<c:forEach items="${campaignList }" var="campaign">
 	 			<div class="campaign_pick" onclick="location.href='campaignDetail?campaignNum=${campaign.campaignNum }'">
 					<img src="image?file=${campaign.image}" class="campaign_img" style="width:266px; height:260px; object-fit:cover">

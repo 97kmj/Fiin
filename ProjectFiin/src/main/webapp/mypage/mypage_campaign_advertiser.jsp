@@ -27,6 +27,9 @@
         </div>
         <h3 id="campaigntype" style="font-weight:bold">전체 캠페인</h3>
         <div id="campaignwrap" >
+        <c:if test="${empty campaignList }">
+        	<div>현재 캠페인이 없습니다.</div>
+        </c:if>
         <c:forEach items="${campaignList }" var="campaign">
         	<c:choose>
        		<c:when test="${campaign.isRecruit eq 1}">

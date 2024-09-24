@@ -54,6 +54,14 @@
 	padding: 60px 40px;
 	margin-bottom: 60px;
 }
+#main2 {
+    width: 880px;
+    height: 683px;
+	box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 64px 0px;
+	border-radius: 16px;
+	padding: 60px 40px;
+	margin-bottom: 60px;
+}
 #mainwrap {
     text-align:left;
     border-radius:20px;
@@ -79,6 +87,7 @@
     border-radius:10px;
     margin-top: 20px;
     overflow-y: scroll;
+    max-height:850px;
 }
 .campaign {
     display:flex;
@@ -193,3 +202,11 @@
     color:#4849e8;
 	
 }
+.emptyCampaignListAccept {
+	font-size: 40px;
+    color: #e5e5e5;
+    text-align: center;
+    margin-top: 182px;
+    margin-bottom:182px;
+}
+
