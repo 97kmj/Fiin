@@ -11,9 +11,6 @@ public interface CampaignDao {
 	//상민 - 캠페인 등록
 	void registerCampaign(Campaign campaign) throws Exception;
 
-	//상민 - 캠페인 수정
-	void updateCampaign(Campaign campaign) throws Exception;
-
 	Campaign selectCampaign(Integer campaignNum)throws Exception;
 	Integer selectCampaignCount(List<String> channels, Integer categoryId)throws Exception;
 	List<Campaign> selectCampaignList(Integer row, List<String> channel, Integer categoryId) throws Exception;

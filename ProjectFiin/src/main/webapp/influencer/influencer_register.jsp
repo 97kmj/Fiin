@@ -21,10 +21,9 @@
             <div class="main_first_line">
                 <div class="first_line">
                     <div class="influencer_register">
-
                         <h2>
                             <c:choose>
-                                <c:when test="${influencer.isRegist == 0}">
+                                <c:when test="${influencer.isRegist == 0 || influencer.isRegist == null}">
                                     인플루언서 등록하기
                                 </c:when>
                                 <c:otherwise>
@@ -38,31 +37,33 @@
                         <label for="short_introduction">한 줄 소개</label>
 
                         <input type="text" id="short_introduction" name="introLine"
-                               value="${influencer.introLine}" required>
+                               value="${influencer.introLine}">
 
                     </div>
                 </div>
 
                 <div class="first_line_image">
                     <c:choose>
-                        <c:when test="${influencer.profileImage==null}">
+                        <c:when test="${influencer.profileImage == null}">
                             <input type="file" id="fileInput" name="profileImage"
                                    style="display: none;" value="${influencer.profileImage}"/>
                             <img id="uploadImage"
                                  src="${pageContext.request.contextPath}/image/upload.png"
                                  alt="Upload Image"
                                  style="cursor: pointer; width:250px; height: 250px; border-radius: 20%; margin-right: 20px;"
-                            >
+                                 onclick="document.getElementById('fileInput').click();">
                         </c:when>
                         <c:otherwise>
                             <input type="file" id="fileInput" name="profileImage"
+
                                    style="display: none;" onchange="readURL(this)"
                                    value="${influencer.profileImage}"/>
+
                             <img id="uploadImage"
                                  src="${pageContext.request.contextPath}/image?file=${influencer.profileImage}"
                                  alt="Upload Image"
                                  style="cursor: pointer; border-radius: 20%; width: 250px; height: 250px; margin-right: 20px;"
-                            />
+                                 onclick="document.getElementById('fileInput').click();">
                         </c:otherwise>
                     </c:choose>
                 </div>
@@ -233,16 +234,25 @@
                 <label>
 
                     <textarea class="requirement-field" name="introduction"
-                              placeholder="소개글을 작성 해주세요." required>${influencer.introduction}</textarea>
+                              placeholder="소개글을 작성 해주세요.">${influencer.introduction}</textarea>
 
                 </label>
             </div>
 
             <div class="bottom-button">
-
-                <button class="registerBtn" value="등록">등록하기</button>
+                <button class="registerBtn" value="등록">
+                    <c:choose>
+                        <c:when test="${influencer.isRegist == 0 || influencer.isRegist == null}">
+                            등록하기
+                        </c:when>
+                        <c:otherwise>
+                            수정하기
+                        </c:otherwise>
+                    </c:choose>
+                </button>
                 <button class="backBtn" value="뒤로가기">뒤로 가기</button>
             </div>
+
 
         </form>
 
@@ -263,17 +273,18 @@
 <%@ include file="../include/footer.jsp" %>
 
 <script>
-  //이미지 클릭 시, "찾기"로 이동
-  document.getElementById('uploadImage').addEventListener('click', function () {
-    document.getElementById('fileInput').click();
-  });
-</script>
-
-<script>
   const file = document.getElementById("fileInput");
   const preview = document.getElementById("uploadImage");
 
-  //파일 선택 시 미리보기 업데이트
+  // 페이지 로드 시 기존 이미지를 미리보기로 설정
+  window.onload = function() {
+    const existingImage = "${influencer.profileImage}";
+    if (existingImage) {
+      preview.src = "${pageContext.request.contextPath}/image?file=" + existingImage;
+    }
+  };
+
+  // 파일 선택 시 미리보기 업데이트
   file.addEventListener("change", () => {
     const reader = new FileReader();
     reader.onload = () => {
@@ -285,6 +296,8 @@
     }
   });
 </script>
+
+
 
 <script>
   /* 파일용량 제한*/
@@ -399,7 +412,6 @@
 </script>
 
 <script>
-
   //등록하기 버튼 클릭 시, 모달창 띄우기(포인트 부족) or 등록하기(포인트 충분)
   $(".registerBtn").click(function (e) {
     let isRegist = "${influencer.isRegist}";
@@ -410,7 +422,121 @@
       document.getElementById("pointModal").style.display = "block";
     }
   })
+</script>
 
+<script>
+  // 필드값이 없을 경우, 알림창 띄우기
+  document.querySelector('form').addEventListener('submit', function (event) {
+    // 한 줄 소개
+    let introLine = document.getElementById('short_introduction').value;
+    if (introLine.trim() === '') {
+      event.preventDefault(); // 폼 제출 막기
+      alert('소개글을 입력해주세요!');
+      return;
+    }
+
+    // 프로필 이미지
+    let profileImage = document.getElementById('fileInput').value;
+    if (profileImage.trim() === '') {
+      event.preventDefault(); // 폼 제출 막기
+      alert('프로필 이미지를 선택해주세요!');
+      return;
+    }
+
+    // 유튜브 채널명, 구독자 수, 채널 URL
+    let youtubeCheckbox = document.getElementById('youtube_checkbox').checked;
+    if (youtubeCheckbox) {
+      let youtubeChannel = document.getElementById('youtube_channel').value;
+      let youtubeSubscribers = document.getElementById('youtube_subscriber').value;
+      let youtubeUrl = document.getElementById('youtube_url').value;
+
+      if (youtubeChannel.trim() === '') {
+        event.preventDefault();
+        alert('유튜브 채널명을 입력해주세요!');
+        return;
+      }
+      if (youtubeSubscribers.trim() === '') {
+        event.preventDefault();
+        alert('유튜브 구독자 수를 입력해주세요!');
+        return;
+      }
+      if (youtubeUrl.trim() === '') {
+        event.preventDefault();
+        alert('유튜브 채널 URL을 입력해주세요!');
+        return;
+      }
+    }
+
+    // 인스타그램 채널명, 구독자 수, 채널 URL
+    let instagramCheckbox = document.getElementById('instagram_checkbox').checked;
+    if (instagramCheckbox) {
+      let instagramChannel = document.getElementById('instagram_channel').value;
+      let instagramSubscribers = document.getElementById('instagram_subscriber').value;
+      let instagramUrl = document.getElementById('instagram_url').value;
+
+      if (instagramChannel.trim() === '') {
+        event.preventDefault();
+        alert('인스타그램 채널명을 입력해주세요!');
+        return;
+      }
+      if (instagramSubscribers.trim() === '') {
+        event.preventDefault();
+        alert('인스타그램 구독자 수를 입력해주세요!');
+        return;
+      }
+      if (instagramUrl.trim() === '') {
+        event.preventDefault();
+        alert('인스타그램 채널 URL을 입력해주세요!');
+        return;
+      }
+    }
+
+    // 블로그 채널명, 구독자 수, 채널 URL
+    let blogCheckbox = document.getElementById('blog_checkbox').checked;
+    if (blogCheckbox) {
+      let blogChannel = document.getElementById('blog_channel').value;
+      let blogSubscribers = document.getElementById('blog_subscriber').value;
+      let blogUrl = document.getElementById('blog_url').value;
+
+      if (blogChannel.trim() === '') {
+        event.preventDefault();
+        alert('블로그 채널명을 입력해주세요!');
+        return;
+      }
+      if (blogSubscribers.trim() === '') {
+        event.preventDefault();
+        alert('블로그 구독자 수를 입력해주세요!');
+        return;
+      }
+      if (blogUrl.trim() === '') {
+        event.preventDefault();
+        alert('블로그 채널 URL을 입력해주세요!');
+        return;
+      }
+    }
+
+    if (!youtubeCheckbox && !instagramCheckbox && !blogCheckbox) {
+      event.preventDefault()
+      alert('최소 하나의 채널은 선택되어야 합니다.');
+      return null;
+    }
+
+    // 카테고리 선택
+    let categoryChecked = document.querySelector('input[name="category"]:checked');
+    if (!categoryChecked) {
+      event.preventDefault();
+      alert('카테고리를 선택해주세요!');
+      return;
+    }
+
+    // 소개글
+    let introduction = document.querySelector('textarea[name="introduction"]').value;
+    if (introduction.trim() === '') {
+      event.preventDefault();
+      alert('소개글을 작성해주세요!');
+      return;
+    }
+  });
 </script>
 
 
