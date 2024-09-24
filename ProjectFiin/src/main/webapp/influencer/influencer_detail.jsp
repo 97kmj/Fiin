@@ -24,7 +24,7 @@
 
 	<div class="productimg">
 		<div class="img">
-			<img src="image?file=${influencerdetail.profile_image }" style="width: 380px; height: 280px; border-radius: 10px">
+			<img src="image?file=${influencerdetail.profile_image }" style="width: 380px; height: 380px; border-radius: 10px; margin-left: 10px">
 		</div>
 		<div class="imgtext">
 			<div class="basic_info">

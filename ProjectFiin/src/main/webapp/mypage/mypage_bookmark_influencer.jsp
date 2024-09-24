@@ -20,6 +20,11 @@
 			<div class=bookmark_wrap>
 				<h3>북마크한 캠페인</h3>
 				<div class="bookmark_list">
+				<c:if test="${empty cbookmarkList }">
+					<div class="nonBookmark">
+						북마크한 캠페인이 없습니다.
+					</div>
+				</c:if>
 					<c:forEach var="cbookmark" items="${cbookmarkList }">
 						<div class="bookmark_pick" id="pickNum1"
 							OnClick="location.href='influencerDetail?num=' + ${ibookmark.influencer_num}">
