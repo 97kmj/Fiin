@@ -114,7 +114,18 @@
 												<td>${list.company_name }</td>
 												<td>${list.product_name }</td>
 												<td><fmt:formatDate value="${list.ad_end_date }" pattern="yyyy-MM-dd" /></td>
-												<td><button type="button" class="requestBtn" data-campaign-num="${list.campaign_num}" data-influencer-num="${influencerdetail.influencer_num }">제안</button></td>
+												<td>
+													 <button type="button" class="requestBtn" data-campaign-num="${list.campaign_num}" data-influencer-num="${influencerdetail.influencer_num }">제안</button>																		
+												
+													 <%-- <c:choose>
+														<c:when test="${requestScope.requestCampaign == true }">
+															<button type="button" class="requestBtn" data-campaign-num="${list.campaign_num}" data-influencer-num="${influencerdetail.influencer_num }">제안</button>																		
+														</c:when>
+														<c:otherwise>
+															<button class="nonRequestBtn">완료</button>		
+														</c:otherwise>
+													</c:choose>	  --%>										
+												</td>
 											</tr>
 										</c:forEach>
 									</tbody>
@@ -162,25 +173,28 @@
 	<div class="basic_info2">
 		<br>
 		<div style="font-size: 25px; padding: 10px 40px;">
-			<b>채널명</b>
+			<b>채널</b>
 		</div>
 		<div class="channel_name">
 		<div id="channelVar">
 			<c:if test="${influencerdetail.youtube ne null }">
 				<span id="channelImg"><img src="https://img.icons8.com/?size=60&id=19318&format=png&color=000000"></span>
 				<span id="channelNa">${influencerdetail.youtube_name }</span>
+				<span id="channelUrl">${influencerdetail.youtube_url }<br></span>
 			</c:if>
 		</div>
 		<div id="channelVar">	
 			<c:if test="${influencerdetail.instagram ne null }">
 				<span id="channelImg"><img src="https://img.icons8.com/?size=60&id=Xy10Jcu1L2Su&format=png&color=000000"></span>
 				<span id="channelNa">${influencerdetail.instagram_name }</span>
+				<span id="channelUrl">${influencerdetail.instagram_url } <br></span>
 			</c:if>
 		</div>
 		<div id="channelVar">
 			<c:if test="${influencerdetail.blog ne null }">
 				<span id="channelImg"><img src="${pageContext.request.contextPath}/image/naver.png" style="width: 60px; height: 60px;"/></span>
 				<span id="channelNa">${influencerdetail.blog_name }</span>
+				<span id="channelUrl">${influencerdetail.blog_url }</span>
 			</c:if>
 		</div>
 		</div>
@@ -191,27 +205,7 @@
 		<div class="con_middle">
 			<div class="Introduction" style="word-break: normal;">
 				${influencerdetail.introduction }
-		</div>
-		<div style="font-size: 25px; padding: 10px" >
-			<b>채널 URL</b>
-		</div>
-		<div class="channel_url">
-			<div id="url">
-			<c:if test="${influencerdetail.youtube ne null }">
-				${influencerdetail.youtube_url } <br>
-			</c:if>
-			</div >
-			<div id="url">
-			<c:if test="${influencerdetail.instagram ne null }">
-				${influencerdetail.instagram_url } <br>
-			</c:if>
 			</div>
-			<div id="url">
-			<c:if test="${influencerdetail.blog ne null }">
-				${influencerdetail.blog_url }
-			</c:if>
-			</div>
-		</div>
 		<div style="font-size: 25px; padding: 10px; margin-top: 20px">
 			<b>콘텐츠 활용 안내</b>
 		</div>
@@ -277,8 +271,10 @@
 </script>
 <script>
 $(function() {
+
 	$('.requestBtn').click(function(){
 		
+		var $button = $(this)
 		var requestCampaignNum = $(this).data('campaign-num')
 		var requestInfluencerNum = $(this).data('influencer-num')
 		console.log(requestCampaignNum)
@@ -294,6 +290,25 @@ $(function() {
 			},
 			success:function(result){
 				alert(result)
+				if(result=='캠페인 요청이 성공적으로 처리되었습니다.') {
+					$button.css({
+						'width': '50px',
+						'height': '30px',
+						'borderRadius': '10px',
+						'backgroundColor': 'gray',
+						'color': 'white'
+					})
+
+                  
+				} else {
+					$button.css({
+					'width': '50px',
+					'height': '30px',
+					'borderRadius': '10px',
+					'backgroundColor': 'gray',
+					'color': 'white'
+					})
+				}
 			},
 			error:function(err){
 				console.log(err);

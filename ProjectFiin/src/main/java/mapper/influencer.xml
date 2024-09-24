@@ -81,7 +81,20 @@
 
 	<select id="selectAllInfluencer" parameterType="Map"
 		resultType="Map">
-		select i.*,c.category_name from influencer i join category c
+		select i.*,c.category_name, 
+			CASE 
+      		  WHEN youtube_follower IS NOT NULL AND 
+           		  (youtube_follower >= instagram_follower OR instagram_follower IS NULL) AND 
+           		  (youtube_follower >= blog_follower OR blog_follower IS NULL) THEN youtube_name
+      		  WHEN instagram_follower IS NOT NULL AND 
+            	 (instagram_follower >= youtube_follower OR youtube_follower IS NULL) AND 
+          	     (instagram_follower >= blog_follower OR blog_follower IS NULL) THEN instagram_name
+       		  WHEN blog_follower IS NOT NULL AND 
+            	 (blog_follower >= youtube_follower OR youtube_follower IS NULL) AND 
+             	 (blog_follower >= instagram_follower OR instagram_follower IS NULL) THEN blog_name
+     		  ELSE NULL
+        END AS channel_name 
+		from influencer i join category c
 		using(category_id)
 		<where>
 			 is_regist = 1
@@ -170,7 +183,6 @@
 			select insert(password, 4, 5, '*****') from influencer where user_email = #{userEmail}
 		]]>
 	</select>
-	
 	
 	
 	<!-- 민준 -->
