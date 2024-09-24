@@ -115,16 +115,16 @@
 												<td>${list.product_name }</td>
 												<td><fmt:formatDate value="${list.ad_end_date }" pattern="yyyy-MM-dd" /></td>
 												<td>
-													 <button type="button" class="requestBtn" data-campaign-num="${list.campaign_num}" data-influencer-num="${influencerdetail.influencer_num }">제안</button>																		
+													<button type="button" class="requestBtn" data-campaign-num="${list.campaign_num}" data-influencer-num="${influencerdetail.influencer_num }">제안</button>										
 												
-													 <%-- <c:choose>
-														<c:when test="${requestScope.requestCampaign == true }">
+<%-- 													 <c:choose>
+														<c:when test="${modalSuccess eq null  }">
 															<button type="button" class="requestBtn" data-campaign-num="${list.campaign_num}" data-influencer-num="${influencerdetail.influencer_num }">제안</button>																		
 														</c:when>
 														<c:otherwise>
 															<button class="nonRequestBtn">완료</button>		
 														</c:otherwise>
-													</c:choose>	  --%>										
+													</c:choose>	  --%> 										
 												</td>
 											</tr>
 										</c:forEach>
