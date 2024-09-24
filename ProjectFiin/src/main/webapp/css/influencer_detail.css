@@ -248,7 +248,7 @@
 	transition: box-shadow 0.2s;
 }
 
- .requestBtn {
+.requestBtn {
 	cursor: pointer;
 	width: 50px;
 	height: 30px;
@@ -256,6 +256,7 @@
 	background-color: #4849e8;
 	color: white;
 }
+
 .nonRequestBtn {
     width: 50px;
     height: 30px;

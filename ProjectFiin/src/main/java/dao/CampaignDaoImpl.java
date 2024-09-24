@@ -88,8 +88,11 @@ public class CampaignDaoImpl implements CampaignDao {
 	}
 
 	@Override
-	public List<Campaign> selectCampaignListForRequest(Integer advertiserNum) throws Exception {
-		return sqlSession.selectList("mapper.campaign.selectCampaignForRequest",advertiserNum);
+	public List<Map<String,Integer>> selectCampaignListForRequest(Integer advertiserNum, Integer influencerNum) throws Exception {
+		Map<String, Integer> param = new HashMap<>();
+		param.put("advertiser_num", advertiserNum);
+		param.put("influencer_num", influencerNum);
+		return sqlSession.selectList("mapper.campaign.selectCampaignForRequest",param);
 	}
 
 	@Override

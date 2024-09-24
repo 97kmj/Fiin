@@ -9,5 +9,6 @@ public interface RequestCampaignDao {
 	void deleteRequestCampaign(Integer influencerNum, Integer campaignNum) throws Exception;
 	void updateRequestCampaignAccept(Integer requestNum)throws Exception;
 	
+	
 	List<Map<String,Object>> selectRequestCampaignList(Integer advertiserNum) throws Exception;
 }

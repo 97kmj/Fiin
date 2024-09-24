@@ -12,6 +12,16 @@
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/css/influencer_detail.css?after">
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<style>
+	.selRequestBtn {
+		cursor: pointer;
+		width: 50px;
+		height: 30px;
+		border-radius: 10px;
+		background-color: lightgray;
+		color: white;
+	}
+</style>
 </head>
 <body>
 	<%@ include file="../include/header.jsp"%>
@@ -115,16 +125,14 @@
 												<td>${list.product_name }</td>
 												<td><fmt:formatDate value="${list.ad_end_date }" pattern="yyyy-MM-dd" /></td>
 												<td>
-													<button type="button" class="requestBtn" data-campaign-num="${list.campaign_num}" data-influencer-num="${influencerdetail.influencer_num }">제안</button>										
-												
-<%-- 													 <c:choose>
-														<c:when test="${modalSuccess eq null  }">
-															<button type="button" class="requestBtn" data-campaign-num="${list.campaign_num}" data-influencer-num="${influencerdetail.influencer_num }">제안</button>																		
+													<c:choose>
+														<c:when test="${list.isReq == 1}">
+															<button type="button" class="selRequestBtn" data-campaign-num="${list.campaign_num}" data-influencer-num="${influencerdetail.influencer_num }" disabled>제안</button>										
 														</c:when>
 														<c:otherwise>
-															<button class="nonRequestBtn">완료</button>		
+															<button type="button" class="requestBtn" data-campaign-num="${list.campaign_num}" data-influencer-num="${influencerdetail.influencer_num }">제안</button>										
 														</c:otherwise>
-													</c:choose>	  --%> 										
+													</c:choose>
 												</td>
 											</tr>
 										</c:forEach>
@@ -271,6 +279,18 @@
 </script>
 <script>
 $(function() {
+	
+	/* $(function() {
+	    // 페이지 로드 시 버튼 상태 설정
+	    $('.requestBtn').each(function() {
+	        var requestCampaignNum = $(this).data('campaign-num');
+	        var requestInfluencerNum = $(this).data('influencer-num');
+
+	        // 세션 스토리지에서 상태를 체크하여 버튼 상태 변경
+	        if (sessionStorage.getItem(`request_${requestInfluencerNum}_${requestCampaignNum}`) === 'true') {
+	            changeButtonStyle($(this));
+	        }
+	    }); */
 
 	$('.requestBtn').click(function(){
 		
@@ -289,25 +309,12 @@ $(function() {
 				influencerNum:requestInfluencerNum
 			},
 			success:function(result){
-				alert(result)
-				if(result=='캠페인 요청이 성공적으로 처리되었습니다.') {
-					$button.css({
-						'width': '50px',
-						'height': '30px',
-						'borderRadius': '10px',
-						'backgroundColor': 'gray',
-						'color': 'white'
-					})
-
-                  
+				if(result=='true') {
+					alert("캠페인 요청이 성공적으로 처리되었습니다.");
+					$button.addClass("selRequestBtn");
+					$button.attr("disabled", true);
 				} else {
-					$button.css({
-					'width': '50px',
-					'height': '30px',
-					'borderRadius': '10px',
-					'backgroundColor': 'gray',
-					'color': 'white'
-					})
+					alert("이미 요청하였습니다.");
 				}
 			},
 			error:function(err){
@@ -315,6 +322,15 @@ $(function() {
 			}
 		})
 	})
+/* 	    function changeButtonStyle(button) {
+        button.css({
+            'width': '50px',
+            'height': '30px',
+            'borderRadius': '10px',
+            'backgroundColor': 'gray',
+            'color': 'white'
+        }).removeClass('requestBtn').addClass('nonRequestBtn').text('완료');
+    } */
 })
 </script>
 
