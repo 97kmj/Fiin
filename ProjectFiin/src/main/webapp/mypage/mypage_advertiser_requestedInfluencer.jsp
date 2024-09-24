@@ -29,7 +29,7 @@
 					</div>
 					<div class="card">
 					<div class="profile_img">
-						<img src="image?file=${request.profile_image }"	style="width: 200px; height: 200px" onClick="location.href='influencerDetail?num=' + ${request.influencer_num}">
+						<img src="image?file=${request.profile_image }" style="width:200px;height:200px;object-fit:cover;" onClick="location.href='influencerDetail?num=' + ${request.influencer_num}">
 					</div>
 					<div class="category" >
 						<c:if test="${request.youtube ne null }">

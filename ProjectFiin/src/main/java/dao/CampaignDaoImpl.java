@@ -97,4 +97,9 @@ public class CampaignDaoImpl implements CampaignDao {
 		return sqlSession.selectList("mapper.campaign.selectCampaignForBookmark",influencerNum);
 	}
 
+	
+	@Override
+	public Campaign selectCampaignByCampaignNum(Integer campaignNum) throws Exception {
+		return sqlSession.selectOne("mapper.campaign.selectCampaignByCampaignNum", campaignNum);
+	}
 }

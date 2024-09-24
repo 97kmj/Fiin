@@ -24,4 +24,10 @@ public interface CampaignDao {
 	void updatecampaignIsRecruit(Integer campaignNum,Integer status) throws Exception;
 	List<Campaign> selectCampaignListForRequest(Integer advertiserNum)throws Exception;
 	List<Campaign> bookmarkCampaignForMypage(Integer influencerNum) throws Exception;
+	
+	
+	Campaign selectCampaignByCampaignNum(Integer campaignNum) throws Exception;
+	
 }
+
+

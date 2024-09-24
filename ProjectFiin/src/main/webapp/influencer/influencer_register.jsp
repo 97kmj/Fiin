@@ -46,7 +46,7 @@
                     <c:choose>
                         <c:when test="${influencer.profileImage == null}">
                             <input type="file" id="fileInput" name="profileImage"
-                                   style="display: none;"/>
+                                   style="display: none;" value="${influencer.profileImage}"/>
                             <img id="uploadImage"
                                  src="${pageContext.request.contextPath}/image/upload.png"
                                  alt="Upload Image"
@@ -55,7 +55,10 @@
                         </c:when>
                         <c:otherwise>
                             <input type="file" id="fileInput" name="profileImage"
-                                   style="display: none;"/>
+
+                                   style="display: none;" onchange="readURL(this)"
+                                   value="${influencer.profileImage}"/>
+
                             <img id="uploadImage"
                                  src="${pageContext.request.contextPath}/image?file=${influencer.profileImage}"
                                  alt="Upload Image"
