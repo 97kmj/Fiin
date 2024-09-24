@@ -96,19 +96,23 @@ public class CampaignServiceImpl implements CampaignService {
 
   // 상민 - 캠페인 등록 시 사용
   @Override
-  public Campaign campaignRegister(Campaign campaign) throws Exception {
+  public Campaign campaignRegister(Campaign campaign, int addUploadPeriod) throws Exception {
     //캠페인 정보 저장
     campaignDao.registerCampaign(campaign);
-    //광고주 포인트 기록,차감
-    pointRecordDao.insertPointRecord("advertiser", campaign.getAdvertiserNum(), -500, "캠페인 등록");
-    pointRecordDao.updatePointBalance("advertiser", campaign.getAdvertiserNum(), -500);
-    return campaign;
-  }
 
-  // 상민 - 캠페인 수정 시 사용
-  @Override
-  public Campaign campaignUpdate(Campaign campaign) throws Exception {
-    campaignDao.updateCampaign(campaign);
+    //광고주 포인트 기록,차감
+    int pointAmount = 0;
+    if(addUploadPeriod == 7){
+       pointAmount = -500;
+    } else if(addUploadPeriod == 14){
+       pointAmount = -1000;
+    } else if(addUploadPeriod == 21){
+       pointAmount = -1500;
+    } else if(addUploadPeriod == 28){
+       pointAmount = -1800;
+    }
+    pointRecordDao.insertPointRecord("advertiser", campaign.getAdvertiserNum(), pointAmount, "캠페인 등록");
+    pointRecordDao.updatePointBalance("advertiser", campaign.getAdvertiserNum(), pointAmount);
     return campaign;
   }
 
@@ -130,5 +134,9 @@ public class CampaignServiceImpl implements CampaignService {
     return campaignDao.selectCampaignListRequest(influencerNum);
   }
 
+  //민준 - 캠페인 모든 정보 가져올때 사용 
+  public Campaign campaignDetail(Integer campaignNum) throws Exception {
+	    return campaignDao.selectCampaignByCampaignNum(campaignNum);
+  }
 
 }

@@ -26,13 +26,6 @@ public class CampaignDaoImpl implements CampaignDao {
 		sqlSession.commit();
 	}
 
-	//상민 - 캠페인 수정
-	@Override
-	public void updateCampaign(Campaign campaign) throws Exception {
-		sqlSession.update("mapper.campaign.updateCampaign", campaign);
-		sqlSession.commit();
-	}
-
 	@Override
 	public Campaign selectCampaign(Integer campaignNum) throws Exception {
 		return sqlSession.selectOne("mapper.campaign.selectCampaign", campaignNum);
@@ -104,4 +97,9 @@ public class CampaignDaoImpl implements CampaignDao {
 		return sqlSession.selectList("mapper.campaign.selectCampaignForBookmark",influencerNum);
 	}
 
+	
+	@Override
+	public Campaign selectCampaignByCampaignNum(Integer campaignNum) throws Exception {
+		return sqlSession.selectOne("mapper.campaign.selectCampaignByCampaignNum", campaignNum);
+	}
 }

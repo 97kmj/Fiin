@@ -40,30 +40,6 @@
 	</insert>
 
 
-
-<!--	// 상민 - campaignUpdate (캠페인 수정하기) -->
-	<update id="updateCampaign" parameterType="campaign">
-		UPDATE campaign
-		set
-			company_name = #{companyName},
-			company_url = #{companyUrl},
-			campaign_title = #{campaignTitle},
-			product_name = #{productName},
-			update_start_date = #{updateStartDate},
-			update_end_date = #{updateEndDate},
-			channel = #{channel},
-# 			ad_start_date = #{adStartDate},
-# 			ad_end_date = #{adEndDate},
-			image = #{image},
-			category_id = #{categoryId},
-			requirement = #{requirement},
-		  advertiser_num = #{advertiserNum}
-
-		WHERE campaign_num = #{campaignNum}
-	</update>
-
-
-
 	<!--준영-->
 	<select id="selectCampaign" parameterType="Integer" resultType="campaign">											
 		<![CDATA[
@@ -87,6 +63,9 @@
 		 	
 		]]>
 	</select>
+	
+	
+	
 	
 	<select id="selectAllCampaign" parameterType="Map" resultType="campaign">
 		select 
@@ -165,10 +144,14 @@
 	<select id="selectCampaignByAdNum" parameterType="integer" resultType="campaign">
 		select * from campaign where advertiser_num = #{advertiserNum} order by update_start_date desc 
 	</select>
+	<select id="selectCampaignByCampaignNum" parameterType="integer" resultType="campaign">
+		select * from campaign where campaign_num = #{campaignNum}
+	</select>
 	
 		<!-- 세원 -->
 	<select id="selectCampaignForRequest" parameterType="integer" resultType="Map">
-		select company_name, campaign_title, product_name, ad_end_date, campaign_num  from campaign where advertiser_num = #{advertiser_num}
+		select company_name, campaign_title, product_name, ad_end_date, campaign_num  
+		from campaign where advertiser_num = #{advertiser_num}
 		order by update_start_date desc 		
 	</select>
 	

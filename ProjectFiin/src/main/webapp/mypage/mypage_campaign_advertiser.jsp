@@ -40,8 +40,8 @@
        		</c:otherwise>
         	</c:choose>
         			<div class="card" id="${campaign.campaignNum }">
-						<div class="img"><img src="image?file=${campaign.image}" style="width:200px;height:200px" onclick="location.href='campaignDetail?campaignNum=${campaign.campaignNum }'"/></div>
-		                <div class="name">${campaign.campaignTitle }</div>
+						<div class="img"><img src="image?file=${campaign.image}" style="width:200px;height:200px;object-fit:cover;" onclick="location.href='campaignDetail?campaignNum=${campaign.campaignNum }'"/></div>
+		                <div class="name" style="text-align:center">${campaign.campaignTitle }</div>
 		                <div class="date"><fmt:formatDate value="${campaign.adStartDate }" pattern="yyyy-MM-dd"/> ~ <fmt:formatDate value="${campaign.adEndDate }" pattern="yyyy-MM-dd"/></div>
 		                <button class="email btn">이메일발송</button>
 		                <button class="apply btn">신청 목록</button>      

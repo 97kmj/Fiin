@@ -82,11 +82,13 @@ public class InfluencerServiceImpl implements InfluencerService {
 	@Override
 	public Influencer influencerRegister(Influencer influencer) throws Exception {
 		//인플루언서 정보 저장
-		System.out.println("influencer service = " + influencer);
 		influencerDao.registerInfluencer(influencer);
 
+		//인플루언서 수정하는 경우에는 포인트 차감 x
+		if(influencer.getIsRegist() == null || influencer.getIsRegist() == 0){
 		//인플루언서 포인트 기록, 차감
-		pointRecordDao.insertPointRecord("influencer", influencer.getInfluencerNum(), -500, "인플루언서 등록");
+			pointRecordDao.insertPointRecord("influencer", influencer.getInfluencerNum(), -500, "인플루언서 등록");
+		}
 		return influencer;
 	}
 
@@ -112,9 +114,12 @@ public class InfluencerServiceImpl implements InfluencerService {
 		
 		Integer row = (pageInfo.getCurPage()-1)*8+1;
 		
+		
+		
 		List<Map<String,Object>> influencerList = influencerDao.selectAllInfluencer(row, keyword, channels, categoryId);
 		return influencerList;
-			
+		
+		
 	}
 
   @Override
@@ -166,7 +171,7 @@ public class InfluencerServiceImpl implements InfluencerService {
 	public List<Influencer> influencerBookmarkForMypage(Integer advertiserNum) throws Exception {
 		return influencerDao.bookmarkInfluecerForMypage(advertiserNum);
 	}
-	
+
 }
 
 

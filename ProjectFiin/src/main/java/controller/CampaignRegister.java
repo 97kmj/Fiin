@@ -68,7 +68,10 @@ public class CampaignRegister extends HttpServlet {
 
       // 업로드 기간 가져오기
       String uploadPeriodValue = multi.getParameter("uploadPeriod");
+      System.out.println("uploadPeriodValue = " + uploadPeriodValue); // 14로 나옴
+
       int addUploadPeriod = Integer.parseInt(uploadPeriodValue);
+      System.out.println("addUploadPeriod = " + addUploadPeriod); // 여기도 14로 나옴
 
       // 현재 날짜를 업로드 시작 날짜로 설정
       LocalDate updateStartDateLocalDate = LocalDate.now();
@@ -112,7 +115,6 @@ public class CampaignRegister extends HttpServlet {
       String adendDate = multi.getParameter("adEndDate");
       campaign.setAdEndDate(Timestamp.valueOf(adendDate));
 
-
       String requirement = multi.getParameter("requirement");
       campaign.setRequirement(requirement);
 
@@ -124,9 +126,11 @@ public class CampaignRegister extends HttpServlet {
       // 데이터 처리하기 : Model
       CampaignService service = new CampaignServiceImpl();
 
-      // 캠페인 최초 등록 여부 체크 (포인트 차감)
-        advertiser.setPointBalance(advertiser.getPointBalance() - 500);
-        service.campaignRegister(campaign);
+      // 캠페인 포인트 차감/ session에만 차감 됨 (등록 시 마다 차감)
+      advertiser.setPointBalance(advertiser.getPointBalance() - 500);
+
+      service.campaignRegister(campaign, addUploadPeriod);
+
 
       System.out.println("campaign = " + campaign);
 
