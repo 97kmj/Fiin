@@ -48,22 +48,50 @@
 					<span>유튜브</span>
 				</label>
 			</div>
-			<button id="registerButton" >캠페인 등록하기</button>
+			<c:if test="${type eq 'advertiser'}">
+				<button id="registerButton" >캠페인 등록하기</button>
+			</c:if>
 		</div>
 		</form>
 		
 		
 			
-		
-		<div id="campaignWrap" style="justify-content: left;">
+
+		<div id="campaignWrap" class="${campaignList ne null ?'':'empty'}" style="justify-content: left;">
+			<c:if test="${empty campaignList }">
+				<div class="emptyCampaignList"> 현재 캠페인이 없습니다.</div>
+			</c:if>
 	 		<c:forEach items="${campaignList }" var="campaign">
 	 			<div class="campaign_pick" onclick="location.href='campaignDetail?campaignNum=${campaign.campaignNum }'">
-					<img src="image?file=${campaign.image}" class="campaign_img">
-					<div> ${campaign.channel } | ${categoryList.get(campaign.categoryId-1).category_name }</div>
-					<div id="channelName">${campaign.companyName }</div>
-					<div id="title">${campaign.productName }</div>
-					<div id= "campaigndate">광고기간</div>
-					<div>
+					<img src="image?file=${campaign.image}" class="campaign_img" style="width:266px; height:260px; object-fit:cover">
+					<div class="campaign_sns">
+						<div class="campaign_sns">
+							<div style="magin:15px; height:25px;">
+								<b>광고채널 </b>
+							</div>
+							&nbsp;<div style="magin:15px; height:25px;">
+							<c:forEach items="${campaign.channel.split(' ')}" var="channel">
+				                <c:if test="${channel.equals('블로그')}">
+				                	<img src="${pageContext.request.contextPath}/image/naver.png" style="width: 25px; height: 25px;"/>
+				                </c:if>
+				                <c:if test="${channel.equals('인스타그램')}">
+				                    <img src="https://img.icons8.com/?size=25&id=Xy10Jcu1L2Su&format=png&color=000000">
+				                </c:if>
+				                <c:if test="${channel.equals('유튜브')}">
+				                    <img src="https://img.icons8.com/?size=25&id=19318&format=png&color=000000">
+				                </c:if>           	
+				            </c:forEach>
+				            </div>
+				        </div>
+			            <div class="category"> ${categoryList.get(campaign.categoryId-1).category_name }</div>
+					</div>
+					
+					
+					
+					
+					<div class="title"><b>캠페인명</b> ${campaign.campaignTitle }</div>
+					<div class="title"><b>광고상품</b> ${campaign.productName }</div>
+					<div class="title"><b>광고기간</b>
 						<fmt:formatDate value="${campaign.adStartDate}" pattern="yyyy-MM-dd" /> ~ <fmt:formatDate value="${campaign.adEndDate}"
 									pattern="yyyy-MM-dd" />
 					</div>

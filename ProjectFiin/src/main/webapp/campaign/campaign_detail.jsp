@@ -152,7 +152,7 @@
 				</div>
 
 				<div style="font-size:25px; padding : 10px 40px;"><b>업체 URL</b></div>
-				<div class="prodname">www.naver.com</div>
+				<div class="prodname">${campaign.companyUrl }</div>
 				<br>
 				<div style="font-size:25px; padding : 10px 40px;"><b>콘텐츠 활용 안내</b></div>
 				<div class="content">캠페인에 선정되어 작성한 인플루언서 콘텐츠는 회사와 광고주가 활용할 수 있습니다. <br>
