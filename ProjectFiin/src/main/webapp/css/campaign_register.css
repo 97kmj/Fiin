@@ -247,12 +247,14 @@ input[type="checkbox"] {
   margin-top: 40px;
   margin-bottom: 20px;
   padding-left: 80px;
+
+  margin-left: 50px;
 }
 
 /* 제목 스타일 */
 #adChannel h1 {
   margin-bottom: 20px; /* 제목과 폼 사이의 간격 */
-  margin-right: 30px;
+  margin-right: 60px;
 }
 
 /* 광고 채널 항목을 가로로 나열 */
@@ -279,8 +281,8 @@ input[type="checkbox"] {
   justify-content: flex-start;
   /*margin-top: px;*/
   /*margin-bottom: 40px;*/
-  width: 100%;
-  margin-left: 100px;
+  width: 850px;
+  margin-left: 60px;
 }
 
 .companyInfo {
@@ -293,11 +295,31 @@ input[type="checkbox"] {
   width: 100%;
 }
 
-.companyInfo img {
-  margin-right: 100px;
+.imgForm {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
+  width: 250px;
+  height: 250px;
+  margin-left: 25px;
   margin-top: 50px;
-  margin-bottom: 200px;
 }
+
+.imgForm img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  border-radius: 10px;
+}
+
+/*.companyInfo img {*/
+/*  !*margin-right: 100px;*!*/
+/*  margin-top: 50px;*/
+/*  margin-bottom: 200px;*/
+/*}*/
 
 /*// input 필드 부분 */
 /*#companyName {*/
@@ -330,8 +352,7 @@ form {
   margin-bottom: 20px;
   /*margin-left: 80px;*/
   /*margin-right: 0;*/
-  width: 90%;
-  /*background-color: greenyellow;*/
+  width: 850px;
 }
 
 .form-group label {
@@ -465,7 +486,8 @@ form {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 150%;
+  width: 650px;
+
   height: 60px;
   border: 1px solid #ccc; /* 필요에 따라 조정 */
   border-radius: 8px; /* 모서리 둥글게 */
@@ -474,6 +496,7 @@ form {
 
   box-sizing: border-box; /* 패딩과 테두리를 포함하여 총 너비를 계산 */
   margin-left: 40px;
+
 }
 
 #uploadPeriod {
@@ -516,6 +539,8 @@ form {
 #uploadImage {
   cursor: pointer; /* 클릭 가능한 이미지에 손가락 모양 커서 적용 */
   margin-bottom: 90px;
+  margin-right: 30px;
+  width: 180px;
 }
 
 .containerInfo {

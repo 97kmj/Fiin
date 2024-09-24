@@ -1,3 +1,18 @@
+html {
+    height: 100%;
+}
+
+.footer {
+    margin-top: auto; /* footer가 화면 하단에 고정되도록 */
+    background-color: #f5f5f5;
+    text-align: center;
+    width: 100%;
+}
+
+body {
+    height: 100%;
+}
+
 #container {
     display: flex;
     margin-top:80px;

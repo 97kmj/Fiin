@@ -45,6 +45,7 @@ public class InfluencerRegister extends HttpServlet {
       throws ServletException, IOException {
     request.setCharacterEncoding("UTF-8");
     String realFolder = request.getServletContext().getRealPath("/upload");
+
     //업로드
     MultipartRequest multi = new MultipartRequest(request, realFolder, 5 * 1024 * 1024, "UTF-8",
         new DefaultFileRenamePolicy());
@@ -55,8 +56,10 @@ public class InfluencerRegister extends HttpServlet {
       if (influencer == null) {
         throw new Exception("로그인 처리 필요");
       }
+
       String introLine = multi.getParameter("introLine");
       influencer.setIntroLine(introLine);
+
       if(multi.getFile("profileImage") != null && multi.getFile("profileImage").exists()) {
         String profileImage = multi.getOriginalFileName("profileImage");
         influencer.setProfileImage(profileImage);
@@ -122,9 +125,16 @@ public class InfluencerRegister extends HttpServlet {
       if (influencer.getIsRegist() == null || influencer.getIsRegist() == 0) {
         influencer.setIsRegist(1);
         influencer.setRegistDate(Timestamp.valueOf(LocalDateTime.now()));
+
+        //influencer session에서만 차감됨.
         influencer.setPointBalance(influencer.getPointBalance() - 500);
       }
+
+      //최초 등록시에만 포인트 차감하기
       service.influencerRegister(influencer);
+
+      // 업데이트된 influencer 객체를 세션에 다시 저장
+      request.getSession().setAttribute("influencer", influencer);
 
       response.sendRedirect("influencerList");
 
