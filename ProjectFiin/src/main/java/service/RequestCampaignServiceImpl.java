@@ -38,4 +38,5 @@ public class RequestCampaignServiceImpl implements RequestCampaignService {
 	public List<Map<String,Object>> getRequestInfluencerList(Integer advertiserNum) throws Exception {
 		return requestCampaignDao.selectRequestCampaignList(advertiserNum);
 	}
+
 }

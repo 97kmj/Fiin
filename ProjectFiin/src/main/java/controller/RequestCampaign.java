@@ -55,13 +55,7 @@ public class RequestCampaign extends HttpServlet {
 			request.setAttribute("advertiserNum", advertiserNum);
 			request.setAttribute("campaignNum", requestCampaignNum);
 
-			if(requestCampaign == true) {
-				response.getWriter().write("캠페인 요청이 성공적으로 처리되었습니다.");
-				
-			} else {
-				response.getWriter().write("이미 제안한 캠페인입니다.");
-				
-			}
+			response.getWriter().write(String.valueOf(requestCampaign));
 			
 		} catch(Exception e) {
 			e.printStackTrace();

@@ -122,8 +122,8 @@ public class CampaignServiceImpl implements CampaignService {
   }
 
   @Override
-  public List<Campaign> campaignListForRequest(Integer advertiserNum) throws Exception {
-    return campaignDao.selectCampaignListForRequest(advertiserNum);
+  public List<Map<String,Integer>> campaignListForRequest(Integer advertiserNum, Integer influencerNum) throws Exception {
+    return campaignDao.selectCampaignListForRequest(advertiserNum, influencerNum);
   }
 
   public List<Campaign> campaignBookmarkForMypage(Integer influencerNum) throws Exception {

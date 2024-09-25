@@ -248,7 +248,7 @@
 	transition: box-shadow 0.2s;
 }
 
- .requestBtn {
+.requestBtn {
 	cursor: pointer;
 	width: 50px;
 	height: 30px;
@@ -256,11 +256,14 @@
 	background-color: #4849e8;
 	color: white;
 }
+
 .nonRequestBtn {
-	width: 50px;
-	height: 30px;
-	border-radius: 10px;
-	background-color: gray;
+    width: 50px;
+    height: 30px;
+    border-radius: 10px;
+    background-color: gray;
+    color: white;
+    cursor: not-allowed; /* 클릭할 수 없는 상태를 나타냄 */
 }
 .modal table {
 	width: 900px;

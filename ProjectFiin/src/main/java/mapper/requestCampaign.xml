@@ -9,7 +9,7 @@
 	</insert>
 	
 	<select id="selectRequestCampaign" parameterType="Map" resultType="Integer">
-		select influencer_num, campaign_num from request_campaign 
+		select request_num, influencer_num, campaign_num from request_campaign 
 		where campaign_num = #{campaignNum} and influencer_num = #{influencerNum}	
 	</select>
 	
@@ -24,6 +24,9 @@
 			where request_num=#{requestNum}
 		]]>
 	</update>
+	
+
+	
 	
 	<select id="selectRequestCampaignList" parameterType="Integer" resultType="Map">
 		select i.* ,r.request_num,r.accept, c.campaign_title,c.campaign_num

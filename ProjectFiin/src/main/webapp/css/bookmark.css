@@ -47,3 +47,11 @@
     text-overflow: ellipsis;
     word-break: break-all;
 }
+.nonBookmark {
+	margin-left: 40px;
+	margin-top: 40px;
+	padding: 200px;
+	font-size: 30px;
+	font-weight: bold;
+	color: #e5e5e5;
+}

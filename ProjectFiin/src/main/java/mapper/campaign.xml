@@ -149,10 +149,11 @@
 	</select>
 	
 		<!-- 세원 -->
-	<select id="selectCampaignForRequest" parameterType="integer" resultType="Map">
-		select company_name, campaign_title, product_name, ad_end_date, campaign_num  
-		from campaign where advertiser_num = #{advertiser_num}
-		order by update_start_date desc 		
+	<select id="selectCampaignForRequest" parameterType="Map" resultType="Map">
+		SELECT c.*, 
+			(SELECT COUNT(*) FROM request_campaign r WHERE r.campaign_num=c.campaign_num AND r.influencer_num=#{influencer_num}) AS isReq 
+		FROM campaign c
+		WHERE c.advertiser_num=#{advertiser_num}; 		
 	</select>
 	
 	<select id="selectCampaignForBookmark" parameterType="Integer" resultType="Map">

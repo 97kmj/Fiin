@@ -91,28 +91,32 @@
 
 						<img src="image?file=${showinfluencer.profile_image }" class="influencer_img" style="width:100%;height:250px;object-fit:cover">
 						</c:if>
-						<div>
-							
-							<c:if test="${showinfluencer.youtube ne null }">
-								<%-- <c:out value="유튜브"/> --%>
-								<img src="https://img.icons8.com/?size=25&id=19318&format=png&color=000000">
-							</c:if>
-							
-							
-							<c:if test="${showinfluencer.instagram ne null }">
-								<%-- <c:out value="인스타그램"/> --%>
-								<img src="https://img.icons8.com/?size=25&id=Xy10Jcu1L2Su&format=png&color=000000">
-							</c:if>
-							
-							
-							<c:if test="${showinfluencer.blog ne null }">
-								<%-- <c:out value="블로그"/> --%>
-								<img src="${pageContext.request.contextPath}/image/naver.png" style="width: 25px; height: 25px;"/>
-							</c:if>
-							
+						<div id="mixBar">
+							<div style="width: 150px">
+
+								<c:if test="${showinfluencer.youtube ne null }">
+									<%-- <c:out value="유튜브"/> --%>
+									<img
+										src="https://img.icons8.com/?size=25&id=19318&format=png&color=000000">
+								</c:if>
+
+
+								<c:if test="${showinfluencer.instagram ne null }">
+									<%-- <c:out value="인스타그램"/> --%>
+									<img
+										src="https://img.icons8.com/?size=25&id=Xy10Jcu1L2Su&format=png&color=000000">
+								</c:if>
+
+
+								<c:if test="${showinfluencer.blog ne null }">
+									<%-- <c:out value="블로그"/> --%>
+									<img src="${pageContext.request.contextPath}/image/naver.png"
+										style="width: 25px; height: 25px;" />
+								</c:if>
+
+							</div>
+							<span id="categoryDeco">${showinfluencer.category_name }</span>
 						</div>
-						 ${showinfluencer.category_name }
-						
 						<div id="channelName">
 						${showinfluencer.channel_name }
 <%--  							<c:if test="${showinfluencer.youtube_name ne null }">

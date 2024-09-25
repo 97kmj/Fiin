@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dto.Advertiser;
-import dto.Campaign;
+
 import service.CampaignService;
 import service.CampaignServiceImpl;
 import service.InfluencerService;
@@ -53,8 +53,10 @@ public class InfluencerDetail extends HttpServlet {
 			
 			if(advertiser != null) {
 				Integer advertiserNum = advertiser.getAdvertiserNum();
-				List<Campaign> campaignRequest = cservice.campaignListForRequest(advertiserNum);
-				System.out.println(campaignRequest.toString());
+				List<Map<String,Integer>> campaignRequest = cservice.campaignListForRequest(advertiserNum, influencerNum);
+				System.out.println("============");
+				System.out.println(campaignRequest);
+				System.out.println("============");
 				
 				ibookmarkNum = service.checkBookmarkInfluencer(advertiser.getAdvertiserNum(), influencerNum);
 				request.setAttribute("bookmarkInfluencer", String.valueOf(ibookmarkNum!=null));

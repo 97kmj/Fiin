@@ -22,29 +22,32 @@
 			<div class=bookmark_wrap>
 				<h3>북마크한 인플루언서</h3>
 				<div class="bookmark_list">
+					<c:if test="${empty ibookmarkList }">
+						<div class="nonBookmark">북마크한 캠페인이 없습니다.</div>
+					</c:if>
 					<c:forEach var="ibookmark" items="${ibookmarkList }">
 						<div class="bookmark_pick" id="pickNum1"
 							OnClick="location.href='influencerDetail?num=' + ${ibookmark.influencer_num}">
 							<c:if test="${ibookmark.profile_image ne null  }">
 								<img src="image?file=${ibookmark.profile_image }"
-									style="width: 200px; height: 270px; border-radius: 20px">
+									style="width: 200px; height: 270px; border-radius: 20px; margin-bottom: 10px; object-fit: fill">
 							</c:if>
 							<div>
 								<c:if test="${ibookmark.youtube ne null }">
-									<img src="https://img.icons8.com/?size=25&id=19318&format=png&color=000000">
+									<img
+										src="https://img.icons8.com/?size=25&id=19318&format=png&color=000000">
 								</c:if>
 								<c:if test="${ibookmark.instagram ne null }">
-									<img src="https://img.icons8.com/?size=25&id=Xy10Jcu1L2Su&format=png&color=000000">
+									<img
+										src="https://img.icons8.com/?size=25&id=Xy10Jcu1L2Su&format=png&color=000000">
 								</c:if>
 								<c:if test="${ibookmark.blog ne null }">
-									<img src="${pageContext.request.contextPath}/image/naver.png" style="width: 25px; height: 25px;"/>
+									<img src="${pageContext.request.contextPath}/image/naver.png"
+										style="width: 25px; height: 25px;" />
 								</c:if>
-								<br>
-								 ${ibookmark.category_name }
+								<br> ${ibookmark.category_name }
 							</div>
-							<div id="channel_name">
-								${ibookmark.nickname }
-							</div>
+							<div id="channel_name">${ibookmark.nickname }</div>
 							<div id="introduce">${ibookmark.intro_line }</div>
 						</div>
 					</c:forEach>

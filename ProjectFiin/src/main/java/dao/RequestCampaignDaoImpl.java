@@ -46,10 +46,14 @@ public class RequestCampaignDaoImpl implements RequestCampaignDao {
 		sqlSession.update("mapper.requestCampaign.updateRequestCampaignAccept",requestNum);
 		sqlSession.commit();
 	}
-
+	
+	
 	
 	@Override
 	public List<Map<String, Object>> selectRequestCampaignList(Integer advertiserNum) throws Exception {
 		return sqlSession.selectList("mapper.requestCampaign.selectRequestCampaignList", advertiserNum);
 	}
+
+
+
 }
