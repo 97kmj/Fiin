@@ -67,10 +67,6 @@ public class MypageAdvertiserInfo extends HttpServlet {
 			advertiser.setAddressDetail(addressDetail);
 			service.advertiserModify(advertiser);
 			request.getSession().setAttribute("advertiser", advertiser);
-			response.setContentType("text/html; charset=UTF-8");
-			PrintWriter out = response.getWriter();
-			out.println("<script>alert('회원정보가 수정되었습니다.');</script>"); 
-			out.flush();
 			request.getRequestDispatcher("/mypage/mypage_advertiser_info.jsp").forward(request, response);
 		} catch (Exception e) {
 			e.printStackTrace();
