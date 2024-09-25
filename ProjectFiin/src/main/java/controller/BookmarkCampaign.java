@@ -40,10 +40,8 @@ public class BookmarkCampaign extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
 		Integer campaignNum = Integer.parseInt(request.getParameter("campaignNum"));
-		System.out.println(campaignNum);
 		Influencer influencer = (Influencer)request.getSession().getAttribute("influencer");
 		Integer influencerNum = influencer.getInfluencerNum();
-		System.out.println(influencerNum);
 		try {
 			CampaignService service = new CampaignServiceImpl();
 			boolean bookchecked = service.toggleCampaign(influencerNum,campaignNum);

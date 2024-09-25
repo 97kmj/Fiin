@@ -79,17 +79,14 @@ public class MypageCampaignInfluencer extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
 		Integer requestNum = Integer.parseInt(request.getParameter("requestNum"));
-		
 		try {
 			RequestCampaignService service = new RequestCampaignServiceImpl();
 			service.acceptCampaign(requestNum);
 			response.setCharacterEncoding("utf-8");
-			response.getWriter().write("업데이트 성공");
-			
+			response.getWriter().write("true");
 		}catch(Exception e) {
 			e.printStackTrace();
-			request.setAttribute("err", e.getMessage());
-			request.getRequestDispatcher("err.jsp").forward(request, response);
+			response.getWriter().write("false");
 		}
 	}
 
