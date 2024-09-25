@@ -77,7 +77,7 @@
 												</c:otherwise>
 											</c:choose>
 											<c:choose>
-												<c:when test="${requestCampaign ne 'true' }">
+												<c:when test="${requestCampaign eq 'true' }">
 													<input type="button"  id="requestcampaign" class="basic_btn" value = "신청하기">
 												</c:when>
 												<c:otherwise>
