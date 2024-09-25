@@ -24,8 +24,8 @@
 				<div id="campaignwrap">
 			<c:forEach items="${requestList }" var="request">
 				<div class="request" id="${request.request_num }">
-					<div class="campaign_name" style="font-weight: bold;">
-							${request.campaign_title }
+					<div class="campaign_name">
+							<p style="font-weight: bold; width: 100%; text-overflow: ellipsis; white-space: nowrap; overflow: hidden;">${request.campaign_title }</p>
 					</div>
 					<div class="card">
 					<div class="profile_img">
