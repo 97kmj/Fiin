@@ -90,13 +90,13 @@
 	              		<div class="campaign_channel">
 	              		<p class="campaign_text_title">광고채널</p>
 		                <c:forEach items="${campaign.channel.split('#')}" var="channel">
-		                	<c:if test="${channel.equals('blog')}">
+		                	<c:if test="${channel.equalsIgnoreCase('blog')}">
 		                		<img src="${pageContext.request.contextPath}/image/naver.png" style="width: 25px; height: 25px;"/>
 		                	</c:if>
-		                    <c:if test="${channel.equals('instagram')}">
+		                    <c:if test="${channel.equalsIgnoreCase('instagram')}">
 		                    	<img src="https://img.icons8.com/?size=25&id=Xy10Jcu1L2Su&format=png&color=000000">
 		                    </c:if>
-		                    <c:if test="${channel.equals('youtube')}">
+		                    <c:if test="${channel.equalsIgnoreCase('youtube')}">
 		                    	<img src="https://img.icons8.com/?size=25&id=19318&format=png&color=000000">
 		                    </c:if>           	
 		                </c:forEach>
