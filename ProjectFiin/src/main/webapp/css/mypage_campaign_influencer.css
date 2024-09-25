@@ -107,6 +107,10 @@
     font-weight:bold;
     font-size: 18px;
     text-align: center;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 100%;
 }
 .campaign >.channel{
 	color: gray;
