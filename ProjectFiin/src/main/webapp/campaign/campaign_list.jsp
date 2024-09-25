@@ -89,7 +89,7 @@
 					
 					
 					
-					<div class="title"><b>캠페인명</b> ${campaign.campaignTitle }</div>
+					<div class="title" style=" width: 100%; text-overflow: ellipsis; white-space: nowrap; overflow: hidden;"><b>캠페인명</b> ${campaign.campaignTitle }</div>
 					<div class="title"><b>광고상품</b> ${campaign.productName }</div>
 					<div class="title"><b>광고기간</b>
 						<fmt:formatDate value="${campaign.adStartDate}" pattern="yyyy-MM-dd" /> ~ <fmt:formatDate value="${campaign.adEndDate}"
