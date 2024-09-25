@@ -275,6 +275,9 @@
 	padding: 10px;
 	border: 1px dotted lightgray;
 }
+.dateClass {
+	font-size: 14px;
+}
 .outBtn {
 	display: flex;
 	align-items: center;

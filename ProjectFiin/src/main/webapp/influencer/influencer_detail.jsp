@@ -123,7 +123,7 @@
 												<td>${list.campaign_title }</td>
 												<td>${list.company_name }</td>
 												<td>${list.product_name }</td>
-												<td><fmt:formatDate value="${list.ad_end_date }" pattern="yyyy-MM-dd" /></td>
+												<td class="dateClass"><fmt:formatDate value="${list.ad_end_date }" pattern="yyyy-MM-dd" /></td>
 												<td>
 													<c:choose>
 														<c:when test="${list.isReq == 1}">
