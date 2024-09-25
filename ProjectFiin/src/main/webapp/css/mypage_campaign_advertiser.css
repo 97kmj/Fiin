@@ -91,11 +91,11 @@ body {
 .campaign .name {
     font-weight:bold;
     font-size:large;
-    width: 100%;
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
-    line-height: 1.2;
+    width: 100%;
+    padding:5px;
 }
 
 .btn {
@@ -223,7 +223,9 @@ body {
 .accept:hover {
   cursor: pointer;
 }
-
+.img > img:hover {
+  cursor: pointer;
+}
 .checked {
   border: 2px solid #4849E8;
   border-radius: 10px;

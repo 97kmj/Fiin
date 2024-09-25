@@ -126,9 +126,18 @@ public class CampaignRegister extends HttpServlet {
       // 데이터 처리하기 : Model
       CampaignService service = new CampaignServiceImpl();
 
+      Integer usedPoint=0;
+      if (uploadPeriodValue.equals("7")) {
+    	  usedPoint = -500;
+      } else if (uploadPeriodValue.equals("14")) {
+    	  usedPoint = -1000;
+      } else if (uploadPeriodValue.equals("21")) {
+    	  usedPoint = -1500;
+      } else if (uploadPeriodValue.equals("28")) {
+    	  usedPoint = -1800;
+      }
       // 캠페인 포인트 차감/ session에만 차감 됨 (등록 시 마다 차감)
-      advertiser.setPointBalance(advertiser.getPointBalance() - 500);
-
+      advertiser.setPointBalance(advertiser.getPointBalance() + usedPoint);
       service.campaignRegister(campaign, addUploadPeriod);
 
 

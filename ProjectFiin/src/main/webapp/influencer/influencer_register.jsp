@@ -55,10 +55,8 @@
                         </c:when>
                         <c:otherwise>
                             <input type="file" id="fileInput" name="profileImage"
-
                                    style="display: none;" onchange="readURL(this)"
                                    value="${influencer.profileImage}"/>
-
                             <img id="uploadImage"
                                  src="${pageContext.request.contextPath}/image?file=${influencer.profileImage}"
                                  alt="Upload Image"
@@ -437,6 +435,7 @@
 
     // 프로필 이미지
     let profileImage = document.getElementById('fileInput').value;
+    console.log(profileImage);
     if (profileImage.trim() === '') {
       event.preventDefault(); // 폼 제출 막기
       alert('프로필 이미지를 선택해주세요!');

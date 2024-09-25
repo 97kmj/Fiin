@@ -113,7 +113,8 @@
 		                <c:if test="${campaign.categoryId eq '4'}">
 		                	<div class="category">여행/숙박</div>	
 		                </c:if>
-		                <c:if test="${campaign.categoryId eq '5'}"> 
+
+		                <c:if test="${campaign.categoryId eq '5'}">		                
 		                	<div class="category">식품</div>
 		                </c:if>
 		                <c:if test="${campaign.categoryId eq '6'}">

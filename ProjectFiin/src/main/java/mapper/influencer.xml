@@ -10,8 +10,7 @@
 		UPDATE influencer
 		set
 		intro_line = #{introLine},
-		profile_image =
-		#{profileImage},
+		profile_image = #{profileImage},
 		youtube = #{youtube},
 		youtube_name = #{youtubeName},
 		youtube_follower = #{youtubeFollower},

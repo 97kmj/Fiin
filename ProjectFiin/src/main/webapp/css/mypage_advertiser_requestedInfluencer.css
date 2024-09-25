@@ -104,6 +104,21 @@ body {
   overflow-y: auto; 
 }
 
+.campaign_name{
+	text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    width:80%;
+    text-align:center;
+}
+
+.subject {
+	text-align:center;
+	text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 100%;
+}
 .request {
    display:flex;
    flex-direction:column;
@@ -134,15 +149,6 @@ body {
 	cursor:pointer;
 }
 
-.campaign_name {
-  display:flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  width: 200px;
-  margin-bottom: 5px;
-  gap: 5px;
-}
 
 .request .category {
   display:flex;
