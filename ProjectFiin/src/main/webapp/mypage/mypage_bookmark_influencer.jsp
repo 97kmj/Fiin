@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,14 +26,31 @@
 						북마크한 캠페인이 없습니다.
 					</div>
 				</c:if>
+				
 					<c:forEach var="cbookmark" items="${cbookmarkList }">
 						<div class="bookmark_pick" id="pickNum1"
-							OnClick="location.href='influencerDetail?num=' + ${ibookmark.influencer_num}">
+							OnClick="location.href='campaignDetail?campaignNum=' + ${cbookmark.campaign_num}">
 							<c:if test="${cbookmark.image ne null }">
 								<img src="image?file=${cbookmark.image }"
-									style="width: 200px; height: 270px; border-radius: 20px; margin-bottom: 10px; object-fit: fill">
+									style="width: 250px; height: 270px; border-radius: 20px; margin-bottom: 10px; object-fit: fill">
 							</c:if>
-							<div>${cbookmark.CHANNEL } | ${cbookmark.category_name }</div>
+							<div style="display: flex; align-items: center">
+							<c:forEach var="channel" items="${cbookmark.CHANNEL.split('#') }">
+							<c:if test="${channel.equalsIgnoreCase('youtube')}">
+									<img
+										src="https://img.icons8.com/?size=25&id=19318&format=png&color=000000">
+							</c:if>
+							<c:if test="${channel.equalsIgnoreCase('instagram') }">
+								<img
+										src="https://img.icons8.com/?size=25&id=Xy10Jcu1L2Su&format=png&color=000000">
+							</c:if>
+							<c:if test="${channel.equalsIgnoreCase('blog')}">
+								<img src="${pageContext.request.contextPath}/image/naver.png"
+										style="width: 25px; height: 25px;" />
+							</c:if>
+								<%-- ${cbookmark.CHANNEL } --%> 
+							</c:forEach>
+							| ${cbookmark.category_name }</div>
 							<div id="channel_name">
 								<c:if test="${cbookmark.company_name ne null }">
 								${cbookmark.company_name }
