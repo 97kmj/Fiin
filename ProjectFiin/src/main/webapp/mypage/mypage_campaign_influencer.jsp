@@ -52,7 +52,7 @@
 		                <div class="channel">${campaignListAccept.channel }</div>
 		                <div class="compuny_name">${categoryList.get(campaignListAccept.category_id-1).category_name }</div>
 		              
-		                <div class="name">${campaignListAccept.company_name }</div>
+		                <div class="name">${campaignListAccept.campaign_title }</div>
 		                <div class="campaigndate">광고기간</div>
 		                <div class="date">
 		                	<fmt:formatDate value="${campaignListAccept.ad_start_date}" pattern="yyyy-MM-dd" /> ~ <fmt:formatDate value="${campaignListAccept.ad_end_date}"
@@ -63,7 +63,7 @@
 		                		<c:when test="${campaignListAccept.accept eq false}">
 		                			<c:choose>
 			                			<c:when test="${btnType eq 'request'}">
-			                				<div class="check" value="${campaignListAccept.request_num }">수락하기</div>
+			                				<div class="check" data-value="${campaignListAccept.request_num }">수락하기</div>
 			                			</c:when>
 			                			<c:otherwise>
 			                				<div class="checkreceive">대기중</div>
@@ -94,26 +94,27 @@
 <%@ include file="../include/footer.jsp" %>
 
 <script>
-$(document).ready(function() {
-	$("#ckecked").on('click',function(){
-		var requestNum = $(this).attr("value");
-		alert("1")
-		$.ajax({
-			url:"mypageCampaignInfluencer",
-			type:"POST",
-			async:true,
-			data:{requestNum:requestNum },
-		
-			success:function(result){
-				$("#ckecked").text('수락완료');
-				alert("?")
-			},
-			error:function(err){
-				console.log(err);
+$(".check").click(function() {
+	var requestNum = $(this).data("value");
+	var check = $(this);
+	$.ajax({
+		url:"mypageCampaignInfluencer",
+		type:"POST",
+		async:true,
+		data:{requestNum:requestNum },
+
+		success:function(result){
+			if(result=='true') {
+				check.text('수락완료');
+			} else {
+				alert('수락을 실패하였습니다');				
 			}
-				
-		})
+		},
+		error:function(err){
+			console.log(err);
+		}
 	})
-})  
+})
+
 </script>
 </html>
