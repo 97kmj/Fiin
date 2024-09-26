@@ -94,21 +94,21 @@
 						<div id="mixBar">
 							<div style="width: 150px">
 
-								<c:if test="${showinfluencer.youtube ne null }">
+								<c:if test="${showinfluencer.youtube ne null and showinfluencer.youtube == true}">
 									<%-- <c:out value="유튜브"/> --%>
 									<img
 										src="https://img.icons8.com/?size=25&id=19318&format=png&color=000000">
 								</c:if>
 
 
-								<c:if test="${showinfluencer.instagram ne null }">
+								<c:if test="${showinfluencer.instagram ne null and showinfluencer.instagram == true}">
 									<%-- <c:out value="인스타그램"/> --%>
 									<img
 										src="https://img.icons8.com/?size=25&id=Xy10Jcu1L2Su&format=png&color=000000">
 								</c:if>
 
 
-								<c:if test="${showinfluencer.blog ne null }">
+								<c:if test="${showinfluencer.blog ne null and showinfluencer.blog == true }">
 									<%-- <c:out value="블로그"/> --%>
 									<img src="${pageContext.request.contextPath}/image/naver.png"
 										style="width: 25px; height: 25px;" />

@@ -275,11 +275,17 @@
 	padding: 10px;
 	border: 1px dotted lightgray;
 }
-.dateClass {
-	font-size: 14px;
+ .dateClass {
+	font-size: 12px;
+	white-space: nowrap;
 }
 .outBtn {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
+}
+#liTitle {
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
 }
