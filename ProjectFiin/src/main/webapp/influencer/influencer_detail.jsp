@@ -120,7 +120,7 @@
 									<tbody>
 										<c:forEach var="list" items="${campaignRequest }">
 											<tr align="center">
-												<td>${list.campaign_title }</td>
+												<td id="liTitle">${list.campaign_title }</td>
 												<td>${list.company_name }</td>
 												<td>${list.product_name }</td>
 												<td class="dateClass"><fmt:formatDate value="${list.ad_end_date }" pattern="yyyy-MM-dd" /></td>
@@ -185,21 +185,21 @@
 		</div>
 		<div class="channel_name">
 		<div id="channelVar">
-			<c:if test="${influencerdetail.youtube ne null }">
+			<c:if test="${influencerdetail.youtube ne null and influencerdetail.youtube == true }">
 				<span id="channelImg"><img src="https://img.icons8.com/?size=60&id=19318&format=png&color=000000"></span>
 				<span id="channelNa">${influencerdetail.youtube_name }</span>
 				<span id="channelUrl">${influencerdetail.youtube_url }<br></span>
 			</c:if>
 		</div>
 		<div id="channelVar">	
-			<c:if test="${influencerdetail.instagram ne null }">
+			<c:if test="${influencerdetail.instagram ne null and influencerdetail.instagram == true }">
 				<span id="channelImg"><img src="https://img.icons8.com/?size=60&id=Xy10Jcu1L2Su&format=png&color=000000"></span>
 				<span id="channelNa">${influencerdetail.instagram_name }</span>
 				<span id="channelUrl">${influencerdetail.instagram_url } <br></span>
 			</c:if>
 		</div>
 		<div id="channelVar">
-			<c:if test="${influencerdetail.blog ne null }">
+			<c:if test="${influencerdetail.blog ne null and influencerdetail.blog == true }">
 				<span id="channelImg"><img src="${pageContext.request.contextPath}/image/naver.png" style="width: 60px; height: 60px;"/></span>
 				<span id="channelNa">${influencerdetail.blog_name }</span>
 				<span id="channelUrl">${influencerdetail.blog_url }</span>
